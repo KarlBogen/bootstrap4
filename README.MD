@@ -2,7 +2,7 @@
 
 Das Template basiert auf dem Bootstrap-Framework 4 und wird getestet mit der, zum Zeitpunkt des Erscheinens eines neuen Releases, aktuellen Shopversion.
 
-<img src="https://raw.githubusercontent.com/KarlBogen/bootstrp4/images/screenshot_1.png" style="margin:20px 0;" alt="screenshot">
+![](images/screenshot_1.png)
 
 ## Eigenschaften:
 - responsive Template für PC, Tablet, Smartphone
