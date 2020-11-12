@@ -1,0 +1,226 @@
+{config_load file="$language/lang_$language.conf" section="checkout_confirmation"}
+{config_load file="$language/lang_$language.conf" section="checkout_navigation"}
+{config_load file="$language/lang_$language.conf" section="duty_info"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="checkout_confirmation"}
+<div id="checkoutnavigation" class="text-center m-3">
+	<div class="row">
+	{if isset($NO_SHIPPING)}
+		<div class="col-4"><a class="text-success" href="{$BUTTON_BACK_LINK}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-sm-block my-2">{#title_payment#}</span></a></div>
+		<div class="col-4 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-sm-block my-2">{#title_confirmation#}</span></div>
+		<div class="col-4 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-sm-block my-2">{#title_success#}</span></div>
+	{else}
+		<div class="col-3"><a class="text-success" href="{$SHIPPING_EDIT}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></a></div>
+		<div class="col-3"><a class="text-success" href="{$BUTTON_BACK_LINK}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-md-block my-2">{#title_payment#}</span></a></div>
+		<div class="col-3 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-md-block my-2">{#title_confirmation#}</span></div>
+		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">4</strong></span><span class="d-none d-md-block my-2">{#title_success#}</span></div>
+	{/if}
+	</div>
+</div>
+
+<h1 class="card p-2 bg-h">{#heading_confirmation#}</h1>
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+
+<div class="row clearfix">
+	<div class="{if $TEXT_AGB_CHECKOUT || isset($EXPRESS) || $BS4_TEXT_PRIVACY_CHECKOUT != ''}col-md-6{else}col-md-12{/if} mb-3">
+		<div class="card h-100">
+			<div class="card-body">
+				{#text_information#|sprintf:$HEADQUARTER}
+				{if $IP_LOG == 'true'}
+					<p>{#text_ip#}&nbsp;<strong>{$CUSTOMERS_IP}</strong></p>
+				{/if}
+			</div>
+		</div>
+	</div>
+	{if $TEXT_AGB_CHECKOUT || isset($EXPRESS) || $BS4_TEXT_PRIVACY_CHECKOUT != ''}
+	<div class="col-md-6 mb-3">
+		<div class="card h-100">
+			<div class="list-group list-group-flush">
+				<div class="list-group-item">
+					{if $BS4_TEXT_PRIVACY_CHECKOUT != ''}
+						<strong>{$BS4_TEXT_PRIVACY_CHECKOUT}</strong>
+					{else}
+						 {$TEXT_AGB_CHECKOUT}
+					{/if}
+				</div>
+				{if isset($EXPRESS)}
+				<div class="list-group-item">
+					<h5>{#heading_checkout_express#}</h5>
+					{if isset($success_message)}
+						<div class="alert alert-success">{$success_message}</div>
+					{else}
+						{$FORM_ACTION}
+						<p>{#text_express_checkout_information#} {if isset($EXPRESS_LINK)}{$EXPRESS_LINK}{/if}</p>
+						<span class="my-2">{$BUTTON_SUBMIT}</span>
+						{$FORM_END}
+					{/if}
+				</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+	{/if}
+</div>
+<div class="row clearfix">
+	{if $DELIVERY_LABEL}
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<div class="card-body">
+    				<h5>{#text_shipping_address#}&nbsp;<a class="small" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a></h5>
+    				{$DELIVERY_LABEL}
+				</div>
+			</div>
+		</div>
+	{/if}
+	{if $BILLING_LABEL}
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<div class="card-body">
+    				<h5>{#text_payment_address#}&nbsp;<a class="small" href="{$BILLING_ADDRESS_EDIT}">{#text_edit#}</a></h5>
+    				{$BILLING_LABEL}
+				</div>
+			</div>
+		</div>
+	{/if}
+</div>
+<div class="row clearfix">
+		{if $SHIPPING_METHOD}
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<div class="card-body">
+					<h5>{#text_shipping_method#}&nbsp;{if isset($SHIPPING_EDIT)}<a class="small" href="{$SHIPPING_EDIT}">{#text_edit#}</a>{/if}</h5>
+					{$SHIPPING_METHOD}
+				</div>
+			</div>
+		</div>
+	{/if}
+	{if $PAYMENT_METHOD != ''}
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<div class="card-body">
+    				<h5>{#text_payment_method#}&nbsp;{if isset($PAYMENT_EDIT)}<a class="small" href="{$PAYMENT_EDIT}">{#text_edit#}</a>{/if}</h5>
+    				{$PAYMENT_METHOD}
+				</div>
+			</div>
+		</div>
+	{/if}
+</div>
+{if $ORDER_COMMENTS != '' || $PAYMENT_INFORMATION != ''}
+<div class="row clearfix">
+	{if $ORDER_COMMENTS != ''}
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<div class="card-body">
+					<h5>{#text_comments#}&nbsp;{if isset($PAYMENT_EDIT)} <a class="small" href="{$PAYMENT_EDIT}">{#text_edit#}</a>{/if}</h5>
+					{$ORDER_COMMENTS}
+				</div>
+			</div>
+		</div>
+	{/if}
+	{if $PAYMENT_INFORMATION != ''}
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<div class="card-body">
+    				<h5>{#text_payment_info#}</h5>
+					{foreach name=aussen item=data from=$PAYMENT_INFORMATION}
+						{if $data.title != ''}<div class="mr-auto pr-2 title small"><strong>{$data.title|stripslashes}</strong></div>{/if}
+						<div class="field small">{if $data.field != ''}{$data.field|stripslashes}{else}&nbsp;{/if}</div>
+					{/foreach}
+				</div>
+			</div>
+		</div>
+	{/if}
+</div>
+{/if}
+<div class="card mb-2">
+	<div class="card-header">
+		<h4>{#text_products#}&nbsp;<a class="small" href="{$PRODUCTS_EDIT}">{#text_edit#}</a></h4>
+	</div>
+	<div class="list-group list-group-flush mb-2">
+    	{foreach name=aussen item=data from=$PRODUCTS_ARRAY}
+		<div class="list-group-item">
+			<div class="row d-none d-md-block mb-2">
+				<div class="col-md-12">
+					<strong>{$smarty.const.HEADER_ARTICLE}:</strong>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 mb-2">
+					<div class="row">
+               		{if $smarty.const.CHECKOUT_SHOW_PRODUCTS_IMAGES == 'true' && $data.image != ''}
+						<div class="col-2">
+							{$data.image|replace:'class="':'class="img-fluid '}
+						</div>
+					{/if}
+						<div class="{if $smarty.const.CHECKOUT_SHOW_PRODUCTS_IMAGES == 'true' && $data.image != ''}col-10{else}col-12{/if}">
+							{if isset($data.link_more)}<strong>{$data.name}</strong> {$data.link_more}{else}{$data.link}{/if}<br />
+							<div class="small">
+								<strong>{$smarty.const.HEADER_MODEL}:</strong> {$data.model}<br />
+								{if $data.shipping_time}<strong>{$smarty.const.SHIPPING_TIME}</strong> {$data.shipping_time}{/if}
+								{if $data.order_description}<div class="description clearfix">{$data.order_description}</div>{/if}
+								{if isset($data.products_tags)}
+									{foreach item=module_data from=$data.products_tags}
+										<div class="prod_tags clearfix">
+											<strong>{$module_data.OPTIONS_NAME}:&nbsp;</strong>
+											{foreach name=inner item=item_data from=$module_data.DATA}
+												{$item_data.VALUES_NAME}{if $smarty.foreach.inner.last}{else}, {/if}
+											{/foreach}
+										</div>
+									{/foreach}
+								{/if}
+								{if $data.attributes != ''}
+									<ul class="attributes_list">
+									{foreach key=a_data item=attrib_data from=$data.attributes}
+										<li><strong>{$attrib_data.option}:</strong> {$attrib_data.value}</li>
+									{/foreach}
+									</ul>
+								{/if}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mb-2">
+					<div class="clearfix"><strong>{$smarty.const.HEADER_QTY}:</strong><span class="float-right">{$data.qty}</span></div>
+					<div class="clearfix"><strong>{$smarty.const.HEADER_SINGLE}:</strong><span class="float-right">{$data.price_formated}</span></div>
+					<div class="clearfix"><strong>{$smarty.const.HEADER_TOTAL}:</strong><span class="float-right">{$data.final_price_formated}</span></div>
+					{if $ORDER_TAX_GROUPS > 1}<div class="clearfix"><span class="float-right small text-secondary">{$data.tax_info}</span></div>{/if}
+				</div>
+			</div>
+		</div>
+		{/foreach}
+	</div>
+</div>
+
+{if sizeof($TOTAL_BLOCK_ARRAY) > 0}
+<div class="row mb-2">
+	<div class="col-md-10 offset-md-2">
+		<div class="card">
+			<div class="card-header border-bottom-0">
+      			{foreach name=aussen item=order_total_values from=$TOTAL_BLOCK_ARRAY}
+					<div class="row text-right">
+						<div class="col-8">{$order_total_values.title}</div>
+						<div class="col-4">{$order_total_values.text}</div>
+					</div>
+      			{/foreach}
+			</div>
+		</div>
+	</div>
+</div>
+{/if}
+
+{if $DELIVERY_DUTY_INFO == true}
+<div class="row mb-2">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				{#text_duty_info#}
+			</div>
+		</div>
+	</div>
+</div>
+{/if}
+<div class="clearfix my-4 text-right">
+	{$CHECKOUT_FORM}
+	{if $MODULE_BUTTONS != ''}{$MODULE_BUTTONS}<br />{/if}
+	{$CHECKOUT_BUTTON}
+</div>

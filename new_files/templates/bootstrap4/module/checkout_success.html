@@ -1,0 +1,85 @@
+{config_load file="$language/lang_$language.conf" section="checkout_success"}
+{config_load file="$language/lang_$language.conf" section="checkout_navigation"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="checkout_success"}
+<div id="checkoutnavigation" class="text-center m-3">
+	<div class="row">
+	{if isset($NO_SHIPPING)}
+		<div class="col-4 text-success"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-sm-block my-2">{#title_payment#}</span></div>
+		<div class="col-4 text-success"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-sm-block my-2">{#title_confirmation#}</span></div>
+		<div class="col-4 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-sm-block my-2">{#title_success#}</span></div>
+	{else}
+		<div class="col-3 text-success"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></div>
+		<div class="col-3 text-success"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-md-block my-2">{#title_payment#}</span></div>
+		<div class="col-3 text-success"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-md-block my-2">{#title_confirmation#}</span></div>
+		<div class="col-3 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">4</strong></span><span class="d-none d-md-block my-2">{#title_success#}</span></div>
+	{/if}
+	</div>
+</div>
+
+<h1 class="card p-2 bg-h">{#heading_success#}</h1>
+
+<div class="row clearfix">
+	<div class="col-md-6 mb-3">
+		<div class="card h-100">
+			<div class="card-body">
+    			<h5>{#title_printorder#}</h5>
+				<p>{#text_printorder#}<br />
+				<strong>{#text_thankyou#}</strong></p>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 mb-3">
+		<div class="card h-100">
+			<div class="card-body">
+    			<h5>{#heading_success#}</h5>
+    			<p>{#text_success#}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{if $GV_SEND_LINK}
+<div class="card">
+	<div class="card-header">
+		<div>{#gv_has_vouchera#} {$GV_SEND_LINK} {#gv_has_voucherb#}</div>
+	</div>
+</div>
+{/if}
+
+{if is_array($PAYMENT_INFO) && count($PAYMENT_INFO) > 0}
+<div class="card">
+	{foreach name=aussen item=data from=$PAYMENT_INFO}
+		<div class="card-body">
+    		<h5>{$data.title|stripslashes}</h5>
+			{foreach name=aussen item=info from=$data.fields}
+				{if $info.title != ''}<div class="mr-auto pr-2 title small"><strong>{$info.title|stripslashes}</div>{/if}
+				{if $info.field != ''}<div class="field small">{$info.field|stripslashes}</div>{/if}
+				{/foreach}
+		</div>
+	{/foreach}
+</div>
+{/if}
+
+{if $downloads_content neq ''}
+	{if $title_downloadfiles != ''}
+			<h2 class="card p-2 bg-h">{#title_downloadfiles#}</h2>
+	{/if}
+	{$downloads_content}
+{/if}
+
+<div class="mt-2">
+	<div class="float-left">
+		{if isset($BUTTON_PRINT_LAYER)}
+	  		{$BUTTON_PRINT_LAYER|replace:'" />':'">'|replace:'btn-sm':''}
+		{else}
+			{if isset($FORM_ACTION_PRINT_LAYER)}{$FORM_ACTION_PRINT_LAYER}{else}{$FORM_ACTION_PRINT}{/if}{$BUTTON_PRINT|replace:'btn-sm':''}{$FORM_END}
+		{/if}
+	</div>
+	<div class="float-right">{$FORM_ACTION}{$BUTTON_CONTINUE|replace:'btn-sm':''}{$FORM_END}</div>
+</div>
+
+{if $google_tracking eq 'true'}
+{$tracking_code}
+{/if}
+<div class="clearfix mb-4"></div>

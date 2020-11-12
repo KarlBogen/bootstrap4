@@ -1,0 +1,111 @@
+{config_load file="$language/lang_$language.conf" section="contact_us"}
+{config_load file="lang_`$language`.custom"}
+<div{if !isset($full)} class="container"{/if}>
+	<div class="row mb-3">
+		<div class="col-12">
+            {if isset($full)}<h1 class="card p-2 bg-h">{$smarty.const.TEXT_PRODUCT_INQUIRY}</h1>{/if}
+			{if isset($error_message) && $error_message!=''}<div class="alert alert-danger">{$error_message}</div>{/if}
+			{if isset($error) && $error!=''}<div class="alert alert-danger">{$error}</div>{/if}
+			{if !isset($success) ||  $success !='1'}
+				{$CONTENT_TEXT}
+			{else}
+				<div class="alert alert-success">{#text_success#}</div>
+                {if isset($BUTTON_BACK)}{$BUTTON_BACK}{/if}
+			{/if}
+		</div>
+	</div>
+	{if !isset($success) ||  $success !='1'}
+		<div class="row mb-3">
+			{if $PRODUCTS_IMAGE!=''}
+				<div class="col-4">
+					<div class="mb-2"><img class="img-fluid" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" /></div>
+				</div>
+			{/if}
+			<div class="{if $PRODUCTS_IMAGE!=''}col-8{else}col-12{/if}">
+				<h4>{$PRODUCTS_NAME}</h4>
+				<div class="mb-2">
+					{$PRODUCTS_SHORT_DESCRIPTION}<br />
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12">
+				<h3>{$HEADING_FORMULAR}</h3>
+				{$FORM_ACTION}
+					<div class="form-group">
+						<label class="control-label">{#BS4_text_sex#}</label>
+						<div>{$SELECT_SEX}</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">{#BS4_text_firstname#} *</label>
+						<div>{$INPUT_FIRSTNAME}</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">{#BS4_text_lastname#} *</label>
+						<div>{$INPUT_LASTNAME}</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">{#text_email#} *</label>
+						<div>{$INPUT_EMAIL}</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">{#text_phone#}</label>
+						<div>{$INPUT_PHONE}</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">{#BS4_text_subject#}</label>
+						<div>{$SELECT_SUBJECT}</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">{#text_message#}</label>
+						<div>{$INPUT_TEXT}</div>
+					</div>
+					{if isset($VVIMG)}
+						<div class="form-group">
+							<label class="control-label">{#BS4_text_sec_code#}</label>
+							<div>{$VVIMG}</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">{#BS4_text_inp_code#}</label>
+							<div>{$INPUT_CODE}</div>
+						</div>
+					{/if}
+					{if isset($PRIVACY_CHECKBOX)}
+						<div class="form-check clearfix">
+								{$PRIVACY_CHECKBOX}
+							<label class="form-check-label" for="privacy">
+								{#bs4_text_privacy_accept#} {$PRIVACY_LINK}
+							</label>
+						</div>
+					{/if}
+					<div class="clearfix my-3">
+						<div class="float-left">{$BUTTON_BACK}</div>
+						<div class="float-right">{$BUTTON_SUBMIT}</div>
+					</div>
+				{$FORM_END}
+				<div class="small my-2">{#BS4_text_pflicht#}</div>
+			</div>
+		</div>
+	{/if}
+</div>
+{if !isset($full)}
+	<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<h4 class="modal-title text-center">&nbsp;</h4>
+                	<button type="button" class="close" data-dismiss="modal" aria-label="{#BS4_close#}"><span aria-hidden="true">&times;</span><span class="sr-only">{#BS4_close#}</span></button>
+            	</div>
+            	<div class="modal-body">
+            	</div>
+            	<div class="modal-footer">
+					<a id="show-previous-image" class="left carousel-control-prev" role="button"><span class="fa fa-chevron-left fa-3x" aria-hidden="true"></span></a>
+					<a id="show-next-image"  class="right carousel-control-next" role="button"><span class="fa fa-chevron-right fa-3x" aria-hidden="true"></span></a>
+					<span class="counter small mr-auto" style="padding:6px 12px;"></span>
+					{#BS4_close#|bs4button:'modal_close':'data-dismiss="modal"'}
+            	</div>
+        	</div>
+	    </div>
+	</div>
+{/if}
+<div id="cookieconsent" class="d-none"></div>

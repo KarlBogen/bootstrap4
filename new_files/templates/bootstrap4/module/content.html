@@ -1,0 +1,22 @@
+{if isset($CONTENT_HEADING)}<h1 class="card p-2 bg-h">{$CONTENT_HEADING}</h1>{/if}
+<div class="row clearfix mb-2">
+	<div class="col-12">
+		<div class="card card-body">
+		{if isset($file)}
+		    {$CONTENT_BODY}
+		    {$file}
+		{else}
+			<div class="float-left">
+				{if isset($SUB_CONTENT_LISTING)}<div class="subcontent col-md-4 float-right">{$SUB_CONTENT_LISTING}</div>{/if}
+				{$CONTENT_BODY}
+			</div>
+		{/if}
+		{if isset($MODULE_conent_manager_media)}
+			{$MODULE_conent_manager_media}
+		{/if}
+		</div>
+	</div>
+</div>
+<div class="clearfix mb-4">
+	<div>{$BUTTON_CONTINUE}</div>
+</div>

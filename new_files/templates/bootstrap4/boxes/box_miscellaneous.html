@@ -1,0 +1,7 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+<div class="box {$smarty.const.BS4_FOOTER_NAVBAR}">
+	<div class="box-heading w-100 navbar-brand border-bottom mb-2">{#heading_miscellaneous#}</div>
+	<p><img class="img-fluid mt-2" src="{$tpl_path}img/img_footer_payment.jpg" alt="" /></p>
+	<p class="box_sub text-secondary small">{#text_miscellaneous#}</p>
+</div>

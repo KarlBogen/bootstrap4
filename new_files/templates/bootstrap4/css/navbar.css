@@ -1,0 +1,19 @@
+#main.navbar-nav ul.dropdown-menu {
+	margin-top: 0;
+}
+#main.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+#main.navbar-nav ul li >.dropdown-menu {
+    top:0;
+    left:100%;
+	margin-left:-20px;
+}
+#main .dropdown-submenu {
+    position:relative;
+}
+/* rotate caret on hover */
+#main .dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+}

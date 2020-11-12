@@ -1,0 +1,12 @@
+<div id="myCarousel" class="carousel slide{if $smarty.const.BS4_CAROUSEL_SHOW == 'shop'} container{/if}{if $smarty.const.BS4_CAROUSEL_FADE == 'true'} carousel-fade{/if} d-none d-sm-block mb-4 text-center" data-ride="carousel" data-interval="4000">
+	<ol class="carousel-indicators">
+		{foreach name=aussen item=slider from=$SLIDER}<li data-target="#myCarousel" data-slide-to="{$smarty.foreach.aussen.iteration - 1}"{if $smarty.foreach.aussen.first} class="active"{/if}></li>{/foreach}
+	</ol>
+	<div class="carousel-inner">
+		{foreach name=aussen item=slider from=$SLIDER}
+		<div class="carousel-item{if $smarty.foreach.aussen.first} active{/if}">{$slider.IMAGE|replace:'<img':'<img class="img-fluid" '}
+			<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
+		</div>
+		{/foreach}
+	</div>
+</div>

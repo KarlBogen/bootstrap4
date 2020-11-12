@@ -1,0 +1,44 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="shopping_cart"}
+<h1 class="card p-2 bg-h">{#heading_cart#}</h1>
+{if $error_max_prod}
+	<div class="alert alert-warning">
+		<ul>
+			{foreach item=err_max_data from=$error_max_prod}
+			<li>{$err_max_data.E_MSG}</li>
+			{/foreach}
+		</ul>
+	</div>
+{/if}
+{if $info_message != ''}<div class="alert alert-warning">{$info_message}</div>{/if}
+{if $paypal_error != ''}<div class="alert alert-warning">{$paypal_error}</div>{/if}
+
+{if $cart_empty == true}
+	<div class="card p-2 mb-4">
+		<p>{#text_empty#}</p>
+		{$BUTTON_CONTINUE}
+	</div>
+{else}
+	{if $info_message_3 != ''}<div class="alert alert-warning">{$info_message_3}</div>{/if}
+	{$FORM_ACTION}
+    {$HIDDEN_OPTIONS}
+    {$MODULE_order_details}
+    {if $info_message_1 != ''}<div class="alert alert-warning">{$info_message_1}{$min_order}&nbsp;{$info_message_2}{$order_amount}</div>{/if}
+	<div class="row mb-3">
+		{if $CONTINUE_LINK}<div class="col-sm-6 col-md-4 mb-2"><a href="{$CONTINUE_LINK}">{$BUTTON_CONTINUE_SHOPPING}</a></div>{/if}
+		{if isset($ACTIVATE_EXPRESS_LINK)}<div class="col-sm-6 col-md-4 mb-2"><span class="express_info_cart"><a href="{$ACTIVATE_EXPRESS_LINK}">{#checkout_express_activate#|bs4button:'express_link'|replace:'btn-xs':''}</a></span></div>{/if}
+        {if isset($MODULE_gift_cart)}{assign "dummy" ""}<div class="col-sm-6 col-md-4 mb-2"><a id="gift_link" href="#gift_coupon">{$dummy|bs4button:'gift_link'}</a></div>{/if}
+		{if !isset($BUTTON_CHECKOUT_EXPRESS)}{if $BUTTON_PAYPAL != ''}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="paypal_button">{$BUTTON_PAYPAL|replace:'btn-sm':''}</span></div>{/if}{/if}
+		{if isset($BUTTON_CHECKOUT_EXPRESS)}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="express_button">{$BUTTON_CHECKOUT_EXPRESS|replace:'btn-sm':''}</span></div>{/if}
+		{if isset($BUTTON_CHECKOUT_EXPRESS)}{if $BUTTON_PAYPAL != ''}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="paypal_button2">{$BUTTON_PAYPAL|replace:'btn-sm':''}</span></div>{/if}{/if}
+		<div class="col-sm-6 col-md-4 mb-2 ml-auto">{$BUTTON_CHECKOUT}</div>
+	</div>
+    {$FORM_END}
+{/if}
+
+{$MODULE_gift_cart}
+
+{if $MODULE_wishlist}
+	{$MODULE_wishlist}
+{/if}

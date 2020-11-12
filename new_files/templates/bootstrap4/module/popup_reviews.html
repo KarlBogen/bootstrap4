@@ -1,0 +1,140 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="reviews"}
+<div id="avg_popup">
+{if ($langs > 1)}
+<span class="btn-lang btn btn-info btn-sm disabled" >{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_ALL_LANGS}</span>
+<span class="btn-lang btn btn-info btn-sm ml-3">{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_MY_LANG}</span>
+{/if}
+	<ul class="avg nav nav-tabs" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link{if $stars == '1'} active{/if} px-1" data-toggle="tab" href="#tab1">
+				<div class="border rounded text-nowrap py-1 px-2" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_LINK_1}">
+					<span>
+						<span class="hideContent">1 </span>
+						<i class="fas fa-star full"></i>
+						<span class="showContent">
+							<i class="fas fa-star empty"></i>
+							<i class="fas fa-star empty"></i>
+							<i class="fas fa-star empty"></i>
+							<i class="fas fa-star empty"></i>
+						</span>
+					</span>
+				</div>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link{if $stars == '2'} active{/if} px-1" data-toggle="tab" href="#tab2">
+				<div class="border rounded text-nowrap py-1 px-2" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_LINK_2}">
+					<span>
+						<span class="hideContent">2 </span>
+						<i class="fas fa-star full"></i>
+						<span class="showContent">
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star empty"></i>
+							<i class="fas fa-star empty"></i>
+							<i class="fas fa-star empty"></i>
+						</span>
+					</span>
+				</div>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link{if $stars == '3'} active{/if} px-1" data-toggle="tab" href="#tab3">
+				<div class="border rounded text-nowrap py-1 px-2" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_LINK_3}">
+					<span>
+						<span class="hideContent">3 </span>
+						<i class="fas fa-star full"></i>
+						<span class="showContent">
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star empty"></i>
+							<i class="fas fa-star empty"></i>
+						</span>
+					</span>
+				</div>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link{if $stars == '4'} active{/if} px-1" data-toggle="tab" href="#tab4">
+				<div class="border rounded text-nowrap py-1 px-2" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_LINK_4}">
+					<span>
+						<span class="hideContent">4 </span>
+						<i class="fas fa-star full"></i>
+						<span class="showContent">
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star empty"></i>
+						</span>
+					</span>
+				</div>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link{if $stars == '5'} active{/if} px-1" data-toggle="tab" href="#tab5">
+				<div class="border rounded text-nowrap py-1 px-2" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_LINK_5}">
+					<span>
+						<span class="hideContent">5 </span>
+						<i class="fas fa-star full"></i>
+						<span class="showContent">
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star full"></i>
+							<i class="fas fa-star full"></i>
+						</span>
+					</span>
+				</div>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a id="show_all" class="nav-link{if !$stars} active{/if} px-1" href="javascript:void(0)">
+				<div class="border rounded text-nowrap py-1 px-2" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_LINK_ALL}">
+					{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_LINK_ALL}
+				</div>
+			</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+	{for $i=1 to 5}
+		<div id="tab{$i}" class="container tab-pane{if $i == $stars} active{/if}">
+			{if $i == 1}<h3 class="border-bottom py-2 invisible">{$headline_all}</h3>{/if}
+			<h4 class="border-bottom py-2">{$headline_{$i}}</h4>
+			{if (isset($module_content.$i))}
+				{foreach name=aussen item=module_data from=$module_content.$i}
+					<div class="reviewrow border-bottom py-2{if ($languages_id != $module_data.LANG_ID)} not-my-lang{/if}">
+						<div class="reviewrow_title mb-2">
+							<strong>{#text_author#}</strong>&nbsp;{$module_data.AUTHOR}&nbsp;&nbsp;&nbsp;
+							<strong>{#text_date#}</strong>&nbsp;{$module_data.DATE}&nbsp;&nbsp;&nbsp;
+							<strong>{#text_rating#}</strong>&nbsp;
+							<span class="rating_stars stars text-nowrap">
+		           				<i class="fas fa-star{if $module_data.RATING_VOTE >= 1} full{else} empty{/if}"></i>
+		           				<i class="fas fa-star{if $module_data.RATING_VOTE >= 2} full{else} empty{/if}"></i>
+		           				<i class="fas fa-star{if $module_data.RATING_VOTE >= 3} full{else} empty{/if}"></i>
+		           				<i class="fas fa-star{if $module_data.RATING_VOTE >= 4} full{else} empty{/if}"></i>
+		           				<i class="fas fa-star{if $module_data.RATING_VOTE >= 5} full{else} empty{/if}"></i>
+							</span>
+						</div>
+						<div class="reviewrow_text">{$module_data.TEXT}</div>
+					</div>
+    			{/foreach}
+			{/if}
+		</div>
+	{/for}
+	</div>
+</div>
+<script>
+	$("#avg_popup .btn-lang").click(function () {
+	    $("#avg_popup .btn-lang").toggleClass("disabled");
+	    $("#avg_popup .reviewrow.not-my-lang").slideToggle("slow");
+	});
+	$("#avg_popup #show_all").on("click", function() {
+		$(this).addClass("active").parent("li").siblings().find("a").removeClass("active");
+		$("#avg_popup .tab-pane").addClass("active");
+		$("#avg_popup h3").removeClass("invisible");
+	});
+	$("#avg_popup .nav-link").not("#show_all").on("click", function() {
+		$("#avg_popup .tab-pane").not(this.hash).removeClass("active");
+		$("#avg_popup h3").addClass("invisible");
+	});
+</script>

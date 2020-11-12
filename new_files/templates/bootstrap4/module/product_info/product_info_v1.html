@@ -1,0 +1,270 @@
+{config_load file="$language/lang_$language.conf" section="product_info"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="product_info"}
+{assign "dummy" ""}
+{if $error_message != ''}<div class="alert alert-danger">{$error_message}</div>{/if}
+<div itemscope itemtype="http://schema.org/Product">
+	{$FORM_ACTION}
+		<h1 class="card p-2 bg-h" itemprop="name">{if $PRODUCTS_HEADING_TITLE != ''}{$PRODUCTS_HEADING_TITLE}{else}{$PRODUCTS_NAME}{/if}{if isset($PRODUCTS_PRINT_LAYER)}<span class="print-button position-absolute">{$PRODUCTS_PRINT_LAYER|regex_replace:"/\">(.*?)</":"\">{$dummy|bs4button:'print_product_small'}<"}</span>{/if}</h1>
+		<div id="product_details" class="row clearfix">
+			<div class="pd_imagebox col-md-6 mb-4">
+			{if $smarty.const.BS4_USE_EASYZOOM == 'true'}
+				{if $PRODUCTS_IMAGE!=''}
+					<div class="row mb-4">
+						<div class="pd_big_image col-12">
+							<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+								<a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"original_images"}">
+									<img class="img-fluid img-thumbnail" itemprop="image" src="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								</a>
+							</div>
+						</div>
+					</div>
+				{/if}
+				{if $more_images|@count > 0}
+					<div class="pd_more_images easy-thumbnails row mb-4 clearfix">
+						<div class="col-3 mb-3">
+							<a class="easyimages d-block text-center" href="{$PRODUCTS_IMAGE|replace:"info_images":"original_images"}" data-standard="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-image-id="1" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}">
+								<img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+							</a>
+						</div>
+						{assign var=zaehl value=2}
+						{foreach  key=i item=more_images_data from=$more_images}
+							{if $more_images_data.PRODUCTS_IMAGE != ''}
+								<div class="col-3 mb-3">
+									<a class="easyimages d-block text-center" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"original_images"}" data-standard="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-image-id="{$zaehl}" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}">
+										<img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									</a>
+								</div>
+                           		{assign var=zaehl value=$zaehl+1}
+							{/if}
+						{/foreach}
+					</div>
+				{/if}
+				{if $PRODUCTS_IMAGE!=''}
+					<a class="cbimages easyzoom-link" title="{$PRODUCTS_NAME|onlytext}" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal" href="#">{#text_zoom#|bs4button:'button_easyzoom'}</a>
+				{/if}
+			{else}
+				{if $PRODUCTS_IMAGE != ''}
+					<div class="row mb-4">
+						<div class="pd_big_image col-12">
+							<a class="cbimages text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+								<img class="unveil img-fluid" itemprop="image" src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}{else}{$PRODUCTS_IMAGE}{/if}" data-src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+							</a>
+							<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
+						</div>
+					</div>
+					{if $more_images|@count > 0}
+						<div class="pd_more_images easy-thumbnails row mb-4 clearfix">
+							<div class="col-3 mb-3">
+								<a class="cbimages easyimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+									<img class="unveil img-fluid" itemprop="image" src="{$PRODUCTS_IMAGE}" data-src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								</a>
+								<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
+							</div>
+							{assign var=zaehl value=2}
+							{foreach  key=i item=more_images_data from=$more_images}
+								{if $more_images_data.PRODUCTS_IMAGE != ''}
+									<div class="col-3 mb-3">
+										<a class="cbimages easyimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+											<img class="unveil img-fluid" src="{$tpl_path}css/images/loading.gif" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+										</a>
+										<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
+									</div>
+                            		{assign var=zaehl value=$zaehl+1}
+								{/if}
+							{/foreach}
+						</div>
+					{/if}
+					<div class="small text-secondary">{#BS4_zoomtext#}</div>
+				{/if}
+			{/if}
+			</div>
+
+			<div class="pd_content col-md-6 mb-4">
+				<div class="pd_summarybox" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+					<div class="card bg-custom text-right p-2 mb-2">
+                        <meta itemprop="url" content="{$PRODUCTS_LINK}" />
+						<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
+                        {if $PRODUCTS_EXPIRES_C}<meta itemprop="priceValidUntil" content="{$PRODUCTS_EXPIRES_C}" />{/if}
+						{if $PRODUCTS_QUANTITY <= 0 && $smarty.const.STOCK_CHECK == 'true'}<meta itemprop="availability" content="http://schema.org/OutOfStock" />{else}<meta itemprop="availability" content="http://schema.org/InStock" />{/if}
+						{if $PRODUCTS_MANUFACTURERS_MODEL != ''}<meta itemprop="mpn" content="{$PRODUCTS_MANUFACTURERS_MODEL}" />{/if}
+						<meta itemprop="itemCondition" content="http://schema.org/NewCondition" />
+
+						<div class="pd_price">
+							{if $PRODUCTS_FSK18 == 'true'}<div class="pd_fsk18"></div>{/if}
+        					{foreach name=inner item=price_data from=$PRODUCTS_PRICE_ARRAY}
+								{include file="module/includes/price_info.html"}
+							{/foreach}
+						</div>
+						{if $PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+							{if $PRODUCTS_VPE}<div class="pd_vpe text-secondary">{$PRODUCTS_VPE}</div>{/if}
+							<div class="pd_tax text-secondary small">{$PRODUCTS_TAX_INFO}{if $PRODUCTS_SHIPPING_LINK}{$PRODUCTS_SHIPPING_LINK}{/if}</div>
+						{/if}
+						{if $ADD_CART_BUTTON == '' && $PRODUCTS_FSK18 == 'true'}<div class="pd_inforow_message text-danger small">{#products_fsk18_check#}</div>{/if}
+					</div>
+					{if isset($MODULE_graduated_price) && $MODULE_graduated_price != ''}{$MODULE_graduated_price}{/if}
+				</div>
+				<div class="pd_infobox">
+					<div class="card bg-custom p-2 mb-2">
+						{if $SHIPPING_NAME}<div class="small"><strong>{#text_shippingtime#}</strong> {if $SHIPPING_IMAGE}<img class="pd_shipping_image" src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if} {$SHIPPING_NAME_LINK}</div>{/if}
+						{if $PRODUCTS_MODEL != ''}<div class="small"><strong>{#model#}</strong> <span itemprop="sku">{$PRODUCTS_MODEL}</span></div>{/if}
+						{if $PRODUCTS_EAN != ''}<div class="small"><strong>{#ean#}</strong> <span itemprop="gtin{$PRODUCTS_EAN|strlen}">{$PRODUCTS_EAN}</span></div>{/if}
+						{if $PRODUCTS_RATING_COUNT > 1 || $BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 1}
+							<div class="pd_inforow small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+								<strong>{#info_reviews#}</strong>&nbsp;
+								{if $BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}
+									<div class="d-inline">
+										<a class="bs4_avg_container" href="#" data-pid="{$PRODUCTS_ID}" data-class="prod" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_ARROW_TITLE}">
+											<span class="ratings">
+												<span class="fas empty-stars"></span><span class="fas full-stars" style="width:{$BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}%"></span>
+											</span>&nbsp;({$BS4_AWIDS_PRODUCTS_SUM_REVIEWS})
+											<i class="fas fa-chevron-down"></i>
+										</a>
+									</div>
+								{else}
+									<span class="rating_stars"><img src="{$tpl_path}img/stars_{$PRODUCTS_AVERAGE_RATING}.png" alt="{$smarty.const.TEXT_OF_5_STARS|sprintf:$PRODUCTS_AVERAGE_RATING}" /></span>&nbsp;({$PRODUCTS_RATING_COUNT})
+								{/if}
+								<meta itemprop="ratingValue" content="{$PRODUCTS_AVERAGE_RATING}" />
+								<meta itemprop="bestRating" content="5" />
+								<meta itemprop="ratingCount" content="{$PRODUCTS_RATING_COUNT}" />
+							</div>
+						{elseif $PRODUCTS_RATING_COUNT > 0 }
+							<div class="pd_inforow small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+								<strong>{#info_review#}</strong>&nbsp;
+								{if $BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}
+									<div class="d-inline">
+										<a class="bs4_avg_container" href="#" data-pid="{$PRODUCTS_ID}" data-class="prod" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_ARROW_TITLE}">
+											<span class="ratings">
+												<span class="fas empty-stars"></span><span class="fas full-stars" style="width:{$BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}%"></span>
+											</span>&nbsp;({$BS4_AWIDS_PRODUCTS_SUM_REVIEWS})
+											<i class="fas fa-chevron-down"></i>
+										</a>
+									</div>
+								{else}
+									<span class="rating_stars"><img src="{$tpl_path}img/stars_{$PRODUCTS_AVERAGE_RATING}.png" alt="{$smarty.const.TEXT_OF_5_STARS|sprintf:$PRODUCTS_AVERAGE_RATING}" /></span>&nbsp;({$PRODUCTS_RATING_COUNT})
+								{/if}
+								<meta itemprop="ratingValue" content="{$PRODUCTS_AVERAGE_RATING}" />
+								<meta itemprop="bestRating" content="5" />
+								<meta itemprop="ratingCount" content="{$PRODUCTS_RATING_COUNT}" />
+							</div>
+						{/if}
+						{if isset($PRODUCTS_DISCOUNT) && $PRODUCTS_DISCOUNT != ''}<div class="small"><strong>{#text_discount#}</strong> {$PRODUCTS_DISCOUNT}</div>{/if}
+						{if $PRODUCTS_EXPIRES}<div class="small text-danger">{#text_expires_date#} {$PRODUCTS_EXPIRES}</div>{/if}
+						{if $PRODUCTS_MANUFACTURERS_MODEL != ''}<div class="small"><strong>{#products_manufacturer_model#}</strong> {$PRODUCTS_MANUFACTURERS_MODEL}</div>{/if}
+						{if isset($MANUFACTURER) && $MANUFACTURER != ''}<div class="small"><strong>{#manufacturer#}</strong> <span itemprop="brand">{$MANUFACTURER}</span></div>{/if}
+						{if isset($MANUFACTURER_LINK) && $MANUFACTURER_LINK != ''}<div class="small"><strong>{#manufacturer_more_of#}</strong> <a title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}">{$MANUFACTURER}</a></div>{/if}
+						{if $PRODUCTS_URL != ''}<div class="small">{$PRODUCTS_URL}</div>{/if}
+					</div>
+				</div>
+
+				{if isset($MODULE_product_options) && $MODULE_product_options != ''}
+					<div class="card bg-custom mb-2">
+						{$MODULE_product_options}
+					</div>
+				{/if}
+				{if $ADD_CART_BUTTON != ''}
+				<div class="card bg-custom p-2 mb-2">
+					<div class="row">
+						<div class="col-3 mb-2">{$ADD_QTY|replace:'input':'input class="form-control form-control-sm"'}</div>
+						<div class="col-9">
+							{$ADD_CART_BUTTON|replace:'btn ':'mb-2 btn '}
+							{* Ausblenden der Links, wenn Modul Kundenerinnerung aktiviert und Lagerbestand kleiner 0 ist *}
+                            {if $PRODUCTS_QUANTITY > 0 || ($PRODUCTS_QUANTITY <= 0 && $smarty.const.BS4_CUSTOMERS_REMIND != 'true')}
+								{if isset($ADD_CART_BUTTON_EXPRESS)}
+									{$ADD_CART_BUTTON_EXPRESS|replace:'btn ':'mb-2 btn '}
+								{/if}
+								{if isset($ADD_CART_BUTTON_PAYPAL)}
+									{$ADD_CART_BUTTON_PAYPAL}
+								{/if}
+							{/if}
+							{if $ADD_CART_BUTTON_WISHLIST}
+								{$ADD_CART_BUTTON_WISHLIST}
+							{/if}
+						</div>
+					</div>
+				</div>
+				{/if}
+
+				{if $PAYPAL_INSTALLMENT}
+					<div class="clearfix mb-2">
+					{$PAYPAL_INSTALLMENT}
+					</div>
+				{/if}
+
+		        {if $EASYCREDIT}
+					<div class="clearfix mb-2">
+					{$EASYCREDIT}
+					</div>
+		        {/if}
+
+				{if $ADD_CART_BUTTON == '' && $PRODUCTS_GIFT_FORBIDDEN == 'true'}<div class="alert alert-warning">{#products_gift_forbidden#}</div>{/if}
+				{if isset($PRODUCTS_DATE_AVAILABLE) && $PRODUCTS_DATE_AVAILABLE != ''}<div class="alert alert-warning">{$PRODUCTS_DATE_AVAILABLE}</div>{/if}
+
+				<div class="row">
+					{*if $ADD_CART_BUTTON_WISHLIST}<div class="col-sm-6 mb-2">{$ADD_CART_BUTTON_WISHLIST|replace:"btn-sm":"btn-xs"|replace:"-outline":""}</div><div class="clearfix"></div>{/if*}
+                    {if isset($PRODUCTS_PRINT_LAYER)}<div class="col-sm-6 mb-2">{$PRODUCTS_PRINT_LAYER|regex_replace:"/\">(.*?)</":"\">{$dummy|bs4button:'print_product'}<"}</div><div class="clearfix"></div>{/if}
+					{if $smarty.session.customers_status.customers_status_write_reviews == 1}
+						{if isset($PRODUCTS_WRITE_REVIEW)}<div class="col-sm-6 mb-2">{$PRODUCTS_WRITE_REVIEW|regex_replace:"/\">(.*?)</":"\">{$dummy|bs4button:'button_write_review'}<"}</div><div class="clearfix"></div>{/if}
+					{/if}
+                    {if isset($PRODUCTS_CHEAPLY)}<div class="col-sm-6 mb-2">{$PRODUCTS_CHEAPLY}</div>{/if}
+                    {if isset($PRODUCT_INQUIRY)}<div class="col-sm-6 mb-2">{$PRODUCT_INQUIRY}</div>{/if}
+					{if isset($EXPRESS_LINK) && $ACTIVATE_EXPRESS_LINK}
+						<div class="dropdown col-sm-6 mb-2">
+							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">{#BS4_checkout_express_infolinktext#|bs4button:'express_dropdown'}</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+								{$EXPRESS_LINK|replace:'class="':'class="dropdown-item '|replace:'</a>':'&nbsp;&nbsp;<span class="fa fa-info-circle"></span></a>'}
+								<a class="dropdown-item" href="{$ACTIVATE_EXPRESS_LINK}">{#checkout_express_activate#}</a>
+							</div>
+						</div>
+                        <div class="clearfix"></div>
+					{else}
+						{if isset($EXPRESS_LINK)}<div class="col-sm-6 mb-2">{$EXPRESS_LINK|regex_replace:"/\">(.*?)</":"\">{$dummy|bs4button:'express_content'}<"}</div><div class="clearfix"></div>{/if}
+						{if $ACTIVATE_EXPRESS_LINK}<div class="col-sm-6 mb-2"><a href="{$ACTIVATE_EXPRESS_LINK}">{#checkout_express_activate#|bs4button:'express_link'}</a></div><div class="clearfix"></div>{/if}
+					{/if}
+				</div>
+				{if isset($KLARNA_PPBOX)}<div class="card bg-custom p-2 mb-2">{$KLARNA_PPBOX}</div>{/if}
+				<br class="clearfix" />
+				{if $smarty.const.BS4_PROD_DETAIL_SHOW_MANUIMAGE == 'true' && isset($MANUFACTURER_IMAGE) && $MANUFACTURER_IMAGE != ''}<div class="pd_manu_image"><a title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}"><img class="img-thumbnail img-fluid" src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" /></a></div>{/if}
+			</div>
+			<br class="clearfix" />
+		</div>
+	{$FORM_END}
+
+	<div class="card mb-4">
+		<ul class="list-group list-group-flush">
+			{if $PRODUCTS_DESCRIPTION != ''}<li class="list-group-item"><h4 class="detailbox">{#products_desc#}</h4><div itemprop="description">{$PRODUCTS_DESCRIPTION}</div></li>{/if}
+			{if isset($MODULE_product_tags) && $MODULE_product_tags != ''}<li class="list-group-item">{$MODULE_product_tags}</li>{/if}
+			{if $more_images|@count > 0}
+				<li class="list-group-item">
+					<div class="pd_more_images row d-flex flex-wrap mb-2">
+						<div class="col-3 d-flex justify-content-center align-items-center mb-2">
+							<a class="cbimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+								<img class="unveil img-fluid d-block" itemprop="image" src="{$tpl_path}css/images/loading.gif" data-src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+							</a>
+							<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
+						</div>
+						{assign var=zaehl value=2}
+						{foreach  key=i item=more_images_data from=$more_images}
+							{if $more_images_data.PRODUCTS_IMAGE != ''}
+								<div class="col-3 d-flex justify-content-center align-items-center mb-2">
+									<a class="cbimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+										<img class="unveil img-fluid d-block" src="{$tpl_path}css/images/loading.gif" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									</a>
+									<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
+								</div>
+                           		{assign var=zaehl value=$zaehl+1}
+							{/if}
+						{/foreach}
+					</div>
+				</li>
+			{/if}
+			{if isset($MODULE_products_media) && $MODULE_products_media != ''}<li class="list-group-item">{$MODULE_products_media}</li>{/if}
+			{if isset($MODULE_products_reviews) && $MODULE_products_reviews != ''}<li class="list-group-item">{$MODULE_products_reviews}</li>{/if}
+			{if isset($MODULE_cross_selling) && $MODULE_cross_selling != '' || (isset($MODULE_reverse_cross_selling) && $MODULE_reverse_cross_selling != '')}<li class="list-group-item">{if isset($MODULE_cross_selling) && $MODULE_cross_selling != ''}{$MODULE_cross_selling}{/if}{if isset($MODULE_reverse_cross_selling) && $MODULE_reverse_cross_selling != ''}{$MODULE_reverse_cross_selling}{/if}</li>{/if}
+			{if isset($MODULE_also_purchased) && $MODULE_also_purchased != ''}<li class="list-group-item">{$MODULE_also_purchased}</li>{/if}
+			{if isset($MODULE_products_category) && $MODULE_products_category != ''}<li class="list-group-item">{$MODULE_products_category}</li>{/if}
+		</ul>
+	</div>
+	{if $PRODUCTS_ADDED != ''}<p class="text-secondary text-center">{$PRODUCTS_ADDED}</p>{/if}
+	{$PRODUCT_NAVIGATOR}
+</div>

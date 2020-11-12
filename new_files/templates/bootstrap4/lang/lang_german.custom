@@ -1,0 +1,101 @@
+BS4_alert_qty_wanted = 'gew&uuml;nscht'
+BS4_alert_qty_available = 'verf&uuml;gbar'
+
+BS4_heading_text_top = 'TOP-Artikel'
+
+BS4_top1 = '<span class="fa fa-user-friends fa-lg" aria-hidden="true"></span>&nbsp;&nbsp;Beratung +49 00 00 / 00 00 00'
+BS4_top2 = '<span class="fa fa-shipping-fast fa-lg" aria-hidden="true"></span>&nbsp;&nbsp;Schnelle Lieferung'
+BS4_top3 = '<span class="fa fa-truck fa-lg" aria-hidden="true"></span>&nbsp;&nbsp;Kostenloser Versand - ab 50€'
+BS4_top4 = '<span class="fa fa-undo fa-lg fa-rotate-90" aria-hidden="true"></span>&nbsp;&nbsp;30 Tage R&uuml;ckgaberecht'
+
+BS4_special = 'Angebot'
+BS4_top = 'Top'
+BS4_new = 'Neu'
+
+BS4_agb = '&nbsp;&nbsp;&nbsp;AGB&nbsp;&nbsp;&nbsp;'
+
+BS4_closex = 'X'
+BS4_close = 'Schließen'
+
+BS4_noscript = '<strong>JavaScript ist deaktiviert!</strong> Es stehen Ihnen nicht alle Shopfunktionen zur Verf&uuml;gung. Bitte &uuml;berpr&uuml;fen Sie Ihre Browsereinstellungen.'
+BS4_heading_responsivemenu = 'Men&uuml;'
+BS4_heading_sidebar = 'Seitenleiste'
+BS4_checkout_express_infolinktext = 'Mein Schnellkauf'
+
+BS4_zoomtext = 'F&uuml;r eine gr&ouml;&szlig;ere Ansicht klicken Sie auf das Vorschaubild'
+
+BS4_customers_remind_leider_vergriffen = 'Leider vergriffen!<br/>Informieren Sie sich HIER<br/>&uuml;ber den neuen Liefertermin.'
+BS4_customers_remind_daten_eingetragen = 'Vielen Dank, Ihre Daten<br/>wurden eingetragen!'
+BS4_customers_remind_box_heading = 'Der Artikel ist gerade nicht auf Lager. Tragen Sie sich hier ein, wenn Sie &uuml;ber Neuware informiert werden m&ouml;chten.<br /><br />'
+BS4_customers_remind_box_heading2 = 'Wir benachrichtigen Sie gerne, sobald der Artikel wieder vorr&auml;tig ist!<br />'
+BS4_customers_remind_box_firstname = 'Vorname:'
+BS4_customers_remind_box_lastname = 'Nachname:'
+BS4_customers_remind_box_mail = 'Email-Adresse:'
+BS4_customers_remind_box_email_head1 = 'Produkterinnerung: '
+BS4_customers_remind_box_email_head2 = ' ist wieder auf Lager'
+BS4_customers_remind_box_st = 'St&uuml;ckzahl:'
+BS4_customers_remind_box_stk = 'Stk.'
+BS4_customers_remind_box_art = 'Artikel:'
+BS4_customers_remind_box_info = 'Bitte geben Sie Ihre Gew&uuml;nschte St&uuml;ckzahl ein:'
+BS4_customers_remind_box_guest = 'Aus Datenschutzgr&uuml;nden k&ouml;nnen sich leider nur angemeldete Nutzer f&uuml;r diesen Service registrieren.'
+BS4_customers_remind_box_success = 'Sie sind bereits eingetragen!'
+BS4_customers_remind_added = '<h1>Vielen Dank!</h1><p>Ihre E-Mail-Adresse wurden erfolgreich eingetragen!</p>'
+
+BS4_text_firstname = 'Vorname:'
+BS4_text_lastname = 'Nachname:'
+BS4_text_subject = 'Betreff:'
+BS4_text_sex = 'Anrede:'
+BS4_text_competitor_url = 'Mitbewerber-URL:'
+BS4_text_competitor_price = 'Mitbewerberpreis (in Euro):'
+BS4_text_sec_code = 'Sicherheitscode'
+BS4_text_inp_code = 'Sicherheitscode bitte hier eingeben:'
+bs4_text_privacy_accept = 'Ich habe die Datenschutzrichtlinien zur Kenntnis genommen.'
+BS4_text_pflicht = '* Pflichtangaben!'
+
+
+text_shippingtime_box = 'Lieferzeit:'
+
+products_desc = 'Produktbeschreibung'
+products_fsk18_check = 'Dieser Artikel kann erst nach erfolgter Altersverifikation gekauft werden.'
+products_manufacturer_model = 'HAN:'
+products_tags = 'Eigenschaften'
+heading_products_tags = 'Produkteigenschaften'
+
+first = '&laquo; Erster'
+back = '&laquo; vorheriger'
+overview = '&Uuml;bersicht'
+next = 'n&auml;chster &raquo;'
+last = 'Letzter &raquo;'
+
+heading_miscellaneous = 'Zahlungsmethoden'
+text_miscellaneous = 'Die Box kann unter bootstrap4/boxes/box_miscellaneous.html ver&auml;ndert werden. Die Sprachvariablen befinden sich in der Datei bootstrap4/lang/german/lang_german.custom.'
+
+ab_admin = 'Adminbereich'
+ab_orders = 'Bestellungen'
+ab_contentmanager = 'Content Manager'
+ab_customers = 'Kunden'
+ab_category = 'Kategorien/Artikel'
+ab_logoff = 'Abmelden'
+ab_news = 'News'
+ab_offline = 'Shop Offline'
+ab_update = 'Update'
+ab_support = 'Support'
+ab_shop = 'Shop'
+ab_caching = 'Caching'
+
+ab_edit_content = 'Content bearbeiten'
+ab_edit_product = 'Artikel bearbeiten'
+ab_edit_attributes = 'Attribute editieren'
+ab_edit_category = 'Kategorie bearbeiten'
+ab_edit_xsell = 'Cross Selling bearbeiten'
+ab_edit_tags = 'Artikeleigenschaften'
+
+info_reviews = 'Bewertungen:'
+info_review = 'Bewertung:'
+
+heading_trustedshops = 'Trusted Shops'
+
+text_search_again = 'Die Suche ergab keine genauen Treffer'
+
+listing_listview = 'Listenansicht'
+listing_boxview = 'Boxansicht'

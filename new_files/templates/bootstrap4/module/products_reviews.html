@@ -1,0 +1,33 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="reviews"}
+{if isset($MODULE_TS_PRODUCT_STICKER)}
+	{$MODULE_TS_PRODUCT_STICKER}
+{else}
+	<h4>{#heading_reviews#}</h4>
+	{if $reviews_count > 0}
+	<div class="list-group">
+		{foreach name=aussen item=module_data from=$module_content}
+		<div class="reviewrow list-group-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+			<div class="reviewrow_title mb-2">
+				<strong>{#text_author#}</strong>&nbsp;<span itemprop="author">{$module_data.AUTHOR}</span>
+				<meta itemprop="datePublished" content="{$module_data.DATE}" />
+				&nbsp;am&nbsp;{$module_data.DATE} &nbsp;&nbsp;&nbsp;
+				<strong>{#text_rating#}</strong>&nbsp;
+				<span class="rating_stars stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+					{$module_data.RATING|replace:".gif":".png"}
+					<meta itemprop="worstRating" content="1">
+					<meta itemprop="ratingValue" content="{$module_data.RATING_VOTE}">
+					<meta itemprop="bestRating" content="5">
+				</span>
+			</div>
+			<div><span itemprop="description">{$module_data.TEXT}</span></div>
+		</div>
+    	{/foreach}
+	</div>
+	{else}
+	<p>{#text_write_first_review#}</p>
+	{/if}
+	<div class="mt-3">{$BUTTON_WRITE}</div>
+	<br class="clearfix" />
+{/if}

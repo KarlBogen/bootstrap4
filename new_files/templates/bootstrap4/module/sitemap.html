@@ -1,0 +1,18 @@
+{config_load file="$language/lang_$language.conf" section="sitemap"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="sitemap"}
+{if isset($herror)}<div class="alert alert-warning">{$herror}</div>{/if}
+<div class="sitemap row clearfix mb-4">
+  {foreach name=aussen item=module_data from=$module_content}
+  <div class="col-sm-6 col-md-4 mb-2">
+    <div class="list-group">
+    <a class="list-group-item list-group-item-info py-2" href="{$module_data.CAT_LINK}">{$module_data.CAT_NAME}</a>
+    {if $module_data.SCATS|@sizeof != 0}
+      {foreach key=key_data item=item_data from=$module_data.SCATS}
+      	<a class="list-group-item py-1" href="{$item_data.link}">{$item_data.text}</a>
+      {/foreach}
+    {/if}
+    </div>
+  </div>
+  {/foreach}
+</div>

@@ -1,0 +1,10 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{if isset($BOX_CONTENT)}
+<li class="nav-item language dropdown">
+<a id="lang-dd" href="#" class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" title="{#heading_languages#}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-globe fa-lg fa-fw" aria-hidden="true"></span></a>
+<div class="dropdown-menu dropdown-menu-right toggle_language" aria-labelledby="lang-dd">
+{$BOX_CONTENT}
+</div>
+</li>
+{/if}

@@ -1,0 +1,64 @@
+{if $dl neq ''}
+  {config_load file="$language/lang_$language.conf" section="downloads_module"}
+  {config_load file="$language/lang_$language.conf" section="login"}
+  {config_load file="lang_`$language`.custom"}
+  {config_load file="lang_`$language`.section" section="downloads_module"}
+<div class="card mb-3">
+	<div class="card-header">
+		<h4 class="m-0">{#heading_download#}</h4>
+	</div>
+	{if $FORM_ACTION}
+    	{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+    	{$FORM_ACTION}
+		<div class="card-body">
+    		<p>{#text_confirm_download#}</p>
+		</div>
+    	<div class="card-footer">
+			<div class="form-group">
+    			<label>{#text_email#}</label>
+				{$INPUT_MAIL|replace:'<input':'<input class="form-control" aria-label="email"'|replace:"type=\"text\"":"type=\"email\""}
+    		</div>
+    	</div>
+		<div class="clearfix mb-3">
+    		<div class="float-right">{$BUTTON_LOGIN}</div>
+    	</div>
+		{$FORM_END}
+	{else}
+		{if $dl_prevented eq 'true'}
+			<div class="card-body">
+      			{if $dl_not_found}
+					{#download_not_found#}
+				{elseif $dl_exceeded eq 'true'}
+					{#download_exceeded#}
+				{else}
+					{#download_not_allowed#}
+				{/if}
+			</div>
+		{/if}
+		{if $dl|@sizeof > 0}
+			{foreach name=aussen item=dl_data from=$dl}
+			<div class="card-body">
+      			<div class="row clearfix">
+        			<div class="col-2">
+          			{if $dl_data.allowed}
+            			<a href="{$dl_data.pic_link}"><img class="img-fluid" src="{$tpl_path}img/img_download.png" alt="" border="0" /></a>
+          			{else}
+            			<a href="{$dl_data.pic_link}"><img class="img-fluid" src="{$tpl_path}img/img_download_locked.png" alt="" border="0" /></a>
+          			{/if}
+        			</div>
+        			<div class="col-10">
+          				<strong>{$dl_data.download_link}</strong><br />
+          				{#table_heading_download_date#}&nbsp;{$dl_data.date} &bull; <strong>{$dl_data.count}</strong>&nbsp;{#table_heading_download_count#}
+        			</div>
+      			</div>
+			</div>
+      		{/foreach}
+    	{/if}
+	{/if}
+</div>
+{/if}
+{if $BUTTON_BACK && !$FORM_ACTION}
+<div class="clearfix mb-3">
+	<div class="float-right">{$BUTTON_BACK}</div>
+</div>
+{/if}

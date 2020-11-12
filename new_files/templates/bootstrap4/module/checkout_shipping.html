@@ -1,0 +1,43 @@
+{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
+{config_load file="$language/lang_$language.conf" section="checkout_navigation"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="checkout_shipping"}
+<div id="checkoutnavigation" class="text-center m-3">
+	<div class="row">
+		<div class="col-3 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></div>
+		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-md-block my-2">{#title_payment#}</span></div>
+		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-md-block my-2">{#title_confirmation#}</span></div>
+		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">4</strong></span><span class="d-none d-md-block my-2">{#title_success#}</span></div>
+	</div>
+</div>
+
+<h1 class="card p-2 bg-h">{#heading_shipping#}</h1>
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+
+{$FORM_ACTION}
+<div class="row clearfix">
+	<div class="col-md-6 mb-3">
+		<div class="card h-100">
+			<div class="card-body">
+				<h4>{#title_shipping#}</h4>
+				<div>{#text_shipping#}</div>
+			</div>
+			{$SHIPPING_BLOCK}
+		</div>
+	</div>
+
+	<div class="col-md-6 mb-3">
+		<div class="card h-100">
+			<div class="card-body">
+				<h4>{#title_address#}</h4>
+				<div class="mb-2">{$ADDRESS_LABEL}</div>
+				{$BUTTON_ADDRESS}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix mb-4">
+	{if isset($BUTTON_BACK)}<div class="float-left">{$BUTTON_BACK|replace:'btn-sm':''}</div>{/if}
+	<div class="float-right">{$BUTTON_CONTINUE|replace:'btn-sm':''}</div>
+</div>
+{$FORM_END}

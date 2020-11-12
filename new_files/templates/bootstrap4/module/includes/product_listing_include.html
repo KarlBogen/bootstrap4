@@ -1,0 +1,117 @@
+{assign "dummy" ""}
+{if (!isset($STARTPAGE) && $smarty.const.BS4_PRODUCT_LIST_BOX == 'true') || ($STARTPAGE == 'true' && $smarty.const.BS4_PRODUCT_LIST_BOX_STARTPAGE == 'true')}
+{* BOXANSICHT *}
+	<div class="row clearfix mb-4">
+		{foreach name=aussen item=module_data from=$module_content}
+		<div class="listingbox col-sm-6 col-md-4{if $smarty.const.BS4_FULLCONTENT == 'true'} col-lg-3{/if} mb-2">
+			<div class="card h-100">
+				<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="{$module_data.PRODUCTS_LINK}">
+	            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
+	            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
+	            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+					<div class="lb_image w-100 mb-auto">
+						{if $module_data.PRODUCTS_IMAGE != ''}
+						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" />
+						<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
+						{else}
+						&nbsp;
+						{/if}
+					</div>
+					<h2 class="lb_title lead text-secondary mt-1 mb-0">{$module_data.PRODUCTS_NAME}</h2>
+				</a>
+				<div class="p-1 text-center">
+					{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && ((isset($module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 || $smarty.const.BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS == 'true') && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
+						<div class="lb_ratings mb-2 small">
+                        {if $module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0}
+							<a class="bs4_avg_container" href="#" data-pid="{$module_data.PRODUCTS_ID}" data-class="list" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_ARROW_TITLE}">
+								<span class="ratings mb-1">
+									<span class="fas empty-stars"></span><span class="fas full-stars" style="width:{$module_data.BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}%"></span>
+								</span>&nbsp;({$module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS})
+								<i class="fas fa-chevron-down"></i>
+							</a>
+						{else}
+							<span class="ratings mb-1">
+								<span class="fas empty-stars"></span><span class="fas full-stars" style="width:0%"></span>
+							</span>
+							<span class="text-secondary">&nbsp;(0)</span>
+						{/if}
+						</div>
+					{/if}
+					<div class="lb_buttons mb-2">{if $module_data.PRODUCTS_BUTTON_BUY_NOW || ($module_data.PRODUCTS_FSK18 != '0' && $smarty.const.SHOW_BUTTON_BUY_NOW != 'false')}{$module_data.PRODUCTS_BUTTON_BUY_NOW|replace:'<a':'<a aria-label="buy now"'}&nbsp;&nbsp;{/if}{if $module_data.PRODUCTS_LINK_WISHLIST_NOW}<a href="{$module_data.PRODUCTS_LINK_WISHLIST_NOW}" aria-label="{$smarty.const.TEXT_TO_WISHLIST}">{$dummy|bs4button:'button_wishlist_now'}</a>&nbsp;&nbsp;{/if}{$module_data.PRODUCTS_BUTTON_DETAILS}</div>
+				</div>
+				<div class="card-footer">
+					<div class="lb_shipping small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-fluid" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+					<div class="lb_price text-right mb-1">
+						{foreach name=inner item=price_data from=$module_data.PRODUCTS_PRICE_ARRAY}
+							{include file="module/includes/price_box.html"}
+						{/foreach}
+						{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+							{if $module_data.PRODUCTS_VPE}<div class="lb_vpe text-secondary small">{$module_data.PRODUCTS_VPE}</div>{/if}
+						{/if}
+					</div>
+					{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+						<div class="lb_tax text-right text-secondary small mb-1">{if isset($module_data.PRODUCTS_LINK_REQUESTLIST_NOW)}{#rq_text_rental#}{else}{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}{/if}</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+		{/foreach}
+	</div>
+{else}
+{* ROWANSICHT *}
+	{foreach name=aussen item=module_data from=$module_content}
+	<div class="listingrow card mb-2">
+		<div class="row">
+           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
+           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
+           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+            <a class="card-body col-md-3 text-center pl-4" href="{$module_data.PRODUCTS_LINK}">
+				<div class="lr_image">
+					{if $module_data.PRODUCTS_IMAGE != ''}
+					<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" />
+					<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
+					{else}
+					&nbsp;
+					{/if}
+				</div>
+			</a>
+			<div class="card-body lr_content col-xs-8 col-md-6 d-flex flex-column">
+				<h2 class="lr_title lead text-secondary mb-1"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h2>
+					{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && ((isset($module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 || $smarty.const.BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS == 'true') && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
+						<div class="lr_ratings mb-2 small">
+                        {if $module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0}
+							<a class="bs4_avg_container" href="#" data-pid="{$module_data.PRODUCTS_ID}" data-class="list" title="{$smarty.const.BS4_AWIDSRATINGBREAKDOWN_ARROW_TITLE}">
+								<span class="ratings mb-1">
+									<span class="fas empty-stars"></span><span class="fas full-stars" style="width:{$module_data.BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}%"></span>
+								</span>&nbsp;({$module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS})
+								<i class="fas fa-chevron-down"></i>
+							</a>
+						{else}
+							<span class="ratings mb-1">
+								<span class="fas empty-stars"></span><span class="fas full-stars" style="width:0%"></span>
+							</span>
+							<span class="text-secondary">&nbsp;(0)</span>
+						{/if}
+						</div>
+					{/if}
+				{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="lr_desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+				<div class="lr_shipping mb-2 small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-fluid" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+				<div class="lr_buttons text-center mb-2 mt-auto">{if $module_data.PRODUCTS_BUTTON_BUY_NOW || ($module_data.PRODUCTS_FSK18 != '0' && $smarty.const.SHOW_BUTTON_BUY_NOW != 'false')}{$module_data.PRODUCTS_BUTTON_BUY_NOW|replace:'<a':'<a aria-label="buy now"'}&nbsp;&nbsp;{/if}{if $module_data.PRODUCTS_LINK_WISHLIST_NOW}<a href="{$module_data.PRODUCTS_LINK_WISHLIST_NOW}" aria-label="{$smarty.const.TEXT_TO_WISHLIST}">{$dummy|bs4button:'button_wishlist_now'}</a>&nbsp;&nbsp;{/if}{$module_data.PRODUCTS_BUTTON_DETAILS}</div>
+			</div>
+			<div class="card-footer lr_price_box col-xs-4 col-md-3 border-top-0 pr-4">
+				<div class="lr_price text-right mb-2">
+					{foreach name=inner item=price_data from=$module_data.PRODUCTS_PRICE_ARRAY}
+      					{include file="module/includes/price_listing.html"}
+					{/foreach}
+					{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+						{if $module_data.PRODUCTS_VPE}<div class="lr_vpe text-secondary small">{$module_data.PRODUCTS_VPE}</div>{/if}
+					{/if}
+				</div>
+				{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+					<div class="lr_tax text-right text-secondary small mb-3">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+	{/foreach}
+{/if}

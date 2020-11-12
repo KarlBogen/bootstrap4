@@ -1,0 +1,31 @@
+{config_load file="$language/lang_$language.conf" section="account_delete"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="account_delete"}
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $BUTTON_CONTINUE}
+<h1 class="card p-2 bg-h">{#heading_account_deleted#}</h1>
+<div class="card mb-4">
+	<div class="card-body">
+		<p>{#account_deleted#}</p>
+		<div>{$BUTTON_CONTINUE}</div>
+	</div>
+</div>
+{else}
+<h1 class="card p-2 bg-h">{#heading_delete_account#}</h1>
+<div class="row clearfix mb-4">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<p>{#delete_account#}</p>
+				{$FORM_ACTION}
+					<div class="form-group clearfix mb-4">
+						{$INPUT_PASSWORD|replace:'<input':'<input class="form-control form-control-sm"'}
+					</div>
+					<div class="float-left">{$BUTTON_BACK}</div>
+					<div class="float-right">{$BUTTON_SUBMIT}</div>
+				{$FORM_END}
+			</div>
+		</div>
+	</div>
+</div>
+{/if}

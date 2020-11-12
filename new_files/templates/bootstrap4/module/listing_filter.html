@@ -1,0 +1,38 @@
+{config_load file="$language/lang_$language.conf" section="filter"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="filter"}
+<div id="filterBar" class="filter_bar card bg-custom mb-2 clearfix">
+	<div class="sort_bar form-inline clearfix{if count($FILTER_TAG) > 0} mb-2{/if}">
+		{if count($FILTER_TAG) < 1 && $FILTER_MANUFACTURER != ''}<div class="form-group m-2">{$FILTER_MANUFACTURER|replace:'<select':'<select class="form-control form-control-sm" aria-label="filter manufacturer" '|replace:'onchange="this':'onchange="$(this.form).attr(\'action\', function (_, oldAction) {return oldAction + \'#filterBar\';});this'}</div>{/if}
+		<div class="form-group m-2">
+			{$FILTER_SORT|replace:'<select':'<select class="form-control form-control-sm" aria-label="filter sort" '|replace:'onchange="this':'onchange="$(this.form).attr(\'action\', function (_, oldAction) {return oldAction + \'#filterBar\';});this'}
+		</div>
+		<div class="form-group m-2">
+			{$FILTER_SET|replace:'<select':'<select class="form-control form-control-sm" aria-label="filter attribute" '|replace:'onchange="this':'onchange="$(this.form).attr(\'action\', function (_, oldAction) {return oldAction + \'#filterBar\';});this'}
+		</div>
+		<div class="view-buttons ml-auto m-2 d-none d-sm-block">
+			<a rel="nofollow" class="view_box btn btn-sm{if $smarty.const.BS4_PRODUCT_LIST_BOX == 'true'} disabled{/if}" href="{$LINK_DISPLAY_BOX}#filterBar" title="{#listing_boxview#}"><span class="fa fa-th fa-2x"></span></a>&nbsp;&nbsp;
+			<a rel="nofollow" class="view_list btn btn-sm{if $smarty.const.BS4_PRODUCT_LIST_BOX != 'true'} disabled{/if}" href="{$LINK_DISPLAY_LIST}#filterBar" title="{#listing_listview#}"><span class="fa fa-th-list fa-2x"></span></a>
+		</div>
+	</div>
+	{if count($FILTER_TAG) > 0}
+	<div class="tags_bar border-top pt-2 clearfix">
+		<div class="mx-2 small clearfix">
+			<strong>{#text_filter_options#}</strong>
+			<a rel="nofollow" class="float-right" href="{$LINK_FILTER_RESET}#filterBar" title="Reset">{#text_filter_reset#}</a>
+		</div>
+		<div class="tags_bar_row form-inline mb-2 clearfix">
+			{if $FILTER_MANUFACTURER != ''}
+			<div class="form-group m-2">
+				{$FILTER_MANUFACTURER|replace:'<select':'<select class="filter form-control form-control-sm " aria-label="filter manufacturer" '|replace:'onchange="this':'onchange="$(this.form).attr(\'action\', function (_, oldAction) {return oldAction + \'#filterBar\';});this'}
+			</div>
+			{/if}
+			{foreach name=aussen item=filter from=$FILTER_TAG}
+			<div class="form-group m-2">
+				{$filter|replace:'<select':'<select class="filter form-control form-control-sm" aria-label="filter" '|replace:'onchange="this':'onchange="$(this.form).attr(\'action\', function (_, oldAction) {return oldAction + \'#filterBar\';});this'}
+			</div>
+			{/foreach}
+		</div>
+	</div>
+	{/if}
+</div>

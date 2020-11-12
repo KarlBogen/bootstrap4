@@ -1,0 +1,177 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{assign "dummy" ""}
+{if isset($box_ADMIN)}<div class="adminspacer"></div>{$box_ADMIN}{/if}
+{* BEGINN Hauptcontainer innerhalb body *}
+<div id="container" class="{$smarty.const.BS4_BOOTSTRAP_THEME}">
+{* BEGINN Topleiste*}
+	{if $smarty.const.BS4_SHOW_TOP1 == 'true' || $smarty.const.BS4_SHOW_TOP2 == 'true' || $smarty.const.BS4_SHOW_TOP3 == 'true' || $smarty.const.BS4_SHOW_TOP4 == 'true'}
+		{include file="`$smarty.const.CURRENT_TEMPLATE`/module/includes/topbar.html"}
+	{/if}
+{* ENDE Topleiste *}
+{* BEGINN Maincontainer 1 *}
+	<div id="main_container1" class="container mt-2">
+	{* BEGINN Javascript-Hinweis *}
+		{if $smarty.const.BS4_SHOW_JS_DISABLED == 'true'}<noscript><div class="alert alert-warning">{#BS4_noscript#}</div></noscript>{/if}
+	{* ENDE Javascript-Hinweis *}
+		{* BEGINN Logo, Sprache, Account, Merkliste, Warenkorb und Suche *}
+			{include file="`$smarty.const.CURRENT_TEMPLATE`/module/includes/logobar.html"}
+		{* ENDE  Logo, Sprache, Account, Merkliste, Warenkorb und Suche *}
+		{* BEGINN Superfishmenü *}
+			{include file="`$smarty.const.CURRENT_TEMPLATE`/module/includes/mainmenu.html"}
+		{* ENDE Superfishmenü *}
+	</div>
+{* ENDE Maincontainer 1 *}
+{* BEGINN Slider Karusell gesamte Breite *}
+	{if isset($home) && $home == true}
+		{if ($smarty.const.BS4_CAROUSEL_SHOW == 'screen' || $smarty.const.BS4_CAROUSEL_SHOW == 'shop') && isset($SLIDER)}
+			{include file="`$smarty.const.CURRENT_TEMPLATE`/module/includes/slider.html"}
+		{/if}
+	{/if}
+{* ENDE Slider Karusell gesamte Breite *}
+{* BEGINN Maincontainer 2 *}
+	<div id="main_container2" class="container mb-2">
+		{* BEGINN Contentteil *}
+		<div id="content" class="row">
+{if isset($home) && $home == true}
+            {* BEGINN col_left für Startseite *}
+			{if $smarty.const.BS4_HIDE_ALL_BOXES != 'true'}
+				<div id="col_left" class="col-lg-3 pushy pushy-{if $smarty.const.BS4_RESPONSIVEMENU_SHOW == 'false' && $smarty.const.BS4_CATEGORIESMENU_POSITION_LEFT == 'true'}left{else}right{/if}{if $smarty.const.BS4_STARTPAGE_FULLCONTENT == 'true'} d-block d-lg-none{/if}">
+					{if $smarty.const.BS4_STARTPAGE_BOX_CATEGORIES != 'false' && isset($box_CATEGORIES)}{$box_CATEGORIES}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_ADD_QUICKIE != 'false' && isset($box_ADD_QUICKIE)}{$box_ADD_QUICKIE}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_LOGIN != 'false' && isset($box_LOGIN)}{$box_LOGIN}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_WHATSNEW != 'false' && isset($box_WHATSNEW)}{$box_WHATSNEW}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_SPECIALS != 'false' && isset($box_SPECIALS)}{$box_SPECIALS}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_LAST_VIEWED != 'false' && isset($box_LAST_VIEWED)}{$box_LAST_VIEWED}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_REVIEWS != 'false' && isset($box_REVIEWS)}{$box_REVIEWS}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_MANUFACTURERS != 'false' && isset($box_MANUFACTURERS)}{$box_MANUFACTURERS}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_MANUFACTURERS_INFO != 'false' && isset($box_MANUFACTURERS_INFO)}{$box_MANUFACTURERS_INFO}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_CURRENCIES != 'false' && isset($box_CURRENCIES)}{$box_CURRENCIES}{/if}
+		    		{if $smarty.const.BS4_STARTPAGE_BOX_INFOBOX != 'false' && isset($box_INFOBOX)}{$box_INFOBOX}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_HISTORY != 'false' && isset($box_HISTORY)}{$box_HISTORY}{/if}
+					{if $smarty.const.BS4_STARTPAGE_BOX_TRUSTEDSHOPS != 'false' && isset($box_TRUSTEDSHOPS)}{$box_TRUSTEDSHOPS}{/if}
+				</div>
+			{/if}
+			{* ENDE col_left *}
+			{* BEGINN col_right *}
+			<div id="{if $smarty.const.BS4_STARTPAGE_FULLCONTENT != 'true' && $smarty.const.BS4_HIDE_ALL_BOXES != 'true'}col_right" class="col-lg-9"{else}col_full" class="col-lg-12"{/if}>
+				{* BEGINN Slider Karusell *}
+				{if $smarty.const.BS4_CAROUSEL_SHOW == 'column' && isset($SLIDER)}
+					{include file="`$smarty.const.CURRENT_TEMPLATE`/module/includes/slider.html"}
+				{/if}
+				{* ENDE Slider Karusell *}
+				{* BEGINN Banner *}
+      				{if isset($BANNER)}<div class="content_banner clearfix mb-4">{$BANNER}</div>{/if}
+				{* ENDE Banner *}
+				{if isset($main_content)}{$main_content}{/if}
+				{if $smarty.const.BS4_BSCAROUSEL_SHOW == 'true'}{if isset($box_BESTSELLERS)}{$box_BESTSELLERS}{/if}{/if}
+			</div>
+			{* ENDE col_right *}
+			{* BEGINN col_full *}
+{elseif (isset($fullcontent) && $fullcontent == true) || $smarty.const.BS4_HIDE_ALL_BOXES == 'true'}
+			<div id="col_full" class="container">
+				{if isset($navtrail)}<nav id="breadcrumb" class="breadcrumb"><span class="breadcrumb_info">{#text_here#}</span>{$navtrail}</nav>{/if}
+				{if isset($main_content)}{$main_content}{/if}
+				{if $smarty.const.BS4_BSCAROUSEL_SHOW == 'true' && $bestseller}{if isset($box_BESTSELLERS)}{$box_BESTSELLERS}{/if}{/if}
+			</div>
+			{* ENDE col_full *}
+			{if $smarty.const.BS4_HIDE_ALL_BOXES != 'true'}
+			<div class="pushy pushy-{if $smarty.const.BS4_RESPONSIVEMENU_SHOW == 'false' && $smarty.const.BS4_CATEGORIESMENU_POSITION_LEFT == 'true'}left{else}right{/if} d-block d-lg-none sidebar invisible">
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_CATEGORIES != 'false' && isset($box_CATEGORIES)}{$box_CATEGORIES}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_ADD_QUICKIE != 'false' && isset($box_ADD_QUICKIE)}{$box_ADD_QUICKIE}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_LOGIN != 'false' && isset($box_LOGIN)}{$box_LOGIN}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_WHATSNEW != 'false' && isset($box_WHATSNEW)}{$box_WHATSNEW}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_SPECIALS != 'false' && isset($box_SPECIALS)}{$box_SPECIALS}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_LAST_VIEWED != 'false' && isset($box_LAST_VIEWED)}{$box_LAST_VIEWED}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_REVIEWS != 'false' && isset($box_REVIEWS)}{$box_REVIEWS}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_MANUFACTURERS != 'false' && isset($box_MANUFACTURERS)}{$box_MANUFACTURERS}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_MANUFACTURERS_INFO != 'false' && isset($box_MANUFACTURERS_INFO)}{$box_MANUFACTURERS_INFO}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_CURRENCIES != 'false' && isset($box_CURRENCIES)}{$box_CURRENCIES}{/if}
+	    		{if $smarty.const.BS4_NOT_STARTPAGE_BOX_INFOBOX != 'false' && isset($box_INFOBOX)}{$box_INFOBOX}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_HISTORY != 'false' && isset($box_HISTORY)}{$box_HISTORY}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS != 'false' && isset($box_TRUSTEDSHOPS)}{$box_TRUSTEDSHOPS}{/if}
+			</div>
+			{/if}
+{else}
+            {* BEGINN col_left nicht Startseite *}
+			{if $smarty.const.BS4_HIDE_ALL_BOXES != 'true'}
+			<div id="col_left" class="col-lg-3 pushy pushy-{if $smarty.const.BS4_RESPONSIVEMENU_SHOW == 'false' && $smarty.const.BS4_CATEGORIESMENU_POSITION_LEFT == 'true'}left{else}right{/if}">
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_CATEGORIES != 'false' && isset($box_CATEGORIES)}{$box_CATEGORIES}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_ADD_QUICKIE != 'false' && isset($box_ADD_QUICKIE)}{$box_ADD_QUICKIE}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_LOGIN != 'false' && isset($box_LOGIN)}{$box_LOGIN}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_WHATSNEW != 'false' && isset($box_WHATSNEW)}{$box_WHATSNEW}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_SPECIALS != 'false' && isset($box_SPECIALS)}{$box_SPECIALS}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_LAST_VIEWED != 'false' && isset($box_LAST_VIEWED)}{$box_LAST_VIEWED}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_REVIEWS != 'false' && isset($box_REVIEWS)}{$box_REVIEWS}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_MANUFACTURERS != 'false' && isset($box_MANUFACTURERS)}{$box_MANUFACTURERS}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_MANUFACTURERS_INFO != 'false' && isset($box_MANUFACTURERS_INFO)}{$box_MANUFACTURERS_INFO}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_CURRENCIES != 'false' && isset($box_CURRENCIES)}{$box_CURRENCIES}{/if}
+	    		{if $smarty.const.BS4_NOT_STARTPAGE_BOX_INFOBOX != 'false' && isset($box_INFOBOX)}{$box_INFOBOX}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_HISTORY != 'false' && isset($box_HISTORY)}{$box_HISTORY}{/if}
+				{if $smarty.const.BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS != 'false' && isset($box_TRUSTEDSHOPS)}{$box_TRUSTEDSHOPS}{/if}
+			</div>
+			{/if}
+			{* ENDE col_left *}
+			{* BEGINN col_right *}
+			<div id="{if $smarty.const.BS4_HIDE_ALL_BOXES != 'true'}col_right" class="col-lg-9"{else}col_full" class="col-lg-12"{/if}>
+				{if isset($navtrail)}<nav id="breadcrumb" class="breadcrumb"><span class="breadcrumb_info">{#text_here#}</span>{$navtrail}</nav>{/if}
+				{if isset($main_content)}{$main_content}{/if}
+				{if $smarty.const.BS4_BSCAROUSEL_SHOW == 'true' && $bestseller}{if isset($box_BESTSELLERS)}{$box_BESTSELLERS}{/if}{/if}
+			</div>
+			{* ENDE col_right *}
+{/if}
+		</div>
+		{* ENDE Contentteil*}
+	</div>
+	{* ENDE Maincontainer 2 *}
+	{* BEGINN FOOTER *}
+	<div id="layout_footer" class="container-fluid bg-{$smarty.const.BS4_FOOTER_BG} py-4">
+  		<div class="container mb-2">
+			<div id="layout_footer_inner" class="row">
+				{if $smarty.const.MODULE_NEWSLETTER_STATUS == 'true'}{$col = 3}{else}{$col = 4}{/if}
+				{if isset($box_CONTENT)}<div class="col-lg-{$col} col-md-6 mb-2">{$box_CONTENT} </div>{/if}
+				{if isset($box_INFORMATION)}<div class="col-lg-{$col} col-md-6 mb-2">{$box_INFORMATION} </div>{/if}
+				{if isset($box_MISCELLANEOUS)}<div class="col-lg-{$col} col-md-6 mb-2">{$box_MISCELLANEOUS} </div>{/if}
+				{if isset($box_NEWSLETTER)}<div class="col-lg-{$col} col-md-6 mb-2">{$box_NEWSLETTER}</div>{/if}
+			</div>
+		<div class="mod_copyright text-secondary text-center small">{$smarty.const.TITLE} &copy; {$smarty.now|date_format:"%Y"} | Template &copy; {$smarty.now|date_format:"%Y"} by Karl</div>
+		</div>
+	</div>
+	{* ENDE FOOTER *}
+	<a href="#" class="go2top" aria-label="go to top">{$dummy|bs4button:'go2top'}</a>
+	<div class="site-overlay site-overlay--right"><span id="res-closer" class="btn btn-dark fa fa-times fa-2x"></span></div>
+	<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title text-center">&nbsp;</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{#BS4_close#}"><span aria-hidden="true">&times;</span><span class="sr-only">{#BS4_close#}</span></button>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<a id="show-previous-image" class="left carousel-control-prev" role="button"><span class="fa fa-chevron-left fa-3x" aria-hidden="true"></span></a>
+					<a id="show-next-image"  class="right carousel-control-next" role="button"><span class="fa fa-chevron-right fa-3x" aria-hidden="true"></span></a>
+					<span class="counter small mr-auto" style="padding:6px 12px;"></span>
+					{#BS4_close#|bs4button:'modal_close':'data-dismiss="modal"':'true'|replace:'submit':'button'}
+				</div>
+        	</div>
+	    </div>
+	</div>
+</div>
+{* ENDE Hauptcontainer innerhalb body *}
+{* BEGINN Platz an dem der Cookiehinweis platziert wird *}
+<div id="cookieconsent"></div>
+{* ENDE Platz an dem der Cookiehinweis platziert wird *}
+{if ($smarty.const.TRACKING_COUNT_ADMIN_ACTIVE == 'true' && $smarty.session.customers_status.customers_status_id == '0') || $smarty.session.customers_status.customers_status_id != '0'}
+  {if $smarty.const.TRACKING_PIWIK_ACTIVE == 'true'}
+    {piwik url=$smarty.const.TRACKING_PIWIK_LOCAL_PATH id=$smarty.const.TRACKING_PIWIK_ID goal=$smarty.const.TRACKING_PIWIK_GOAL}
+  {/if}
+  {if $smarty.const.TRACKING_GOOGLEANALYTICS_ACTIVE == 'true'}
+    {googleanalytics account=$smarty.const.TRACKING_GOOGLEANALYTICS_ID}
+  {/if}
+  {if $smarty.const.TRACKING_FACEBOOK_ACTIVE == 'true'}
+    {facebook id=$smarty.const.TRACKING_FACEBOOK_ID}
+  {/if}
+{/if}

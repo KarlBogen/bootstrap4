@@ -1,0 +1,95 @@
+{config_load file="$language/lang_$language.conf" section="new_products"}
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="wishlist"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="wishlist"}
+{if isset($BUTTON_CONTINUE)}
+	<h1 class="card p-2 bg-h">{#heading_wishlist#}</h1>
+	<p>{#text_empty_wishlist#}</p>
+	<div class="clearfix mb-4">
+		<div class="float-right">{$BUTTON_CONTINUE}</div>
+	</div>
+{elseif isset($module_content)}
+	<h1 class="card p-2 bg-h">{#heading_wishlist#}</h1>
+	<div class="listingcontainer clearfix">
+	{if $smarty.const.BS4_PRODUCT_LIST_BOX == 'true'}
+	<div class="row">
+		{foreach name=aussen item=module_data from=$module_content}
+		<div class="listingbox col-sm-6 col-md-4{if $smarty.const.BS4_FULLCONTENT == 'true'} col-lg-3{/if} mb-2">
+			<div class="card h-100">
+				<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="{$module_data.PRODUCTS_LINK}">
+	            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
+	            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
+	            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+					<div class="lb_image w-100 mb-auto">
+						{if $module_data.PRODUCTS_IMAGE != ''}
+						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" />
+						<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
+						{else}
+						&nbsp;
+						{/if}
+					</div>
+					<h2 class="lb_title lead text-secondary mt-1 mb-0">{$module_data.PRODUCTS_NAME}</h2>
+				</a>
+				<div class="p-1 text-center">
+					<div class="lb_buttons mb-2">{$module_data.PRODUCTS_BUTTON_BUY_NOW}&nbsp;&nbsp;{$module_data.PRODUCTS_BUTTON_DELETE}</div>
+				</div>
+				<div class="card-footer">
+					<div class="lb_shipping small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-fluid" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+					<div class="lb_price text-right mb-1">
+						<span class="standard_price lead">{$module_data.PRODUCTS_PRICE}</span>
+						{if $module_data.PRODUCTS_VPE}<div class="lb_vpe text-secondary small">{$module_data.PRODUCTS_VPE}</div>{/if}
+					</div>
+					<div class="lb_tax text-right text-secondary small mb-1">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}<br /></div>
+				</div>
+			</div>
+		</div>
+		{/foreach}
+		</div>
+	{else}
+		{foreach name=aussen item=module_data from=$module_content}
+		<div class="listingrow card mb-2">
+			<div class="row">
+	           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
+	           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
+	           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+	            <a class="card-body col-md-3 text-center pl-4" href="{$module_data.PRODUCTS_LINK}">
+					<div class="lr_image">
+						{if $module_data.PRODUCTS_IMAGE != ''}
+						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" />
+						<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
+						{else}
+						&nbsp;
+						{/if}
+					</div>
+				</a>
+				<div class="card-body lr_content col-xs-8 col-md-6 d-flex flex-column">
+					<h2 class="lr_title lead text-secondary mb-2"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h2>
+					<div class="lr_desc_box mb-2">
+						{if is_array($module_data.ATTRIBUTES) && count($module_data.ATTRIBUTES) > 0}
+						<div class="lr_desc">
+							<ul class="attributes_list">
+							{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES}
+								<li><strong>{$item_data.NAME}:</strong> {$item_data.VALUE_NAME}</li>
+							{/foreach}
+							</ul>
+						</div>
+						{/if}
+						{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="lr_desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+					</div>
+					<div class="lr_shipping mb-2 small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-fluid" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+				</div>
+				<div class="card-footer lr_price_box col-xs-4 col-md-3 border-top-0 pr-4">
+					<div class="lr_price text-right mb-2">
+									<span class="standard_price lead">{$module_data.PRODUCTS_PRICE}</span>
+							{if $module_data.PRODUCTS_VPE}<div class="lr_vpe text-secondary small">{$module_data.PRODUCTS_VPE}</div>{/if}
+					</div>
+					<div class="lr_tax text-right text-secondary small mb-3">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}</div>
+					<div class="lr_buttons text-center mb-2 mt-auto">{$module_data.PRODUCTS_BUTTON_BUY_NOW}&nbsp;&nbsp;{$module_data.PRODUCTS_BUTTON_DELETE}</div>
+				</div>
+			</div>
+		</div>
+			{/foreach}
+		{/if}
+	</div>
+{/if}

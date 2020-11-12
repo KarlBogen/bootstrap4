@@ -1,0 +1,27 @@
+<nav id="navbar" class="top2 navbar navbar-expand {$smarty.const.BS4_TOP2_NAVBAR} bg-{$smarty.const.BS4_TOP2_BG} rounded mb-3{if $smarty.const.BS4_SUPERFISHMENU_SHOW != 'true'} d-block d-lg-none{/if} clearfix">
+	<div class="canvasmenu container-fluid d-block d-lg-none text-center">
+		{if $smarty.const.BS4_RESPONSIVEMENU_SHOW == 'true'}<button type="button" class="can-left navbar-brand menu-btn menu-btn--left float-left btn btn-link" title="{#BS4_heading_responsivemenu#}"><span class="fa fa-bars" aria-hidden="true"></span><span class="d-inline-block d-lg-none">&nbsp;&nbsp;{#BS4_heading_responsivemenu#}</span></button>{/if}
+		{if $smarty.const.BS4_HIDE_ALL_BOXES != 'true'}
+			{if $smarty.const.BS4_RESPONSIVEMENU_SHOW == 'false' && $smarty.const.BS4_CATEGORIESMENU_POSITION_LEFT == 'true'}
+				<button type="button" class="can-left navbar-brand menu-btn menu-btn--left float-left btn btn-link" title="{#BS4_heading_sidebar#}"><span class="fa fa-bars" aria-hidden="true"></span><span class="d-none d-sm-inline-block">&nbsp;&nbsp;{#BS4_heading_sidebar#}</span></button>
+			{else}
+				<button type="button" class="navbar-brand menu-btn menu-btn--right float-right btn btn-link" title="{#BS4_heading_sidebar#}"><span class="d-none d-sm-inline-block">{#BS4_heading_sidebar#}&nbsp;&nbsp;</span><span class="fa fa-bars" aria-hidden="true"></span></button>
+			{/if}
+		{/if}
+	</div>
+	<div class="site-overlay site-overlay--left"><span id="res-closel" class="btn btn-dark fa fa-times fa-2x"></span></div>
+{if $smarty.const.BS4_RESPONSIVEMENU_SHOW == 'true' || $smarty.const.BS4_SUPERFISHMENU_SHOW == 'true'}
+	<div class="fullmenu container-fluid invisible{if $smarty.const.BS4_RESPONSIVEMENU_SHOW != 'true'} d-none d-lg-block{/if}">
+		<div id="res-pushy" class="pushy pushy-left">
+			<nav id="res-nav" class="responsive-nav{if $smarty.const.BS4_BOOTSTRAP_THEME == 'slate'} navbar-secondary{/if}">
+			    <div id="res-header" class="menu-header navbar-dark bg-dark text-center">
+			        <span id="currentMenu" class="navbar-text">{#heading_categories#}</span>
+			        <div id="back" data-target="">{$dummy|bs4button:'responsive_back':'aria-hidden="true"'}</div>
+					<div id="home"><a href="{$index}" aria-label="home">{$dummy|bs4button:'responsive_home'}</a></div>
+			    </div>
+				{$box_CATEGORIES2}
+			</nav>
+		</div>
+	</div>
+{/if}
+</nav>

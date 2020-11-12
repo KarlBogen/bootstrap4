@@ -1,0 +1,128 @@
+{config_load file="$language/lang_$language.conf" section="checkout_payment"}
+{config_load file="$language/lang_$language.conf" section="checkout_navigation"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="checkout_payment"}
+<div id="checkoutnavigation" class="text-center m-3">
+	<div class="row">
+	{if isset($NO_SHIPPING)}
+		<div class="col-4 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-sm-block my-2">{#title_payment#}</span></div>
+		<div class="col-4 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-sm-block my-2">{#title_confirmation#}</span></div>
+		<div class="col-4 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-sm-block my-2">{#title_success#}</span></div>
+	{else}
+		<div class="col-3"><a class="text-success" href="{$BUTTON_BACK_LINK}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></a></div>
+		<div class="col-3 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-md-block my-2">{#title_payment#}</span></div>
+		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-md-block my-2">{#title_confirmation#}</span></div>
+		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">4</strong></span><span class="d-none d-md-block my-2">{#title_success#}</span></div>
+	{/if}
+	</div>
+</div>
+
+<h1 class="card p-2 bg-h">{#heading_payment#}</h1>
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+
+{$FORM_ACTION}
+<div class="row clearfix">
+	<div class="col-md-6 mb-3">
+		<div class="card">
+			<div class="card-body pb-0">
+    			<h4>{#title_payment#}</h4>
+			</div>
+			{if (!isset($GV_COVER) || $GV_COVER != 'true') && (!isset($NO_PAYMENT) || $NO_PAYMENT != 'true')}
+				<div class="card-body pt-0">
+					{#text_payment#}
+				</div>
+				{$PAYMENT_BLOCK}{$module_gift}
+			{elseif isset($GV_COVER) && $GV_COVER == 'true'}
+				<div class="card-body">
+	      			<div class="alert alert-info m-0" id="gccover">{#text_gccover#}</div>
+				</div>
+	    	{elseif isset($NO_PAYMENT) && $NO_PAYMENT == 'true'}
+				<div class="card-body">
+	      			<div class="alert alert-info m-0" id="nopayment">{#text_nopayment#}</div>
+				</div>
+	    	{/if}
+		</div>
+	</div>
+
+
+
+	<div class="col-md-6 mb-3">
+	{if $step2 != 'true'}
+		<div class="card mb-2">
+			<div class="card-body">
+				<h4>{#title_address#}</h4>
+				<p>{$ADDRESS_LABEL}</p>
+				{$BUTTON_ADDRESS}
+			</div>
+		</div>
+	{/if}
+
+	{if $step2 != 'true'}
+		<div id="horizontalTab" class="card">
+    	{if $smarty.const.DISPLAY_CONDITIONS_ON_CHECKOUT == 'true'}
+			<ul id="bs_tabs" class="nav nav-pills card-header" role="tablist">
+				<li class="nav-item"><a class="nav-link" id="tab1-tab" href="#tab1" role="tab" data-toggle="tab" aria-controls="tab1" aria-selected="true">{#title_comments_short#}</a></li>
+				<li class="nav-item"><a class="nav-link" id="tab2-tab" href="#tab2" role="tab" data-toggle="tab" aria-controls="tab2" aria-selected="false">{#BS4_agb#}</a></li>
+			</ul>
+			<div class="tab-content clearfix">
+				<div class="tab-pane active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+					<div class="card-body">
+						<h5 class="detailbox">{#title_comments_short#}</h5>
+						<div>{$COMMENTS|replace:'<textarea':'<textarea class="form-control"'}
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane active" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+					<div class="card-body">
+						<h5 class="detailbox">{#title_agb#}</h5>
+						<div class="border rounded">{$AGB}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card-footer">
+				<div class="checkoutconditions checkbox">
+				{if defined($smarty.const.SIGN_CONDITIONS_ON_CHECKOUT)}
+					<label for="conditions">{if $smarty.const.SIGN_CONDITIONS_ON_CHECKOUT == 'true'}{$AGB_checkbox}&nbsp;{/if}<strong>{#text_accept_agb#}</strong>&nbsp;{$AGB_LINK}</label>
+				{else}
+					<label for="conditions">{$AGB_checkbox}&nbsp;<strong>{#text_accept_agb#}</strong>&nbsp;{$AGB_LINK}</label>
+				{/if}
+				</div>
+				{if isset($PRIVACY_LINK)}
+					<div class="checkoutconditions">
+						{if $PRIVACY_checkbox}<label for="privacy">{$PRIVACY_checkbox}&nbsp;{/if}<strong>{if $PRIVACY_checkbox}{#text_privacy_accept#}{else}{#text_privacy_notice#}{/if}</strong>&nbsp;{$PRIVACY_LINK}</label>
+					</div>
+				{/if}
+				{if isset($REVOCATION_checkbox)}
+					<div class="checkoutconditions checkbox">
+						<label for="revocation">{$REVOCATION_checkbox}&nbsp;<strong>{#text_accept_revocation#}</strong>&nbsp;{$REVOCATION_LINK}</label>
+					</div>
+				{/if}
+			</div>
+		{else}
+			<div class="card-header">
+				<h4 class="checkout">{#title_comments_short#}</h4>
+			</div>
+			<div class="card-body">
+				<div class="checkoutcomment">{$COMMENTS|replace:'<textarea':'<textarea class="form-control"'}</div>
+				{if isset($PRIVACY_LINK)}
+					<div class="checkoutconditions">
+						{if $PRIVACY_checkbox}<label for="privacy">{$PRIVACY_checkbox} {/if}<strong>{if $PRIVACY_checkbox}{#text_privacy_accept#}{else}{#text_privacy_notice#}{/if}</strong>&nbsp;{$PRIVACY_LINK}</label>
+					</div>
+				{/if}
+				{if isset($REVOCATION_checkbox)}
+					<div class="checkoutconditions">
+						<label for="revocation">{$REVOCATION_checkbox} <strong>{#text_accept_revocation#}</strong>&nbsp;{$REVOCATION_LINK}</label>
+					</div>
+				{/if}
+			</div>
+		{/if}
+		</div>
+	{/if}
+	</div>
+</div>
+<div class="clearfix mb-4">
+	{if isset($BUTTON_BACK)}<div class="float-left">{$BUTTON_BACK|replace:'btn-sm':''}</div>{/if}
+	<div class="float-right">{$BUTTON_CONTINUE|replace:'btn-sm':''}</div>
+</div>
+{$FORM_END}

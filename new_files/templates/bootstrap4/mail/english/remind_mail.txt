@@ -1,0 +1,11 @@
+
+Hallo {$CUSTOMERS_FIRSTNAME} {$CUSTOMERS_LASTNAME},
+
+we wanted to inform you that have just received as a new delivery, which could also interests you.
+
+They wanted to get a product with a renewed reminder arrival of the following article:
+
+{$LINK}
+
+Sincerely yours,
+Your Shopteam

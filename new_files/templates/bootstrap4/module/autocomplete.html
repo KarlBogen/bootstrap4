@@ -1,0 +1,36 @@
+{config_load file="$language/lang_$language.conf" section="error_handler"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="error_handler"}
+{assign "dummy" ""}
+{if $error}
+  <span class="autocomplete_error">{#text_search_again#}</span>
+{else}
+  <ul id="autocomplete_main" class="list-group">
+    {foreach item=products_data from=$module_content}
+      <li class="autocomplete_content my-2 w-100">
+        <a class="autocomplete list-group-item list-group-item-action" href="{$products_data.PRODUCTS_LINK}">
+          {if $products_data.PRODUCTS_IMAGE}
+            <span class="autocomplete_image float-left mr-1"><img class="img-fluid" src="{$products_data.PRODUCTS_IMAGE}" alt="{$products_data.PRODUCTS_NAME|onlytext}" title="{$products_data.PRODUCTS_NAME|onlytext}" /></span>
+          {else}
+            <span class="autocomplete_image">&nbsp;</span>
+          {/if}
+          <span class="float-left mr-2">{$products_data.PRODUCTS_NAME}</span>
+          <span class="float-right">
+            {foreach name=inner item=price_data from=$products_data.PRODUCTS_PRICE_ARRAY}
+              {include file="module/includes/price_box.html"}
+            {/foreach}
+            {if $products_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+              {if $products_data.PRODUCTS_VPE}<div class="small_price">{$products_data.PRODUCTS_VPE}</div>{/if}
+            {/if}
+          </span>
+        </a>
+      </li>
+    {/foreach}
+  </ul>
+
+  <div id="autocomplete_pagination" class="d-flex justify-content-between align-items-center m-2">
+    <div id="autocomplete_prev" class="float-left">{$dummy|bs4button:'button_autocomp_prev'}</div>
+    <div id="autocomplete_count"></div>
+    <div id="autocomplete_next" class="float-right">{$dummy|bs4button:'button_autocomp_next'}</div>
+  </div>
+{/if}

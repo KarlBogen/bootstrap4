@@ -1,0 +1,28 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="reviews"}
+<h1 class="card p-2 bg-h">{#heading_product_reviews#} {$PRODUCTS_NAME}</h1>
+<div class="card mb-2">
+	<div class="card-body">
+		<div class="row clearfix">
+			<div class="col-3">
+				{if $PRODUCTS_IMAGE != ''}
+					<a class="cbimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_LINK}">
+						<img class="unveil img-fluid" src="{$PRODUCTS_IMAGE}" data-src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+					</a>
+					<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_LINK}"><img class="img-fluid" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
+				{/if}
+			</div>
+			<div class="col-9">
+				<strong>{#text_date#}</strong> {$DATE}<br />
+				<strong>{#text_author#}</strong> {$AUTHOR}<br />
+				<strong>{#text_rating#}</strong>&nbsp;<span class="rating_stars">{$RATING|replace:".gif":".png"}</span><br />
+				<div class="small mt-2">{$REVIEWS_TEXT}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+	<div class="float-left">{$BUTTON_BACK}</div>
+	<div class="float-right">{$PRODUCTS_BUTTON_DETAILS}</div>
+</div>

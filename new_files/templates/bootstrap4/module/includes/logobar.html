@@ -1,0 +1,55 @@
+{if $smarty.const.BS4_SEARCHFIELD_PERMANENT != 'true'}
+<div id="logobar" class="row text-center text-md-left mb-3">
+	<a class="nav-logo col-12 col-md-4" href="{$index}" title="{#link_index#} &bull; {$store_name}"><img src="{$tpl_path}{$smarty.const.BS4_SHOP_LOGO}" class="img-fluid" alt="{$store_name}" /></a>
+	<ul class="nav col-12 col-md-8 mt-3 justify-content-end">
+		<li class="nav-item home"><a class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" title="{#link_index#}" href="{$index}"><span class="fa fa-home fa-lg"></span></a></li>
+		{if isset($box_LANGUAGES) && trim($box_LANGUAGES) != ''}{$box_LANGUAGES}{/if}
+		<li class="nav-item account dropdown">
+			<a id="account-dd" href="#" class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}"  title="{#link_account#}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user fa-lg fa-fw" aria-hidden="true"></span></a>
+			<div class="dropdown-menu dropdown-menu-right toggle_account" aria-labelledby="account-dd">
+				{if isset($account)}<a class="dropdown-item{if strstr($smarty.server.PHP_SELF, 'account') && !strstr ($smarty.server.PHP_SELF, 'create_account')} active{/if}" href="{$account}"><span class="fa fa-user fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_account#}</a>{/if}
+				{if isset($smarty.session.customer_id)}
+					<a class="dropdown-item{if strstr ($smarty.server.PHP_SELF, 'logoff')} active{/if}" href="{$logoff}"><span class="fa fa-sign-out-alt fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_logoff#}</a>
+					<a class="dropdown-item{if strstr ($smarty.server.PHP_SELF, 'checkout')} active{/if}" href="{$checkout}"><span class="fa fa-cash-register fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_checkout#}</a>
+				{else}
+					<a class="dropdown-item{if strstr($smarty.server.PHP_SELF, 'create_account')} active{/if}" href="{$create_account}"><span class="fa fa-user-plus fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#new_customer#}</a>
+					<a class="dropdown-item{if strstr($smarty.server.PHP_SELF, 'login')} active{/if}" href="{$login}"><span class="fa fa-sign-in-alt fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_login#}</a>
+				{/if}
+			</div>
+		</li>
+		{if isset($smarty.session.customer_id)}<li class="nav-item"><a class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" title="{#link_logoff#}" href="{$logoff}"><span class="fa fa-sign-out-alt fa-lg"></span></a></li>{/if}
+		{if isset($box_WISHLIST)}{$box_WISHLIST}{/if}
+		{if isset($box_CART)}{$box_CART}{/if}
+		{if isset($box_SEARCH)}{$box_SEARCH}{/if}
+	</ul>
+</div>
+{else}
+<div id="logobar" class="row text-center text-md-left mb-3">
+	<a class="nav-logo col-12 col-md-4" href="{$index}" title="{#link_index#} &bull; {$store_name}"><img src="{$tpl_path}{$smarty.const.BS4_SHOP_LOGO}" class="img-fluid" alt="{$store_name}" /></a>
+	<div class="col-12 col-md-8">
+		<div class="row justify-content-end">
+			{if isset($box_SEARCH)}{$box_SEARCH}{/if}
+			<ul class="nav col-12 justify-content-end">
+				<li class="nav-item home"><a class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" title="{#link_index#}" href="{$index}"><span class="fa fa-home fa-lg"></span></a></li>
+				{if isset($box_LANGUAGES) && trim($box_LANGUAGES) != ''}{$box_LANGUAGES}{/if}
+				<li class="nav-item account dropdown">
+					<a id="account-dd" href="#" class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}"  title="{#link_account#}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user fa-lg fa-fw" aria-hidden="true"></span></a>
+					<div class="dropdown-menu dropdown-menu-right toggle_account" aria-labelledby="account-dd">
+						{if isset($account)}<a class="dropdown-item{if strstr($smarty.server.PHP_SELF, 'account') && !strstr ($smarty.server.PHP_SELF, 'create_account')} active{/if}" href="{$account}"><span class="fa fa-user fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_account#}</a>{/if}
+						{if isset($smarty.session.customer_id)}
+							<a class="dropdown-item{if strstr ($smarty.server.PHP_SELF, 'logoff')} active{/if}" href="{$logoff}"><span class="fa fa-sign-out-alt fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_logoff#}</a>
+							<a class="dropdown-item{if strstr ($smarty.server.PHP_SELF, 'checkout')} active{/if}" href="{$checkout}"><span class="fa fa-cash-register fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_checkout#}</a>
+						{else}
+							<a class="dropdown-item{if strstr($smarty.server.PHP_SELF, 'create_account')} active{/if}" href="{$create_account}"><span class="fa fa-user-plus fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#new_customer#}</a>
+							<a class="dropdown-item{if strstr($smarty.server.PHP_SELF, 'login')} active{/if}" href="{$login}"><span class="fa fa-sign-in-alt fa-lg fa-fw" aria-hidden="true"></span>&nbsp;&nbsp;{#link_login#}</a>
+						{/if}
+					</div>
+				</li>
+				{if isset($smarty.session.customer_id)}<li class="nav-item"><a class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" title="{#link_logoff#}" href="{$logoff}"><span class="fa fa-sign-out-alt fa-lg"></span></a></li>{/if}
+				{if isset($box_WISHLIST)}{$box_WISHLIST}{/if}
+				{if isset($box_CART)}{$box_CART}{/if}
+			</ul>
+		</div>
+	</div>
+</div>
+{/if}

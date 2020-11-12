@@ -1,0 +1,15 @@
+{config_load file="$language/lang_$language.conf" section="gv_redeem"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="gv_redeem"}
+<h1 class="card p-2 bg-h">{#heading_gvredeem#}</h1>
+<div class="card card-body">
+	{if $error eq 'true'}
+		<p class="alert alert-warning">{#text_invalid_gv#}</p>
+	{else}
+		<p>{#text_information#}</p>
+		<p>{#text_valid_gva#} {$coupon_amount} {#text_valid_gvb#}</p>
+	{/if}
+	<div class="clearfix">
+		<div>{$LINK_DEFAULT}</div>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+{config_load file="$language/lang_$language.conf" section="newsletter"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="reviews"}
+<h1 class="card p-2 bg-h">{#heading_reviews_write#}</h1>
+{if $error}<div class="alert alert-danger">{$error}</div>{/if}
+{if !isset($no_product)}
+{$FORM_ACTION}
+	<div class="card card-body">
+		<div class="form-group">
+			<label>{#text_product#}</label>
+			<h4> {$PRODUCTS_NAME}</h4>
+		</div>
+		<div class="form-group">
+			<label>{#text_rating#} *</label><br />
+			<span class="help-block">
+				{#text_bad#}
+				{if isset($INPUT_RATING_ARRAY)}
+					<span class="show_rating">{foreach item=rating from=$INPUT_RATING_ARRAY|@array_reverse}<label>{$rating}</label>{/foreach}</span>
+				{else}
+					&nbsp;{$INPUT_RATING}&nbsp;
+				{/if}
+				{#text_good#}
+			</span>
+		</div>
+		<div class="form-group">
+			<label>{#text_author#}</label>
+			{$INPUT_AUTHOR|replace:'input':'input class="form-control form-control-sm"'}
+		</div>
+		{if $VVIMG}
+		<div class="form-group">
+			<label>{#text_sec_code#}:</label><br />
+			<span class="help-block">{$VVIMG}</span>
+		</div>
+		{/if}
+		{if $INPUT_CODE}
+		<div class="form-group">
+			<label>{#text_sec_code#}: *</label>
+			{$INPUT_CODE|replace:'input':'input class="form-control form-control-sm"'}
+		</div>
+		{/if}
+		<div class="form-group">
+			<label>{#text_input#} *</label>
+			{$INPUT_TEXT|replace:'<textarea':'<textarea class="form-control"'}
+		</div>
+		<div>{#text_note#}</div>
+	</div>
+<div class="clearfix my-4">
+	<div class="float-left">{$BUTTON_BACK}</div>
+	<div class="float-right">{$BUTTON_SUBMIT}</div>
+</div>
+{$FORM_END}
+{/if}

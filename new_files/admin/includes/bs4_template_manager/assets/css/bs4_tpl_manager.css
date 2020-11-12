@@ -1,0 +1,69 @@
+.font-desc {
+    font-size: 1rem;
+}
+.img-fluid {
+    height: auto;
+    max-width: 100%;
+}
+.bs4 .admin_container {
+	margin-left: 1%;
+}
+.bs4 .admin_container.theme-manager {
+	margin-right: 1%;
+}
+.bs4 .admin_container.theme-manager .admincol_right small{
+	font-size: 70%;
+}
+.bs4 .admin_container.theme-manager .admin_contentbox{
+	padding: 0;
+}
+.bs4 .admin_container.theme-manager .admincol_left{
+	width: 50%;
+}
+.bs4 .admin_container .admincol_left{
+	float: left;
+}
+.bs4 .admin_container.theme-manager .admincol_right{
+	width: 50%;
+}
+.bs4 .admin_container .admincol_right{
+	float: right;
+}
+.bs4 .img_box img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+.bs4 .tablangmenu {
+	border-left: 1px solid #aaaaaa;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 12px !important;
+	font-weight: bold;
+	height: auto !important;
+	line-height: 16px;
+	padding: 0;
+}
+.bs4 #tab_lang_0, .bs4 #tab_lang_1, .bs4 #tab_lang_2, .bs4 #tab_lang_3 {
+	background: none repeat scroll 0 0 #f9f9f9;
+	border: solid #aaaaaa;
+	border-width: 1px;
+	margin-top: 0;
+	padding: 10px 10px 20px 10px;
+	width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.bs4 .tablangmenu ul li {
+	border-right: 1px solid #aaaaaa;
+	border-top: 1px solid #aaaaaa;
+	color: #aaaaaa;
+	display: inline;
+	float: left;
+	padding: 8px 20px !important;
+	position: relative;
+	width: auto !important;
+}
+.bs4 .tablangmenu ul li:first-child {
+	border-left:1px solid #aaa !important;
+}

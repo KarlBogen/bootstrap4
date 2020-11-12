@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+<div class="box_quickie card mb-4">
+    <div class="box_header card-header">{#heading_add_a_quickie#}</div>
+	<div class="card-body">
+		<p class="small">{#text_quickie#}</p>
+		{$FORM_ACTION}
+			<div class="input-group">
+				{$INPUT_FIELD}
+				<span class="input-group-append">{$SUBMIT_BUTTON}</span>
+			</div>
+		{$FORM_END}
+	</div>
+</div>

@@ -1,0 +1,24 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{if isset($REVIEWS_WRITE_REVIEW) || isset($RANDOM)}
+<div class="box_reviews card mb-4">
+	<div class="box_header card-header">
+		<span class="title">{#heading_reviews#}</span>
+		<a class="show_all float-right" href="{$REVIEWS_LINK}">{#show_all#} <span class="arrow"> &raquo;</span></a>
+	</div>
+	{if isset($RANDOM)}
+	<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="{$PRODUCTS_LINK}">
+		{if $PRODUCTS_IMAGE != ''}<div class="box_image text-center mb-2"><img class="img-fluid" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></div>{/if}
+		<div class="box_title lead text-secondary mb-1">{$PRODUCTS_NAME}</div>
+    </a>
+    <div class="card-footer text-center">
+		<div class="box_text small mb">{$REVIEWS|onlytext}</div>
+    	<div class="box_reviews_image">{$REVIEWS_IMAGE}</div>
+	</div>
+	{else}
+	<div class="card-body">
+		<span class="onlytop"><a href="{$PRODUCTS_LINK}">{$REVIEWS_WRITE_REVIEW}</a></span>
+	</div>
+	{/if}
+</div>
+{/if}

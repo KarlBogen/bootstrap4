@@ -1,0 +1,96 @@
+{if $options != ''}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="product_info"}
+<div id="optionen{$smarty.get.products_id|intval}">
+	<div class="productoptions list-group list-group-flush mb-2">
+	  {foreach name=outer item=options_data from=$options}
+	  <div class="options_row_selection list-group-item p-2">
+	    <div class="options_name">{$options_data.NAME}</div>
+	      {foreach key=key_data name=key_data item=item_data from=$options_data.DATA}
+	      <div class="options_selection form-check">
+	          <span class="small clearfix">
+	            <input class="form-check-input" data-attrdata="{$item_data.JSON_ATTRDATA}" aria-label="{$item_data.TEXT}" type="radio" name="id[{$options_data.ID}]" id="rdb_{$item_data.ID}" value="{$item_data.ID}"{if $item_data.CHECKED == '1'} checked="checked"{/if} />
+	        	<label class="form-check-label" for="rdb_{$item_data.ID}">{$item_data.TEXT}</label>
+	            {if $item_data.FULL_PRICE && $options|count == 1}<span class="options_selection_price float-right">{$item_data.FULL_PRICE}</span>{elseif $item_data.PRICE}<span class="options_selection_price float-right">{$item_data.PREFIX}{$item_data.PRICE}</span>{/if}
+	          </span>
+	          <span class="small text-secondary"><em>{#model#} {$item_data.MODEL}</em></span>
+	      </div>
+	      {/foreach}
+	  </div>
+	  {/foreach}
+	</div>
+	{if $smarty.const.BS4_ATTR_PRICE_UPDATER == 'true'}
+		{if $smarty.session.customers_status.customers_status_show_price != 0}
+			<div class="calculatePriceUpdater p-2 m-0">
+			  <span class="small"><strong>{$smarty.const.TEXT_ATTRIBUTE_PRICE_UPDATER_A}</strong></span><br />
+			  <span>{$smarty.const.TEXT_ATTRIBUTE_PRICE_UPDATER_B}</span>
+			  <span class="cuPrice"></span><br />
+			  <span class="cuVpePrice small"></span>
+			</div>
+		{/if}
+		<script type="text/javascript">
+		var attributePriceUpdater;
+		function PriceUpdaterReady() {
+			attributePriceUpdater = {
+		    calculate: function (This) {
+		      var summe = 0,
+		          attrvpevalue = 0,
+		          symbolLeft = '',
+		          symbolRight = '',
+		          data = This.data('attrdata'),
+		          el = $('div[id^="optionen' + data.pid + '"] select').length ? ' option:selected' : ' input:checked';
+		      $.each($('div[id^="optionen' + data.pid + '"]' + el), function () {
+		        if (!$(this).parents('div[id^="optionen' + data.pid + '"] [id^="pmatrix_v"]').attr('style')) {
+		          data = $(this).data('attrdata');
+		          if (data.aprice != 0) {
+		            if (data.prefix == '-') {
+		              summe -= data.aprice;
+		            } else if (data.prefix == '+') {
+		              summe += data.aprice;
+		            } else if (data.prefix == '=') {
+		              summe += data.aprice - data.gprice;
+		            }
+		          }
+		          attrvpevalue += data.attrvpevalue;
+		        }
+		      });
+		      var newPrice = (Math.round((summe + data.gprice) * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
+		      var oldPrice = (Math.round((summe + data.oprice) * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
+		      if (data.vpevalue !== false && attrvpevalue != 0) {
+		        var newVpePrice = (Math.round((summe + data.gprice) / attrvpevalue * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
+		      }
+		      if (data.cleft) {
+		        symbolLeft = data.cleft + '&nbsp;';
+		      }
+		      if (data.cright) {
+		        symbolRight = '&nbsp;' + data.cright;
+		      }
+		        $('div[id^="optionen' + data.pid + '"] .calculatePriceUpdater span.cuPrice').html('&nbsp;' + symbolLeft + newPrice + symbolRight);
+		        if (data.vpevalue !== false && attrvpevalue != 0) {
+		          $('div[id^="optionen' + data.pid + '"] .calculatePriceUpdater span.cuVpePrice').html(symbolLeft + newVpePrice + symbolRight + data.protext + data.vpetext);
+                } else {
+                  $('div[id^="optionen' + data.pid + '"] .calculatePriceUpdater span.cuVpePrice').html('');
+                }
+		    },
+		    calculateAll: function () {
+		      $.each($('div[id^="optionen"] input[type=radio]:checked, div[id^="optionen"] input[type=checkbox], div[id^="optionen"] option'), function () {
+		        attributePriceUpdater.calculate($(this));
+		      });
+		    }
+		  };
+		  $(document).ready(function () {
+		    attributePriceUpdater.calculateAll();
+		    $(".calculatePriceUpdater").show();
+		    $('div[id^="optionen"] select').on('change click', function () {
+		      attributePriceUpdater.calculate($('option', this));
+		    });
+		    $('div[id^="optionen"] input').on('change click', function () {
+		      attributePriceUpdater.calculate($(this));
+		    });
+		  });
+		}
+		</script>
+	{/if}
+</div>
+{/if}

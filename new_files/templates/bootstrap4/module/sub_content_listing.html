@@ -1,0 +1,8 @@
+<div class="mb-2">
+	<div class="nav nav-pills flex-column">
+		<a class="nav-link" href="{$parent_content.CONTENT_LINK}"><strong>{$parent_content.CONTENT_TITLE}</strong></a>
+	{foreach name=aussen item=content_data from=$sub_content}
+		<a class="nav-link" href="{$content_data.CONTENT_LINK}">{$content_data.CONTENT_TITLE}</a>
+	{/foreach}
+	</div>
+</div>

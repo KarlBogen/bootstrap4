@@ -1,0 +1,146 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="shopping_cart"}
+{assign "dummy" ""}
+<div class="list-group mb-2">
+	{foreach name=aussen item=module_data from=$module_content}
+	<div class="list-group-item">
+		<div class="row d-none d-md-block mb-2">
+			<div class="col-md-12">
+				<strong>{#text_article#}:</strong>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 mb-2">
+				<div class="row">
+				{if $module_data.PRODUCTS_IMAGE != ''}
+					<div class="col-2">
+						<img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" />
+					</div>
+					<div class="col-10">
+				{else}
+					<div class="col-12">
+				{/if}
+						<a class="ord_prdoducts_name" href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
+						<div class="small">
+							<strong>{$smarty.const.HEADER_MODEL}:</strong> {$module_data.PRODUCTS_MODEL}<br />
+							{if $module_data.PRODUCTS_QTY_REDUCED}<span class="text-danger">{#BS4_alert_qty_wanted#}: {$module_data.PRODUCTS_AVAILABLE_DATA.want} / {#BS4_alert_qty_available#}: {$module_data.PRODUCTS_AVAILABLE_DATA.available}</span><br />{/if}
+							{if $module_data.PRODUCTS_SHIPPING_TIME}<strong>{$smarty.const.SHIPPING_TIME}</strong> {$module_data.PRODUCTS_SHIPPING_TIME}{/if}
+							{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="description clearfix">{$module_data.PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+							{if $module_data.ATTRIBUTES != ''}
+								<ul class="attributes_list">
+								{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES}
+									<li><strong>{$item_data.NAME}:</strong> {$item_data.VALUE_NAME}</li>
+								{/foreach}
+								</ul>
+							{/if}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="clearfix mb-2">
+					<strong>{#text_qty#}:&nbsp;</strong>
+					<div class="input-group input-group-sm float-right">
+						{$module_data.PRODUCTS_QTY|replace:'size="':'class="form-control '}
+						<span class="ml-2">
+							{$module_data.BUTTON_DELETE}&nbsp;
+                            {$smarty.const.IMAGE_BUTTON_UPDATE_CART|bs4button:'button_update_cart.gif':'':true}
+                            {if $module_data.BUTTON_WISHLIST != ''}&nbsp;{$module_data.BUTTON_WISHLIST|regex_replace:"/\">(.*?)</":"\">{$dummy|bs4button:'button_wishlist_now'}<"}{/if}
+						</span>
+					</div>
+				</div>
+				<div class="clearfix"><strong>{#text_single#}:</strong><span class="float-right">{$module_data.PRODUCTS_SINGLE_PRICE}</span></div>
+				<div class="clearfix"><strong>{#text_total#}:</strong><span class="float-right">{$module_data.PRODUCTS_PRICE}</span></div>
+			</div>
+		</div>
+	</div>
+	{/foreach}
+</div>
+
+{if sizeof($TOTAL_BLOCK_ARRAY) > 0}
+<div class="row mb-2">
+	<div class="col-md-10 offset-md-2">
+		<div class="card">
+			<div class="card-header">
+				{foreach name=aussen item=order_total_values from=$TOTAL_BLOCK_ARRAY}
+				<div class="row text-right">
+					<div class="col-8">{$order_total_values.title}</div>
+					<div class="col-4">{$order_total_values.text}</div>
+				</div>
+				{/foreach}
+			</div>
+			{if sizeof($shipping_content) > 0}
+				{if $SELECT_COUNTRY}
+					<div class="card-body bs form-inline justify-content-end">
+						{$SELECT_COUNTRY|replace:'<select':'<select class="form-control form-control-sm mt-2 mt-sm-0 ml-2" aria-label="select country"'}
+					</div>
+				{/if}
+				<div class="list-group list-group-flush">
+					{foreach name=aussen item=shipping_data from=$shipping_content}
+					<div class="list-group-item">
+						<div class="row text-right">
+							<div class="col-8">{$shipping_data.NAME} ({$COUNTRY}):</div>
+							<div class="col-4">{$shipping_data.VALUE}</div>
+						</div>
+					</div>
+					{/foreach}
+				</div>
+			{/if}
+			{if $total}
+				<div class="card-footer">
+					<div class="row text-right">
+						<div class="col-8"><strong>{#text_total#}:</strong></div>
+						<div class="col-4"><strong>{$total}</strong></div>
+					</div>
+				</div>
+			{/if}
+		</div>
+	</div>
+</div>
+
+{else}
+	<div class="row mb-2">
+		<div class="col-md-10 offset-md-2">
+			<div class="card">
+				<div class="card-header text-right">
+					{if $smarty.const.MODULE_SMALL_BUSINESS != 'true'}
+						{if $UST_CONTENT}{$UST_CONTENT}{else}{$smarty.const.TAX_INFO_EXCL|sprintf:''}<br />{/if}
+					{/if}
+					<strong>{$TOTAL_CONTENT}</strong>
+				</div>
+				{if sizeof($shipping_content) > 0}
+					{if $SELECT_COUNTRY}
+						<div class="card-body bs form-inline justify-content-end">
+							{$SELECT_COUNTRY|replace:'<select':'<select class="form-control form-control-sm ml-2" aria-label="select country"'}
+						</div>
+					{/if}
+					<div class="list-group list-group-flush">
+      					{foreach name=aussen item=shipping_data from=$shipping_content}
+							<div class="list-group-item">
+								<div class="row text-right">
+									<div class="col-8">{$shipping_data.NAME} ({$COUNTRY}):</div>
+									<div class="col-4">{$shipping_data.VALUE}</div>
+								</div>
+							</div>
+						{/foreach}
+					</div>
+				{/if}
+				{if $total}
+					<div class="card-footer">
+						<div class="row text-right">
+							<div class="col-8"><strong>{#text_total#}:</strong></div>
+							<div class="col-4"><strong>{$total}</strong></div>
+						</div>
+					</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+{/if}
+  
+  {if isset($FREE_SHIPPING_INFO)}<div class="alert alert-info" role="alert"><span class="fa fa-info-circle"></span>&nbsp;&nbsp;{$FREE_SHIPPING_INFO}</div>{/if}
+  
+  {*if $TOTAL_WEIGHT}<div class="card card-body mb-2">{#text_total_weight#} {$TOTAL_WEIGHT|number_format:2:",":"."} kg</div>{/if*}
+  {if $KLARNA_PPBOX}<div class="klarna_container card card-body mb-2 clearfix">{$KLARNA_PPBOX}</div>{/if}
+  {if $PAYPAL_INSTALLMENT}<div class=" mb-2 clearfix">{$PAYPAL_INSTALLMENT}</div>{/if}

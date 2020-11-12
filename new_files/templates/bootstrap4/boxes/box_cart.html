@@ -1,0 +1,39 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+<li class="nav-item cart dropdown">
+  {if $empty == 'false'}
+  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" href="{$LINK_CART}" title="{#heading_cart#}"><span class="fa fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></span><span class='badge badge-pill badge-corner badge-danger'>{$PRODUCTS}</span></a>
+  {else}
+  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" href="{$LINK_CART}" title="{#heading_cart#}"><span class="fa fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></span></a>
+  {/if}
+
+<div class="dropdown-menu dropdown-menu-right toggle_cart">
+{if $deny_cart neq 'true'}
+  {if $ACTIVATE_GIFT == 'true'}
+    {if isset($GV_AMOUNT)}
+      <div class="card-header"><strong>{#voucher_balance#}</strong>&nbsp;{$GV_AMOUNT}</div>
+    {/if}
+  {/if}
+  {if $empty == 'false'}
+    <div class="card-header">{#text_full_cart#}</div>
+    <ul class="list-group">
+    {foreach name=aussen item=products_data from=$products}
+      <li class="list-group-item"><a href="{$products_data.LINK}">{$products_data.QTY}&nbsp;x&nbsp;{$products_data.NAME|truncate:40:"...":true}</a><span class="float-right">{$products_data.BUTTON_DELETE|replace:"btn-sm":"btn-xs"}</span></li>
+    {/foreach}
+    </ul>
+    <div class="card-footer text-center">
+      <a href="{$LINK_CHECKOUT}"><strong>{#heading_checkout#|bs4button:'box_cart'}</strong></a>&nbsp;&nbsp;
+      <a href="{$LINK_CART}"><strong>{#heading_cart#|bs4button:'box_cart'}</strong></a>
+    </div>
+  {else}
+    <div class="card-header text-center"><strong>{#text_empty_cart#}</strong></div>
+    {*
+    <div class="card-footer text-center">
+      <a href="{$LINK_CHECKOUT}"><strong>{#heading_checkout#|bs4button:'box_cart'}</strong></a>&nbsp;&nbsp;
+      <a href="{$LINK_CART}"><strong>{#heading_cart#|bs4button:'box_cart'}</strong></a>
+    </div>
+    *}
+  {/if}
+{/if}
+</div>
+</li>

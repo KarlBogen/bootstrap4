@@ -1,0 +1,78 @@
+{config_load file="$language/lang_$language.conf" section="account_edit"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="account_edit"}
+<h1 class="card p-2 bg-h">{#heading_account#}</h1>
+{$FORM_ACTION}
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+<div class="row clearfix mb-2">
+	<div class="col-md-6 mb-2">
+  		<div class="card">
+			<div class="card-body">
+				<h4>{#title_personal#}</h4>
+                <p class="small">({#text_must#})</p>
+				{if $csID}
+					<div class="form-group stern clearfix">
+						<label>{#csID#}</label>
+						{$csID|replace:'<input':'<input class="form-control form-control-sm"'}
+					</div>
+				{/if}
+				{if $gender == '1'}
+					<div class="form-group stern clearfix">
+						<label>{#text_gender#}</label>
+						{$INPUT_GENDER|replace:'<select':'<select class="form-control form-control-sm"'}
+					</div>
+				{/if}
+				<div class="form-group stern clearfix">
+					<label>{#text_firstname#}</label>
+					{$INPUT_FIRSTNAME|replace:'<input':'<input class="form-control form-control-sm"'}
+				</div>
+				<div class="form-group stern clearfix">
+					<label>{#text_lastname#}</label>
+					{$INPUT_LASTNAME|replace:'<input':'<input class="form-control form-control-sm"'}
+				</div>
+				{if $birthdate == '1'}
+					<div class="form-group stern clearfix">
+						<label>{#text_birthdate#}</label>
+						{$INPUT_DOB|replace:'<input':'<input class="form-control form-control-sm"'}
+					</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 mb-2">
+  		<div class="card">
+			<div class="card-body">
+				<h4>{#title_contact#}</h4>
+            	<p class="small">({#text_must#})</p>
+				<div class="form-group stern clearfix">
+					<label>{#text_email#}</label>
+					{$INPUT_EMAIL|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"email\""}
+				</div>
+				<div class="form-group stern clearfix">
+					<label>{#text_confirm_email#}</label>
+					{$INPUT_CONFIRM_EMAIL|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"email\""}
+				</div>
+				<div class="form-group stern clearfix">
+					<label>{#text_tel#}</label>
+					{$INPUT_TEL|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"tel\""}
+				</div>
+				<div class="form-group stern clearfix">
+					<label>{#text_fax#}</label>
+					{$INPUT_FAX|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"tel\""}
+				</div>
+				{if $vat == '1'}
+					<div class="form-group stern clearfix">
+						<label>{#text_ustid#}</label>
+						{$INPUT_VAT|replace:"Nur":" Nur"|replace:'<input':'<input class="form-control form-control-sm"'}
+					</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix mb-4">
+	<div class="float-left">{$BUTTON_BACK}</div>
+	<div class="float-right">{$BUTTON_SUBMIT}</div>
+</div>
+
+{$FORM_END}

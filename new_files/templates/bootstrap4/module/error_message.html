@@ -1,0 +1,21 @@
+{config_load file="$language/lang_$language.conf" section="error_handler"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="error_handler"}
+<h1 class="card p-2 bg-h">{$ERROR}</h1>
+<div class="row mb-4 clearfix">
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-body">
+				<p>{#text_search_again#}<br />{#text_search_advanced1#} <a href="{$LINK_ADVANCED}">{#text_search_advanced2#}</a> {#text_search_advanced3#}</p>
+				{$FORM_ACTION}
+					<div class="form-group clearfix">
+						<label>{#text_search#}</label>
+						{$INPUT_SEARCH|replace:'<input':'<input class="form-control form-control-sm" aria-label="keywords"'}
+					</div>
+					<div class="float-left">{$BUTTON}</div>
+					<div class="float-right">{$BUTTON_SUBMIT}</div>
+				{$FORM_END}
+			</div>
+		</div>
+	</div>
+</div>

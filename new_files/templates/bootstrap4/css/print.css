@@ -1,0 +1,227 @@
+body{
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+div.hr_5 {
+  height:1px;
+  line-height:1px;
+  margin:5px 0px;
+  padding:0;
+  display:block;
+  border-bottom:solid 1px #ccc;
+  background-color:transparent;
+}
+table.order_table tr.mainrow td {
+  border-top: 1px solid #ccc;
+  padding:10px 5px;
+  vertical-align:top;
+}
+* {
+  margin:0;
+  padding:0;
+}
+div.hr_15 {
+  height:1px;
+  line-height:1px;
+  margin:15px 0px;
+  padding:0;
+  display:block;
+  border-bottom:solid 1px #ccc;
+  background-color:transparent;
+}
+h1 {
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+}
+h2 {
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+}
+.mini {
+    font-size: 11px;
+    font-weight: normal;
+}
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 21px;
+}
+.card-body {
+    padding: 15px;
+}
+.card-body p {
+	margin-bottom: 2px;
+    margin-top: 2px;
+}
+.clearfix::before, .clearfix::after {
+	content: " ";
+    display: table;
+}
+.clearfix::after {
+	clear:both;
+}
+table.order_table {
+  font-size:13px;
+  line-height:19px;
+  width:100%;
+}
+.total_table_right {
+  float:right;
+}
+table.total_table {
+  font-size:13px;
+  line-height:19px;
+}
+table.total_table tr td {
+  padding:2px 5px;
+  width:120px;
+  white-space:nowrap;
+}
+.color_ot_total {
+  color:#A94442;
+}
+td, th {
+  vertical-align: top;
+  padding: 5px;
+}
+.ord_table_center {
+  text-align:center;
+}
+.ord_table_left {
+  text-align:left;
+}
+.ord_table_right {
+  text-align:right;
+}
+.ord_width40 {
+  width:40px;
+}
+.ord_width60 {
+  width:60px;
+}
+.ord_width90 {
+  width:90px;
+}
+.ord_width110 {
+  width:110px;
+}
+.ord_width120 {
+  width:120px;
+}
+.m_row1 {
+  background:#fafafa;
+}
+.m_row2 {
+  background:#ffffff;
+}
+/* 33. START print content (popup print_product_info, popup print_order.html) */
+body.popupprint {
+  min-width:95%;
+  background:#fff none;
+  color:#222;
+}
+.printwrap {
+  width:670px;
+  margin: 0px auto;
+}
+.printlogo {
+  padding:10px 0px;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+/* print order */
+.printColumsLeft {
+  float:left;
+  width:48%;
+}
+.printColumsRight {
+  float:right;
+  width:48%;
+}
+/* print info */
+.printColumsInfoLeft {
+  float:left;
+  width:460px;
+  padding: 0px;
+}
+.printColumsInfoLeft ul{
+  margin: 8px 0px 8px 15px;
+}
+.printColumsInfoLeft ol{
+  margin: 8px 0px 8px 15px;
+}
+.printColumsInfoRight {
+  float:right;
+  width:164px;
+  text-align:center;
+}
+.printColumsInfoRight img {
+  max-width:160px;
+  height:auto;
+  margin: 10px auto 0px auto;
+  border: 1px solid #ddd;
+  padding:1px;
+}
+ul.printinfolist {
+  margin-left:15px;
+}
+.moimages {
+  float:left;
+  width:120px;
+  height:120px;
+  border: 1px solid #ddd;
+  padding:2px;
+  margin: 0px 10px 10px 0px;
+  position:relative;
+}
+.moimages:nth-child(5n) {
+  margin-right:0px;
+}
+.moimages img {
+	border:0;
+  position:absolute;
+  margin: auto;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+  background-color: #FFFFFF;
+  max-height:120px;
+  max-width:120px;
+}
+/* admin print-order */
+.printwrap_admin {
+  padding-top:40px;
+  width:670px;
+  margin: 0px auto;
+}
+p.underline {
+  margin:105px 0px 3px 15px;
+  font-size:10px;
+  text-decoration:underline;
+}
+.printlogo_admin {
+  padding:0px 0px;
+  text-align:right;
+  margin:0px 0 20px 0;
+}
+.printlogo_admin img {
+  max-width:322px;
+}
+.print_small {
+  font-size:12px;
+  line-height:18px;
+}
+.print_big {
+  font-size:26px;
+  font-weight:bold;
+  text-transform:uppercase;
+  padding:30px 0 0 0;
+}
+.printwrap_admin table.order_table {
+  margin-top:10px;
+}
+
+/* END print content (popup print_product_info, popup print_order.html) */

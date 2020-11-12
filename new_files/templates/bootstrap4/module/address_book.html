@@ -1,0 +1,43 @@
+{config_load file="$language/lang_$language.conf" section="address_book"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="address_book"}
+<h1 class="card p-2 bg-h">{#heading_address#}</h1>
+{$FORM_ACTION}
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $success_message}<div class="alert alert-success">{$success_message}</div>{/if}
+<div class="row clearfix">
+	<div class="col-md-6 mb-2">
+  		<div class="card">
+			<div class="card-body">
+				<h4>{#title_standard#}</h4>
+				{#text_standard#}
+			</div>
+			<div class="card-footer">
+				{$ADDRESS_DEFAULT}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 mb-2">
+  		<div class="card">
+			<div class="card-body">
+				<h4>{#title_addresses#}</h4>
+                {$ADDRESS_COUNT}
+			</div>
+			<div class="list-group list-group-flush">
+				{foreach name=aussen item=addresses from=$addresses_data}
+				<div class="list-group-item">
+    				<div class="mb-2"><span class="mr-2">{$addresses.BUTTON_EDIT}</span>{$addresses.BUTTON_DELETE}</div>
+      				<strong>{$addresses.NAME} {if $addresses.PRIMARY == '1'} ({#title_standard#}) {/if}</strong><br />
+      				{$addresses.ADDRESS}
+				</div>
+    			{/foreach}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="clearfix mb-4">
+	<div class="float-left">{$BUTTON_BACK}</div>
+	<div class="float-right">{$BUTTON_NEW}</div>
+</div>
+  

@@ -1,0 +1,62 @@
+<div id="accordion" class="clearfix">
+    {foreach name=outer item=gift_data from=$module_gift}
+		<div class="payment border-0">
+			<div class="acc-header" id="gift_acc{$smarty.foreach.outer.iteration}">
+				<h6 class="acc-title mb-0">
+					<span role="button" data-toggle="collapse" data-target="#gift_acc_{$smarty.foreach.outer.iteration}" aria-expanded="true" aria-controls="gift_acc_{$smarty.foreach.outer.iteration}">
+						<span class="checkbox m-0">
+							<label class="d-block card-footer w-100 m-0">
+								{$gift_data.selection}
+								&nbsp;{$gift_data.module|onlytext}
+								<span class="more-less fa fa-caret-down text-secondary float-right"></span>
+								<span class="float-right">{$gift_data.credit_amount}&nbsp;&nbsp;</span>
+							</label>
+						</span>
+					</span>
+				</h6>
+			</div>
+			<div id="gift_acc_{$smarty.foreach.outer.iteration}" class="collapse show" data-parent="#accordion" aria-labelledby="gift_acc{$smarty.foreach.outer.iteration}">
+				<div class="card-body">
+					<div>{if $gift_data.description != ''}{$gift_data.description}<br />{/if}{$credit_amount_payment_info}</div>
+				</div>
+			</div>
+		</div>
+    {/foreach}
+	{foreach name=outer item=module_data from=$module_content}
+		<div class="payment border-0">
+			<div class="acc-header" id="acc{$smarty.foreach.outer.iteration}">
+				<h6 class="acc-title mb-0">
+					<span class="d-block card-footer" role="button" data-toggle="collapse" data-target="#acc_{$smarty.foreach.outer.iteration}" aria-expanded="true" aria-controls="acc_{$smarty.foreach.outer.iteration}">
+						<span class="radio m-0">
+							<span class="w-100">
+								{$module_data.selection}
+								&nbsp;{$module_data.module|onlytext}
+								<span class="more-less fa fa-caret-down text-secondary float-right"></span>
+								<span class="float-right">{$module_data.module_cost}&nbsp;&nbsp;</span>
+							</span>
+						</span>
+					</span>
+				</h6>
+			</div>
+			<div id="acc_{$smarty.foreach.outer.iteration}" class="collapse show" data-parent="#accordion" aria-labelledby="acc{$smarty.foreach.outer.iteration}">
+				<div class="card-body">
+					{if $module_data.description}{$module_data.description}<br />{/if}
+					{if $module_data.error != ''}
+						{$module_data.error}<br />
+					{elseif $module_data.fields}
+						<div class="paymentmoduledata form-group">
+							{foreach name=inner item=method_data from=$module_data.fields}
+								<div class="form-group d-flex">
+									<div class="mr-auto pr-2 title small"><strong>{$method_data.title}</strong></div>
+									<div class="field small">{$method_data.field|replace:'<input':'<input class="form-control form-control-sm"'|replace:'<textarea':'<textarea class="form-control form-control-sm"'|replace:'<select':'<select class="form-control form-control-sm"'}
+									</div>
+								</div>
+							{/foreach}
+						</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+	{/foreach}
+</div>
+<div class="pp-message"></div>

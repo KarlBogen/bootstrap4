@@ -1,0 +1,51 @@
+{config_load file="$language/lang_$language.conf" section="advanced_search"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="advanced_search"}
+<h1 class="card p-2 bg-h">{#heading_search#}</h1>
+{$FORM_ACTION}
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+	<div class="row clearfix mb-4">
+		<div class="col-12">
+			<div class="card">
+				<div class="row">
+					<div class="col-sm-6 mb-2">
+						<div class="card-body">
+							<div class="form-group clearfix">
+								<label>{#title_keywords#}</label>
+								{$INPUT_KEYWORDS|replace:'<input':'<input aria-label="keywords" class="form-control form-control-sm"'}
+							</div>
+							<p class="mini"><a href="{$HELP_LINK}" title="{$smarty.const.TEXT_LINK_TITLE_INFORMATION}" class="{if $smarty.const.TPL_POPUP_CONTENT_LINK_CLASS}{$smarty.const.TPL_POPUP_CONTENT_LINK_CLASS}{else}{$smarty.const.POPUP_CONTENT_LINK_CLASS}{/if}">{#text_help#}</a></p>
+							<div class="form-group clearfix">
+								<label>{#text_categories#}</label>
+								{$SELECT_CATEGORIES|replace:'<select':'<select aria-label="categories" class="form-control form-control-sm"'}
+							</div>
+							<div class="checkbox clearfix">
+								<label>
+									{$ENTRY_SUBCAT}
+									{#text_subkategories#}
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 mb-2">
+						<div class="card-body">
+							<div class="form-group clearfix">
+								<label>{#text_manufacturer#}</label>
+								{$SELECT_MANUFACTURERS|replace:'<select':'<select aria-label="manufacturers" class="form-control form-control-sm"'}
+							</div>
+							<div class="form-group clearfix">
+								<label>{#text_min#}</label>
+								{$SELECT_PFROM|replace:'<input':'<input aria-label="price from" class="form-control form-control-sm"'}
+							</div>
+							<div class="form-group clearfix">
+								<label>{#text_max#}</label>
+								{$SELECT_PTO|replace:'<input':'<input aria-label="price to" class="form-control form-control-sm"'}
+							</div>
+							<div class="float-right">{$BUTTON_SUBMIT}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{$FORM_END}

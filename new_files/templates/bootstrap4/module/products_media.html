@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="products_media"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="products_media"}
+<h4>{#file#}</h4>
+{foreach name=aussen item=module_data from=$module_content}
+<div class="card card-body">
+<div class="row mb-2">
+    <div class="col-sm-7 mb-2">{$module_data.FILENAME}</div>
+    <div class="col-sm-2 col-5 mb-2">{$module_data.FILESIZE}</div>
+    <div class="col-sm-3 col-7 text-right">{if $module_data.BUTTON != ''}{$module_data.BUTTON}{else}&nbsp;{/if}</div>
+	<div class="col-12 mt-2">{if $module_data.DESCRIPTION != ''}<div class="mediarow_desc">{$module_data.DESCRIPTION}</div>{/if}</div>
+</div>
+</div>
+{/foreach}

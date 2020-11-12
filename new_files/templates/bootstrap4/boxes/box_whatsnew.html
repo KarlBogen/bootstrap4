@@ -1,0 +1,36 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{if isset($box_content) && count($box_content) > 0}
+<div class="box_whatsnew card mb-4">
+	<div class="box_header card-header">
+		<span class="title">{#heading_whatsnew#}</span>
+		<a class="show_all float-right" href="{$LINK_NEW_PRODUCTS}">{#show_all#} <span class="arrow">&raquo;</span></a>
+	</div>
+	<div class="position-relative over-hidden">
+		<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="{$box_content.PRODUCTS_LINK}">
+           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
+           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $box_content.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
+           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $box_content.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+			{if $box_content.PRODUCTS_IMAGE != ''}<div class="box_image text-center mb-2"><img class="img-fluid" src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME|onlytext}" title="{$box_content.PRODUCTS_NAME|onlytext}" /></div>{/if}
+			<div class="box_title lead text-secondary mb-1">{$box_content.PRODUCTS_NAME}</div>
+			{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && (isset($box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
+				<div class="mb-2 small">
+					<span class="ratings mb-1">
+						<span class="fas empty-stars"></span><span class="fas full-stars" style="width:{$box_content.BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}%"></span>
+					</span>
+					<span class="text-secondary">&nbsp;({$box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS})</span>
+				</div>
+			{/if}
+		</a>
+		<div class="card-footer text-right">
+			{foreach name=inner item=price_data from=$box_content.PRODUCTS_PRICE_ARRAY}
+				{include file="module/includes/price_box.html"}
+			{/foreach}
+			{if $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+				{if $box_content.PRODUCTS_VPE}<div class="box_vpe small text-secondary">{$box_content.PRODUCTS_VPE}</div>{/if}
+				<div class="box_tax small text-secondary">{$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK}<br /></div>
+			{/if}
+		</div>
+	</div>
+</div>
+{/if}

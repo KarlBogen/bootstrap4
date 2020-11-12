@@ -1,0 +1,12 @@
+{config_load file="$language/lang_$language.conf" section="logoff"} 
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="logoff"}
+<h1 class="card p-2 bg-h">{#heading_logoff#}</h1>
+{if $info_message != ''}<div class="alert alert-warning">{$info_message}</div>{/if}
+{if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+<div class="card clearfix mb-4">
+	<div class="card-body">
+		<p>{#text_logoff#}</p>
+		<div>{$BUTTON_CONTINUE}</div>
+	</div>
+</div>

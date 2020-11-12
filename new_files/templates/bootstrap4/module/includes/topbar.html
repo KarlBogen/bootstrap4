@@ -1,0 +1,10 @@
+{if $smarty.const.BS4_SHOW_TOP1 == 'true'}
+<div class="top navbar navbar-expand {$smarty.const.BS4_TOP1_NAVBAR} bg-{$smarty.const.BS4_TOP1_BG} {$smarty.const.BS4_TOP1_TEXT} clearfix">
+	<div class="navbar-nav nav-justified w-100">
+       	<div class="nav-item navbar-text text-nowrap mx-2">{#BS4_top1#}</div>
+       	{if $smarty.const.BS4_SHOW_TOP2 == 'true'}<div class="nav-item navbar-text text-nowrap mx-2 d-none d-sm-block">{#BS4_top2#}</div>{/if}
+       	{if $smarty.const.BS4_SHOW_TOP3 == 'true'}<div class="nav-item navbar-text text-nowrap mx-2 d-none d-md-block">{#BS4_top3#}</div>{/if}
+       	{if $smarty.const.BS4_SHOW_TOP4 == 'true'}<div class="nav-item navbar-text text-nowrap mx-2 d-none d-lg-block">{#BS4_top4#}</div>{/if}
+	</div>
+</div>
+{/if}

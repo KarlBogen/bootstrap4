@@ -1,0 +1,13 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+<div class="box {$smarty.const.BS4_FOOTER_NAVBAR}">
+	<div class="box-heading w-100 navbar-brand border-bottom mb-2">{#heading_guestnewsletter#}</div>
+	<p class="box_sub text-secondary small">{#text_email#}:</p>
+  {$FORM_ACTION}
+  <div class="input-group">
+    {$FIELD_EMAIL}
+	<div class="input-group-append">{$BUTTON}</div>
+  </div>
+  {$FORM_END}
+	<p class="box_sub text-secondary small mt-3">{#text_newsletter#}</p>
+</div>

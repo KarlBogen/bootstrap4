@@ -1,0 +1,99 @@
+BS4_alert_qty_wanted = 'requested'
+BS4_alert_qty_available = 'available'
+
+BS4_top1 = '<span class="fa fa-user-friends fa-lg" aria-hidden="true"></span>&nbsp;&nbsp;Consultation +49 00 00 / 00 00 00'
+BS4_top2 = '<span class="fa fa-shipping-fast fa-lg" aria-hidden="true"></span>&nbsp;&nbsp;Fast delivery'
+BS4_top3 = '<span class="fa fa-truck fa-lg" aria-hidden="true"></span>&nbsp;&nbsp;Free Shipping - from 50$'
+BS4_top4 = '<span class="fa fa-undo fa-lg fa-rotate-90" aria-hidden="true"></span>&nbsp;&nbsp;30 Days return policy'
+
+BS4_special = 'Sale'
+BS4_top = 'Top'
+BS4_new = 'New'
+
+BS4_agb = '&nbsp;&nbsp;&nbsp;Conditions&nbsp;&nbsp;&nbsp;'
+
+BS4_closex = 'X'
+BS4_close = 'Close'
+
+BS4_noscript = '<strong>JavaScript is disabled!</strong> Not all shop functions are available. Please check your browser settings.'
+BS4_heading_responsivemenu = 'Menu'
+BS4_heading_sidebar = 'Sidebar'
+BS4_checkout_express_infolinktext = 'My quick purchase'
+
+BS4_zoomtext = 'For a larger view click on the thumbnail'
+
+BS4_customers_remind_leider_vergriffen = 'Out of stock!<br/>Find out here<br/>about the new delivery.'
+BS4_customers_remind_daten_eingetragen = 'Thanks for your data<br/>were entered!'
+BS4_customers_remind_box_heading = 'The product is currently not in stock.        Please sign up here if you want to be informed about New Stock.<br /><br />'
+BS4_customers_remind_box_heading2 = 'We will let you know as soon as it is back in stock!<br />'
+BS4_customers_remind_box_firstname = 'first name:'
+BS4_customers_remind_box_lastname = 'surname:'
+BS4_customers_remind_box_mail = 'Email Address:'
+BS4_customers_remind_box_email_head1 = 'product memory:'
+BS4_customers_remind_box_email_head2 = 'is back in stock'
+BS4_customers_remind_box_st = 'quantity:'
+BS4_customers_remind_box_stk = 'pcs'
+BS4_customers_remind_box_art = 'article:'
+BS4_customers_remind_box_info = 'Please enter your desired a piece number:'
+BS4_customers_remind_box_guest = 'For privacy reasons can unfortunately only registered users register for this service.'
+BS4_customers_remind_box_success = 'You are already registered!'
+BS4_customers_remind_added = '<h1>Thank you!</h1><p>Your email address has been successfully registered!</p>'
+
+BS4_text_firstname = 'Firstname:'
+BS4_text_lastname = 'Lastname:'
+BS4_text_subject = 'Subject:'
+BS4_text_sex = 'Salutation:'
+BS4_text_competitor_url = 'Competitors-URL:'
+BS4_text_competitor_price = 'Competitors price (in euro):'
+BS4_text_sec_code = 'Security code'
+BS4_text_inp_code = 'Please enter security code here:'
+bs4_text_privacy_accept = 'I have read the privacy policy.'
+BS4_text_pflicht = '* Required entry!'
+
+
+text_shippingtime_box = 'Delivery time:'
+
+products_desc = 'Products description'
+products_fsk18_check = 'This article can be purchased only after age verification.'
+products_manufacturer_model = 'MPN:'
+products_tags = 'Features'
+heading_products_tags = 'Product Features'
+
+first = '&laquo; first'
+back = '&laquo; back'
+overview = 'Overview'
+next = 'next &raquo;'
+last = 'last &raquo;'
+
+heading_miscellaneous = 'Payment methods'
+text_miscellaneous = 'The box can be changed under bootstrap4/boxes/box_miscellaneous.html. The language variables are in the file bootstrap4/lang/english/lang_english.custom.'
+
+ab_admin = 'Adminarea'
+ab_orders = 'Orders'
+ab_contentmanager = 'Content Manager'
+ab_customers = 'Customers'
+ab_category = 'Category/Products'
+ab_logoff = 'Logoff'
+ab_news = 'News'
+ab_offline = 'Shop Offline'
+ab_update = 'Update'
+ab_support = 'Support'
+ab_shop = 'Shop'
+ab_caching = 'Caching'
+
+ab_edit_content = 'Edit content'
+ab_edit_product = 'Edit product'
+ab_edit_attributes = 'Edit product attributes'
+ab_edit_category = 'Edit category'
+ab_edit_xsell = 'Edit cross selling'
+ab_edit_tags = 'Product features'
+
+info_reviews = 'Reviews:'
+info_review = 'Review:'
+
+heading_trustedshops = 'Trusted Shops'
+
+text_search_again = 'Sorry, we could not find a product matching your search request'
+
+listing_listview = 'List view'
+listing_boxview = 'Box view'
