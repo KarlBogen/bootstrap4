@@ -22,6 +22,12 @@ include(DIR_FS_BOXES_INC . 'smarty_default.php');
 // set cache id
 $cache_id = md5($_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].(isset($coPath) ? $coPath : '0'));
 
+$filepath = 'templates/'.CURRENT_TEMPLATE.'/img/img_custom_box.png';
+
+if (file_exists(DIR_FS_CATALOG.$filepath))
+{
+	$box_smarty->assign('image', DIR_WS_BASE.$filepath);
+}
 
 if (!$cache) {
   $box_custom = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_custom.html');

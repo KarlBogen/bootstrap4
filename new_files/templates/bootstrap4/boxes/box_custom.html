@@ -4,7 +4,9 @@
 		<div class="box_header card-header">{#BS4_heading_custombox#}</div>
 	{/if}
 	<div class="card-body text-center">
-        <img class="img-fluid mb-2" src="{$tpl_path}img/img_custom_box.png" alt="img_custom" />
+        {if $image}
+	        <img class="img-fluid mb-2" src="{$image}" alt="img_custom" />
+		{/if}
 		{if #BS4_text_custombox# != ''}
 			<div class="small text-secondary">{#BS4_text_custombox#}</div>
 		{/if}
