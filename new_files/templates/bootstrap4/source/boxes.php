@@ -137,6 +137,7 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
   require_once(DIR_FS_BOXES . 'content.php');
   require_once(DIR_FS_BOXES . 'information.php');
   require_once(DIR_FS_BOXES . 'miscellaneous.php');
+  require_once(DIR_FS_BOXES . 'custom.php');
   require_once(DIR_FS_BOXES . 'languages.php');
   if (!defined('MODULE_NEWSLETTER_STATUS') || MODULE_NEWSLETTER_STATUS == 'true') {
     require_once(DIR_FS_BOXES . 'newsletter.php');

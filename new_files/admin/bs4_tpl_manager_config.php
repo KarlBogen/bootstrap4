@@ -109,7 +109,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 			<!-- body_text //-->
 			<td class="boxCenter">
 				<?php // updateinfo
-					if ($bs4_conf['BS4_BSCAROUSEL_NAME_LINES'] == '') {
+					if ($bs4_conf['BS4_NOT_STARTPAGE_BOX_CUSTOM'] == '') {
 						echo '<div class="messageStackWarning"><h3>' . TEXT_BS4_TPL_MANAGER_CONFIG_UPDATE_SYSTEMMODULE_WARNING .'<a class="button but_red" href="'. xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=bs4_tpl_manager') . '">Bootstrap 4 Template-Manager</a></h3></div><br />';
 					}
 				?>
@@ -458,6 +458,11 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_REVIEWS_INFO; ?></td>
 							</tr>
 							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_CUSTOM; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_STARTPAGE_BOX_CUSTOM'], 'BS4_STARTPAGE_BOX_CUSTOM'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_CUSTOM_INFO; ?></td>
+							</tr>
+							<tr>
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_MANUFACTURERS; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_STARTPAGE_BOX_MANUFACTURERS'], 'BS4_STARTPAGE_BOX_MANUFACTURERS'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_MANUFACTURERS_INFO; ?></td>
@@ -524,6 +529,11 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_REVIEWS; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_NOT_STARTPAGE_BOX_REVIEWS'], 'BS4_NOT_STARTPAGE_BOX_REVIEWS'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_REVIEWS_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CUSTOM; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_NOT_STARTPAGE_BOX_CUSTOM'], 'BS4_NOT_STARTPAGE_BOX_CUSTOM'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CUSTOM_INFO; ?></td>
 							</tr>
 							<tr>
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_MANUFACTURERS; ?></td>

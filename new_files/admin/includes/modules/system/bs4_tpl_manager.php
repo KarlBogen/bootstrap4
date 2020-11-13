@@ -314,6 +314,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_STARTPAGE_BOX_SPECIALS', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_LAST_VIEWED', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_REVIEWS', 'true')";
+			$values_config[] = "('BS4_STARTPAGE_BOX_CUSTOM', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_MANUFACTURERS', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_MANUFACTURERS_INFO', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_CURRENCIES', 'true')";
@@ -327,6 +328,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_SPECIALS', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_LAST_VIEWED', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_REVIEWS', 'true')";
+			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_CUSTOM', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS_INFO', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_CURRENCIES', 'true')";

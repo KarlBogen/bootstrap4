@@ -1,6 +1,7 @@
-1.0.0 [12.11.2020]
+1.0.0 [13.11.2020]
 
 - Übertragung der Dateien zu Github
+- Benutzerdefinierte Zusatzbox in linke Spalte eingefügt
 
 28.10.2020
 
