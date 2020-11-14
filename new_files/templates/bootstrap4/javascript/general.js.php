@@ -17,4 +17,13 @@ define('DIR_TMPL_JS', DIR_TMPL.'javascript/');
 // you can add your template specific js scripts here
 
 ?>
-<script type="text/javascript">var DIR_WS_BASE="<?php echo DIR_WS_BASE ?>"</script>
+<script type="text/javascript">
+	var DIR_WS_BASE = "<?php echo DIR_WS_BASE ?>";
+<?php
+if (defined('MODULE_COOKIE_CONSENT_STATUS') && strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'true') {
+?>
+	var SetSecCookie = "<?php echo ((HTTP_SERVER == HTTPS_SERVER && $request_type == 'SSL') ? true : false); ?>";
+<?php
+}
+?>
+</script>

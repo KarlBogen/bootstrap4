@@ -165,7 +165,9 @@
 </div>
 {* ENDE Hauptcontainer innerhalb body *}
 {* BEGINN Platz an dem der Cookiehinweis platziert wird *}
+{if $smarty.const.MODULE_COOKIE_CONSENT_STATUS != 'true'}
 <div id="cookieconsent"></div>
+{/if}
 {* ENDE Platz an dem der Cookiehinweis platziert wird *}
 {if ($smarty.const.TRACKING_COUNT_ADMIN_ACTIVE == 'true' && $smarty.session.customers_status.customers_status_id == '0') || $smarty.session.customers_status.customers_status_id != '0'}
   {if $smarty.const.TRACKING_PIWIK_ACTIVE == 'true'}

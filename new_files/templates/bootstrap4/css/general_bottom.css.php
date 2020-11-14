@@ -31,7 +31,14 @@ $css_array = array();
 	$css_array[] = DIR_TMPL_CSS.'navbar.css';
 	$css_array[] = DIR_TMPL_CSS.'pushy.min.css';
 	$css_array[] = DIR_TMPL_CSS.'jquery.alertable.css';
-	$css_array[] = DIR_TMPL_CSS.'jquery.cookieconsent.css';
+
+	if (defined('MODULE_COOKIE_CONSENT_STATUS') && strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'true') {
+		$css_array[] = DIR_TMPL_CSS.'jquery.cookieconsent-oil.css';
+	}
+	else {
+		$css_array[] = DIR_TMPL_CSS.'jquery.cookieconsent.css';
+	}
+
 	$css_array[] = DIR_TMPL_CSS.'bs4.css';
 
   $css_min = DIR_TMPL_CSS.'tpl_plugins.min.css';

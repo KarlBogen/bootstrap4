@@ -1,7 +1,8 @@
-1.0.0 [13.11.2020]
+1.0.0 [14.11.2020]
 
 - Übertragung der Dateien zu Github
 - Benutzerdefinierte Zusatzbox in linke Spalte eingefügt
+- Vorbereitung für das MODUL: OIL.js Cookie Consent Management
 
 28.10.2020
 

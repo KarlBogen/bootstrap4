@@ -8,7 +8,7 @@ Das Template basiert auf dem Bootstrap-Framework 4 und wird getestet mit der, zu
 - unterstützt alle Neuerungen der Shopversion 2.0 (z.B. Komprimierung, Filter)
 - zentrales Dropdownmenü für alle Artikel
 - bestimmte Kategorien können als Megamenü dargestellt werden
-- EU-Cookie-Hinweis
+- EU-Cookie-Hinweis - **jetzt mit Vorbereitung für das MODUL: OIL.js Cookie Consent Management (Anleitung im Anhang)**
 - Bilderslider auf der Startseite, im Banner-Manager befüllbar
 - Easyzoom-Vergrößerung in der Produktdetailansicht
 - Top-Artikel und Bestseller als Slider anzeigbar
@@ -87,4 +87,26 @@ Dadurch wird der Banner Manger mit Musterdaten (deutsch und englisch) für den S
 <br /><br />
 
 Viel Spaß!<br />
-Karl
+Karl<br />
+
+
+## Anhang
+
+### Einbau - MODUL: OIL.js Cookie Consent Management
+
+Wer das neue Modul bereits nutzen will, der muss darauf achten, von hier
+
+[Thema: MODUL: OIL.js Cookie Consent Management](https://www.modified-shop.org/forum/index.php?topic=41168.0)
+
+immer die aktuellen Dateien zu nutzen.
+
+- Dateien aus den Ordnern NEW_FILES und CHANGED_FILES in den Shop kopieren.
+- Im Adminbereich **Module -> System Module** das Modul **Cookie Consent** installieren.
+- Konfiguriert kann das Modul unter Menüpunkt **Konfiguration -> Cookie Consent** werden.
+- *Am Template müssen keine Veränderungen vorgenommen werden, alle nötigen Dateien sind im Templateordner enthalten.*
+
+P.S.:
+- Bei einem Update der Dateien aus dem oberen Link sollte man vorsichtshalber immer **Module -> System Module** einmal aufrufen. Eventuell wird man aufgefordert das Modul einmal zu sichern (Backup), zu deinstallieren und wieder zu installieren.
+- Wer die CSS- und JS-Kompression eingeschaltet hatte, sollte den Inhalt folgender Dateien löschen. Dadurch werden diese Dateien beim nächsten Shopaufruf, mit dem verändertem Inhalt, neu geschrieben.
+	- templates/bootstrap4/css/tpl_plugins.min.css
+	- templates/bootstrap4/javascript/tpl_plugins.min.js

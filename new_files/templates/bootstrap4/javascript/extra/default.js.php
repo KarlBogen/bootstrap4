@@ -473,6 +473,7 @@ if(BS4_CATEGORIESMENU_MAXLEVEL != 'false') {
 <?php
 }
 // Ende Maxlevel Standardmenü
+if (!defined('MODULE_COOKIE_CONSENT_STATUS') || strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'false') {
 // Beginn Cookie Banner mit Einwilligung für Google Analytics, Matomo & Facebook
 ?>
 	var consent_type = "<?php echo ((TRACKING_GOOGLEANALYTICS_ACTIVE == 'true' || TRACKING_PIWIK_ACTIVE == 'true' || TRACKING_FACEBOOK_ACTIVE == 'true' || (defined('TRACKING_CUSTOM_ACTIVE') && TRACKING_CUSTOM_ACTIVE == 'true')) ? 'opt-in' : 'info'); ?>";
@@ -485,13 +486,13 @@ if(BS4_CATEGORIESMENU_MAXLEVEL != 'false') {
 		revokable: ((consent_type == 'info') ? false : true),
 		animateRevokable: ((consent_type == 'info') ? true : false),
 		content: {
-			"message": ((consent_type == 'info') ? "<?php echo TEXT_COOKIECONSENT_MESSAGE_INFO; ?>" : "<?php echo TEXT_COOKIECONSENT_MESSAGE_TRACKING; ?>"),
-			"dismiss": "<?php echo TEXT_COOKIECONSENT_DISSMISS; ?>",
-			"link": "<?php echo TEXT_COOKIECONSENT_LINK; ?>",
+			"message": ((consent_type == 'info') ? "<?php echo BS4_TEXT_COOKIECONSENT_MESSAGE_INFO; ?>" : "<?php echo BS4_TEXT_COOKIECONSENT_MESSAGE_TRACKING; ?>"),
+			"dismiss": "<?php echo BS4_TEXT_COOKIECONSENT_DISSMISS; ?>",
+			"link": "<?php echo BS4_TEXT_COOKIECONSENT_LINK; ?>",
 			"href": "<?php echo ((isset($privacy_link)) ? $privacy_link : xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.BS4_EU_COOKIE_CONTENT, $request_type)); ?>",
-			"policy": "<?php echo TEXT_COOKIECONSENT_POLICY; ?>",
-			"allow": "<?php echo TEXT_COOKIECONSENT_ALLOW; ?>",
-			"deny": "<?php echo TEXT_COOKIECONSENT_DENY; ?>"
+			"policy": "<?php echo BS4_TEXT_COOKIECONSENT_POLICY; ?>",
+			"allow": "<?php echo BS4_TEXT_COOKIECONSENT_ALLOW; ?>",
+			"deny": "<?php echo BS4_TEXT_COOKIECONSENT_DENY; ?>"
 		},
 		cookie: {
 			"name": "MODtrack",
@@ -515,13 +516,13 @@ if(BS4_CATEGORIESMENU_MAXLEVEL != 'false') {
 		}
 	});
 	function TrackingScripts() {
-		if (typeof window.TrackingGoogle === "function") {
+		if ($.isFunction(window.TrackingGoogle)) {
 			TrackingGoogle();
 		}
-		if (typeof window.TrackingPiwik === "function") {
+		if ($.isFunction(window.TrackingPiwik)) {
 			TrackingPiwik();
 		}
-		if (typeof window.TrackingFacebook === "function") {
+		if ($.isFunction(window.TrackingFacebook)) {
 			TrackingFacebook();
 		}
 	}
@@ -550,9 +551,9 @@ if(BS4_CATEGORIESMENU_MAXLEVEL != 'false') {
 						if (path == '') {
 							path = '/';
 						}
-						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=' + p.join('/');
-						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ; path=' + p.join('/');
-						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=.' + d.join('.') + ' ; path=' + p.join('/');
+						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=' + path;
+						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ; path=' + path;
+						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=.' + d.join('.') + ' ; path=' + path;
 						p.pop();
 					};
 					d.shift();
@@ -562,5 +563,6 @@ if(BS4_CATEGORIESMENU_MAXLEVEL != 'false') {
 	}
 <?php
 // Ende Cookie Banner mit Einwilligung für Google Analytics, Matomo & Facebook
+}
 ?>
 </script>
