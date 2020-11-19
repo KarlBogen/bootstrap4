@@ -1,3 +1,7 @@
+UNRELEASED
+
+- neu Kategorielisting (Hauptkategorien) auf Startseite (schaltbar in BS4-Konfiguration Tab "Ansichten")
+
 1.0.0 [14.11.2020]
 
 - Übertragung der Dateien zu Github

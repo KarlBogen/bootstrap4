@@ -1,0 +1,60 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+
+<div class="cat_show clearfix mb-4">
+	{if #BS4_catlist_title# != ''}<h2 class="card p-2 bg-h mb-2">{#BS4_catlist_title#}</h2>{/if}
+	<div class="row row-cols-2 row-cols-md-3{if $smarty.const.BS4_STARTPAGE_FULLCONTENT == 'true'} row-cols-lg-4{/if}">
+	{foreach name=aussen item=module_data from=$module_content}
+		<div class="cat col mb-2">
+			<a class="card h-100 text-center" href="{$module_data.CATEGORY_LINK}" title="{$module_data.CATEGORY_NAME}">
+				<div class="card-body">
+					<div class="cat_image w-100 mb-auto">
+					{if $module_data.CATEGORY_IMAGE_TRUE != ''}
+						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.CATEGORY_IMAGE}" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" />
+						<noscript><img class="img-fluid" src="{$module_data.CATEGORY_IMAGE}" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" /></noscript>
+					{else}
+						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$tpl_path}img/nocatimage.gif" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" />
+						<noscript><img class="img-fluid" src="{$tpl_path}img/nocatimage.gif" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" /></noscript>
+					{/if}
+					</div>
+				</div>
+				<div class="card-footer">
+					<h2 class="lb_title lead text-secondary mb-0">{$module_data.CATEGORY_NAME}</h2>
+				</div>
+			</a>
+		</div>
+	{/foreach}
+	{if $smarty.const.BS4_SPECIALS_CATEGORIES == 'true'}
+		{if $smarty.const.SPECIALS_EXISTS === true}
+			<div class="cat col mb-2">
+				<a class="card h-100 text-center" href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}" title="{#heading_specials#}">
+					<div class="card-body">
+						<div class="cat_image w-100 mb-auto">
+							<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$tpl_path}img/specials_{$language}.png" alt="{#heading_specials#}" title="{#heading_specials#}" />
+							<noscript><img class="img-fluid" src="{$tpl_path}img/specials_{$language}.png" alt="{#heading_specials#}" title="{#heading_specials#}" /></noscript>
+						</div>
+					</div>
+					<div class="card-footer">
+						<h2 class="lb_title lead text-secondary mb-0">{#heading_specials#}</h2>
+					</div>
+				</a>
+			</div>
+		{/if}
+	{/if}
+	{if $smarty.const.BS4_WHATSNEW_CATEGORIES == 'true'}
+		<div class="cat col mb-2">
+			<a class="card h-100 text-center" href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}" title="{#heading_whatsnew#}">
+				<div class="card-body">
+					<div class="cat_image w-100 mb-auto">
+						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$tpl_path}img/whatsnew_{$language}.png" alt="{#heading_whatsnew#}" title="{#heading_whatsnew#}" />
+						<noscript><img class="img-fluid" src="{$tpl_path}img/whatsnew_{$language}.png" alt="{#heading_whatsnew#}" title="{#heading_whatsnew#}" /></noscript>
+					</div>
+				</div>
+				<div class="card-footer">
+					<h2 class="lb_title lead text-secondary mb-0">{#heading_whatsnew#}</h2>
+				</div>
+			</a>
+		</div>
+	{/if}
+	</div>
+</div>

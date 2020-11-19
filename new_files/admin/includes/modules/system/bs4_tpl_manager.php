@@ -269,6 +269,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_BSCAROUSEL_FADE', 'true')";
 			$values_config[] = "('BS4_BSCAROUSEL_NAME_LINES', 0)";
 			$values_config[] = "('BS4_STARTPAGE_FULLCONTENT', 'false')";
+			$values_config[] = "('BS4_STARTPAGE_SHOW_CATEGORYLIST', 'false')";
 			$values_config[] = "('BS4_PROD_LIST_FULLCONTENT', 'false')";
 			$values_config[] = "('BS4_PROD_DETAIL_FULLCONTENT', 'true')";
 			$values_config[] = "('BS4_PROD_DETAIL_SHOW_MANUIMAGE', 'true')";

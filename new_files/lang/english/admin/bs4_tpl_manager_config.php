@@ -247,6 +247,11 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_VIEWS' => 'Views',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_FULLCONTENT' => 'Start page:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_FULLCONTENT_INFO' => 'Should the start page be displayed "fullcontent", means without the left column?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST' => 'Start page:',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST_INFO' => 'Should a category list (only main categories) be displayed on the start page?<br /><br />
+		<strong>Note:</strong><br />
+		 Category images are not changed to different sizes when inserted!<br />
+		  There is an additional module for this which is available in the Modified Forum - here the link: <a target="_blank" href="https://www.modified-shop.org/forum/index.php?topic=1303.0">https://www.modified-shop.org/forum/index.php?topic=1303.0</a>.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT' => 'Product lists:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT_INFO' => 'Should the product listings be displayed "fullcontent", means without the left column?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_DETAIL_FULLCONTENT' => 'Product info page:',

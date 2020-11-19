@@ -247,6 +247,11 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_VIEWS' => 'Ansichten',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_FULLCONTENT' => 'Startseite:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_FULLCONTENT_INFO' => 'Soll die Startseite "fullcontent", d.h. ohne die linke Spalte, angezeigt werden?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST' => 'Startseite:',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST_INFO' => 'Soll eine Kategorielist (nur Hauptkategorien) auf der Startseite angezeigt werden?<br /><br />
+		<strong>Hinweis:</strong><br />
+		 Kategoriebilder werden beim Einf&uuml;gen <b>nicht</b> in verschiedene Gr&ouml;&szlig;en ge&auml;ndert!<br />
+		  Daf&uuml;r gibt es ein Zusatzmodul das im Modified Forum zur Verf&uuml;gung steht - hier der Link: <a target="_blank" href="https://www.modified-shop.org/forum/index.php?topic=1303.0">https://www.modified-shop.org/forum/index.php?topic=1303.0</a>.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT' => 'Produktlisten:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT_INFO' => 'Sollen die Produktlisten "fullcontent", d.h. ohne die linke Spalte, angezeigt werden?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_DETAIL_FULLCONTENT' => 'Produktdetailseite:',

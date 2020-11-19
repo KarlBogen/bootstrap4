@@ -1,3 +1,5 @@
+BS4_catlist_title = 'Unser Angebot'
+
 BS4_heading_custombox = 'Zusatzbox'
 BS4_text_custombox = 'Die Box kann unter bootstrap4/boxes/box_custom.html ver&auml;ndert werden. Sprachvariablen befinden sich in der Datei templates/bootstrap4/lang/lang_german.custom!'
 

@@ -109,7 +109,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 			<!-- body_text //-->
 			<td class="boxCenter">
 				<?php // updateinfo
-					if ($bs4_conf['BS4_NOT_STARTPAGE_BOX_CUSTOM'] == '') {
+					if ($bs4_conf['BS4_STARTPAGE_SHOW_CATEGORYLIST'] == '') {
 						echo '<div class="messageStackWarning"><h3>' . TEXT_BS4_TPL_MANAGER_CONFIG_UPDATE_SYSTEMMODULE_WARNING .'<a class="button but_red" href="'. xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=bs4_tpl_manager') . '">Bootstrap 4 Template-Manager</a></h3></div><br />';
 					}
 				?>
@@ -603,6 +603,11 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_FULLCONTENT; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_STARTPAGE_FULLCONTENT'], 'BS4_STARTPAGE_FULLCONTENT'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_FULLCONTENT_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_STARTPAGE_SHOW_CATEGORYLIST'], 'BS4_STARTPAGE_SHOW_CATEGORYLIST'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST_INFO; ?></td>
 							</tr>
 							<tr>
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT; ?></td>
