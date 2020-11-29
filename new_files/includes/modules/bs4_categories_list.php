@@ -57,10 +57,10 @@ if(!$module_smarty->is_cached(CURRENT_TEMPLATE.'/module/categories_list.html', $
 
 		$image = '';
 		if ($categories['categories_image'] != '') {
-			if (!file_exists(DIR_FS_CATALOG.DIR_WS_IMAGES.'categories/info_images/'.$categories['categories_image'])) {
+			if (!file_exists(DIR_FS_CATALOG.DIR_WS_IMAGES.'categories/thumbnail_images/'.$categories['categories_image'])) {
 				$image = DIR_WS_IMAGES.'categories/'.$categories['categories_image'];
 			} else {
-				$image = DIR_WS_IMAGES.'categories/info_images/'.$categories['categories_image'];
+				$image = DIR_WS_IMAGES.'categories/thumbnail_images/'.$categories['categories_image'];
 			}
 			if (!file_exists(DIR_FS_CATALOG.$image)) {
 				if (CATEGORIES_IMAGE_SHOW_NO_IMAGE == 'true') {
