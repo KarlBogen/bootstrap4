@@ -68,7 +68,7 @@ Dadurch wird der Banner Manger mit Musterdaten (deutsch und englisch) für den S
 
 *Die Installationsdatei admin/includes/modules/system/aa_slider_installer_system.php löscht sich normalerweise automatisch.*
 
-### Neu ab Version 1.1.0:
+### Neu ab Version 1.1.0 - BS4 Banner Manager
 Unter dem Menüpunkt **Erw. Konfiguration - Bootstrap 4 Template Manager** ist der **BS4 Banner Manager** zu finden.<br />
 Für den Bootstrap Slider - können den Kategorien Banner zugewiesen werden. Zudem kann jede Kategorie eigene Slidereinstellungen erhalten.
 
