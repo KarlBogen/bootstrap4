@@ -80,48 +80,48 @@ class Bs4TplManager {
 			return false;
 		}
 
-if ($action == 'copy') {
-		// if template file bootstrap.min.css exists
-		if (!file_exists($css_file.'.css')) {
-			$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_CSS_FILE_NOT_EXISTS, $css_file.'.css'), 'error');
-			return false;
-		}
-		// rename bootstrap.min.css to bootstrap.min.bak
-		$time = date("Y-m-d")."-".time();
-		if (@rename($css_file.'.css', $css_file.'_'.$time.'.bak')) {
-			$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_CSS_FILE_RENAMED, $css_file.'.css', $css_file.'_'.$time.'.bak'), 'success');
-		} else {
-            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_CSS_FILE_NOT_RENAMED, $css_file.'.css'), 'error');
-			return false;
-		}
-		// copy bootstrap.min.css to template
-		if (@copy($admincss_file.'.css', $css_file.'.css')) {
-			$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_COPIED, $admincss_file.'.css', $css_file.'.css'), 'success');
-		} else {
-			@rename($css_file.'_'.$time.'.bak', $css_file.'css');
-            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_NOT_COPIED, dirname(__FILE__).'/css/bootstrap.min.css', $css_file.'bak', $css_file.'.css'), 'error');
-			return false;
-		}
-/*		// if template folder fonts exists
-		if(!is_dir($tpl_path.$font_path)){
-			 mkdir($tpl_path.$font_path);
-		}
-		// copy font files to template
-		$allowed_extensions = array('eot', 'woff2', 'woff', 'ttf', 'svg');
-		$files = glob(dirname(__FILE__).'/fonts/' . "*");
-		foreach($files as $file){
-			$fileinfo = pathinfo($file);
-			if(in_array($fileinfo['extension'], $allowed_extensions)) {
-				if (@copy($file, $tpl_path.$font_path.$fileinfo['basename'])) {
-					$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_COPIED, $file, $tpl_path.$font_path.$fileinfo['basename']), 'success');
-				} else {
-		            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FONT_FILE_NOT_COPIED, $file, $tpl_path.$font_path), 'error');
+		if ($action == 'copy') {
+			// if template file bootstrap.min.css exists
+			if (!file_exists($css_file.'.css')) {
+				$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_CSS_FILE_NOT_EXISTS, $css_file.'.css'), 'error');
+				return false;
+			}
+			// rename bootstrap.min.css to bootstrap.min.bak
+			$time = date("Y-m-d")."-".time();
+			if (@rename($css_file.'.css', $css_file.'_'.$time.'.bak')) {
+				$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_CSS_FILE_RENAMED, $css_file.'.css', $css_file.'_'.$time.'.bak'), 'success');
+			} else {
+	            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_CSS_FILE_NOT_RENAMED, $css_file.'.css'), 'error');
+				return false;
+			}
+			// copy bootstrap.min.css to template
+			if (@copy($admincss_file.'.css', $css_file.'.css')) {
+				$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_COPIED, $admincss_file.'.css', $css_file.'.css'), 'success');
+			} else {
+				@rename($css_file.'_'.$time.'.bak', $css_file.'css');
+	            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_NOT_COPIED, dirname(__FILE__).'/css/bootstrap.min.css', $css_file.'bak', $css_file.'.css'), 'error');
+				return false;
+			}
+/*			// if template folder fonts exists
+			if(!is_dir($tpl_path.$font_path)){
+				 mkdir($tpl_path.$font_path);
+			}
+			// copy font files to template
+			$allowed_extensions = array('eot', 'woff2', 'woff', 'ttf', 'svg');
+			$files = glob(dirname(__FILE__).'/fonts/' . "*");
+			foreach($files as $file){
+				$fileinfo = pathinfo($file);
+				if(in_array($fileinfo['extension'], $allowed_extensions)) {
+					if (@copy($file, $tpl_path.$font_path.$fileinfo['basename'])) {
+						$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_COPIED, $file, $tpl_path.$font_path.$fileinfo['basename']), 'success');
+					} else {
+			            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FONT_FILE_NOT_COPIED, $file, $tpl_path.$font_path), 'error');
+					}
 				}
 			}
-		}
 */
-		$messageStack->add(BS4_TPL_MANAGER_THEME_COPY_COMPLIED, 'success');
-}
+			$messageStack->add(BS4_TPL_MANAGER_THEME_COPY_COMPLIED, 'success');
+		}
     }
 
 	// load configuration

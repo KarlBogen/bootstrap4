@@ -2,6 +2,9 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="categorie_listing"}
 <div class="cat-listing mb-2 clearfix">
+	{if isset($SLIDER)}
+		{include file="`$smarty.const.CURRENT_TEMPLATE`/module/includes/slider.html"}
+	{/if}
 	{if isset($CATEGORIES_HEADING_TITLE) && $CATEGORIES_HEADING_TITLE != ''}
 	  <h3 class="card p-2 bg-h">{$CATEGORIES_HEADING_TITLE}</h3>
 	{else}

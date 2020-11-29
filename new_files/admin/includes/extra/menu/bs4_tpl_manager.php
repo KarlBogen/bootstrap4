@@ -39,6 +39,15 @@ $add_contents[BOX_HEADING_CONFIGURATION2][MENU_BS4_TPL_MANAGER_MAIN][] = array(
     'parameters' => '',
     'ssl' => ''
   );
+
+
+$add_contents[BOX_HEADING_CONFIGURATION2][MENU_BS4_TPL_MANAGER_MAIN][] = array(
+    'admin_access_name' => 'bs4_banner_manager',
+    'filename' => FILENAME_BS4_BANNER_MANAGER,
+    'boxname' => MENU_BS4_TPL_MANAGER_SUB3,
+    'parameters' => '',
+    'ssl' => ''
+  );
 /* ------------------------------------------------------------
 	Module "Attribute Kombination Manager" made by Karl
 

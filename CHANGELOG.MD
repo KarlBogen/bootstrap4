@@ -1,6 +1,8 @@
-UNRELEASED
+1.1.0 [29.11.2020]
 
-- neu Kategorielisting (Hauptkategorien) auf Startseite (schaltbar in BS4-Konfiguration Tab "Ansichten")
+- neu - Banner Manager für Bootstrap Slider - Banner können Kategorien zugewiesen werden.
+  Jede Kategorie kann eigene Slidereinstellungen erhalten.
+- neu - Kategorielisting (Hauptkategorien) auf Startseite (schaltbar in BS4-Konfiguration Tab "Ansichten").
 
 1.0.0 [14.11.2020]
 

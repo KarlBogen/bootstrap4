@@ -41,6 +41,10 @@ $css_array = array();
 
 	$css_array[] = DIR_TMPL_CSS.'bs4.css';
 
+	if (file_exists(DIR_FS_CATALOG.DIR_TMPL.'/custom.css')) {
+		$css_array[] = DIR_TMPL.'custom.css';
+	}
+
   $css_min = DIR_TMPL_CSS.'tpl_plugins.min.css';
 
   $this_f_time = filemtime(DIR_FS_CATALOG.DIR_TMPL_CSS.'general_bottom.css.php');

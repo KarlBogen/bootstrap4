@@ -12,9 +12,15 @@
 defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
 
 class bs4_tpl_manager {
-	var $code, $title, $description, $enabled;
 
-	function __construct() {
+    public $code;
+    public $title;
+    public $description;
+    public $enabled;
+    public $sort_order;
+    public $keys;
+
+	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
 		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE;
 		$this->description = '';
@@ -26,10 +32,10 @@ class bs4_tpl_manager {
 		$this->enabled = ((MODULE_BS4_TPL_MANAGER_STATUS == 'true') ? true : false);
 	}
 
-	function process($file) {
+	public function process($file) {
 	}
 
-	function display() {
+	public function display() {
 		return array('text' => '<br />'.
 			'<div><strong>'.MODULE_BS4_TPL_MANAGER_STATUS_INFO.'</strong></div>'.
 			'<br /><br />'.
@@ -38,7 +44,7 @@ class bs4_tpl_manager {
 			);
 	}
 
-	function check() {
+	public function check() {
 		if (!isset($this->_check)) {
 			$check_query = xtc_db_query("SELECT configuration_value
 											FROM " . TABLE_CONFIGURATION . "
@@ -48,7 +54,7 @@ class bs4_tpl_manager {
 		return $this->_check;
 	}
     
-	function install() {
+	public function install() {
 		global $messageStack;
 
 		if (!$this->install_table_config())
@@ -81,16 +87,24 @@ class bs4_tpl_manager {
 			return false;
 		}
 
+		if (!$this->install_updates_and_news())
+		{
+			$this->remove_tables(4);
+			return false;
+		}
+
 		$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_FINISHED, 'success');
 
 	}
 
-	function update() {
+	public function update() {
 		global $messageStack;
 
 		$update = true;
+		$update = $this->install_table_admin_access();
 		$update = $this->check_table_configuration();
 		$update = $this->update_table_config();
+		$update = $this->install_updates_and_news();
 		if($update == true){
 			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_UPDATE_FINISHED, 'success');
 		} else {
@@ -98,7 +112,7 @@ class bs4_tpl_manager {
 		}
 	}
 
-	function custom() {
+	public function custom() {
 		global $messageStack;
 
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
@@ -121,23 +135,27 @@ class bs4_tpl_manager {
 		// Dateien definieren
 		$shop_path = DIR_FS_CATALOG;
 		$dirs_and_files = array();
-		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/bs4_template_manager';
+		$dirs_and_files[] = $shop_path.DIR_ADMIN.'bs4_banner_manager.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'bs4_customers_remind.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'bs4_tpl_manager_theme.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'bs4_tpl_manager_theme_preview.php';
+		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/bs4_template_manager';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/extra/application_top/application_top_begin/bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/extra/filenames/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/extra/menu/bs4_tpl_manager.php';
 
-		$dirs_and_files[] = $shop_path.'includes/extra/ajax/bs4_get_subcat.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/ajax/bs4_awids_rating.php';
+		$dirs_and_files[] = $shop_path.'includes/extra/ajax/bs4_get_subcat.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/application_bottom/bs4_customers_remind.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/application_top/application_top_begin/bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/cart_actions/add_product_before_redirect/bs4_agi_reduce_cart.php';
-		$dirs_and_files[] = $shop_path.'includes/extra/default/categories_content/bs4_remove_empty_categories.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/checkout/checkout_requirements/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/database_tables/bs4_tpl_manager.php';
+		$dirs_and_files[] = $shop_path.'includes/extra/default/categories_content/bs4_remove_empty_categories.php';
+		$dirs_and_files[] = $shop_path.'includes/extra/default/categories_smarty/bs4_banners.php';
+		$dirs_and_files[] = $shop_path.'includes/extra/default/center_modules/bs4_banners.php';
+		$dirs_and_files[] = $shop_path.'includes/extra/default/center_modules/bs4_categories_list.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/define_add_select/bs4_define_add_select.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/filenames/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/modules/categories_listing/categories_content/bs4_remove_empty_categories.php';
@@ -145,21 +163,25 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'includes/extra/modules/order_details_cart_content/bs4_agi_reduce_cart.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/modules/product_info_end/bs4_additional_module_links.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/modules/product_info_end/bs4_agi_reduce_cart.php';
+		$dirs_and_files[] = $shop_path.'includes/extra/modules/product_listing_begin/bs4_banners.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/modules/products_attributes_data/bs4_attribute_price_updater.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/shopping_cart/cart_requirements/bs4_agi_reduce_cart.php';
+		$dirs_and_files[] = $shop_path.'includes/modules/bs4_categories_list.php';
 		$dirs_and_files[] = $shop_path.'includes/modules/bs4_customers_remind.php';
 		$dirs_and_files[] = $shop_path.'includes/modules/product/bs4_checkifnewproduct.php';
 
+		$dirs_and_files[] = $shop_path.'lang/english/admin/bs4_banner_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/english/admin/bs4_customers_remind.php';
 		$dirs_and_files[] = $shop_path.'lang/english/admin/bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.'lang/english/admin/bs4_tpl_manager_theme.php';
+		$dirs_and_files[] = $shop_path.'lang/english/extra/admin/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_agi_reduce_cart.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_template.php';
-		$dirs_and_files[] = $shop_path.'lang/english/extra/admin/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/english/modules/system/bs4_tpl_manager.php';
 
+		$dirs_and_files[] = $shop_path.'lang/german/admin/bs4_banner_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/german/admin/bs4_customers_remind.php';
 		$dirs_and_files[] = $shop_path.'lang/german/admin/bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.'lang/german/admin/bs4_tpl_manager_theme.php';
@@ -195,7 +217,24 @@ class bs4_tpl_manager {
         unlink($shop_path.DIR_ADMIN.'includes/modules/system/bs4_tpl_manager.php');
 	}
 
-	function rrmdir($dir) {
+	public function remove() {
+		global $messageStack;
+		if($this->remove_tables(4)){
+			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_DEINSTALL_FINISHED, 'success');
+		} else {
+			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_DEINSTALL_ERR, 'error');
+		}
+	}
+
+	public function keys() {
+		$key = array(
+			'MODULE_BS4_TPL_MANAGER_STATUS',
+		);
+
+		return $key;
+	}
+
+	protected function rrmdir($dir) {
 		if (is_dir($dir)) {
 			$objects = scandir($dir);
 			foreach ($objects as $object) {
@@ -212,24 +251,7 @@ class bs4_tpl_manager {
 		}
 	}
 
-	function remove() {
-		global $messageStack;
-		if($this->remove_tables(4)){
-			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_DEINSTALL_FINISHED, 'success');
-		} else {
-			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_DEINSTALL_ERR, 'error');
-		}
-	}
-
-	function keys() {
-		$key = array(
-			'MODULE_BS4_TPL_MANAGER_STATUS',
-		);
-
-		return $key;
-	}
-
-	function get_values_config() {
+	protected function get_values_config() {
 		$values_config = array();
 
 			$values_config[] = "('BS4_SHOW_TOP1', 'true')";
@@ -337,11 +359,12 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_HISTORY', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS', 'true')";
 			$values_config[] = "('BS4_HIDE_ALL_BOXES', 'false')";
+			$values_config[] = "('BS4_DEFAULT_BANNER_SETTINGS', 'n,btn-primary,n,j1,bg-white,n,4000')";
 
 		return $values_config;
 	}
 
-	function install_table_config() {
+	protected function install_table_config() {
 		global $messageStack;
 		$install = true;
 		$values_config = array();
@@ -376,7 +399,7 @@ class bs4_tpl_manager {
 		return $install;
 	}
 
-	function update_table_config() {
+	protected function update_table_config() {
 		global $messageStack;
 		$update = true;
 			$values_config = $this->get_values_config();
@@ -395,7 +418,7 @@ class bs4_tpl_manager {
 		return $update;
 	}
 
-	function install_table_theme() {
+	protected function install_table_theme() {
 		global $messageStack;
 		$install = true;
 		$values_theme = array();
@@ -431,7 +454,7 @@ class bs4_tpl_manager {
 		return $install;
 	}
 
-	function install_table_configuration() {
+	protected function install_table_configuration() {
 		global $messageStack;
 		$install = true;
 
@@ -455,7 +478,7 @@ class bs4_tpl_manager {
 		return $install;
 	}
 
-	function check_module_product_installed() {
+	protected function check_module_product_installed() {
 		if (defined('MODULE_PRODUCT_INSTALLED')) {
 			$installed = [];
 			if (MODULE_PRODUCT_INSTALLED != '') $installed = explode(';', MODULE_PRODUCT_INSTALLED);
@@ -473,7 +496,7 @@ class bs4_tpl_manager {
 		return true;
 	}
 
-	function check_table_configuration() {
+	protected function check_table_configuration() {
 		global $messageStack;
 		$check = true;
 
@@ -502,7 +525,7 @@ class bs4_tpl_manager {
 		return $check;
 	}
 
-	function install_table_admin_access() {
+	protected function install_table_admin_access() {
 		global $messageStack;
 		$install = true;
 
@@ -525,6 +548,16 @@ class bs4_tpl_manager {
 		if ($_SESSION['customer_id'] > 1) {
 			xtc_db_query("UPDATE " . TABLE_ADMIN_ACCESS . " SET bs4_tpl_manager_config = '1' WHERE customers_id = '".$_SESSION['customer_id']."' LIMIT 1") ;
 		}
+		// Einträge in admin_access Banner Manager
+		$admin_access_bs4_banner_manager_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM ".TABLE_ADMIN_ACCESS." WHERE Field='bs4_banner_manager'"));
+		if(!$admin_access_bs4_banner_manager_exists) {
+			xtc_db_query("ALTER TABLE ".TABLE_ADMIN_ACCESS." ADD `bs4_banner_manager` INT(1) DEFAULT '0' NOT NULL");
+		}
+		xtc_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET bs4_banner_manager = '8' WHERE customers_id = 'groups' LIMIT 1");
+		xtc_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET bs4_banner_manager = '1' WHERE customers_id = '1' LIMIT 1");
+		if ($_SESSION['customer_id'] > 1) {
+			xtc_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET bs4_banner_manager = '1' WHERE customers_id = '".$_SESSION['customer_id']."' LIMIT 1") ;
+		}
 
 		// Einträge in admin_access
 		$admin_access_bs4_customers_remind_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM ".TABLE_ADMIN_ACCESS." WHERE Field='bs4_customers_remind'"));
@@ -539,8 +572,9 @@ class bs4_tpl_manager {
 
 		$admin_access_bs4_tpl_manager_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM " . TABLE_ADMIN_ACCESS . " WHERE Field='bs4_tpl_manager_theme'"));
 		$admin_access_bs4_tpl_manager_config_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM " . TABLE_ADMIN_ACCESS . " WHERE Field='bs4_tpl_manager_config'"));
+		$admin_access_bs4_banner_manager_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM " . TABLE_ADMIN_ACCESS . " WHERE Field='bs4_banner_manager'"));
 		$admin_access_bs4_customers_remind_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM ".TABLE_ADMIN_ACCESS." WHERE Field='bs4_customers_remind'"));
-		if(!$admin_access_bs4_tpl_manager_exists || !$admin_access_bs4_tpl_manager_config_exists || !$admin_access_bs4_customers_remind_exists) {
+		if(!$admin_access_bs4_tpl_manager_exists || !$admin_access_bs4_tpl_manager_config_exists || !$admin_access_bs4_customers_remind_exists || !$admin_access_bs4_banner_manager_exists) {
 			$install = false;
 		}
 
@@ -552,7 +586,7 @@ class bs4_tpl_manager {
 		return $install;
 	}
 
-	function install_additional_modules() {
+	protected function install_additional_modules() {
 		global $messageStack;
 		$install = true;
 
@@ -614,12 +648,13 @@ class bs4_tpl_manager {
 		return $install;
 	}
 
-	function remove_tables($x) {
+	protected function remove_tables($x) {
 		global $messageStack;
 		switch (true) {
 			case $x > 3:
 				xtc_db_query("ALTER TABLE " . TABLE_ADMIN_ACCESS . " DROP `bs4_tpl_manager_theme`");
 				xtc_db_query("ALTER TABLE " . TABLE_ADMIN_ACCESS . " DROP `bs4_tpl_manager_config`");
+				xtc_db_query("ALTER TABLE " . TABLE_ADMIN_ACCESS . " DROP `bs4_banner_manager`");
 				xtc_db_query("ALTER TABLE " . TABLE_ADMIN_ACCESS . " DROP `bs4_customers_remind`");
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ENTRY_REMOVED.TABLE_ADMIN_ACCESS, 'success');
 			case $x > 2:
@@ -649,11 +684,13 @@ class bs4_tpl_manager {
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ENTRY_REMOVED.TABLE_CONTENT_MANAGER, 'success');
 				xtc_db_query("DELETE FROM " . TABLE_CONTENT_MANAGER . " WHERE content_group = 999");
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ENTRY_REMOVED.TABLE_CONTENT_MANAGER, 'success');
+				// später hinzugefügte Datenbankeinträge löschen
+				$this->remove_updates_and_news();
 		}
 		return true;
 	}
 
-	function table_exists($table_name)
+	protected function table_exists($table_name)
 	{
 	  $Table = xtc_db_query("show tables like '" . $table_name . "'");
 	  if(xtc_db_fetch_row($Table) === false)
@@ -662,6 +699,33 @@ class bs4_tpl_manager {
 	  } else {
 	    return(true);
 	  }
+	}
+
+	protected function install_updates_and_news()
+	{
+		// Einträge für Banner Manager hinzufügen
+		$bs4_bs4_banner_settings_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM ".TABLE_CATEGORIES." WHERE Field='bs4_banner_ids'"));
+		if(!$bs4_bs4_banner_settings_exists) {
+			xtc_db_query("ALTER TABLE ".TABLE_CATEGORIES." ADD `bs4_banner_ids` VARCHAR(255) NOT NULL");
+		}
+		$bs4_bs4_banner_settings_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM ".TABLE_CATEGORIES." WHERE Field='bs4_banner_settings'"));
+		if(!$bs4_bs4_banner_settings_exists) {
+			xtc_db_query("ALTER TABLE ".TABLE_CATEGORIES." ADD `bs4_banner_settings` VARCHAR(255) NOT NULL");
+		}
+	    return true;
+	}
+
+	protected function remove_updates_and_news()
+	{
+		// Einträge für Banner Manager löschen
+		$bs4_bs4_banner_settings_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM ".TABLE_CATEGORIES." WHERE Field='bs4_banner_ids'"));
+		if($bs4_bs4_banner_settings_exists) {
+			xtc_db_query("ALTER TABLE ".TABLE_CATEGORIES." DROP `bs4_banner_ids`");
+		}
+		$bs4_bs4_banner_settings_exists = xtc_db_num_rows(xtc_db_query("SHOW COLUMNS FROM ".TABLE_CATEGORIES." WHERE Field='bs4_banner_settings'"));
+		if($bs4_bs4_banner_settings_exists) {
+			xtc_db_query("ALTER TABLE ".TABLE_CATEGORIES." DROP `bs4_banner_settings`");
+		}
 	}
 
 }

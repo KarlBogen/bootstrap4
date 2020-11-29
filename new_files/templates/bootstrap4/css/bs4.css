@@ -1,3 +1,32 @@
+.controls .carousel-control-next, .controls .carousel-control-prev {
+	height: 40px;
+	width: 40px;
+	margin-top: -20px;
+	top: 50%;
+	bottom:auto;
+	opacity: 1;
+}
+.controls .btn.rounded-circle {
+	height: 38px;
+	width: 38px;
+}
+.controls .carousel-control-next {
+	margin-right: 10px;
+}
+.controls .carousel-control-prev {
+	margin-left: 10px;
+}
+.carousel-indicators.outside {
+	margin: 0;
+	bottom: auto;
+	left: auto;
+    position: relative;
+	right: auto;
+}
+.carousel-indicators li.rounded-circle {
+	height: 16px;
+	width: 16px;
+}
 .cat_show img {
     max-height: 200px;
     max-width: 200px;

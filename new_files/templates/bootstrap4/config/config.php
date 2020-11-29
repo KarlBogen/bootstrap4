@@ -83,6 +83,9 @@
 	defined('BS4_WHATSNEW_SPECIALS_UPPERCASE') or define('BS4_WHATSNEW_SPECIALS_UPPERCASE', 'true'); // Links "Angebote" und "Neue Artikel" in GROßBUCHSTABEN anzeigen = true, ansonsten false
 	defined('BS4_HIDE_EMPTY_CATEGORIES') or define('BS4_HIDE_EMPTY_CATEGORIES', 'true'); // Leere Kategorien ausblenden? - ausblenden = true, ansonsten false
 
+	// BS4 Banner Manger
+	defined('BS_DEFAULT_BANNER_SETTINGS') or define('BS_DEFAULT_BANNER_SETTINGS', 'n,btn-primary,n,n,btn-primary,n,4000'); // Standardwerteschema 'Controls(n,j1,j2),Controlsclass(Bootstrap-Btn-Klassen),Controlsrounded(n,j),Indicators(n,j1,j2),Indicatorsclass(Bootstrap-Btn-Klassen),Indicatorsrounded(n,j),Sliderduration(4000,5000... Millisekunden)'
+
 	// Karusellslider
 	defined('BS4_CAROUSEL_SHOW') or define('BS4_CAROUSEL_SHOW', 'column'); // Bilderslider auf Startseite / nicht anzeigen = 'false', Bildschirmbreite = 'screen', Shopbreite = 'shop', rechte Spalte = 'column'
 	defined('BS4_CAROUSEL_FADE') or define('BS4_CAROUSEL_FADE', 'true'); // Fadeeffekt = true, Slideeffekt = false

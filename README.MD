@@ -16,6 +16,11 @@ Das Template basiert auf dem Bootstrap-Framework 4 und wird getestet mit der, zu
 - Farbbänder/Ribbons Top, Neu, Angebot
 - Font Awesome Icons integriert
 - keine Core-Änderungen nötig
+- **Kategorielisting (Hauptkategorien) auf Startseite (schaltbar in BS4-Konfiguration Tab "Ansichten")**
+- **Banner Manager für Bootstrap Slider - Banner können Kategorien zugewiesen werden.<br />
+  Jede Kategorie kann eigene Slidereinstellungen erhalten.**
+
+Vorschaubilder sind im Verzeichnis *images/* zu finden
 
 ## Systemmodul "Bootstrap 4 Template Manager"
 
@@ -43,7 +48,7 @@ Auch die Möglichkeit zusätzliche Schriftarten DSGVO-konform zu integrieren bes
 - Im Adminbereich **Konfiguration->Mein Shop** das Template auswählen.
 - Zur Nutzung des Template Managers im Adminbereich **Module->System Module** den *Bootstrap 4 Template Manager* installieren.
 
-## Update Template Manger
+## Update Template Manager
 
 Voraussetzung: Dateien sind aktuell - System Modul "Bootstrap 4 Template-Manager" installiert.
 
@@ -62,6 +67,10 @@ Diese Modul kann <a href="https://github.com/KarlBogen/sliderbeispiele_bs4" targ
 Dadurch wird der Banner Manger mit Musterdaten (deutsch und englisch) für den Slider befüllt.
 
 *Die Installationsdatei admin/includes/modules/system/aa_slider_installer_system.php löscht sich normalerweise automatisch.*
+
+### Neu ab Version 1.1.0:
+Unter dem Menüpunkt **Erw. Konfiguration - Bootstrap 4 Template Manager** ist der **BS4 Banner Manager** zu finden.<br />
+Für den Bootstrap Slider - können den Kategorien Banner zugewiesen werden. Zudem kann jede Kategorie eigene Slidereinstellungen erhalten.
 
 ## Umbenennen des Templates
 
