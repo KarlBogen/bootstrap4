@@ -15,8 +15,9 @@ if (defined('BS4_STARTPAGE_SHOW_CATEGORYLIST') && BS4_STARTPAGE_SHOW_CATEGORYLIS
 	// Quelle: xtc-load.de - Autor: unbekannt
 	
 	require_once(DIR_WS_MODULES . BS4_FILENAME_CATEGORIES_LIST);
-	
-	$default_smarty->assign('BS4_CATEGORIES_LIST', $module_categories);
 
+	if (isset($module_categories) && $module_categories != '') {
+		$default_smarty->assign('BS4_CATEGORIES_LIST', $module_categories);
+	}
 }
 ?>

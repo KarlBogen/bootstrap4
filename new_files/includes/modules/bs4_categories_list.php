@@ -12,7 +12,9 @@
 	// Anpassung an modified 1.x: sgei
 	// Anpassung an modified 2.x: |Alex|
 	// Quelle: xtc-load.de - Autor: unbekannt
-   
+
+if (file_exists(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/categories_list.html')) {
+
 $module_smarty = new smarty;
 $module_content = array ();
 
@@ -87,5 +89,7 @@ if (!$cache) {
 	$module_categories = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/categories_list.html');
 } else {
 	$module_categories = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/categories_list.html', $cache_id);
+}
+
 }
 ?>
