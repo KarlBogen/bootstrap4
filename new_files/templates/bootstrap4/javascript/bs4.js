@@ -46,6 +46,9 @@ function loadGallery(){
 			if (src.indexOf('print') != -1 || src.indexOf('bs4_') != -1) {
 				var windowheight = $(window).height()-225;
 				$('.modal-body').html('<iframe id="frame" src="'+src+'" width="100%" height="'+windowheight+'" frameborder="0"></iframe>');
+			} else if (src.indexOf('vimeo') != -1 || src.indexOf('youtube') != -1) {
+				var windowheight = $(window).height()-225;
+				$('.modal-body').html('<iframe id="frame" src="'+src+'" width="100%" height="'+windowheight+'" frameborder="0" allowfullscreen=""></iframe>');
 			} else {
 				$('.modal-body').load(src);
 			}
