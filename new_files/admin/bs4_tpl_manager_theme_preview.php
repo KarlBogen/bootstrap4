@@ -317,21 +317,21 @@ li.kk-mega.level5 >a:before {
 				  	<div class="row clearfix mb-4">
 						<div class="listingbox col-sm-6 col-md-4 mb-2">
 							<div class="card h-100">
-								<a class="card-body h-100 pb-2 text-center" href="#">
+								<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="#">
 						            <div class="ribbon bg-danger text-white shadow-sm">Angebot</div>
-						            <div class="lb_image mb-2">
+						            <div class="lb_image w-100 mb-auto">
 										<img class="img-fluid" src="includes/bs4_template_manager/assets/img/1_0.jpg" alt="Test-Artikel 1" />
 									</div>
-									<h2 class="lb_title lead text-secondary mb-1">
+									<h2 class="lb_title lead text-secondary mt-1 mb-0">
 										Test-Artikel 1
 									</h2>
 								</a>
-								<div class="card-body p-1 text-center">
+								<div class="p-1 text-center">
 									<div class="lb_buttons mb-2">
 										<a href="#"><span class="btn btn-cart btn-secondary btn-sm"><span class="fa fa-shopping-cart"></span><span class=""></span></span></a>&nbsp;&nbsp;<a class="btn btn-info btn-sm" href="#"><span class="fa fa-heart"></span></a>&nbsp;&nbsp;<a href="#"><span class="btn btn-info btn-sm"><span class="fa fa-eye"></span><span class="">&nbsp;&nbsp;Details</span></span></a>
 									</div>
 								</div>
-								<div class="card-footer d-flex flex-column">
+								<div class="card-footer">
 									<div class="mt-auto">
 										<div class="lb_shipping small">Lieferzeit: <a href="#" title="Information">3-4 Tage</a></div>
 										<div class="lb_price text-right mb-1">
@@ -348,21 +348,21 @@ li.kk-mega.level5 >a:before {
 						</div>
 						<div class="listingbox col-sm-6 col-md-4 mb-2">
 							<div class="card h-100">
-								<a class="card-body h-100 pb-2 text-center" href="#">
+								<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="#">
 						            <div class="ribbon bg-primary text-white shadow-sm">Top</div>
-						            <div class="lb_image mb-2">
+						            <div class="lb_image w-100 mb-auto">
 										<img class="img-fluid" src="includes/bs4_template_manager/assets/img/2_0.jpg" alt="Test-Artikel 2" />
 									</div>
-									<h2 class="lb_title lead text-secondary mb-1">
+									<h2 class="lb_title lead text-secondary mt-1 mb-0">
 										Test-Artikel 2
 									</h2>
 								</a>
-								<div class="card-body p-1 text-center">
+								<div class="p-1 text-center">
 									<div class="lb_buttons mb-2">
 										<a href="#"><span class="btn btn-cart btn-secondary btn-sm"><span class="fa fa-shopping-cart"></span><span class=""></span></span></a>&nbsp;&nbsp;<a class="btn btn-info btn-sm" href="#"><span class="fa fa-heart"></span></a>&nbsp;&nbsp;<a href="#"><span class="btn btn-info btn-sm"><span class="fa fa-eye"></span><span class="">&nbsp;&nbsp;Details</span></span></a>
 									</div>
 								</div>
-								<div class="card-footer d-flex flex-column">
+								<div class="card-footer">
 									<div class="mt-auto">
 										<div class="lb_shipping small">Lieferzeit: <a href="#" title="Information">3-4 Tage</a></div>
 										<div class="lb_price text-right mb-1"><span class="standard_price lead clearfix">4,50 EUR</span>
@@ -375,21 +375,21 @@ li.kk-mega.level5 >a:before {
 						</div>
 						<div class="listingbox col-sm-6 col-md-4 mb-2">
 							<div class="card h-100">
-								<a class="card-body h-100 pb-2 text-center" href="#">
+								<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="#">
 						            <div class="ribbon bg-success text-white shadow-sm">Neu</div>
-						            <div class="lb_image mb-2">
+						            <div class="lb_image w-100 mb-auto">
 										<img class="img-fluid" src="includes/bs4_template_manager/assets/img/3_0.jpg" alt="Test-Artikel 3" />
 									</div>
-									<h2 class="lb_title lead text-secondary mb-1">
+									<h2 class="lb_title lead text-secondary mt-1 mb-0">
 										Test-Artikel 3
 									</h2>
 								</a>
-								<div class="card-body p-1 text-center">
+								<div class="p-1 text-center">
 									<div class="lb_buttons mb-2">
 										<a href="#"><span class="btn btn-cart btn-secondary btn-sm"><span class="fa fa-shopping-cart"></span><span class=""></span></span></a>&nbsp;&nbsp;<a class="btn btn-info btn-sm" href="#"><span class="fa fa-heart"></span></a>&nbsp;&nbsp;<a href="#"><span class="btn btn-info btn-sm"><span class="fa fa-eye"></span><span class="">&nbsp;&nbsp;Details</span></span></a>
 									</div>
 								</div>
-								<div class="card-footer d-flex flex-column">
+								<div class="card-footer">
 									<div class="mt-auto">
 										<div class="lb_shipping small">Lieferzeit: <a href="#" title="Information">3-4 Tage</a></div>
 										<div class="lb_price text-right mb-1"><span class="standard_price lead clearfix">1,40 EUR</span>

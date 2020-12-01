@@ -14,7 +14,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 	require_once "scssphp/scss.inc.php";
 	require_once "scssphp/server/Server.php";
 	use ScssPhp\ScssPhp\Compiler;
-	use ScssPhp\ScssPhp\Server;
+    use ScssPhp\ScssPhp\OutputStyle;
+	use ScssPhp\Server\Server;
 
 class Bs4TplManager {
 
@@ -29,7 +30,7 @@ class Bs4TplManager {
 
 		try {
 			$scss = new Compiler();
-			$scss->setFormatter('ScssPhp\ScssPhp\Formatter\Compressed');
+			$scss->setOutputStyle(OutputStyle::COMPRESSED);
 
 			$server = new Server('includes/bs4_template_manager/themes', null, $scss);
 

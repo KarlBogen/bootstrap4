@@ -1,5 +1,6 @@
 UNRELEASED
 
+- SCSSPHP-Compiler Update und damit verbundene Änderungen am Theme Manager
 - Javascriptdateien bs4.js und bs4.min.js vorbereitet für das Modul "YouTube- & Vimeo-Videos auf der Produktdetailseite (MMLC-Version) by awids 1.0.0"
 
 1.1.0 [29.11.2020]
