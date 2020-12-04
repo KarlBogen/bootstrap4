@@ -42,20 +42,21 @@ $popup_smarty = new Smarty;
         $data_reviews[$reviews['reviews_rating']][] = array (
           'AUTHOR' => $reviews['customers_name'],
           'DATE' => xtc_date_short($reviews['date_added']),
-          'RATING_VOTE' => constant(BS4_AWIDSRATINGBREAKDOWN_LINK_.$reviews['reviews_rating']),
+          'RATING_VOTE' => constant('BS4_AWIDSRATINGBREAKDOWN_LINK_'.$reviews['reviews_rating']),
           'LANG_ID' => (int)$reviews['languages_id'],
           'TEXT' => nl2br($reviews['reviews_text'])
         );
       }
     }
 
-$counter = count($data_reviews[1]);
+$counter = isset($data_reviews[1]) ? count($data_reviews[1]) : 0;
 $headline_1 = $counter.' '.constant('BS4_AWIDSRATINGBREAKDOWN_HEADLINE1');
 $popup_smarty->assign('headline_1', $headline_1);
 for ($i = 2; $i < 6; $i++) {
-	${'headline_'.$i} = count($data_reviews[$i]).' '.sprintf(BS4_AWIDSRATINGBREAKDOWN_HEADLINE2, $i);
+	$plus = isset($data_reviews[$i]) ? count($data_reviews[$i]) : 0;
+	${'headline_'.$i} = $plus.' '.sprintf(BS4_AWIDSRATINGBREAKDOWN_HEADLINE2, $i);
 	$popup_smarty->assign('headline_'.$i, ${'headline_'.$i});
-	$counter = $counter + count($data_reviews[$i]);
+	$counter = $counter + $plus;
 }
 $headline_all = sprintf(BS4_AWIDSRATINGBREAKDOWN_HEADLINE3, $counter);
 $popup_smarty->assign('headline_all', $headline_all);

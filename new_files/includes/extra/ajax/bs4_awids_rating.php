@@ -68,7 +68,7 @@ function bs4_awids_rating() {
 					$sum_ratings = $sum_ratings + ($result['rate']*$result['res']);
 				}
 				$average = number_format(($sum_ratings/$sum_reviews), 1, ',','');
-				$average_percent = number_format((100/5*$sum_ratings/$sum_reviews), $precision, ',','');
+				$average_percent = number_format((100/5*$sum_ratings/$sum_reviews), 0, ',','');
 			}
 
 			$data = array (

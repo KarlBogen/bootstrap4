@@ -61,7 +61,7 @@
 					<th class="ord_table_right">{#head_price#}</th>
 				</tr>
 				{foreach name=aussen item=order_values from=$order_data}
-					<tr class="mainrow">
+					<tr class="mainrow" style="page-break-inside: avoid;">
 						<td class="ord_table_left ord_width40">{$order_values.PRODUCTS_QTY}&nbsp;x</td>
 						<td class="ord_table_left">
 							<strong>{$order_values.PRODUCTS_NAME}</strong>
@@ -81,7 +81,7 @@
 			</table>
 			<div class="hr_5"></div>
 			{if sizeof($order_total) > 0}
-				<div class="total_table_right">
+				<div class="total_table_right" style="page-break-inside: avoid;">
 					<table class="total_table">
 					{foreach name=aussen item=order_total_values from=$order_total}
 						<tr>

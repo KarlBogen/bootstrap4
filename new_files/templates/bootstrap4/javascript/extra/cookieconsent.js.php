@@ -17,8 +17,8 @@ if (defined('MODULE_COOKIE_CONSENT_STATUS') && strtolower(MODULE_COOKIE_CONSENT_
     $lng = new language;
   }
 
+  $lang_links = '';
   if (count($lng->catalog_languages) > 1 && strpos(basename($PHP_SELF), 'checkout') === false) {
-    $lang_links = '';
 	$i = 0;
     reset($lng->catalog_languages);
     foreach ($lng->catalog_languages as $key => $value) {

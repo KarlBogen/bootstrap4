@@ -1,5 +1,5 @@
 <?php
-if (BS4_HIDE_EMPTY_CATEGORIES == 'true') {
+if (defined('BS4_HIDE_EMPTY_CATEGORIES') && BS4_HIDE_EMPTY_CATEGORIES == 'true') {
 
 /* ------------------------------------------------------------
 	Module "Bootstrap 4 Template-Manager" made by Karl

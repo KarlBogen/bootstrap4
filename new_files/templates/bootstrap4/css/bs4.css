@@ -29,7 +29,6 @@
 }
 .cat_show img {
     max-height: 150px;
-    max-width: 150px;
 }
 .content_banner img {
     height: auto;
@@ -165,7 +164,7 @@ ul#categorymenu li a {
 .carousel .card a, .listingbox .card a, .listingrow.card a, .over-hidden a {
     pointer-events: auto;
 }
-.carousel .card:hover, .listingbox .card:hover, .listingrow.card:hover, .subcat.card:hover {
+.carousel .card:hover, .listingbox .card:hover, .listingrow.card:hover, .subcat.card:hover, .cat .card:hover {
 	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35) !important;
 }
 .lr_title.lead, .lb_title.lead, .lr_price .lead, .lb_price .lead, .pd_price .lead {

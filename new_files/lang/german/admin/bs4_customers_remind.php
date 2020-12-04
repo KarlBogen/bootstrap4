@@ -34,8 +34,8 @@ define('CUSTOMERS_ADVERTISING_DELETE_CONFIRM', 'Sind Sie sicher, dass Sie diese 
 
 define('BUTTON_SEND_GIFT', 'Gutschein senden');
 
-define('TEXT_SORT_ASC','aufsteigend');
-define('TEXT_SORT_DESC','absteigend');
+defined('TEXT_SORT_ASC') or define('TEXT_SORT_ASC','aufsteigend');
+defined('TEXT_SORT_DESC') or define('TEXT_SORT_DESC','absteigend');
 define('TEXT_MODULES_NOT_ACTIVATED','<h4>Das Modul ist nicht aktiviert!<br /><br />
 	Sie k&ouml;nnen das Modul aktivieren unter "Erw. Konfiguration -> Bootstrap 4 Template Manager -> BS4 Konfiguration" Tab "Module"!</h4>');
 ?>

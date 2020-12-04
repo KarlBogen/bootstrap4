@@ -33,9 +33,9 @@ if (defined('BS4_ATTR_PRICE_UPDATER') && BS4_ATTR_PRICE_UPDATER == 'true') {
         'vpetext'      => htmlentities($json_vpetext = xtc_get_vpe_name($product->data['products_vpe']) ? $json_vpetext : TEXT_PRODUCTS_VPE),
         'vpevalue'     => (($product->data['products_vpe_status'] && (double)$product->data['products_vpe_value']) ? (double)$product->data['products_vpe_value'] : false),
         'attrvpevalue' => (($product->data['products_vpe_status'] && (double)$products_options['attributes_vpe_value']) ? (double)$products_options['attributes_vpe_value'] : false),
-        'onlytext'     => $json_onlytext ? $json_onlytext : TXT_ONLY,
-        'protext'      => $json_protext ? $json_protext : TXT_PER,
-        'insteadtext'  => $json_insteadtext ? $json_insteadtext : TXT_INSTEAD,
+        'onlytext'     => isset($json_onlytext) ? $json_onlytext : TXT_ONLY,
+        'protext'      => isset($json_protext) ? $json_protext : TXT_PER,
+        'insteadtext'  => isset($json_insteadtext) ? $json_insteadtext : TXT_INSTEAD,
       ]
     )
   );
