@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: cookieconsent.js.php 12860 2020-08-05 10:32:40Z GTB $
+   $Id: cookieconsent.js.php 13006 2020-12-06 15:26:30Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
