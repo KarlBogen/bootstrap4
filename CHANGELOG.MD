@@ -1,8 +1,12 @@
 UNRELEASED
 
-- jquery.cookieconsent-oil.ccs angepasst
+
+1.1.1 [19.01.2021]
+
+- jquery.cookieconsent-oil.css angepasst
 - SCSSPHP-Compiler Update und damit verbundene Änderungen am Theme Manager
 - Javascriptdateien bs4.js und bs4.min.js vorbereitet für das Modul "YouTube- & Vimeo-Videos auf der Produktdetailseite (MMLC-Version) by awids 1.0.0"
+- Fehler in automatischer Preisberechnung für Attribute(VPE-Preis) behoben
 - PHP-Notizen und PHP-Warnungen bearbeitet
 
 1.1.0 [29.11.2020]

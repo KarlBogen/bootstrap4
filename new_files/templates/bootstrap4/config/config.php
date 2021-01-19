@@ -172,6 +172,7 @@
 		Der im oberen Bereich angezeigte Text kann im Content Manager geändert werden!
 		Link zum Originalmodul: https://www.modified-shop.org/forum/index.php?topic=2153.0 */
 	defined('BS4_ATTR_PRICE_UPDATER') or define('BS4_ATTR_PRICE_UPDATER', 'false'); // 'false' = deaktiviert / 'true' = aktiviert
+	defined('BS4_ATTR_PRICE_UPDATER_UPDATE_PRICE') or define('BS4_ATTR_PRICE_UPDATER_UPDATE_PRICE', 'true'); // der Artikelpreis wird automatisch angepasst - 'false' = deaktiviert / 'true' = aktiviert
 		/* Modul "Automatische Preisberechnung" aktivieren!
 		Hinweis:
 		Aufpreispflichtige Optionen/Attribute werden automatisch zum Artikelpreis hinzugerechnet.
