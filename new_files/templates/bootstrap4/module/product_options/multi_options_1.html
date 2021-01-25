@@ -44,14 +44,13 @@
 									} else if (data.prefix == '=') {
 										summe += data.aprice - data.gprice;
 									}
+									attrvpevalue += data.attrvpevalue;
 								}
-								attrvpevalue += data.attrvpevalue;
 							}
 						});
 						var newPrice = (Math.round((summe + data.gprice) * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
 						var oldPrice = (Math.round((summe + data.oprice) * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
-						var newVpePrice = (Math.round((summe + data.gprice) / data.vpevalue * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
-						if (data.vpevalue !== false && attrvpevalue != 0) {
+						if (data.vpevalue !== false) {
 							var newVpePrice = (Math.round((summe + data.gprice) / attrvpevalue * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
 						}
 						if (data.cleft) {
