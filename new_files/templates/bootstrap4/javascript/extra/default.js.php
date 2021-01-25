@@ -64,8 +64,8 @@
 		});
 <?php } ?>
 <?php if (BS4_TOP_PROD_IN_SLIDER == 'true') { ?>
-		// Topslider (autoslide -> interval:4000; nur per Klick -> interval:false)
-		bs4Carousel('#bs4_TopCarousel');
+		// Topslider - zweiter Parameter Anzahl der sichtbaren Zeilen
+		bs4Carousel('#bs4_TopCarousel',1);
 <?php 	if (BS4_TOPCAROUSEL_NAME_LINES != 0) { ?>
 			// Zeilenbegrenzung Artikelname
 			$("#topCarousel .lb_title").ellipsis();
