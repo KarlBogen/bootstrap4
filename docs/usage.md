@@ -109,10 +109,22 @@ Wer das neue Modul bereits nutzen will, der muss darauf achten, von hier
 
 immer die aktuellen Dateien zu nutzen.
 
-- Dateien aus den Ordnern NEW_FILES und CHANGED_FILES in den Shop kopieren.
-- Im Adminbereich **Module -> System Module** das Modul **Cookie Consent** installieren.
-- Konfiguriert kann das Modul unter Menüpunkt **Konfiguration -> Cookie Consent** werden.
-- *Am Template müssen keine Veränderungen vorgenommen werden, alle nötigen Dateien sind im Templateordner enthalten.*
+Ist das Modul aktualisiert worden, dann müssen auch diese Templatedateien geprüft werden
+- templates/bootstrap4/boxes/box_content.html
+- templates/bootstrap4/css/jquery.cookieconsent-oil.css
+- templates/bootstrap4/javascript/general.js.php
+- templates/bootstrap4/javascript/oil.min.js
+- templates/bootstrap4/javascript/extra/cookieconsent.js.php
+- templates/bootstrap4/index.html
+- templates/bootstrap4/offline.html
+
+#### Einbau
+
+1.	Dateien aus den Ordnern NEW_FILES und CHANGED_FILES in den Shop kopieren.
+2.	Im Adminbereich **Module -> System Module** das Modul **Cookie Consent** installieren.
+3.	Konfiguriert kann das Modul unter Menüpunkt **Konfiguration -> Cookie Consent** werden.<br />
+	*Am Template müssen keine Veränderungen vorgenommen werden, alle nötigen Dateien sind im Templateordner enthalten.*
+
 
 P.S.:
 - Bei einem Update der Dateien aus dem oberen Link sollte man vorsichtshalber immer **Module -> System Module** einmal aufrufen. Eventuell wird man aufgefordert das Modul einmal zu sichern (Backup), zu deinstallieren und wieder zu installieren.
