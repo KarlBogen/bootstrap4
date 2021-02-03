@@ -1,5 +1,8 @@
 UNRELEASED
 
+
+1.1.2 [03.02.2021]
+
 - Slider Top-Artikel und Bestseller können mehrzeilig angezeigt werden.
 - Fehler in automatischer Preisberechnung behoben
 

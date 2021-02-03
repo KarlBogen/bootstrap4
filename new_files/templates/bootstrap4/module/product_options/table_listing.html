@@ -52,8 +52,8 @@
 									} else if (data.prefix == '=') {
 										summe += data.aprice - data.gprice;
 									}
-									attrvpevalue += data.attrvpevalue;
 								}
+								attrvpevalue += data.attrvpevalue;
 							}
 						});
 						var newPrice = (Math.round((summe + data.gprice) * 100) / 100).toFixed(2).toString().replace(/[.]/, ',');
