@@ -55,7 +55,8 @@ Voraussetzung: Dateien sind aktuell - System Modul "Bootstrap 4 Template-Manager
 - Zur Nutzung neuer Funktionen des Template Managers muss im Adminbereich **Module->System Module** der **Bootstrap 4 Template-Manager** ausgewählt werden.
 - Anschließend den Button **Update** klicken und Update ausführen.
 
-*Hinweis: Die bisher gemachten Einstellungen werden nicht überschrieben, es werden nur neue Funktionen mit den Standardwerten hinzugefügt.*
+*Hinweis: Die bisher gemachten Einstellungen werden nicht überschrieben, es werden nur neue Funktionen mit den Standardwerten hinzugefügt.<br />
+Dies betrifft nicht die gemachten Theme-Einstellungen für **eigenes Theme 1** und **eigenes Theme 2**, diese Einstellungen werden in Dateien gespeichert (Ordner admin/includes/bs4_template_manager/themes/custom1/ und admin/includes/bs4_template_manager/themes/custom2/).*
 
 ## Bilderslider
 
