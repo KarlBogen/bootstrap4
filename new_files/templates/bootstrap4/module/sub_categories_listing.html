@@ -6,8 +6,7 @@
 	<h4 class="card p-2 bg-h">{#heading_more_categories#}</h4>
 	<div class="row mb-2">
 		{foreach name=aussen item=categories_data from=$categories_content key=spalten}
-		{* diese IF-Abfrage habe eingefügt, weil bei leeren Unterkategorien ein Array nur mit dem Image ankommt *}
-		{if $categories_data.CATEGORIES_LINK}
+			{if isset($categories_data.CATEGORIES_PRODUCTS) && $categories_data.CATEGORIES_PRODUCTS > 0}
 			<div class="col-sm-6 col-md-4 col-lg-3 text-center mb-2">
 				<a class="subcat card h-100" href="{$categories_data.CATEGORIES_LINK}">
 					<div class="card-body flex-fill d-flex flex-column text-center">
@@ -23,7 +22,7 @@
 					</div>
 				</a>
 			</div>
-		{/if}
+			{/if}
 		{/foreach}
 	</div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-if (defined('BS4_HIDE_EMPTY_CATEGORIES') && BS4_HIDE_EMPTY_CATEGORIES == 'true') {
+if (BS4_HIDE_EMPTY_CATEGORIES == 'true') {
 
 /* ------------------------------------------------------------
 	Module "Bootstrap 4 Template-Manager" made by Karl
@@ -10,10 +10,9 @@ if (defined('BS4_HIDE_EMPTY_CATEGORIES') && BS4_HIDE_EMPTY_CATEGORIES == 'true')
 	Released under the GNU General Public License
 -------------------------------------------------------------- */
 
-// Leere Kategorien entfernen
+// Leere Kategorien kennzeichnen
 require_once (DIR_FS_INC.'xtc_count_products_in_category.inc.php');
-if (xtc_count_products_in_category($categories['categories_id']) < 1) array_pop($categories_content);
-if (empty($categories_content)) unset($categories_content);
+$categories_content[$rows]['CATEGORIES_PRODUCTS'] = xtc_count_products_in_category($categories['categories_id']);
 
 }
 ?>
