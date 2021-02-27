@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Leere Unterkategorien wurden in Produktlisten angezeigt
 
 1.1.2 [03.02.2021]
 

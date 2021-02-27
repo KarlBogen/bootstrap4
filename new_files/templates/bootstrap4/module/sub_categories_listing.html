@@ -6,21 +6,24 @@
 	<h4 class="card p-2 bg-h">{#heading_more_categories#}</h4>
 	<div class="row mb-2">
 		{foreach name=aussen item=categories_data from=$categories_content key=spalten}
-		<div class="col-sm-6 col-md-4 col-lg-3 text-center mb-2">
-			<a class="subcat card h-100" href="{$categories_data.CATEGORIES_LINK}">
-				<div class="card-body flex-fill d-flex flex-column text-center">
-					<div class="w-100 mb-auto">
-					{if $categories_data.CATEGORIES_IMAGE}
-						<img class="img-fluid d-block mx-auto" src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
-					{/if}
+		{* diese IF-Abfrage habe eingefügt, weil bei leeren Unterkategorien ein Array nur mit dem Image ankommt *}
+		{if $categories_data.CATEGORIES_LINK}
+			<div class="col-sm-6 col-md-4 col-lg-3 text-center mb-2">
+				<a class="subcat card h-100" href="{$categories_data.CATEGORIES_LINK}">
+					<div class="card-body flex-fill d-flex flex-column text-center">
+						<div class="w-100 mb-auto">
+						{if $categories_data.CATEGORIES_IMAGE}
+							<img class="img-fluid d-block mx-auto" src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
+						{/if}
+						</div>
+						<div class="mt-2">
+							<span class="subcat_title lead text-secondary">{$categories_data.CATEGORIES_NAME}</span>
+							{* <p class="subcat_desc small">{$categories_data.CATEGORIES_DESCRIPTION|onlytext|truncate:55:"...":true}</p> *}
+						</div>
 					</div>
-					<div class="mt-2">
-						<span class="subcat_title lead text-secondary">{$categories_data.CATEGORIES_NAME}</span>
-						{* <p class="subcat_desc small">{$categories_data.CATEGORIES_DESCRIPTION|onlytext|truncate:55:"...":true}</p> *}
-					</div>
-				</div>
-			</a>
-		</div>
+				</a>
+			</div>
+		{/if}
 		{/foreach}
 	</div>
 </div>
