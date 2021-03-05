@@ -1,5 +1,17 @@
 UNRELEASED
 
+
+
+1.1.3 [05.03.2021]
+
+- Template: Update Bootstrap-Framework 4.4.1 zu 4.6.0
+- Template: Update jQuery 3.5.1 zu 3.6.0
+- Template: Update Easyzoom
+- Admin: Update Bootstrap-Framework 4.4.1 zu 4.6.0
+- Admin: Update Bootswatch Themes zu 4.6.0
+- Admin: Update JS/CSS Farbauswahlfeld im Theme Manager
+- Admin: Update SCSS-Compiler
+- Wegfallende Funktionen PHP 8 aktualisiert
 - Leere Unterkategorien wurden in Produktlisten angezeigt
 
 1.1.2 [03.02.2021]

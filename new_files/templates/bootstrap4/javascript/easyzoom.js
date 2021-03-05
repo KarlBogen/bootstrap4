@@ -1,3 +1,9 @@
+/*!
+ * @name        easyzoom
+ * @author       <> https://i-like-robots.github.io/EasyZoom/
+ * @modified    Friday, May 15th, 2020
+ * @version     2.5.3
+ */
 (function (root, factory) {
     'use strict';
     if(typeof define === 'function' && define.amd) {
@@ -118,8 +124,8 @@
         var zoomImgWidth = this.$zoom.width();
         var zoomImgHeight = this.$zoom.height();
 
-        zoomImgOverlapX = zoomImgWidth - flyoutInnerWidth;
-        zoomImgOverlapY = zoomImgHeight - flyoutInnerHeight;
+        zoomImgOverlapX = Math.ceil(zoomImgWidth - flyoutInnerWidth);
+        zoomImgOverlapY = Math.ceil(zoomImgHeight - flyoutInnerHeight);
 
         // For when the zoom image is smaller than the flyout element.
         if (zoomImgOverlapX < 0) zoomImgOverlapX = 0;
@@ -244,17 +250,17 @@
         }
 
         var targetOffset  = this.$target.offset();
-        var relativePositionX = pointerPositionY - targetOffset.top;
-        var relativePositionY = pointerPositionX - targetOffset.left;
-        var moveX = Math.ceil(relativePositionX * ratioY);
-        var moveY = Math.ceil(relativePositionY * ratioX);
+        var relativePositionX = pointerPositionX - targetOffset.left;
+        var relativePositionY = pointerPositionY - targetOffset.top;
+        var moveX = Math.ceil(relativePositionX * ratioX);
+        var moveY = Math.ceil(relativePositionY * ratioY);
 
         // Close if outside
-        if (moveY < 0 || moveX < 0 || moveY > zoomImgOverlapX || moveX > zoomImgOverlapY) {
+        if (moveX < 0 || moveY < 0 || moveX > zoomImgOverlapX || moveY > zoomImgOverlapY) {
             this.hide();
         } else {
-            var top = moveX * -1;
-            var left = moveY * -1;
+            var top = moveY * -1;
+            var left = moveX * -1;
 
             this.$zoom.css({
                 top: top,

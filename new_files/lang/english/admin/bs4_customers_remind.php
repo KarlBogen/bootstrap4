@@ -38,4 +38,5 @@ defined('TEXT_SORT_ASC') or define('TEXT_SORT_ASC','ascending');
 defined('TEXT_SORT_DESC') or define('TEXT_SORT_DESC','descending');
 define('TEXT_MODULES_NOT_ACTIVATED','<h4>The module is not activated!<br /><br />
 	You can activate the module under "Adv. Configuration -> Bootstrap 4 Template Manager -> BS4 Configuration" Tab "Modules"!</h4>');
+defined('TEXT_IMAGE_NONEXISTENT') or define('TEXT_IMAGE_NONEXISTENT', 'Kein Bild');
 ?>

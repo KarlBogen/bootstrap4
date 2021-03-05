@@ -1,4 +1,4 @@
-// Yeti 4.3.1
+// Yeti 4.6.0
 // Bootswatch
 
 
@@ -13,7 +13,6 @@
 }
 
 .bg-primary {
-
   .dropdown-menu {
     background-color: $primary;
 
@@ -26,7 +25,7 @@
     .dropdown-item:hover,
     .dropdown-item:focus {
       background-color: darken($primary, 5%);
-      color: #fff;
+      color: $white;
     }
   }
 }
@@ -46,13 +45,12 @@
     .dropdown-item:hover,
     .dropdown-item:focus  {
       background-color: darken($gray-800, 5%);
-      color: #fff;
+      color: $white;
     }
   }
 }
 
 .bg-light {
-
   .dropdown-menu {
     background-color: $gray-200;
 
@@ -109,13 +107,11 @@
 }
 
 .btn-group {
-
   .dropdown-menu {
     border-top-width: 0;
   }
 
   .dropdown-toggle {
-
     &.btn-primary ~ .dropdown-menu {
       background-color: $primary;
       border-color: darken($primary, 5%);
@@ -135,7 +131,7 @@
       border-color: darken($secondary, 5%);
 
       .dropdown-item {
-        color: $white;
+        color: $body-color;
       }
 
       .dropdown-item:hover,
@@ -188,7 +184,7 @@
 
     &.btn-danger ~ .dropdown-menu {
       background-color: $danger;
-      border-color: darken($primary, 5%);
+      border-color: darken($danger, 5%);
 
       .dropdown-item {
         color: $white;
@@ -219,121 +215,155 @@ table {
 }
 
 .table {
-
   &-primary,
   &-success,
   &-info,
   &-warning,
   &-danger {
-    color: #fff;
+    color: $white;
   }
 
   &-primary {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $primary;
     }
   }
 
   &-secondary {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $secondary;
     }
   }
 
   &-light {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $light;
     }
   }
 
   &-dark {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $dark;
     }
   }
 
   &-success {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $success;
     }
   }
 
   &-info {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $info;
     }
   }
 
   &-danger {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $danger;
     }
   }
 
   &-warning {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $warning;
     }
   }
 
   &-active {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $table-active-bg;
     }
   }
 
   &-hover {
-
     .table-primary:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($primary, 5%);
       }
     }
 
     .table-secondary:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($secondary, 5%);
       }
     }
 
     .table-light:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($light, 5%);
       }
     }
 
     .table-dark:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($dark, 5%);
       }
     }
 
     .table-success:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($success, 5%);
       }
     }
 
     .table-info:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($info, 5%);
       }
     }
 
     .table-danger:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($danger, 5%);
       }
     }
 
     .table-warning:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: darken($warning, 5%);
       }
     }
 
     .table-active:hover {
-      &, > th, > td {
+      &,
+      > th,
+      > td {
         background-color: $table-active-bg;
       }
     }
@@ -355,8 +385,8 @@ label,
 // Navs ========================================================================
 
 .dropdown-item {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
   font-size: $font-size-sm;
   font-weight: 300;
 }
@@ -396,8 +426,8 @@ label,
   .page-link {
     border-color: transparent;
     border-radius: 3px;
-    margin-left: 0.1em;
-    margin-right: 0.1em;
+    margin-left: .1em;
+    margin-right: .1em;
 
     &:hover,
     &:focus {
@@ -431,7 +461,7 @@ label,
 // Indicators ==================================================================
 
 .close {
-  opacity: 0.6;
+  opacity: .6;
   text-shadow: none;
 
   &:hover,
@@ -446,64 +476,80 @@ label,
   color: $white;
 
   &-primary {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $primary;
     }
   }
 
   &-secondary {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $secondary;
     }
   }
 
   &-success {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $success;
     }
   }
 
   &-info {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $info;
     }
   }
 
   &-danger {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $danger;
     }
   }
 
   &-warning {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $warning;
     }
   }
 
   &-dark {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $dark;
     }
   }
 
   &-light {
-    &, > th, > td {
+    &,
+    > th,
+    > td {
       background-color: $light;
     }
   }
 
   .alert-link {
-    font-weight: normal;
-    color: #fff;
+    font-weight: 400;
+    color: $white;
     text-decoration: underline;
   }
 
   &-secondary,
   &-light {
     &,
-    & a:not(.btn),
-    & .alert-link {
+    a:not(.btn),
+    .alert-link {
       color: $body-color;
     }
   }
@@ -528,4 +574,10 @@ label,
   @include box-shadow(none);
 }
 
-// Containers ==================================================================
+
+// Popovers      ===============================================================
+
+.popover-header {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

@@ -1366,6 +1366,7 @@ class Parser
                     ]
                 ];
 
+            case Type::T_CUSTOM_PROPERTY:
             case Type::T_UNARY:
                 $parsed[2] = $this->isPlainCssValidElement($parsed[2]);
                 if (! $parsed[2]) {
@@ -2988,9 +2989,10 @@ class Parser
             } elseif ($m[2] === "\r") {
                 $content[] = chr(10);
                 // TODO : warning
-                # DEPRECATION WARNING on line x, column y of zzz:
-                # Unescaped multiline strings are deprecated and will be removed in a future version of Sass.
-                # To include a newline in a string, use "\a" or "\a " as in CSS.
+// Änderung Karl - auskommentiert mit Querstrichen für PHP 8
+//                # DEPRECATION WARNING on line x, column y of zzz:
+//                # Unescaped multiline strings are deprecated and will be removed in a future version of Sass.
+//                # To include a newline in a string, use "\a" or "\a " as in CSS.
                 if ($this->matchChar("\n", false)) {
                     $content[] = ' ';
                 }

@@ -42,8 +42,10 @@ function bs4_get_subcat() {
 	if ($my_cPath) {
 		$new_path = '';
 		$id = explode('_', $my_cPath);
-		end($id); // we need only last cat_id
-		while (list ($key, $value) = each($id)) {
+		// we need only last cat_id
+		$all_keys = array_keys($id);
+		$last = array(end($all_keys) => end($id));
+		foreach ($last as $key => $value) {
 			unset ($prev_id);
 			unset ($first_id);
 			$categories_query = xtDBquery("SELECT c.categories_id,

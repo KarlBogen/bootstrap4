@@ -7,7 +7,7 @@
 |     Contact: info@andreas-guder.de / http://www.andreas-guder.de          |
 | Copyright (c) 2019, Andreas Guder [info@andreas-guder.de]                 |
 |               GNU General Public License  (Version 2)                     |
-'---------------------------------------------------------------------------ü
+'---------------------------------------------------------------------------?
 */
 if (defined('BS4_AGI_REDUCE_CART') && BS4_AGI_REDUCE_CART == 'true') {
   if (STOCK_CHECK == 'true' && STOCK_ALLOW_CHECKOUT != 'true' && $goto != FILENAME_SHOPPING_CART) {
@@ -38,7 +38,7 @@ if (defined('BS4_AGI_REDUCE_CART') && BS4_AGI_REDUCE_CART == 'true') {
           if (is_array($_POST['id'])) {
             $agi_attributes = $_POST['id'];
             reset($_POST['id']);
-            while (list($option, $value) = each($_POST['id'])) {
+            foreach ($_POST['id'] as $option => $value) {
               $agi_attributes_id_string .= '{'.$option.'}'.$value;
               $agi_attributes_data = $main->getAttributes($agi_products_id,$option,$value);
               if($agi_attributes_data['attributes_stock'] < $rest && ATTRIBUTE_STOCK_CHECK == 'true')
