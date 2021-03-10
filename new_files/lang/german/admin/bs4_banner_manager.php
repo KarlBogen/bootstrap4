@@ -37,8 +37,8 @@ define('BS4_BANNER_INDICATOR_ROUNDED', 'Runde Indicators - Bilderregler');
 define('BS4_BANNER_DURATION', 'Wechseldauer der Bilder');
 define('BS4_BANNER_SECONDS', 'Sekunden');
 
-define('SUCCESS_BANNER_STATUS_UPDATED', 'Bannerstatus gespeichert!');
-define('ERROR_UNKNOWN_STATUS_FLAG', 'Fehler beim Speichern des Bannerstatus!');
+defined('SUCCESS_BANNER_STATUS_UPDATED') or define('SUCCESS_BANNER_STATUS_UPDATED', 'Bannerstatus gespeichert!');
+defined('ERROR_UNKNOWN_STATUS_FLAG') or define('ERROR_UNKNOWN_STATUS_FLAG', 'Fehler beim Speichern des Bannerstatus!');
 define('BS4_BANNER_DATA_UPDATED', 'Daten gespeichert!');
 define('BS4_NO_DATA', 'Keine Daten vorhanden!');
 define('BS4_CLASSES_NOTE', 'Bei den hier gezeigten Farben handelt es sich um Bootstrap Standardfarben, Farben im Shop k&ouml;nnen abweichen!');

@@ -37,8 +37,8 @@ define('BS4_BANNER_INDICATOR_ROUNDED', 'Round indicators');
 define('BS4_BANNER_DURATION', 'Image duration');
 define('BS4_BANNER_SECONDS', 'Seconds');
 
-define('SUCCESS_BANNER_STATUS_UPDATED', 'Banner status saved!');
-define('ERROR_UNKNOWN_STATUS_FLAG', 'Error saving the banner status!');
+defined('SUCCESS_BANNER_STATUS_UPDATED') or define('SUCCESS_BANNER_STATUS_UPDATED', 'Banner status saved!');
+defined('ERROR_UNKNOWN_STATUS_FLAG') or define('ERROR_UNKNOWN_STATUS_FLAG', 'Error saving the banner status!');
 define('BS4_BANNER_DATA_UPDATED', 'Data saved!');
 define('BS4_NO_DATA', 'No data available!');
 define('BS4_CLASSES_NOTE', 'The colors shown here are Bootstrap standard colors, colors in the shop can be different!');

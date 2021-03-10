@@ -12,7 +12,7 @@
 {elseif isset($module_content)}
 	<h1 class="card p-2 bg-h">{#heading_wishlist#}</h1>
 	<div class="listingcontainer clearfix">
-	{if $smarty.const.BS4_PRODUCT_LIST_BOX == 'true'}
+	{if $smarty.const.BS4_PRODUCT_LIST_BOX == 'true' && $PRODUCT_LIST_BOX != 'true'}
 	<div class="row">
 		{foreach name=aussen item=module_data from=$module_content}
 		<div class="listingbox col-sm-6 col-md-4{if $smarty.const.BS4_FULLCONTENT == 'true'} col-lg-3{/if} mb-2">

@@ -1,6 +1,7 @@
 UNRELEASED
 
-
+- einige Sprachdateien geändert damit Doppeldefinitionen vermieden werden
+- Fehler in automatischer Preisberechnung - Division mit 0 - behoben
 
 1.1.3 [05.03.2021]
 
