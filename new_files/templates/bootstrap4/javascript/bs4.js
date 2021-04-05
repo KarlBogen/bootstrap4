@@ -82,8 +82,6 @@ $(document).ready(function(){
 	});
 	/* Attribut Price Updater */
 	if (typeof PriceUpdaterReady !== 'undefined' && $.isFunction(PriceUpdaterReady)) {PriceUpdaterReady();}
-	$("img.unveil").attr('style','display: inline-block !important');
-	$(".unveil").unveil(200);
 	/* Add slideDown animation to Bootstrap dropdown */
 	$('.dropdown').on('show.bs.dropdown', function() {
 		$(this).find('.dropdown-menu').first().stop(true, true).slideDown();

@@ -13,7 +13,7 @@
 
 <h1 class="card p-2 bg-h">{#heading_shipping#}</h1>
 {if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
-
+{if $success_message}<div class="alert alert-success">{$success_message}</div>{/if}
 {$FORM_ACTION}
 <div class="row clearfix">
 	<div class="col-md-6 mb-3">

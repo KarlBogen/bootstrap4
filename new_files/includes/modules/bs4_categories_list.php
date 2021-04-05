@@ -41,8 +41,11 @@ if(!$module_smarty->is_cached(CURRENT_TEMPLATE.'/module/categories_list.html', $
 	}
 	$categories_query = "SELECT c.categories_id,
 								c.categories_image,
+                                c.categories_image_list,
+                                c.categories_image_mobile,
 								cd.categories_name,
-								cd.categories_description
+								cd.categories_description,
+                                cd.categories_heading_title
 							FROM ".TABLE_CATEGORIES." AS c,
 								".TABLE_CATEGORIES_DESCRIPTION." AS cd
 							WHERE c.categories_id = cd.categories_id
@@ -55,30 +58,22 @@ if(!$module_smarty->is_cached(CURRENT_TEMPLATE.'/module/categories_list.html', $
 	$categories_query = xtDBquery($categories_query);
 
 	while($categories = xtc_db_fetch_array($categories_query, true)) {
-		$category_link = xtc_category_link($categories['categories_id'],$categories['categories_name']);
 
-		$image = '';
-		if ($categories['categories_image'] != '') {
-			if (!file_exists(DIR_FS_CATALOG.DIR_WS_IMAGES.'categories/thumbnail_images/'.$categories['categories_image'])) {
-				$image = DIR_WS_IMAGES.'categories/'.$categories['categories_image'];
-			} else {
-				$image = DIR_WS_IMAGES.'categories/thumbnail_images/'.$categories['categories_image'];
-			}
-			if (!file_exists(DIR_FS_CATALOG.$image)) {
-				if (CATEGORIES_IMAGE_SHOW_NO_IMAGE == 'true') {
-					$image = DIR_WS_IMAGES.'categories/noimage.gif';
-				} else {
-					$image = '';
-				}
-			}
-		}
+		$cPath_new = xtc_category_link($categories['categories_id'],$categories['categories_name']);
 
-		$module_content[] = array ('CATEGORY_NAME'        => $categories['categories_name'],
-									'CATEGORY_IMAGE_TRUE'  => $categories['categories_image'],
-									'CATEGORY_IMAGE'       => (($image != '') ? DIR_WS_BASE . $image : ''),
-									'CATEGORY_LINK'        => xtc_href_link(FILENAME_DEFAULT,  xtc_get_all_get_params(array(array('cat','page','filter_id','manufacturers_id'))) . $category_link),
-									'CATEGORY_DESCRIPTION' => $categories['categories_description']
-									);
+		$image = $main->getImage($categories['categories_image']);
+		$image_list = $main->getImage($categories['categories_image_list']);
+		$image_mobile = $main->getImage($categories['categories_image_mobile']);
+
+		$module_content[] = array (
+	        'CATEGORY_NAME' => $categories['categories_name'],
+	        'CATEGORY_HEADING_TITLE' => $categories['categories_heading_title'],
+	        'CATEGORY_IMAGE' => (($image != '') ? DIR_WS_BASE . $image : ''),
+	        'CATEGORY_IMAGE_LIST' => (($image_list != '') ? DIR_WS_BASE . $image_list : ''),
+	        'CATEGORY_IMAGE_MOBILE' => (($image_mobile != '') ? DIR_WS_BASE . $image_mobile : ''),
+	        'CATEGORY_LINK' => xtc_href_link(FILENAME_DEFAULT, $cPath_new),
+	        'CATEGORY_DESCRIPTION' => $categories['categories_description']
+		);
 	}
   
 	$module_smarty->assign('module_content', $module_content);

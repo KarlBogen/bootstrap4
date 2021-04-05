@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id$
+   $Id: add_a_quickie.php 12770 2020-05-17 15:32:10Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -22,21 +22,13 @@
 // include smarty
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
 
-// set cache id
-$cache_id = md5($_SESSION['language']);
+$box_smarty->assign('FORM_ACTION',xtc_draw_form('quick_add', xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array ('action')) . 'action=add_a_quickie', $request_type)));
+$box_smarty->assign('INPUT_FIELD',xtc_draw_input_field('quickie','','class="form-control form-control-sm" aria-label="quickie"'));
+$box_smarty->assign('SUBMIT_BUTTON', xtc_image_submit('button_add_quick.gif', BOX_HEADING_ADD_PRODUCT_ID));
+$box_smarty->assign('FORM_END', '</form>');
 
-if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_add_a_quickie.html', $cache_id) || !$cache) {
-  $box_smarty->assign('FORM_ACTION',xtc_draw_form('quick_add', xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array ('action')) . 'action=add_a_quickie', $request_type)));
-  $box_smarty->assign('INPUT_FIELD',xtc_draw_input_field('quickie','','class="form-control form-control-sm" aria-label="quickie"'));
-  $box_smarty->assign('SUBMIT_BUTTON', xtc_image_submit('button_add_quick.gif', BOX_HEADING_ADD_PRODUCT_ID));
-  $box_smarty->assign('FORM_END', '</form>');
-}
-
-if (!$cache) {
-  $box_add_a_quickie = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_add_a_quickie.html');
-} else {
-  $box_add_a_quickie = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_add_a_quickie.html', $cache_id);
-}
+$box_smarty->caching = 0;
+$box_add_a_quickie = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_add_a_quickie.html');
 
 $smarty->assign('box_ADD_QUICKIE', $box_add_a_quickie);
 ?>

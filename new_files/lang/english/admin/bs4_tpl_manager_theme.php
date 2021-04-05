@@ -209,7 +209,7 @@ $lang_array = array(
 		In line 35 is the entry "button_checkout.gif".<br /><br />
 		At first we search on <a href="https://fontawesome.com/icons?d=gallery&s=regular,solid&m=free" target="_blank">Font Awesome</a> for another "checkout" icon e.g. "money-bill-alt".<br />
 		Now this section will change \'icon\' => \'far fa-credit-card\' into \'icon\' => \'far fa-money-bill-alt\' (far stands for regular, alternatively fa or fas can be used for solid).<br /><br />
-		At <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>  we search under Documentation->Components->Buttons for the CSS classes, in our case "btn-primary".<br />
+		At <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank">Bootstrap</a>  we search under Documentation->Components->Buttons for the CSS classes, in our case "btn-primary".<br />
 		We change \'Class\' => \'btn btn-checkout btn-success btn-block\' into \'Class\' => \'btn btn-checkout btn-primary btn-block\'<br /><br />
 		Then empty caches and update the shop!<br /><br />
 		<strong>Note:</strong> Some buttons are used in several places in the shop!',

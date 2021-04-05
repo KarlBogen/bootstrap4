@@ -113,7 +113,7 @@ function bs4_get_subcat() {
 function xtc_show_category($counter, $oldlevel=1, $my_foo, &$my_categories_string, $my_cPath) {
 
 	$func = $_REQUEST['func'];
-	$fullpath = explode('_', $_REQUEST['fpath']);
+	$fullpath = isset($_REQUEST['fpath']) ? explode('_', $_REQUEST['fpath']) : array();
 	$level = isset($my_foo[$counter]['level']) ? $my_foo[$counter]['level']+1 : 1;
 
 	//BOF +++ UL LI Verschachtelung  mit Quelltext Tab Einzügen +++
@@ -236,7 +236,7 @@ function bs4_get_subcat_mega() {
 
 	require_once (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/gunnart_Categories.inc.php');
 	$id = explode('_', $_REQUEST['cPath']);
-	$fullpath = explode('_', $_REQUEST['fpath']);
+	$fullpath = isset($_REQUEST['fpath']) ? explode('_', $_REQUEST['fpath']) : array();;
 
 	$Config = array(
 		'MinLevel'		=>	100,

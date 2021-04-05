@@ -30,17 +30,6 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TOP4' => 'Top4:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TOP4_INFO' => 'Soll Top4 angezeigt werden?<br /><br />
 		Sprachvariable "BS4_top4" in "templates/bootstrap4/lang/lang_german.custom".',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE1' => 'oben zentriert klein',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE2' => 'oben links klein',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE3' => 'oben rechts klein',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE4' => 'oben volle Breite',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE5' => 'unten links klein',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE6' => 'unten rechts klein',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE7' => 'unten volle Breite',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE' => 'Eu-Cookie:',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE_INFO' => '<strong>Wo</strong> soll der EU-COOKIE Hinweis angezeigt werden?',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_CONTENT' => 'Eu-Cookie:',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_CONTENT_INFO' => 'W&auml;hlen Sie eine Contentseite. Im EU-COOKIE Hinweis wird auf diese Seite verlinkt.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_JS_DISABLED' => 'JavaScript-Hinweis:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_JS_DISABLED_INFO' => 'Soll der JavaScript-Hinweis angezeigt werden?<br /><br />
 		<strong>Hinweis:</strong><br />
@@ -326,6 +315,8 @@ $lang_array = array(
 		<strong>Hinweis:</strong><br />
 		 Aufpreispflichtige Optionen/Attribute werden automatisch zum Artikelpreis hinzugerechnet.<br />
 		 Link zum Originalmodul: <a href="https://www.modified-shop.org/forum/index.php?topic=20125.0" target=”_blank”>https://www.modified-shop.org/forum/index.php?topic=20125.0</a>',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_ATTR_PRICE_UPDATER_UPDATE_PRICE_INFO' => 'Soll der gezeigte Preis aktualisiert werden?<br />
+		 Bei "Ja" wird nicht nur ein Hinweis angezeigt, sondern der Artikelpreis per Javascript ersetzt.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_REDUCE_CART' => 'AGI: Anzahl im Warenkorb reduzieren:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_REDUCE_CART_INFO' => 'Modul "AGI: Anzahl im Warenkorb reduzieren" aktivieren!<br />
 		<strong>Hinweis:</strong><br />

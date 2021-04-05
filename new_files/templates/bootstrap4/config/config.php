@@ -19,9 +19,6 @@
 	defined('BS4_SHOW_TOP2') or define('BS4_SHOW_TOP2', 'true'); // Hinweis: In der Topleiste können vier Spalteneinträge angezeigt werden. Damit diese Spalten auch mehrsprachig genutzt werden können, sind die Texte in eine Sprachdatei ausgelagert. Die Texte können in der Datei "templates/bootstrap4/lang/lang_german.custom" geändert werden (Englisch -> "lang_english.custom").
 	defined('BS4_SHOW_TOP3') or define('BS4_SHOW_TOP3', 'true');
 	defined('BS4_SHOW_TOP4') or define('BS4_SHOW_TOP4', 'true');
-	// EU-Cookie
-	defined('BS4_EU_COOKIE_PLACE') or define('BS4_EU_COOKIE_PLACE', 'center'); // Wo EU-COOKIE anzeigen? 'center' = klein oben mittig, 'bottom' = unten volle Breite, weitere Werte 'top', 'bottom-right', 'bottom-left', 'top-right', 'top-left'
-	defined('BS4_EU_COOKIE_CONTENT') or define('BS4_EU_COOKIE_CONTENT', 2); // coID des Contentmanger-Textes der beim Klick auf "Mehr Informationen" angezeigt werden soll (normalerweise "2" für "Privatshäre und Datenschutz").
 	// Javascript im Browser deaktiviert
 	defined('BS4_SHOW_JS_DISABLED') or define('BS4_SHOW_JS_DISABLED', 'true'); // Hinweis anzeigen = true, ansonsten false
 	// logo
@@ -229,6 +226,11 @@
 	}
 	*/
   
+	// picture set listing box - neu in Shopversion 2.0.6.0
+	define('PICTURESET_ACTIVE', defined('DIR_WS_MINI_IMAGES'));
+	define('PICTURESET_BOX', '360:thumbnail,480:midi,600:thumbnail,690:thumbnail,920:thumbnail,985:midi');
+	define('PICTURESET_ROW', '985:midi');
+
 	// -----------------------------------------------------------------------------------
 	// 	Ab hier nichts ändern
 	// -----------------------------------------------------------------------------------

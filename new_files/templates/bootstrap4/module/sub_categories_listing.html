@@ -11,8 +11,13 @@
 				<a class="subcat card h-100" href="{$categories_data.CATEGORIES_LINK}">
 					<div class="card-body flex-fill d-flex flex-column text-center">
 						<div class="w-100 mb-auto">
-						{if $categories_data.CATEGORIES_IMAGE}
-							<img class="img-fluid d-block mx-auto" src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
+						{if $categories_data.CATEGORIES_IMAGE != '' || (isset($categories_data.CATEGORIES_IMAGE_LIST) && $categories_data.CATEGORIES_IMAGE_LIST != '')}
+							{if isset($categories_data.CATEGORIES_IMAGE_LIST) && $categories_data.CATEGORIES_IMAGE_LIST != ''}
+								<img class="lazyload img-fluid d-block mx-auto" data-src="{$categories_data.CATEGORIES_IMAGE_LIST}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
+							{else}
+								<img class="lazyload img-fluid d-block mx-auto" data-src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
+							{/if}
+							<noscript><img class="img-fluid d-block mx-auto" src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" /></noscript>
 						{/if}
 						</div>
 						<div class="mt-2">

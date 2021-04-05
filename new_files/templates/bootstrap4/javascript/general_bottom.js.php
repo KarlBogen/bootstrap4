@@ -23,14 +23,9 @@ $script_array = array(
 	DIR_TMPL_JS.'bootstrap.bundle.min.js',
 	DIR_TMPL_JS.'pushy.min.js',
 	DIR_TMPL_JS.'bscarousel.min.js',
-	DIR_TMPL_JS.'jquery.unveil.min.js',
+	DIR_TMPL_JS.'jquery.lazysizes.min.js',
 	DIR_TMPL_JS.'jquery.alertable.min.js',
 );
-
-// Cookieconsent nur wenn nicht oil.min.js
-if (!defined('MODULE_COOKIE_CONSENT_STATUS') || strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'false') {
-	$script_array[] = DIR_TMPL_JS .'jquery.cookieconsent.min.js';
-}
 
 // Zeilenbegrenzung Artikelname in Top- und Bestsellerslider
 if (BS4_BSCAROUSEL_NAME_LINES != 0 || BS4_TOPCAROUSEL_NAME_LINES != 0) {

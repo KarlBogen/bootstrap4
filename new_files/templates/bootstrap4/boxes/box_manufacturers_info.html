@@ -5,7 +5,10 @@
 	<div class="box_header card-header">{$NAME}</div>
 	<div class="card-body">
 		{if $IMAGE}
-		<div class="box_image mb-2"><img class="img-fluid" src="{$IMAGE}" alt="{$NAME|onlytext}" /></div>
+		<div class="box_image mb-2">
+			<img class="lazyload img-fluid" data-src="{$IMAGE}" alt="{$NAME|onlytext}" />
+			<noscript><img class="img-fluid" src="{$IMAGE}" alt="{$NAME|onlytext}" /></noscript>
+		</div>
 		{/if}
 		{if $URL}{$URL} &raquo;<br />{/if}
 		{$LINK_MORE} &raquo;

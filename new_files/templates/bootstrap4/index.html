@@ -63,7 +63,7 @@
 				{/if}
 				{* ENDE Slider Karusell *}
 				{* BEGINN Banner *}
-      				{if isset($BANNER)}<div class="content_banner clearfix mb-4">{$BANNER}</div>{/if}
+      				{if isset($BANNER) && $BANNER != ''}<div class="content_banner clearfix mb-4">{$BANNER}</div>{/if}
 				{* ENDE Banner *}
 				{if isset($main_content)}{$main_content}{/if}
 				{if $smarty.const.BS4_BSCAROUSEL_SHOW == 'true'}{if isset($box_BESTSELLERS)}{$box_BESTSELLERS}{/if}{/if}
@@ -164,19 +164,3 @@
 	</div>
 </div>
 {* ENDE Hauptcontainer innerhalb body *}
-{* BEGINN Platz an dem der Cookiehinweis platziert wird *}
-{if $smarty.const.MODULE_COOKIE_CONSENT_STATUS != 'true'}
-<div id="cookieconsent"></div>
-{/if}
-{* ENDE Platz an dem der Cookiehinweis platziert wird *}
-{if ($smarty.const.TRACKING_COUNT_ADMIN_ACTIVE == 'true' && $smarty.session.customers_status.customers_status_id == '0') || $smarty.session.customers_status.customers_status_id != '0'}
-  {if $smarty.const.TRACKING_PIWIK_ACTIVE == 'true'}
-    {piwik url=$smarty.const.TRACKING_PIWIK_LOCAL_PATH id=$smarty.const.TRACKING_PIWIK_ID goal=$smarty.const.TRACKING_PIWIK_GOAL}
-  {/if}
-  {if $smarty.const.TRACKING_GOOGLEANALYTICS_ACTIVE == 'true'}
-    {googleanalytics account=$smarty.const.TRACKING_GOOGLEANALYTICS_ID}
-  {/if}
-  {if $smarty.const.TRACKING_FACEBOOK_ACTIVE == 'true'}
-    {facebook id=$smarty.const.TRACKING_FACEBOOK_ID}
-  {/if}
-{/if}

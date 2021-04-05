@@ -131,8 +131,8 @@ if (defined('BS4_CUSTOMERS_REMIND') && BS4_CUSTOMERS_REMIND == 'true') {
 			                   CONTACT_US_EMAIL_ADDRESS,  //an emailadresse
 			                   CONTACT_US_NAME, //an emailname
 			                   CONTACT_US_FORWARDING_STRING, //bcc
-			                   NO_REPLY, //antwortadresse
-			                   NO_REPLY, //antwortname
+			                   '', //antwortadresse
+			                   '', //antwortname
 			                   '', //anhang 1
 			                   '', //antwortname
 			                   CUSTOMERS_REMIND, //emailbetreff

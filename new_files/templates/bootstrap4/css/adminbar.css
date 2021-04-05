@@ -8,7 +8,6 @@
    -----------------------------------------------------------------------------------------
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-
 /* SPECIAL CSS */
 .adminspacer {
   height:36px;
@@ -28,9 +27,11 @@
 #admin ul{
 	display: block;
 	margin: 0;
-	padding: 0 15px;
-	max-width: 1140px;
+	padding: 0px 10px;
+  max-width:1140px;
+	width: 100%;
 	margin: 0 auto;
+  box-sizing: border-box;
 }
 #admin ul li{
 	display: block;
@@ -44,19 +45,12 @@
   float:left;
 }
 #admin ul li.logo {
-	display: block;
+	display: none;
   padding: 10px 40px 0px 0px;
 }
 #admin ul li.language {
+  display:block;
   padding: 12px 20px 0px 0px;
-}
-@media screen and (max-width: 575.98px) {
-	#admin ul li.logo {
-	    display: none;
-	}
-	#admin ul li.language {
-	    display: none;
-	}
 }
 #admin ul li.language img {
   float:left;
@@ -79,10 +73,17 @@
 }
 #admin ul li.right {
   float:right;
+  display: none;
 }
 #admin ul li.right.nomargin {
   margin-right:-10px;
 }
+
+@media screen and (min-width: 700px) {
+  #admin ul li.right { display: block; }
+  #admin ul li.logo { display:block;}
+}
+
 .icon_count { 
   display:block;
   background: none repeat scroll 0 0 #dc143c;

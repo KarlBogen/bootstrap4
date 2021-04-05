@@ -16,8 +16,6 @@ define('CUSTOMERS_REMIND_EMAIL_1', 'has registered for this article:');
 
 define('CONTACT_SUBJECT_0', '-- Please Select -- ');
 define('CONTACT_SUBJECT_4', 'Price Inquiry');
-define('CONTACT_SEX_M', 'Mr.');
-define('CONTACT_SEX_F', 'Ms./Mrs.');
 define('TEXT_PRODUCTS_CHEAPLY', 'More cheaply seen?');
 define('TEXT_PRODUCTS_CHEAPLY_NAME', 'Products Name: ');
 define('TEXT_PRODUCTS_CHEAPLY_NUMBER', 'Model-No.: ');

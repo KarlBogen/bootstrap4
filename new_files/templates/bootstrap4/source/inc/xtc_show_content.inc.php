@@ -1,6 +1,6 @@
 <?php
   /* -----------------------------------------------------------------------------------------
-   $Id: xtc_show_category.inc.php 3072 2012-06-18 15:01:13Z hhacker $
+   $Id: xtc_show_content.inc.php 12822 2020-07-09 06:24:46Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -21,7 +21,7 @@
 
     $level = $content_array[$counter]['level']+1;
 
-    //BOF +++ UL LI Verschachtelung  mit Quelltext Tab Einzügen +++    
+    //BOF +++ UL LI Verschachtelung  mit Quelltext Tab EinzÃ¼gen +++    
     $ul = $tab = '';  
     for ($i = 1; $i <= $level; $i++) {
       $tab .= "\t";
@@ -30,11 +30,11 @@
     if ($level > $oldlevel) { //neue Unterebene
       $ul = "\n" . $tab. '<ul>'. "\n";
       $content_string = rtrim($content_string, "\n"); //Zeilenumbruch entfernen
-      $content_string = substr($content_string, 0, strlen($content_string) -5);  //letztes  </li>  entfernen  
-    } elseif ($level < $oldlevel) { //zurück zur höheren Ebene
+      $content_string = substr($content_string, 0, -5);  //letztes  </li>  entfernen  
+    } elseif ($level < $oldlevel) { //zurÃ¼ck zur hÃ¶heren Ebene
       $ul = close_ul_tags($level,$oldlevel);
     }
-    //EOF +++ UL LI Verschachtelung  mit Quelltext Tab Einzügen +++
+    //EOF +++ UL LI Verschachtelung  mit Quelltext Tab EinzÃ¼gen +++
 
     //BOF +++ Content markieren +++
     $content_path = explode('_',$coPath); //Contentpfad in Array einlesen
@@ -61,7 +61,7 @@
     $content_string .= "\n"; //Zeilenschaltung Codedarstellung  
     //EOF  +++ Content Linkerstellung +++
 
-    //Nächste Content
+    //NÃ¤chste Content
     if ($content_array[$counter]['next_id']) {
       xtc_show_content($content_array[$counter]['next_id'], $level);
     } else {  

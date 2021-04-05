@@ -31,10 +31,12 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 			case 'update':
 				if (isset($_POST['bs4_banner_update'])) {
 					$cat_id = xtc_db_prepare_input($_POST['categories_id']);
-					$bs4_banner_ids = implode(',', xtc_db_prepare_input($_POST['bs4_banner_ids']));
-					$sql_data_array = array('bs4_banner_ids' => $bs4_banner_ids);
-					xtc_db_perform(TABLE_CATEGORIES, $sql_data_array, 'update', "categories_id = '" . (int)$cat_id . "'");
-					$messageStack->add_session(BS4_BANNER_DATA_UPDATED, 'success');
+                    if (isset($_POST['bs4_banner_ids'])) {
+						$bs4_banner_ids = implode(',', xtc_db_prepare_input($_POST['bs4_banner_ids']));
+						$sql_data_array = array('bs4_banner_ids' => $bs4_banner_ids);
+						xtc_db_perform(TABLE_CATEGORIES, $sql_data_array, 'update', "categories_id = '" . (int)$cat_id . "'");
+						$messageStack->add_session(BS4_BANNER_DATA_UPDATED, 'success');
+					}
 					xtc_redirect(xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'set=banners&cID=' . $cat_id));
 				}
 				if (isset($_POST['bs4_categories_update'])) {
@@ -369,7 +371,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 								                   }
 								                   ?>
 													<td class="dataTableContent"><?php echo $cat['cat_title']; ?></td>
-													<td class="dataTableContent txta-r"><?php if (isset($bInfo) && is_object($bInfo) && ($cat['cat_id'] == $bInfo->cat_id) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ICON_ARROW_RIGHT); } else { echo '<a href="' . xtc_href_link(FILENAME_BANNER_MANAGER, 'set=banners&cID=' . $cat['cat_id']) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_arrow_grey.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
+													<td class="dataTableContent txta-r"><?php if (isset($bInfo) && is_object($bInfo) && ($cat['cat_id'] == $bInfo->cat_id) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ICON_ARROW_RIGHT); } else { echo '<a href="' . xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'set=banners&cID=' . $cat['cat_id']) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_arrow_grey.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
 												</tr>
 											<?php
 											}
@@ -453,7 +455,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 													}
 													?>
 													<td class="dataTableContent"><?php echo $cat['cat_title']; ?></td>
-													<td class="dataTableContent txta-r"><?php if (isset($cInfo) && is_object($cInfo) && ($cat['cat_id'] == $cInfo->cat_id) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ICON_ARROW_RIGHT); } else { echo '<a href="' . xtc_href_link(FILENAME_BANNER_MANAGER, 'set=categories&cID=' . $cat['cat_id']) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_arrow_grey.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
+													<td class="dataTableContent txta-r"><?php if (isset($cInfo) && is_object($cInfo) && ($cat['cat_id'] == $cInfo->cat_id) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ICON_ARROW_RIGHT); } else { echo '<a href="' . xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'set=categories&cID=' . $cat['cat_id']) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_arrow_grey.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
 												</tr>
 											<?php
 											}

@@ -15,11 +15,11 @@ Ihre Einwilligung in den Versand unseres Newsletters ist jederzeit widerruflich.
 {/if}
 
 {if $SEND_GIFT == true}
-Als kleines Geschenk senden wir Ihnen einen Gutschein ?ber: {$GIFT_AMMOUNT}
+Als kleines Geschenk senden wir Ihnen einen Gutschein über: {$GIFT_AMMOUNT}
 
-Ihr pers?nlicher Gutscheincode lautet {$GIFT_CODE}. Sie k?nnen diese Gutschrift an der Kasse w?hrend des Bestellvorganges verbuchen.
+Ihr persönlicher Gutscheincode lautet {$GIFT_CODE}. Sie können diese Gutschrift an der Kasse während des Bestellvorganges verbuchen.
 
-Um den Gutschein einzul?sen verwenden Sie bitte den folgenden link {$GIFT_LINK}.
+Um den Gutschein einzulösen verwenden Sie bitte den folgenden link {$GIFT_LINK}.
 {/if}
 
 {if $SEND_COUPON == true}
@@ -27,7 +27,7 @@ Als kleines Geschenk senden wir Ihnen einen Kupon.
 
 Kuponbeschreibung: {$COUPON_DESC}
 
-Geben Sie einfach Ihren pers?nlichen Code {$COUPON_CODE} w?hrend des Bezahlvorganges ein.
+Geben Sie einfach Ihren persönlichen Code {$COUPON_CODE} während des Bezahlvorganges ein.
 {/if}
 
 [SIGNATUR]

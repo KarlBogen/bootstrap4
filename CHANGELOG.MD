@@ -1,5 +1,12 @@
 UNRELEASED
 
+
+1.2.0 [05.04.2021]
+
+- Updates für Shopversion 2.0.6.0
+- Cookie Consent Lösung von OSANO entfernt - es wird nur noch OIL.js unterstützt
+- Template unterstützt die zusätzlichen Bildgrössen
+- Implementierung Lazyload
 - einige Sprachdateien geändert damit Doppeldefinitionen vermieden werden
 - Fehler in automatischer Preisberechnung - Division mit 0 - behoben
 

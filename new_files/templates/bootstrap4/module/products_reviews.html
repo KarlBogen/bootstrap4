@@ -10,7 +10,9 @@
 		{foreach name=aussen item=module_data from=$module_content}
 		<div class="reviewrow list-group-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
 			<div class="reviewrow_title mb-2">
-				<strong>{#text_author#}</strong>&nbsp;<span itemprop="author">{$module_data.AUTHOR}</span>
+                <span itemprop="author" itemtype="http://schema.org/Person" itemscope>
+					<strong>{#text_author#}</strong>&nbsp;<span itemprop="name">{$module_data.AUTHOR}</span>
+                </span>
 				<meta itemprop="datePublished" content="{$module_data.DATE}" />
 				&nbsp;am&nbsp;{$module_data.DATE} &nbsp;&nbsp;&nbsp;
 				<strong>{#text_rating#}</strong>&nbsp;

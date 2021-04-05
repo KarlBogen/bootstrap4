@@ -22,7 +22,7 @@
 {if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
 
 <div class="row clearfix">
-	<div class="{if $TEXT_AGB_CHECKOUT || isset($EXPRESS) || $BS4_TEXT_PRIVACY_CHECKOUT != ''}col-md-6{else}col-md-12{/if} mb-3">
+	<div class="{if $TEXT_AGB_CHECKOUT || isset($EXPRESS)}col-md-6{else}col-md-12{/if} mb-3">
 		<div class="card h-100">
 			<div class="card-body">
 				{#text_information#|sprintf:$HEADQUARTER}
@@ -32,16 +32,12 @@
 			</div>
 		</div>
 	</div>
-	{if $TEXT_AGB_CHECKOUT || isset($EXPRESS) || $BS4_TEXT_PRIVACY_CHECKOUT != ''}
+	{if $TEXT_AGB_CHECKOUT || isset($EXPRESS)}
 	<div class="col-md-6 mb-3">
 		<div class="card h-100">
 			<div class="list-group list-group-flush">
 				<div class="list-group-item">
-					{if $BS4_TEXT_PRIVACY_CHECKOUT != ''}
-						<strong>{$BS4_TEXT_PRIVACY_CHECKOUT}</strong>
-					{else}
-						 {$TEXT_AGB_CHECKOUT}
-					{/if}
+					{$TEXT_AGB_CHECKOUT}
 				</div>
 				{if isset($EXPRESS)}
 				<div class="list-group-item">
@@ -66,7 +62,7 @@
 		<div class="col-md-6 mb-3">
 			<div class="card h-100">
 				<div class="card-body">
-    				<h5>{#text_shipping_address#}&nbsp;<a class="small" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a></h5>
+    				<h5>{if isset($SHIPPING_CLASS) && strpos($SHIPPING_CLASS, 'selfpickup')}{#text_pickup_address#}{else}{#text_shipping_address#}&nbsp;<a class="small" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a>{/if}</h5>
     				{$DELIVERY_LABEL}
 				</div>
 			</div>
@@ -132,6 +128,17 @@
 	{/if}
 </div>
 {/if}
+{if $MODULE_gift_cart}
+<div class="row clearfix">
+	<div class="col-12 mb-3">
+		<div class="card">
+			<div class="card-body">
+				{$MODULE_gift_cart}
+			</div>
+		</div>
+	</div>
+</div>
+{/if}
 <div class="card mb-2">
 	<div class="card-header">
 		<h4>{#text_products#}&nbsp;<a class="small" href="{$PRODUCTS_EDIT}">{#text_edit#}</a></h4>
@@ -168,7 +175,7 @@
 										</div>
 									{/foreach}
 								{/if}
-								{if $data.attributes != ''}
+								{if is_array($data.attributes) && count($data.attributes) > 0}
 									<ul class="attributes_list">
 									{foreach key=a_data item=attrib_data from=$data.attributes}
 										<li><strong>{$attrib_data.option}:</strong> {$attrib_data.value}</li>

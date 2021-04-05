@@ -1,12 +1,11 @@
 
-
 {if $GENDER == 'm'}Sehr geehrter Herr{elseif $GENDER == 'f'}Sehr geehrte Frau{else}Hallo{/if} {$NAME},
 
-es wurde ein Account für Sie eingerichtet, Sie können sich mit folgenden Daten in unseren Shop einloggen.
+es wurde ein Account f?r Sie eingerichtet, Sie k?n sich mit folgenden Daten in unseren Shop einloggen.
 
 {if $COMMENTS} Anmerkungen: {$COMMENTS}{/if}
 
-Ihre Logindaten für unseren Shop:
+Ihre Logindaten f?r unseren Shop:
 
 E-Mail: {$EMAIL}
 

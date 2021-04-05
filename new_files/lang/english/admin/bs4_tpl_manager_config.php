@@ -30,17 +30,6 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TOP4' => 'Top4:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TOP4_INFO' => 'Should Top4 be displayed?<br /><br />
 		Language variable "BS4_top4".',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE1' => 'top center small',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE2' => 'top left small',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE3' => 'top right small',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE4' => 'top full width',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE5' => 'bottom left small',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE6' => 'bottom right small',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE7' => 'bottom full width',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE' => 'Eu-Cookie:',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE_INFO' => '<strong>Where</strong> should the EU-COOKIE note be displayed?',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_CONTENT' => 'Eu-Cookie:',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_CONTENT_INFO' => 'Choose a content page. In the EU-COOKIE note is a link to this page.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_JS_DISABLED' => 'JavaScript-Note:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_JS_DISABLED_INFO' => 'Should the JavaScript-Note be displayed?<br /><br />
 		<strong>Note:</strong><br />
@@ -326,6 +315,8 @@ $lang_array = array(
 		<strong>Hinweis:</strong><br />
 		 Surcharge options/attributes are automatically added to the item price.<br />
 		 Link to the original module: <a href="https://www.modified-shop.org/forum/index.php?topic=20125.0" target=”_blank”>https://www.modified-shop.org/forum/index.php?topic=20125.0</a>',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_ATTR_PRICE_UPDATER_UPDATE_PRICE_INFO' => 'Do you want to update the shown price?<br />
+		 If "Yes" not only a note is displayed, the products price is also replaced by Javascript.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_REDUCE_CART' => 'AGI: reduce amount in basket:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_REDUCE_CART_INFO' => 'Activate Module "AGI: reduce amount in basket"!<br />
 		<strong>Note:</strong><br />

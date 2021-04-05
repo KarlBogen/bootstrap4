@@ -4,7 +4,7 @@
 		{foreach name=outer item=options_data from=$options}
 		<div class="options_row_multi form-group p-2 m-0">
 			<label class="options_name">{$options_data.NAME}</label>
-			<select class="form-control form-control-sm" name="id[{$options_data.ID}]" aria-label="{$options_data.NAME}">
+			<select id="sel_{$options_data.ID}" class="form-control form-control-sm" name="id[{$options_data.ID}]" aria-label="{$options_data.NAME}">
 				{foreach key=key_data item=item_data from=$options_data.DATA}
 					<option data-attrdata="{$item_data.JSON_ATTRDATA}" value="{$item_data.ID}"{if $item_data.CHECKED == '1'} selected="selected"{/if}>{$item_data.TEXT} {if $item_data.PRICE != ''}{$item_data.PREFIX} {$item_data.PRICE}{/if}</option>
 				{/foreach}

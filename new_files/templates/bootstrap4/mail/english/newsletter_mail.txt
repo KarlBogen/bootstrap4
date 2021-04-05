@@ -26,6 +26,6 @@ As a thank you for creating your account, you've recieved a discount voucher!
 The voucher details are: {$COUPON_DESC}
 
 Redeem your voucher by entering the code {$COUPON_CODE} during checkout process, when asked for it.
-{/if}
+{/if} 
 
 [SIGNATUR]

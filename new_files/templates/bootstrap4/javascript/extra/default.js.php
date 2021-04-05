@@ -49,8 +49,10 @@
         ac_closing();
         return false;
 	});
-	$("html").not('.avg_container').bind('click',function(e) {
-		$('.avg_container').slideUp('slow');
+	$('html').on('click', function(e) {
+		if (!$(e.target).closest('.avg_container').length > 0 ) {
+			$('.avg_container').slideUp('slow');
+		}
 	});
 <?php } ?>
 		// Hintergrundfarbe aktiver Filter
@@ -159,7 +161,7 @@ if (SEARCH_AC_STATUS == 'true') {
 	});
 <?php
 }
-if (SEARCH_AC_STATUS == 'true' || (!strstr($PHP_SELF, FILENAME_SHOPPING_CART) && !strstr($PHP_SELF, 'checkout'))) { ?>
+if (SEARCH_AC_STATUS == 'true' || (basename($PHP_SELF) != FILENAME_SHOPPING_CART && !strpos($PHP_SELF, 'checkout'))) { ?>
 	function ac_closing() {
 		setTimeout("$('#suggestions').slideUp();", 100);
 		ac_page = 1;
@@ -189,8 +191,10 @@ if (!strstr($PHP_SELF, FILENAME_SHOPPING_CART) && !strstr($PHP_SELF, 'checkout')
 			ac_closing();
 			return false;
 		});
-		$("html").not('.toggle_cart').bind('click',function(e) {
-			$('.toggle_cart').slideUp('slow');
+		$('html').on('click', function(e) {
+			if (!$(e.target).closest('.toggle_cart').length > 0 ) {
+				$('.toggle_cart').slideUp('slow');
+			}
 		});
 <?php if (DISPLAY_CART == 'false' && isset($_SESSION['new_products_id_in_cart'])) {
 		unset($_SESSION['new_products_id_in_cart']); ?>
@@ -206,8 +210,10 @@ if (!strstr($PHP_SELF, FILENAME_SHOPPING_CART) && !strstr($PHP_SELF, 'checkout')
 			ac_closing();
 			return false;
 		});
-		$("html").not('.toggle_wishlist').bind('click',function(e) {
-			$('.toggle_wishlist').slideUp('slow');
+		$('html').on('click', function(e) {
+			if (!$(e.target).closest('.toggle_wishlist').length > 0 ) {
+				$('.toggle_wishlist').slideUp('slow');
+			}
 		});
 <?php if (DISPLAY_CART == 'false' && isset($_SESSION['new_products_id_in_wishlist'])) {
 		unset($_SESSION['new_products_id_in_wishlist']);
@@ -473,96 +479,5 @@ if(BS4_CATEGORIESMENU_MAXLEVEL != 'false') {
 <?php
 }
 // Ende Maxlevel Standardmenü
-if (!defined('MODULE_COOKIE_CONSENT_STATUS') || strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'false') {
-// Beginn Cookie Banner mit Einwilligung für Google Analytics, Matomo & Facebook
-?>
-	var consent_type = "<?php echo ((TRACKING_GOOGLEANALYTICS_ACTIVE == 'true' || TRACKING_PIWIK_ACTIVE == 'true' || TRACKING_FACEBOOK_ACTIVE == 'true' || (defined('TRACKING_CUSTOM_ACTIVE') && TRACKING_CUSTOM_ACTIVE == 'true')) ? 'opt-in' : 'info'); ?>";
-	window.cookieconsent.initialise({
-<?php
-	if (defined('BS4_EU_COOKIE_PLACE')) echo '		position: "'.BS4_EU_COOKIE_PLACE.'",' . PHP_EOL;
-?>
-		container: document.getElementById("cookieconsent"),
-		type: consent_type,
-		revokable: ((consent_type == 'info') ? false : true),
-		animateRevokable: ((consent_type == 'info') ? true : false),
-		content: {
-			"message": ((consent_type == 'info') ? "<?php echo BS4_TEXT_COOKIECONSENT_MESSAGE_INFO; ?>" : "<?php echo BS4_TEXT_COOKIECONSENT_MESSAGE_TRACKING; ?>"),
-			"dismiss": "<?php echo BS4_TEXT_COOKIECONSENT_DISSMISS; ?>",
-			"link": "<?php echo BS4_TEXT_COOKIECONSENT_LINK; ?>",
-			"href": "<?php echo ((isset($privacy_link)) ? $privacy_link : xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.BS4_EU_COOKIE_CONTENT, $request_type)); ?>",
-			"policy": "<?php echo BS4_TEXT_COOKIECONSENT_POLICY; ?>",
-			"allow": "<?php echo BS4_TEXT_COOKIECONSENT_ALLOW; ?>",
-			"deny": "<?php echo BS4_TEXT_COOKIECONSENT_DENY; ?>"
-		},
-		cookie: {
-			"name": "MODtrack",
-			"path": "<?php echo DIR_WS_CATALOG; ?>",
-			"domain": "<?php echo (xtc_not_null($current_domain) ? '.'.$current_domain : ''); ?>",
-			"secure": <?php echo ((HTTP_SERVER == HTTPS_SERVER && $request_type == 'SSL') ? "true" : "false"); ?>
-		},
-		onInitialise: function(status) {
-			if (status == cookieconsent.status.allow) {
-				TrackingScripts();
-			} else if (status != cookieconsent.status.dismiss) {
-				DeleteCookies();
-			}
-		},
-		onStatusChange: function(status, chosenBefore) {
-			if (this.hasConsented()) {
-				TrackingScripts();
-			} else {
-				DeleteCookies();
-			}
-		}
-	});
-	function TrackingScripts() {
-		if ($.isFunction(window.TrackingGoogle)) {
-			TrackingGoogle();
-		}
-		if ($.isFunction(window.TrackingPiwik)) {
-			TrackingPiwik();
-		}
-		if ($.isFunction(window.TrackingFacebook)) {
-			TrackingFacebook();
-		}
-	}
-	function DeleteCookies() {
-		var essential = ["MODsid", "MODtest", "MODtrack", "paypal"];
-		var cookies = document.cookie.split(";");
-		for (var c = 0; c < cookies.length; c++) {
-			var cookie_name = encodeURIComponent(cookies[c].trim().split("=")[0]);
-			for (var e = 0; e < essential.length; e++) {
-				if (cookie_name.indexOf(essential[e]) >= 0) {
-					delete cookies[c];
-				}
-			}
-		}
-		var cookies = cookies.filter(function (el) {
-			return el != null;
-		});
-		if (cookies.length > 0) {
-			for (var c = 0; c < cookies.length; c++) {
-				var cookie_name = encodeURIComponent(cookies[c].trim().split("=")[0]);
-				var d = window.location.hostname.split(".");
-				while (d.length > 0) {
-					var p = location.pathname.split('/');
-					while (p.length > 0) {
-						path = p.join('/');
-						if (path == '') {
-							path = '/';
-						}
-						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=' + path;
-						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ; path=' + path;
-						document.cookie = cookie_name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=.' + d.join('.') + ' ; path=' + path;
-						p.pop();
-					};
-					d.shift();
-				}
-			}
-		}
-	}
-<?php
-// Ende Cookie Banner mit Einwilligung für Google Analytics, Matomo & Facebook
-}
 ?>
 </script>

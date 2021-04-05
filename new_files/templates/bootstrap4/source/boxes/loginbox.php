@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: loginbox.php 10152 2016-07-27 07:15:01Z GTB $
+   $Id: loginbox.php 12894 2020-09-22 12:13:33Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -20,14 +20,9 @@
 // include smarty
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
 
-// set cache id
-$cache_id = md5($_SESSION['language'].((isset($_SESSION['customer_id'])) ? $_SESSION['customer_id'] : '0'));
-
-if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_login.html', $cache_id) || !$cache) {
-
-  if (!isset($_SESSION['customer_id'])) {
-    // include needed functions
-    require_once (DIR_FS_INC.'xtc_draw_password_field.inc.php');
+if (!isset($_SESSION['customer_id'])) {
+  // include needed functions
+  require_once (DIR_FS_INC.'xtc_draw_password_field.inc.php');
 
     $box_smarty->assign('FORM_ACTION', xtc_draw_form('loginbox', xtc_href_link(FILENAME_LOGIN, 'action=process', 'SSL'), 'post', 'class="box-login"'));
     $box_smarty->assign('FIELD_EMAIL', xtc_draw_input_field('email_address', '', 'class="form-control form-control-sm" aria-label="email"'));
@@ -35,14 +30,9 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_login.html', $cache_id)
     $box_smarty->assign('BUTTON', xtc_image_submit('button_login_small.gif', IMAGE_BUTTON_LOGIN));
     $box_smarty->assign('LINK_LOST_PASSWORD', xtc_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
     $box_smarty->assign('FORM_END', '</form>');
-  }
 }
 
-if (!$cache) {
-  $box_loginbox = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_login.html');
-} else {
-  $box_loginbox = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_login.html', $cache_id);
-}
-
+$box_smarty->caching = 0;
+$box_loginbox = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_login.html');
 $smarty->assign('box_LOGIN', $box_loginbox);
 ?>

@@ -8,16 +8,16 @@ Das Template basiert auf dem Bootstrap-Framework 4 und wird getestet mit der, zu
 - unterstützt alle Neuerungen der Shopversion 2.0 (z.B. Komprimierung, Filter)
 - zentrales Dropdownmenü für alle Artikel
 - bestimmte Kategorien können als Megamenü dargestellt werden
-- EU-Cookie-Hinweis - **jetzt mit Vorbereitung für das MODUL: OIL.js Cookie Consent Management (Anleitung im Anhang)**
+- EU-Cookie-Hinweis - **das System-Modul "Cookie Consent" (ab Shopversion 2.0.6.0 Standard) muss dazu im Adminbereich installiert werden**
 - Bilderslider auf der Startseite, im Banner-Manager befüllbar
 - Easyzoom-Vergrößerung in der Produktdetailansicht
 - Top-Artikel und Bestseller als Slider anzeigbar
 - Farbbänder/Ribbons Top, Neu, Angebot
 - Font Awesome Icons integriert
 - keine Core-Änderungen nötig
-- **Kategorielisting (Hauptkategorien) auf Startseite (schaltbar in BS4-Konfiguration Tab "Ansichten")**
-- **Banner Manager für Bootstrap Slider - Banner können Kategorien zugewiesen werden.<br />
-  Jede Kategorie kann eigene Slidereinstellungen erhalten.**
+- Kategorielisting (Hauptkategorien) auf Startseite (schaltbar in BS4-Konfiguration Tab "Ansichten")
+- Banner Manager für Bootstrap Slider - Banner können Kategorien zugewiesen werden.<br />
+  Jede Kategorie kann eigene Slidereinstellungen erhalten.
 
 Vorschaubilder sind im Verzeichnis *images/* zu finden
 
@@ -57,7 +57,6 @@ Voraussetzung: Dateien sind aktuell - System Modul "Bootstrap 4 Template-Manager
 *Hinweis: Die bisher gemachten Einstellungen werden nicht überschrieben, es werden nur neue Funktionen mit den Standardwerten hinzugefügt.<br />
 Dies betrifft nicht die gemachten Theme-Einstellungen für **eigenes Theme 1** und **eigenes Theme 2**, diese Einstellungen werden in Dateien gespeichert (Ordner admin/includes/bs4_template_manager/themes/custom1/ und admin/includes/bs4_template_manager/themes/custom2/).*
 
-
 ## Bilderslider
 
 Damit man sehen kann wie man den Banner Manager befüllen kann, habe ich ein Modul erstellt.
@@ -69,7 +68,7 @@ Dadurch wird der Banner Manger mit Musterdaten (deutsch und englisch) für den S
 
 *Die Installationsdatei admin/includes/modules/system/aa_slider_installer_system.php löscht sich normalerweise automatisch.*
 
-### Neu ab Version 1.1.0 - BS4 Banner Manager
+### BS4 Banner Manager
 Unter dem Menüpunkt **Erw. Konfiguration - Bootstrap 4 Template Manager** ist der **BS4 Banner Manager** zu finden.<br />
 Für den Bootstrap Slider - können den Kategorien Banner zugewiesen werden. Zudem kann jede Kategorie eigene Slidereinstellungen erhalten.
 
@@ -104,6 +103,7 @@ Karl<br />
 ## Anhang
 
 ### Einbau - MODUL: OIL.js Cookie Consent Management
+#### (Achtung: Diese Anleitung gilt nur für ältere Shopversionen - ab Shopversion 2.0.6.0 ist dieses Modul Standard!)
 
 Wer das neue Modul bereits nutzen will, der muss darauf achten, von hier
 

@@ -10,7 +10,13 @@
       <li class="autocomplete_content my-2 w-100">
         <a class="autocomplete list-group-item list-group-item-action" href="{$products_data.PRODUCTS_LINK}">
           {if $products_data.PRODUCTS_IMAGE}
-            <span class="autocomplete_image float-left mr-1"><img class="img-fluid" src="{$products_data.PRODUCTS_IMAGE}" alt="{$products_data.PRODUCTS_NAME|onlytext}" title="{$products_data.PRODUCTS_NAME|onlytext}" /></span>
+            <span class="autocomplete_image float-left mr-1">
+				{if $smarty.const.PICTURESET_ACTIVE === true}
+					<img class="lazyload img-fluid" data-src="{$products_data.PRODUCTS_IMAGE|replace:"thumbnail_":"mini_"}" alt="{$products_data.PRODUCTS_NAME|onlytext}" title="{$products_data.PRODUCTS_NAME|onlytext}" />
+				{else}
+					<img class="lazyload img-fluid" data-src="{$products_data.PRODUCTS_IMAGE}" alt="{$products_data.PRODUCTS_NAME|onlytext}" title="{$products_data.PRODUCTS_NAME|onlytext}" />
+				{/if}
+			</span>
           {else}
             <span class="autocomplete_image">&nbsp;</span>
           {/if}

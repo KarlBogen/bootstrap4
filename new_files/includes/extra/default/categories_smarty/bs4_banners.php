@@ -18,6 +18,7 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 		)
 	{
 		require_once(DIR_FS_INC . 'xtc_update_banner_display_count.inc.php');
+		require_once(DIR_FS_INC . 'xtc_get_banners_url.inc.php');
 
 		function bs4_convertSettings($settings) {
 			if (is_string($settings)) {
@@ -57,13 +58,22 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 			foreach ($bs4_banner_content as $bs4_banner) {
 				$bs4_banner_url = xtc_get_top_level_domain($bs4_banner['banners_url']);
 				$bs4_banner_title = xtc_parse_input_field_data($bs4_banner['banners_title'], array('"' => '&quot;'));
+				$bs4_banner_link = (($bs4_banner['banners_redirect'] == 0) ? xtc_get_banners_url($bs4_banner['banners_url']) : xtc_href_link(FILENAME_REDIRECT, 'action=banner&goto=' . $bs4_banner['banners_id']));
+				$bs4_banner_target = (($shop_url['domain'] != $bs4_banner_url['domain']) ? ' target="_blank" rel="noopener"' : '');
+				$bs4_banner_image = (($bs4_banner['banners_image'] != '') ? xtc_image(DIR_WS_IMAGES.'banner/'.$bs4_banner['banners_image'], $bs4_banner['banners_title'], '', '', 'title="'.$bs4_banner['banners_title'].'"') : '');
+				$bs4_banner_image_mobile = (($bs4_banner['banners_image_mobile'] != '') ? xtc_image(DIR_WS_IMAGES.'banner/'.$bs4_banner['banners_image_mobile'], $bs4_banner['banners_title'], '', '', 'title="'.$bs4_banner['banners_title'].'"') : '');
 
 				$bs4_banner_array[] = array(
-					'IMAGE' => ((xtc_not_null($bs4_banner['banners_url'])) ? '<a title="'.$bs4_banner_title.'" href="' . xtc_href_link(FILENAME_REDIRECT, 'action=banner&goto=' . $bs4_banner['banners_id']) . '"' . (($shop_url['domain'] != $bs4_banner_url['domain']) ? ' target="_blank" rel="noopener"' : '') . '>' . xtc_image(DIR_WS_IMAGES.'banner/'.$bs4_banner['banners_image'], $bs4_banner['banners_title'], '', '', 'title="'.$bs4_banner['banners_title'].'"') . '</a>' : xtc_image(DIR_WS_IMAGES.'banner/'.$bs4_banner['banners_image'], $bs4_banner['banners_title'], '', '', 'title="'.$bs4_banner['banners_title'].'"')),
-					'IMAGE_SRC' => DIR_WS_BASE.DIR_WS_IMAGES.'banner/'.$bs4_banner['banners_image'],
-					'LINK' => ((xtc_not_null($bs4_banner['banners_url'])) ? xtc_href_link(FILENAME_REDIRECT, 'action=banner&goto=' . $bs4_banner['banners_id']) : ''),
+					'IMAGE' => ((xtc_not_null($bs4_banner['banners_url'])) ? '<a title="'.$bs4_banner_title.'" href="'.$bs4_banner_link.'"'.$bs4_banner_target.'>'.$bs4_banner_image.'</a>' : $bs4_banner_image),
+					'IMAGE_SRC' => (($bs4_banner['banners_image'] != '') ? DIR_WS_BASE.DIR_WS_IMAGES.'banner/'.$bs4_banner['banners_image'] : ''),
+					'IMAGE_IMG' => $bs4_banner_image,
+					'IMAGE_SRC_MOBILE' => (($bs4_banner['banners_image_mobile'] != '') ? DIR_WS_BASE.DIR_WS_IMAGES.'banner/'.$bs4_banner['banners_image_mobile'] : ''),
+					'IMAGE_IMG_MOBILE' => $bs4_banner_image_mobile,
+					'LINK' => ((xtc_not_null($bs4_banner['banners_url'])) ? $bs4_banner_link : ''),
+					'TARGET' => $bs4_banner_target,
 					'TEXT' => $bs4_banner['banners_html_text'],
 					'TITLE' => $bs4_banner_title,
+					'GROUP' => $bs4_banner['banners_group'],
 				);
 				xtc_update_banner_display_count($bs4_banner['banners_id']);
 			}

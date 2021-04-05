@@ -1,6 +1,6 @@
 <?php
   /* -----------------------------------------------------------------------------------------
-   $Id: xtc_show_category.inc.php 4200 2013-01-10 19:47:11Z Tomcraft1980 $
+   $Id: xtc_show_category.inc.php 12822 2020-07-09 06:24:46Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -42,8 +42,8 @@
       $ul2 = "\n" . $tab. '<ul class="'.$foo[$counter]['id'].'" data-level="'.$level.'">'. "\n";
       $categories_string = rtrim($categories_string, "\n"); //Zeilenumbruch entfernen
       $categories_string2 = rtrim($categories_string2, "\n"); //Zeilenumbruch entfernen
-      $categories_string = substr($categories_string, 0, strlen($categories_string) -5);  //letztes  </li>  entfernen
-      $categories_string2 = substr($categories_string2, 0, strlen($categories_string2) -5);  //letztes  </li>  entfernen
+      $categories_string = substr($categories_string, 0, -5);  //letztes  </li>  entfernen
+      $categories_string2 = substr($categories_string2, 0, -5);  //letztes  </li>  entfernen
     } elseif ($level < $oldlevel) { //zurück zur höheren Ebene
       $ul = close_ul_tags($level,$oldlevel);
       $ul2 = close_ul_tags($level,$oldlevel);

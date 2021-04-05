@@ -33,6 +33,7 @@
 	defined('MODULE_CAPTCHA_LOGGED_IN') or define('MODULE_CAPTCHA_LOGGED_IN', 'True');
 
 	require_once(DIR_FS_INC . 'xtc_validate_email.inc.php');
+	require_once(DIR_FS_INC . 'get_customers_gender.inc.php');
 
 	$smarty = new Smarty;
 
@@ -109,29 +110,42 @@
 		}
 		if ($error === false) {
 
+			$gender = '';
+			$post_gender = strip_tags($_POST['gender']);
+			if ($post_gender == 'm') {
+				$gender = MALE;
+			} elseif ($post_gender == 'f') {
+				$gender = FEMALE;
+			} elseif ($post_gender == 'd') {
+				$gender = DIVERSE;
+			}
+
 			// Email bilden
 			$create_name = strip_tags($_POST['firstname']).' '.strip_tags($_POST['lastname']);
 			$create_subject = strip_tags($_POST['subject']);
+			$products_link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($product->data['products_id'],$product->data['products_name']));
 
 			$create_html_body = '<h3>'.STORE_NAME.'</h3>';
 			$create_html_body .= '<h4>'.TEXT_PRODUCT_INQUIRY.'</h4>';
-			$create_html_body .= strip_tags($_POST['sex'])."<br>";
+			$create_html_body .= $gender."<br>";
 			$create_html_body .= $create_name."<br>";
 			$create_html_body .= BS4_EMAIL.strip_tags($_POST['email'])."<br>";
 			$create_html_body .= BS4_PHONE.strip_tags($_POST['phone'])."<br><br>";
 			$create_html_body .= HEADER_ARTICLE.": ".$products->data['products_name']."<br>";
-			$create_html_body .= HEADER_MODEL.": ".$products->data['products_model']."<br><br>";
+			$create_html_body .= HEADER_MODEL.": ".$products->data['products_model']."<br>";
+			$create_html_body .= "Link: ".$products_link."<br><br>";
 			$create_html_body .= BS4_SUBJECT.$create_subject."<br><br>";
 			$create_html_body .= strip_tags($_POST['message_body'])."<br><br>";
 
 			$create_text_body = STORE_NAME."\n\n";
 			$create_text_body .= TEXT_PRODUCT_INQUIRY.":\n--------------------\n";
-			$create_text_body .= strip_tags($_POST['sex'])."\n";
+			$create_text_body .= $gender."\n";
 			$create_text_body .= $create_name."\n";
 			$create_text_body .= BS4_EMAIL.strip_tags($_POST['email'])."\n";
 			$create_text_body .= BS4_PHONE.strip_tags($_POST['phone'])."\n\n";
 			$create_text_body .= HEADER_ARTICLE.": ".$products->data['products_name']."\n";
-			$create_text_body .= HEADER_MODEL.": ".$products->data['products_model']."\n\n";
+			$create_text_body .= HEADER_MODEL.": ".$products->data['products_model']."\n";
+			$create_text_body .= "Link: ".$products_link."\n\n";
 			$create_text_body .= BS4_SUBJECT.$create_subject."\n\n";
 			$create_text_body .= "\n--------------------\n".strip_tags($_POST['message_body'])."\n\n";
 
@@ -161,12 +175,8 @@
 	}	
 	
 	// ANREDE
-	$sex_array[] = array('id' => CONTACT_SEX_M,'text' => CONTACT_SEX_M);
-	$sex_array[] = array('id' => CONTACT_SEX_F,'text' => CONTACT_SEX_F);
-    $sex_selected = CONTACT_SEX_F;
-	if (isset($_SESSION["customer_gender"]) && $_SESSION["customer_gender"] == 'm') $sex_selected = CONTACT_SEX_M;
-    $sex_selected = $error ? $_POST['sex'] : $sex_selected;
-	$select_sex = xtc_draw_pull_down_menu('sex', $sex_array, $sex_selected,'class="form-control form-control-sm"');
+    $gender_selected = $error ? $_POST['gender'] : (isset($_SESSION["customer_gender"]) ? $_SESSION["customer_gender"] : '');
+	$select_gender = xtc_draw_pull_down_menu('gender', get_customers_gender(), $gender_selected, 'class="form-control form-control-sm"');
 
 	// FORMULAR
 	$view = '';
@@ -178,10 +188,10 @@
 		$smarty->assign('VVIMG', $mod_captcha->get_image_code());
 	    $smarty->assign('INPUT_CODE', xtc_draw_input_field('vvcode', '', 'class="form-control form-control-sm" maxlength="6"', 'text', false));
 	}
-	$smarty->assign('SELECT_SEX',$select_sex);
-	$smarty->assign('INPUT_FIRSTNAME',xtc_draw_input_field('firstname', ($error ? $_POST['firstname'] : isset($_SESSION["customer_first_name"]) ? $_SESSION["customer_first_name"] : ''),'class="form-control form-control-sm"'));
-	$smarty->assign('INPUT_LASTNAME',xtc_draw_input_field('lastname', ($error ? $_POST['lastname'] : isset($_SESSION["customer_last_name"]) ? $_SESSION["customer_last_name"] : ''),'class="form-control form-control-sm"'));
-	$smarty->assign('INPUT_EMAIL',xtc_draw_input_field('email', ($error ? $_POST['email'] : isset($_SESSION["customer_email_address"]) ? $_SESSION["customer_email_address"] : ''), 'class="form-control form-control-sm"'));
+	$smarty->assign('SELECT_GENDER',$select_gender);
+	$smarty->assign('INPUT_FIRSTNAME',xtc_draw_input_field('firstname', ($error ? $_POST['firstname'] : (isset($_SESSION["customer_first_name"]) ? $_SESSION["customer_first_name"] : '')),'class="form-control form-control-sm"'));
+	$smarty->assign('INPUT_LASTNAME',xtc_draw_input_field('lastname', ($error ? $_POST['lastname'] : (isset($_SESSION["customer_last_name"]) ? $_SESSION["customer_last_name"] : '')),'class="form-control form-control-sm"'));
+	$smarty->assign('INPUT_EMAIL',xtc_draw_input_field('email', ($error ? $_POST['email'] : (isset($_SESSION["customer_email_address"]) ? $_SESSION["customer_email_address"] : '')), 'class="form-control form-control-sm"'));
 	$smarty->assign('INPUT_PHONE',xtc_draw_input_field('phone', ($error ? $_POST['phone'] : ''), 'class="form-control form-control-sm"'));
 	$smarty->assign('SELECT_SUBJECT', xtc_draw_input_field('subject', ($error ? $_POST['subject'] : TEXT_PRODUCT_INQUIRY),'class="form-control form-control-sm"'));
 	$smarty->assign('INPUT_TEXT',xtc_draw_textarea_field('message_body', 'soft', 50, 12, ($error ? $_POST['message_body'] : ''), 'class="form-control form-control-sm"'));

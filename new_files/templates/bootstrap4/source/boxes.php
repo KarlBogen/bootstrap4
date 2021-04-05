@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: boxes.php 12420 2019-11-21 14:16:27Z Markus $
+   $Id: boxes.php 12960 2020-11-24 17:32:52Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -120,7 +120,6 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
   if ($product->isProduct() === true) {
     require_once(DIR_FS_BOXES . 'manufacturer_info.php');
   } else {
-    require_once(DIR_FS_BOXES . 'best_sellers.php');
     if ($_SESSION['customers_status']['customers_status_specials'] == '1' && BS4_SPECIALS_CATEGORIES == 'false') {
       require_once(DIR_FS_BOXES . 'specials.php');
     }
@@ -174,10 +173,17 @@ $smarty->assign('home', ((basename($PHP_SELF) == FILENAME_DEFAULT && !isset($_GE
 // -----------------------------------------------------------------------------------------
 // Smarty bestseller
 // -----------------------------------------------------------------------------------------
-$smarty->assign('bestseller', strpos($PHP_SELF, FILENAME_LOGOFF) 
-                           || strpos($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) 
-                           || strpos($PHP_SELF, FILENAME_SHOPPING_CART)
-                           || strpos($PHP_SELF, FILENAME_NEWSLETTER));
+$smarty->assign('bestseller', false);
+$bestsellers = array(FILENAME_DEFAULT,
+                     FILENAME_LOGOFF,
+                     FILENAME_CHECKOUT_SUCCESS,
+                     FILENAME_SHOPPING_CART,
+                     FILENAME_NEWSLETTER
+                     );
+if (in_array(basename($PHP_SELF), $bestsellers) && !isset($_GET['cPath']) && !isset($_GET['manufacturers_id'])) {
+  require_once(DIR_FS_BOXES . 'best_sellers.php');
+  $smarty->assign('bestseller', true);
+}
 // -----------------------------------------------------------------------------------------
 
 $smarty->assign('tpl_path', DIR_WS_BASE.'templates/'.CURRENT_TEMPLATE.'/');

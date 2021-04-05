@@ -64,7 +64,7 @@
 					<label>{#text_message#}</label>
 					{$INPUT_TEXT|replace:'<textarea':'<textarea class="form-control form-control-sm" aria-label="message"'}<span class="inputRequirement">*</span>
 				</div>
-				{if defined($smarty.const.SIGN_CONDITIONS_ON_CHECKOUT)}
+				{if "SIGN_CONDITIONS_ON_CHECKOUT"|defined}
 					<div class="checkbox clearfix">
 						<label for="privacy">
 							{if $PRIVACY_CHECKBOX}{$PRIVACY_CHECKBOX}{/if}

@@ -15,7 +15,34 @@
 			</ol>
 			{/if}
 			{foreach name=aussen item=slider from=$SLIDER}
-			<div class="carousel-item{if $smarty.foreach.aussen.first} active{/if}">{$slider.IMAGE|replace:'<img':'<img class="img-fluid" '}
+			<div class="carousel-item{if $smarty.foreach.aussen.first} active{/if}">
+				{if $slider.LINK != ''}
+					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
+						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+							<picture>
+								<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+								<source data-srcset="{$slider.IMAGE_SRC}">
+								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							</picture>
+						</a>
+					{else}
+						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+						</a>
+					{/if}
+				{elseif $slider.IMAGE_IMG != ''}
+					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
+						<picture>
+							<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+							<source data-srcset="{$slider.IMAGE_SRC}">
+							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+						</picture>
+					{else}
+						<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+					{/if}
+				{/if}
 				<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 			</div>
 			{/foreach}
@@ -61,7 +88,34 @@
 	<div class="carousel{if $smarty.const.BS4_CAROUSEL_SHOW == 'shop'} container{/if} d-none d-sm-block mb-4 text-center">
 		<div class="carousel-inner">
 			{foreach name=aussen item=slider from=$SLIDER}
-			<div class="carousel-item active">{$slider.IMAGE|replace:'<img':'<img class="img-fluid" '}
+			<div class="carousel-item active">
+				{if $slider.LINK != ''}
+					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
+						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+							<picture>
+								<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+								<source data-srcset="{$slider.IMAGE_SRC}">
+								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							</picture>
+						</a>
+					{else}
+						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+						</a>
+					{/if}
+				{elseif $slider.IMAGE_IMG != ''}
+					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
+						<picture>
+							<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+							<source data-srcset="{$slider.IMAGE_SRC}">
+							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+						</picture>
+					{else}
+						<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+					{/if}
+				{/if}
 				<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 			</div>
 			{/foreach}

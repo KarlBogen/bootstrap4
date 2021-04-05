@@ -14,25 +14,35 @@
 						<div class="pd_big_image col-12">
 							<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
 								<a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"original_images"}">
-									<img class="img-fluid img-thumbnail" itemprop="image" src="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
-								</a>
+								<img class="lazyload img-fluid img-thumbnail" itemprop="image" data-src="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />								</a>
+								<noscript><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</div>
 						</div>
 					</div>
 				{/if}
-				{if $more_images|@count > 0}
+				{if isset($more_images) && count($more_images) > 0}
 					<div class="pd_more_images easy-thumbnails row mb-4 clearfix">
 						<div class="col-3 mb-3">
-							<a class="easyimages d-block text-center" href="{$PRODUCTS_IMAGE|replace:"info_images":"original_images"}" data-standard="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-image-id="1" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}">
-								<img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+							<a class="easyimages d-block text-center" href="{$PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="1" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}">
+								{if $smarty.const.PICTURESET_ACTIVE === true}
+									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								{else}
+									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								{/if}
+								<noscript><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</a>
 						</div>
 						{assign var=zaehl value=2}
 						{foreach  key=i item=more_images_data from=$more_images}
 							{if $more_images_data.PRODUCTS_IMAGE != ''}
 								<div class="col-3 mb-3">
-									<a class="easyimages d-block text-center" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"original_images"}" data-standard="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-image-id="{$zaehl}" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}">
-										<img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									<a class="easyimages d-block text-center" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="{$zaehl}" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}">
+										{if $smarty.const.PICTURESET_ACTIVE === true}
+											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+										{else}
+											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+										{/if}
+										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 									</a>
 								</div>
                            		{assign var=zaehl value=$zaehl+1}
@@ -41,34 +51,32 @@
 					</div>
 				{/if}
 				{if $PRODUCTS_IMAGE!=''}
-					<a class="cbimages easyzoom-link" title="{$PRODUCTS_NAME|onlytext}" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal" href="#">{#text_zoom#|bs4button:'button_easyzoom'}</a>
+					<a class="cbimages easyzoom-link" title="{$PRODUCTS_NAME|onlytext}" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-target="#modal" href="#">{#text_zoom#|bs4button:'button_easyzoom'}</a>
 				{/if}
 			{else}
 				{if $PRODUCTS_IMAGE != ''}
 					<div class="row mb-4">
 						<div class="pd_big_image col-12">
-							<a class="cbimages text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
-								<img class="unveil img-fluid" itemprop="image" src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}{else}{$PRODUCTS_IMAGE}{/if}" data-src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+							<a class="cbimages text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-target="#modal">
+								<img class="lazyload img-fluid img-thumbnail" itemprop="image" data-src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_":"popup_"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								<noscript><img class="img-fluid img-thumbnail" src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_":"popup_"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</a>
-							<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
 						</div>
 					</div>
-					{if $more_images|@count > 0}
+					{if isset($more_images) && count($more_images) > 0}
 						<div class="pd_more_images easy-thumbnails row mb-4 clearfix">
-							<div class="col-3 mb-3">
-								<a class="cbimages easyimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
-									<img class="unveil img-fluid" itemprop="image" src="{$PRODUCTS_IMAGE}" data-src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
-								</a>
-								<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
-							</div>
 							{assign var=zaehl value=2}
 							{foreach  key=i item=more_images_data from=$more_images}
 								{if $more_images_data.PRODUCTS_IMAGE != ''}
 									<div class="col-3 mb-3">
 										<a class="cbimages easyimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
-											<img class="unveil img-fluid" src="{$tpl_path}css/images/loading.gif" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											{if $smarty.const.PICTURESET_ACTIVE === true}
+												<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											{else}
+												<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											{/if}
+											<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 										</a>
-										<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
 									</div>
                             		{assign var=zaehl value=$zaehl+1}
 								{/if}
@@ -162,6 +170,9 @@
 						{$MODULE_product_options}
 					</div>
 				{/if}
+				{if $PAYPALPLAN}
+					<div class="card bg-custom p-2 mb-2">{$PAYPALPLAN}</div>
+				{/if}
 				{if $ADD_CART_BUTTON != ''}
 				<div class="card bg-custom p-2 mb-2">
 					<div class="row">
@@ -170,10 +181,10 @@
 							{$ADD_CART_BUTTON|replace:'btn ':'mb-2 btn '}
 							{* Ausblenden der Links, wenn Modul Kundenerinnerung aktiviert und Lagerbestand kleiner 0 ist *}
                             {if $PRODUCTS_QUANTITY > 0 || ($PRODUCTS_QUANTITY <= 0 && $smarty.const.BS4_CUSTOMERS_REMIND != 'true')}
-								{if isset($ADD_CART_BUTTON_EXPRESS)}
+								{if isset($ADD_CART_BUTTON_EXPRESS) && !$PAYPALPLAN}
 									{$ADD_CART_BUTTON_EXPRESS|replace:'btn ':'mb-2 btn '}
 								{/if}
-								{if isset($ADD_CART_BUTTON_PAYPAL)}
+								{if isset($ADD_CART_BUTTON_PAYPAL) && !$PAYPALPLAN}
 									{$ADD_CART_BUTTON_PAYPAL}
 								{/if}
 							{/if}
@@ -185,13 +196,13 @@
 				</div>
 				{/if}
 
-				{if $PAYPAL_INSTALLMENT}
+				{if $PAYPAL_INSTALLMENT && !$PAYPALPLAN}
 					<div class="clearfix mb-2">
 					{$PAYPAL_INSTALLMENT}
 					</div>
 				{/if}
 
-		        {if $EASYCREDIT}
+		        {if $EASYCREDIT && !$PAYPALPLAN}
 					<div class="clearfix mb-2">
 					{$EASYCREDIT}
 					</div>
@@ -222,9 +233,15 @@
 						{if $ACTIVATE_EXPRESS_LINK}<div class="col-sm-6 mb-2"><a href="{$ACTIVATE_EXPRESS_LINK}">{#checkout_express_activate#|bs4button:'express_link'}</a></div><div class="clearfix"></div>{/if}
 					{/if}
 				</div>
-				{if isset($KLARNA_PPBOX)}<div class="card bg-custom p-2 mb-2">{$KLARNA_PPBOX}</div>{/if}
 				<br class="clearfix" />
-				{if $smarty.const.BS4_PROD_DETAIL_SHOW_MANUIMAGE == 'true' && isset($MANUFACTURER_IMAGE) && $MANUFACTURER_IMAGE != ''}<div class="pd_manu_image"><a title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}"><img class="img-thumbnail img-fluid" src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" /></a></div>{/if}
+				{if $smarty.const.BS4_PROD_DETAIL_SHOW_MANUIMAGE == 'true' && isset($MANUFACTURER_IMAGE) && $MANUFACTURER_IMAGE != ''}
+					<div class="pd_manu_image">
+						<a title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}">
+							<img class="lazyload img-fluid" data-src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" />
+							<noscript><img class="img-fluid"src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" /></noscript>
+						</a>
+					</div>
+				{/if}
 			</div>
 			<br class="clearfix" />
 		</div>
@@ -234,7 +251,7 @@
 		<ul id="bs_tabs" class="nav nav-pills card-header" role="tablist">
 			{if $PRODUCTS_DESCRIPTION != ''}<li class="nav-item"><a class="nav-link" href="#prod_desc" role="tab" data-toggle="tab">{#description#}</a></li>{/if}
 			{if isset($MODULE_product_tags) && $MODULE_product_tags != ''}<li class="nav-item"><a class="nav-link" href="#prod_tags" role="tab" data-toggle="tab">{#products_tags#}</a></li>{/if}
-			{if $more_images|@count > 0}<li class="nav-item"><a class="nav-link" href="#more_images" role="tab" data-toggle="tab">{#more_images#}</a></li>{/if}
+			{if isset($more_images) && count($more_images) > 0}<li class="nav-item"><a class="nav-link" href="#more_images" role="tab" data-toggle="tab">{#more_images#}</a></li>{/if}
 			{if isset($MODULE_products_media) && $MODULE_products_media != ''}<li class="nav-item"><a class="nav-link" href="#prod_media" role="tab" data-toggle="tab">{#products_media#}</a></li>{/if}
 			{if isset($MODULE_products_reviews) && $MODULE_products_reviews != ''}<li class="nav-item"><a class="nav-link" href="#prod_reviews" role="tab" data-toggle="tab">{#products_reviews#}</a></li>{/if}
 			{if (isset($MODULE_cross_selling) && $MODULE_cross_selling != '') || (isset($MODULE_reverse_cross_selling) && $MODULE_reverse_cross_selling != '')}<li class="nav-item"><a class="nav-link" href="#cross_sell" role="tab" data-toggle="tab">{#cross_selling#}</a></li>{/if}
@@ -244,23 +261,31 @@
 		<div class="tab-content card-body">
 			{if $PRODUCTS_DESCRIPTION != ''}<div role="tabpanel" class="tab-pane active" id="prod_desc"><h4 class="detailbox">{#products_desc#}</h4><div itemprop="description">{$PRODUCTS_DESCRIPTION}</div></div>{/if}
 			{if isset($MODULE_product_tags) && $MODULE_product_tags != ''}<div role="tabpanel" class="tab-pane active" id="prod_tags">{$MODULE_product_tags}</div>{/if}
-			{if $more_images|@count > 0}
+			{if isset($more_images) && count($more_images) > 0}
 				<div role="tabpanel" class="tab-pane active" id="more_images">
 					<div class="pd_more_images row d-flex flex-wrap mb-2">
 						<div class="col-3 d-flex justify-content-center align-items-center mb-2">
 							<a class="cbimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
-								<img class="unveil img-fluid d-block" itemprop="image" src="{$tpl_path}css/images/loading.gif" data-src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								{if $smarty.const.PICTURESET_ACTIVE === true}
+									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								{else}
+									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								{/if}
+								<noscript><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</a>
-							<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
 						</div>
 						{assign var=zaehl value=2}
 						{foreach  key=i item=more_images_data from=$more_images}
 							{if $more_images_data.PRODUCTS_IMAGE != ''}
 								<div class="col-3 d-flex justify-content-center align-items-center mb-2">
 									<a class="cbimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
-										<img class="unveil img-fluid d-block" src="{$tpl_path}css/images/loading.gif" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+										{if $smarty.const.PICTURESET_ACTIVE === true}
+											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+										{else}
+											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+										{/if}
+										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 									</a>
-									<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
 								</div>
                            		{assign var=zaehl value=$zaehl+1}
 							{/if}

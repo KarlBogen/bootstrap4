@@ -29,9 +29,8 @@
 		{if $CONTINUE_LINK}<div class="col-sm-6 col-md-4 mb-2"><a href="{$CONTINUE_LINK}">{$BUTTON_CONTINUE_SHOPPING}</a></div>{/if}
 		{if isset($ACTIVATE_EXPRESS_LINK)}<div class="col-sm-6 col-md-4 mb-2"><span class="express_info_cart"><a href="{$ACTIVATE_EXPRESS_LINK}">{#checkout_express_activate#|bs4button:'express_link'|replace:'btn-xs':''}</a></span></div>{/if}
         {if isset($MODULE_gift_cart)}{assign "dummy" ""}<div class="col-sm-6 col-md-4 mb-2"><a id="gift_link" href="#gift_coupon">{$dummy|bs4button:'gift_link'}</a></div>{/if}
-		{if !isset($BUTTON_CHECKOUT_EXPRESS)}{if $BUTTON_PAYPAL != ''}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="paypal_button">{$BUTTON_PAYPAL|replace:'btn-sm':''}</span></div>{/if}{/if}
-		{if isset($BUTTON_CHECKOUT_EXPRESS)}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="express_button">{$BUTTON_CHECKOUT_EXPRESS|replace:'btn-sm':''}</span></div>{/if}
-		{if isset($BUTTON_CHECKOUT_EXPRESS)}{if $BUTTON_PAYPAL != ''}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="paypal_button2">{$BUTTON_PAYPAL|replace:'btn-sm':''}</span></div>{/if}{/if}
+		{if isset($BUTTON_CHECKOUT_EXPRESS) && !$PAYPALPLAN}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="express_button">{$BUTTON_CHECKOUT_EXPRESS|replace:'btn-sm':''}</span></div>{/if}
+		{if $BUTTON_PAYPAL != '' && !$PAYPALPLAN}<div class="col-sm-6 col-md-4 mb-2 text-center"><span class="paypal_button">{$BUTTON_PAYPAL|replace:'btn-sm':''}</span></div>{/if}
 		<div class="col-sm-6 col-md-4 mb-2 ml-auto">{$BUTTON_CHECKOUT}</div>
 	</div>
     {$FORM_END}

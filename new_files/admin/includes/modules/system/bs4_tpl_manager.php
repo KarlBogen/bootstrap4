@@ -22,7 +22,7 @@ class bs4_tpl_manager {
 
 	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
-		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.1.3';
+		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.0';
 		$this->description = '';
 		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) $this->description .= '<a class="button btnbox but_green" style="text-align:center;" onclick="this.blur();" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=update') . '">Update</a><br /><br />';
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
@@ -93,6 +93,9 @@ class bs4_tpl_manager {
 			return false;
 		}
 
+		// remove obsolete files or dirs - if exists
+        $this->remove_obsolete_files_or_dirs();
+
 		$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_FINISHED, 'success');
 
 	}
@@ -105,6 +108,7 @@ class bs4_tpl_manager {
 		$update = $this->check_table_configuration();
 		$update = $this->update_table_config();
 		$update = $this->install_updates_and_news();
+		$update = $this->remove_obsolete_files_or_dirs();
 		if($update == true){
 			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_UPDATE_FINISHED, 'success');
 		} else {
@@ -150,7 +154,6 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'includes/extra/application_bottom/bs4_customers_remind.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/application_top/application_top_begin/bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/cart_actions/add_product_before_redirect/bs4_agi_reduce_cart.php';
-		$dirs_and_files[] = $shop_path.'includes/extra/checkout/checkout_requirements/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/database_tables/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/default/categories_content/bs4_remove_empty_categories.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/default/categories_smarty/bs4_banners.php';
@@ -177,7 +180,6 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'lang/english/extra/admin/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_agi_reduce_cart.php';
-		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_template.php';
 		$dirs_and_files[] = $shop_path.'lang/english/modules/system/bs4_tpl_manager.php';
 
@@ -187,7 +189,6 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'lang/german/admin/bs4_tpl_manager_theme.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_agi_reduce_cart.php';
-		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_template.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/admin/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/german/modules/system/bs4_tpl_manager.php';
@@ -258,8 +259,6 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_SHOW_TOP2', 'true')";
 			$values_config[] = "('BS4_SHOW_TOP3', 'true')";
 			$values_config[] = "('BS4_SHOW_TOP4', 'true')";
-			$values_config[] = "('BS4_EU_COOKIE_PLACE', 'center')";
-			$values_config[] = "('BS4_EU_COOKIE_CONTENT', 2)";
 			$values_config[] = "('BS4_SHOW_JS_DISABLED', 'true')";
 			$values_config[] = "('BS4_SHOP_LOGO', 'img/logo_head.png')";
 			$values_config[] = "('BS4_SEARCHFIELD_PERMANENT', 'false')";
@@ -324,6 +323,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_CHEAPLY_SEE', 'false')";
 			$values_config[] = "('BS4_PRODUCT_INQUIRY', 'false')";
 			$values_config[] = "('BS4_ATTR_PRICE_UPDATER', 'false')";
+			$values_config[] = "('BS4_ATTR_PRICE_UPDATER_UPDATE_PRICE', 'true')";
 			$values_config[] = "('BS4_AGI_REDUCE_CART', 'false')";
 			$values_config[] = "('BS4_AGI_REDUCE_CART_SHOW_AVAILABLE', 'true')";
 			$values_config[] = "('BS4_AWIDSRATINGBREAKDOWN', 'false')";
@@ -362,6 +362,15 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_DEFAULT_BANNER_SETTINGS', 'n,btn-primary,n,j1,bg-white,n,4000')";
 
 		return $values_config;
+	}
+
+	protected function get_obsolete_values_config() {
+		$obsolete_values_config = array();
+
+		$obsolete_values_config[] = 'BS4_EU_COOKIE_PLACE';
+		$obsolete_values_config[] = 'BS4_EU_COOKIE_CONTENT';
+
+		return $obsolete_values_config;
 	}
 
 	protected function install_table_config() {
@@ -415,6 +424,17 @@ class bs4_tpl_manager {
 					$update = false;
 				}
 			}
+
+			$obsolete_values_config = $this->get_obsolete_values_config();
+
+			foreach($obsolete_values_config as $obsolete_value) {
+				$query = xtc_db_query("SELECT config_key FROM " . TABLE_BS4_TPL_MANAGER_CONFIG . " WHERE config_key = '" . $obsolete_value ."'");
+				$exist = xtc_db_num_rows($query);
+				if ($exist > 0) {
+					xtc_db_query("DELETE FROM " . TABLE_BS4_TPL_MANAGER_CONFIG . " WHERE config_key = '" . $obsolete_value ."'");
+				}
+			}
+
 		return $update;
 	}
 
@@ -726,6 +746,42 @@ class bs4_tpl_manager {
 		if($bs4_bs4_banner_settings_exists) {
 			xtc_db_query("ALTER TABLE ".TABLE_CATEGORIES." DROP `bs4_banner_settings`");
 		}
+	}
+
+	protected function remove_obsolete_files_or_dirs()
+	{
+		global $messageStack;
+
+		// Dateien definieren
+        $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
+		$shop_path = DIR_FS_CATALOG;
+		$dirs_and_files = array();
+
+		$dirs_and_files[] = $shop_path.'includes/extra/checkout/checkout_requirements/bs4_privacy.php';
+		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_privacy.php';
+		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_privacy.php';
+
+		$tpl_dirs_and_files = array();
+		$tpl_dirs_and_files[] = 'css/jquery.cookieconsent.css';
+		$tpl_dirs_and_files[] = 'css/jquery.cookieconsent-oil.css';
+		$tpl_dirs_and_files[] = 'javascript/jquery.cookieconsent.min.js';
+		$tpl_dirs_and_files[] = 'javascript/jquery.unveil.min.js';
+
+		foreach ($tpl_dirs_and_files as $tpl_dir_or_file) {
+			if($bs4_tpl != '') {
+				$dirs_and_files[] = $shop_path.'templates/'.$bs4_tpl.'/'.$tpl_dir_or_file;
+			}
+		}
+
+		// Dateien löschen
+		foreach ($dirs_and_files as $dir_or_file) {
+			if (is_dir($dir_or_file) || is_file($dir_or_file)) {
+				if(!$this->rrmdir($dir_or_file)){
+					$messageStack->add_session($dir_or_file.MODULE_BS4_TPL_MANAGER_DELETE_FILE_ERR, 'error');
+				}
+			}
+		}
+        return true;
 	}
 
 }

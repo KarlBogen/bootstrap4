@@ -1,6 +1,6 @@
 <?php
 /*
- * $Id: get_states.js.php 12424 2019-11-29 16:36:29Z GTB $
+ * $Id: get_states.js.php 12816 2020-06-29 14:34:34Z GTB $
  *
  * modified eCommerce Shopsoftware
  * http://www.modified-shop.org
@@ -96,7 +96,11 @@ function load_state() {
           "text"    : arr.name
         }).appendTo(stateSelect);
       });
-      $("[name='state']").val(state);
+      if (state != 0) {
+        $("[name='state']").val(state);
+      } else {
+        $("[name='state']").prop('selectedIndex',0);
+      }
       stateSelect.closest("div.form-group").show();
     } else {
       $("[name='state']").replaceWith('<input type="text" name="state" aria-label="state"></input>');

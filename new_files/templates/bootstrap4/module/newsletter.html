@@ -40,7 +40,7 @@
 							&nbsp;{#text_out#}
 						</label>
 					</div>
-					{if defined($smarty.const.SIGN_CONDITIONS_ON_CHECKOUT)}
+					{if "SIGN_CONDITIONS_ON_CHECKOUT"|defined}
 						<div class="checkbox clearfix">
 							<label for="privacy">
 								{if $PRIVACY_CHECKBOX}{$PRIVACY_CHECKBOX}{/if}

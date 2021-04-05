@@ -9,17 +9,18 @@
 			<a class="card h-100 text-center" href="{$module_data.CATEGORY_LINK}" title="{$module_data.CATEGORY_NAME}">
 				<div class="card-body">
 					<div class="cat_image w-100 mb-auto">
-					{if $module_data.CATEGORY_IMAGE_TRUE != ''}
-						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.CATEGORY_IMAGE}" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" />
-						<noscript><img class="img-fluid" src="{$module_data.CATEGORY_IMAGE}" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" /></noscript>
-					{else}
-						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$tpl_path}img/nocatimage.gif" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" />
-						<noscript><img class="img-fluid" src="{$tpl_path}img/nocatimage.gif" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" /></noscript>
-					{/if}
+						{if $module_data.CATEGORY_IMAGE != '' || (isset($module_data.CATEGORY_IMAGE_LIST) && $module_data.CATEGORY_IMAGE_LIST != '')}
+							{if isset($module_data.CATEGORY_IMAGE_LIST) && $module_data.CATEGORY_IMAGE_LIST != ''}
+								<img class="lazyload img-fluid" data-src="{$module_data.CATEGORY_IMAGE_LIST}" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" />
+							{else}
+								<img class="lazyload img-fluid" data-src="{$module_data.CATEGORY_IMAGE}" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" />
+							{/if}
+							<noscript><img class="img-fluid" src="{$module_data.CATEGORY_IMAGE}" alt="{$module_data.CATEGORY_NAME|onlytext}" title="{$module_data.CATEGORY_NAME|onlytext}" /></noscript>
+						{/if}
 					</div>
 				</div>
 				<div class="card-footer">
-					<h2 class="lb_title lead text-secondary mb-0">{$module_data.CATEGORY_NAME}</h2>
+					<h2 class="lb_title lead text-secondary mb-0">{if $module_data.CATEGORY_HEADING_TITLE != ''}{$module_data.CATEGORY_HEADING_TITLE}{else}{$module_data.CATEGORY_NAME}{/if}</h2>
 				</div>
 			</a>
 		</div>
@@ -30,7 +31,7 @@
 				<a class="card h-100 text-center" href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}" title="{#heading_specials#}">
 					<div class="card-body">
 						<div class="cat_image w-100 mb-auto">
-							<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$tpl_path}img/specials_{$language}.png" alt="{#heading_specials#}" title="{#heading_specials#}" />
+							<img class="lazyload img-fluid" data-src="{$tpl_path}img/specials_{$language}.png" alt="{#heading_specials#}" title="{#heading_specials#}" />
 							<noscript><img class="img-fluid" src="{$tpl_path}img/specials_{$language}.png" alt="{#heading_specials#}" title="{#heading_specials#}" /></noscript>
 						</div>
 					</div>
@@ -46,7 +47,7 @@
 			<a class="card h-100 text-center" href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}" title="{#heading_whatsnew#}">
 				<div class="card-body">
 					<div class="cat_image w-100 mb-auto">
-						<img class="img-fluid unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$tpl_path}img/whatsnew_{$language}.png" alt="{#heading_whatsnew#}" title="{#heading_whatsnew#}" />
+						<img class="lazyload img-fluid" data-src="{$tpl_path}img/whatsnew_{$language}.png" alt="{#heading_whatsnew#}" title="{#heading_whatsnew#}" />
 						<noscript><img class="img-fluid" src="{$tpl_path}img/whatsnew_{$language}.png" alt="{#heading_whatsnew#}" title="{#heading_whatsnew#}" /></noscript>
 					</div>
 				</div>

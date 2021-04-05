@@ -3,47 +3,55 @@
 {config_load file="lang_`$language`.section" section="gift_cart"}
 {if $ACTIVATE_GIFT == 'true'}
 {$FORM_ACTION}
+{if $D_FLAG == 'checkout'}
+<h5>{#title#}</h5>
+{else}
 <h1 class="card p-2 bg-h mb-2">{#title#}</h1>
+{/if}
 
 {if $coupon_message != ''}<div class="alert alert-warning">{$coupon_message}</div>{/if}
 {if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+{if $D_FLAG != 'checkout'}
 <div class="card mb-4">
 	<div class="card-body">
-		{if $GV_AMOUNT neq ''}
-			<p>{#text_info#}</p>
-			<p>{#voucher_balance#} <strong>{$GV_AMOUNT}</strong></p>
-			<div class="mb-2">
-				<p>{#text_send_to_friend#}</p>
-				<a href="{$GV_SEND_TO_FRIEND_LINK}">{#box_send_to_friend#|bs4button:'gift_cart'}</a>
+{/if}
+	{if $C_FLAG == 'true'}
+		<div class="row">
+			<div class="col-md-6">
+				{if isset($GV_AMOUNT) && $GV_AMOUNT > 0}
+					<p>{#text_info#}</p>
+					<p>{#voucher_balance#} <strong>{$GV_AMOUNT}</strong></p>
+					<div class="mb-2">
+						<p>{#text_send_to_friend#}</p>
+						<a href="{$GV_SEND_TO_FRIEND_LINK}">{#box_send_to_friend#|bs4button:'gift_cart'}</a>
+					</div>
+				{/if}
+				{if isset($COUPON_AMOUNT2) && $COUPON_AMOUNT2 > 0}
+					<p>{#voucher_redeemed#}</p>
+					<p>{$COUPON_AMOUNT2}</p>
+				{/if}
+				{if isset($COUPON_HELP_LINK)}
+					<p>{$COUPON_HELP_LINK}{#cart_coupon_info#}</a></p>
+				{/if}
 			</div>
-		{/if}
-		{if $COUPON_AMOUNT2 neq ''}
-			<p>{#voucher_redeemed#}</p>
-			<p>{$COUPON_AMOUNT2}</p>
-		{/if}
-		{if $COUPON_HELP_LINK neq ''}
-			<br />
-			<div class="infomessage">{*#cart_coupon#*} {$smarty.const.REDEEMED_COUPON} {$COUPON_HELP_LINK} {#cart_coupon_info#}</a></div>
-		{/if}
-		{if $C_FLAG == 'true'}
-			<p>{#text_gift#}</p>
-				<div class="bs form-inline mb-2">
-					<div class="form-group">
-						<label>{#text_code#}</label>
-						{$INPUT_CODE|replace:'input':'input class="form-control ml-2"'}
+			<div class="col-md-6">
+				<p>{#text_gift#}</p>
+				<div class="form-group">
+					<label>{#text_code#}</label>
+					<div class="input-group mb-3">
+						{$INPUT_CODE|replace:'input':'input class="form-control"'}
+						<div class="input-group-append">{$BUTTON_SUBMIT}</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm-6 col-md-3">{$BUTTON_SUBMIT}</div>
-                </div>
-
-		{else}
-				<p>{#create_account#}</p>
-				<div class="row">
-					<div class="col-sm-6 col-md-3"><a href="{$LINK_ACCOUNT}">{#text_create_account#|bs4button:'create_account'}</a></div>
-                </div>
-		{/if}
+			</div>
+		</div>
+	{else}
+		<p>{#create_account#}</p>
+		<a href="{$LINK_ACCOUNT}">{#text_create_account#|bs4button:'create_account'}</a>
+	{/if}
+{if $D_FLAG != 'checkout'}
 	</div>
 </div>
+{/if}
 {$FORM_END}
 {/if}

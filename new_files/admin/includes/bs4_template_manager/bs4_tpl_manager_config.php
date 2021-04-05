@@ -256,19 +256,6 @@ class Bs4TplManager {
 		return $yes_no_array;
     }
 
-    public function get_eu_cookie_place() {
-		$eu_cookie_place = array(
-			array('id' => 'center', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE1),
-			array('id' => 'top-left', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE2),
-			array('id' => 'top-right', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE3),
-			array('id' => 'top', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE4),
-			array('id' => 'bottom-left', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE5),
-			array('id' => 'bottom-right', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE6),
-			array('id' => 'bottom', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE7),
-		);
-		return $eu_cookie_place;
-    }
-
     public function get_superfish_level() {
 		$superfish_level = array(
 			array('id' => 'false', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_SUPERFISH_MAXLEVEL_ALL),

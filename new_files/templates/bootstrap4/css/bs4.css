@@ -525,9 +525,17 @@ span.cop_grey {
 .mod_copyright {
 	margin-top: 20px;
 }
-/* Unveil-Thumbnails bei deaktiviertem Javascript ausblenden */
-img.unveil {
-	display: none !important;
+/* lazysizes */
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+.lazyloaded {
+  opacity: 1;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 /* AGB-Fenster im Checkout */
 div.agbframe {

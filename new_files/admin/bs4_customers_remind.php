@@ -169,7 +169,7 @@ require (DIR_WS_INCLUDES.'head.php');
 									<td class="dataTableContent txta-l"><?php echo date('d.m.Y H:i:s', strtotime($customers_remind['remind_date_added'])); ?></td>
 									<td class="dataTableContent txta-l">
 										<?php
-											echo '<a class="button" href="'.xtc_href_link(FILENAME_MAIL .'?selected_box=tools&customer='. $customers_remind['customers_email_address']).'" style="float:left; height:10px; line-height:10px; margin:0px 2px;" >'.BUTTON_EMAIL.'</a>';
+											echo '<a class="button" href="'.xtc_href_link(FILENAME_MAIL .'?selected_box=tools&action=email&customer='. $customers_remind['customers_email_address']).'" style="float:left; height:10px; line-height:10px; margin:0px 2px;" >'.BUTTON_EMAIL.'</a>';
 											if (ACTIVATE_GIFT_SYSTEM == 'true') {
 												echo '<a class="button" href="'.xtc_href_link(FILENAME_GV_MAIL .'?action=email&selected_box=tools&cID='. $customers_remind['customers_id']).'" style="float:left; height:10px; line-height:10px; margin:0px 2px;" >'.BUTTON_SEND_GIFT.'</a>';
 											}

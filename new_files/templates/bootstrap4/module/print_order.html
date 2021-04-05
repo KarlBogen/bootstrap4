@@ -42,7 +42,7 @@
   		<div class="card-body">
 			<div class="row clearfix">
 				<div class="printColumsLeft">
-					<strong>{if isset($SHIPPING_CLASS) && strstr($SHIPPING_CLASS, 'selfpickup')}{#pickup_address#}{else}{#shipping_address#}{/if}</strong><br />{$address_label_shipping}
+					<strong>{if isset($SHIPPING_CLASS) && strpos($SHIPPING_CLASS, 'selfpickup')}{#pickup_address#}{else}{#shipping_address#}{/if}</strong><br />{$address_label_shipping}
 				</div>
 				<div class="printColumsRight">
 					{if $address_label_payment}<strong>{#payment_address#}</strong>{/if}<br />{$address_label_payment}
@@ -103,7 +103,7 @@
 			</div>
 		</div>
     {/if}
-    {if count($PAYMENT_INFO) > 0}
+    {if is_array($PAYMENT_INFO) && count($PAYMENT_INFO) > 0}
 		<div class="card clearfix">
 			<div class="card-body">
 			{foreach name=aussen item=data from=$PAYMENT_INFO}

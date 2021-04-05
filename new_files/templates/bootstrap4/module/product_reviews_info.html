@@ -8,7 +8,8 @@
 			<div class="col-3">
 				{if $PRODUCTS_IMAGE != ''}
 					<a class="cbimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_LINK}">
-						<img class="unveil img-fluid" src="{$PRODUCTS_IMAGE}" data-src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+						<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+						<noscript><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_images":"thumbnail_images"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 					</a>
 					<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_LINK}"><img class="img-fluid" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
 				{/if}

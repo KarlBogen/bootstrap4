@@ -32,7 +32,6 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 
 	// get input options
 	$yes_no_array = 	$bs4->get_yes_no();
-	$eu_cookie_place = 	$bs4->get_eu_cookie_place();
 	$superfish_level = 	$bs4->get_superfish_level();
 	$carousel_show = 	$bs4->get_carousel_show();
 	$fade_slide = 		$bs4->get_fade_slide();
@@ -165,16 +164,6 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TOP4; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_SHOW_TOP4'], 'BS4_SHOW_TOP4'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TOP4_INFO; ?></td>
-							</tr>
-							<tr>
-				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE; ?></td>
-				                <td class="dataTableConfig col-middle"><?php echo xtc_draw_pull_down_menu('configuration[BS4_EU_COOKIE_PLACE]', $eu_cookie_place, $bs4_conf['BS4_EU_COOKIE_PLACE']); ?></td>
-				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_PLACE_INFO; ?></td>
-							</tr>
-							<tr>
-				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_CONTENT; ?></td>
-				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_content('configuration[BS4_EU_COOKIE_CONTENT]', $bs4_conf['BS4_EU_COOKIE_CONTENT']); ?></td>
-				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_EU_COOKIE_CONTENT_INFO; ?></td>
 							</tr>
 							<tr>
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_JS_DISABLED; ?></td>
@@ -767,6 +756,11 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_ATTR_PRICE_UPDATER; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_ATTR_PRICE_UPDATER'], 'BS4_ATTR_PRICE_UPDATER'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_ATTR_PRICE_UPDATER_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_ATTR_PRICE_UPDATER; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_ATTR_PRICE_UPDATER_UPDATE_PRICE'], 'BS4_ATTR_PRICE_UPDATER_UPDATE_PRICE'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_ATTR_PRICE_UPDATER_UPDATE_PRICE_INFO; ?></td>
 							</tr>
 							<tr>
 				                <td class="dataTableConfig" colspan="3"><h3><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_REDUCE_CART; ?></h3></td>

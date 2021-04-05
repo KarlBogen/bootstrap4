@@ -4,12 +4,12 @@
 	    {$BOX_CONTENT2}
 		{if $smarty.const.BS4_SPECIALS_CATEGORIES == 'true'}
 			{if $smarty.const.SPECIALS_EXISTS == true}
-				<li class="level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} active Selected{/if}"><a href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}" class="{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} active Selected{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'}up{/if}">{#heading_specials#}</a></li>
+				<li class="level1{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} active Selected{/if}"><a href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}" class="{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} active Selected{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'}up{/if}">{#heading_specials#}</a></li>
 			{/if}
 		{/if}
 		{if $smarty.const.BS4_WHATSNEW_CATEGORIES == 'true'}
 			{*if $smarty.const.WHATSNEW_EXISTS == true*}
-				<li class="level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} active Selected{/if}"><a href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}" class="{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} active Selected{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'} up{/if}">{#heading_whatsnew#}</a></li>
+				<li class="level1{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} active Selected{/if}"><a href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}" class="{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} active Selected{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'} up{/if}">{#heading_whatsnew#}</a></li>
 			{*/if*}
 		{/if}
 		{if isset($BOX_LINKS)}
