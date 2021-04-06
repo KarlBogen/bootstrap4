@@ -7,7 +7,7 @@
 	{if $text[0] == 'text'}{append var=SLIDERSETTINGS index=bs4_control_text_class value='text-'}{/if}
 {/if}
 {if $SLIDER|count > 1}
-	<div id="myCarousel" class="carousel slide{if $smarty.const.BS4_CAROUSEL_SHOW == 'shop'} container{/if}{if $smarty.const.BS4_CAROUSEL_FADE == 'true'} carousel-fade{/if} d-none d-sm-block mb-4 text-center" data-ride="carousel" data-interval="{$SLIDERSETTINGS.bs4_duration}">
+	<div id="myCarousel" class="carousel slide{if $smarty.const.BS4_CAROUSEL_SHOW == 'shop'} container{/if}{if $smarty.const.BS4_CAROUSEL_FADE == 'true'} carousel-fade{/if} mb-4 text-center" data-ride="carousel" data-interval="{$SLIDERSETTINGS.bs4_duration}">
 		<div class="carousel-inner">
 			{if $SLIDERSETTINGS.bs4_indicator_position == 'j1'}
 			<ol class="carousel-indicators">
@@ -22,12 +22,16 @@
 							<picture>
 								<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 								<source data-srcset="{$slider.IMAGE_SRC}">
-								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+								<div class="ratio-container">
+									<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+								</div>
 							</picture>
 						</a>
 					{else}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
-							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<div class="ratio-container">
+								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							</div>
 							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 						</a>
 					{/if}
@@ -36,10 +40,14 @@
 						<picture>
 							<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 							<source data-srcset="{$slider.IMAGE_SRC}">
-							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<div class="ratio-container">
+								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							</div>
 						</picture>
 					{else}
-						<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+						<div class="ratio-container">
+							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+						</div>
 						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 					{/if}
 				{/if}
