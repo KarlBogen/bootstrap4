@@ -23,14 +23,14 @@
 								<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 								<source data-srcset="{$slider.IMAGE_SRC}">
 								<div class="ratio-container">
-									<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+									<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 								</div>
 							</picture>
 						</a>
 					{else}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
 							<div class="ratio-container">
-								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+								<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							</div>
 							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 						</a>
@@ -41,12 +41,12 @@
 							<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 							<source data-srcset="{$slider.IMAGE_SRC}">
 							<div class="ratio-container">
-								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+								<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							</div>
 						</picture>
 					{else}
 						<div class="ratio-container">
-							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 						</div>
 						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 					{/if}

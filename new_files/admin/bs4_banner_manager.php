@@ -80,12 +80,16 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 
 		$banners_array = array();
 		$banners_query = xtDBquery("SELECT banners_id,
+											banners_group_id,
 											banners_title,
+											banners_image,
 											banners_group,
+											banners_sort,
 											languages_id,
 											status
 									FROM " . TABLE_BANNERS . "
-									ORDER BY banners_group, banners_title");
+									WHERE languages_id = '".(int)$_SESSION['languages_id']."'
+									ORDER BY banners_group, banners_sort, banners_title");
 		while ($banners = xtc_db_fetch_array($banners_query,true)) {
 			$banners_array[] = $banners;
 		}
@@ -152,9 +156,9 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 		$banners_string .= '	<tbody>';
 		$banners_string .= '		<tr class="dataTableHeadingRow">';
 		$banners_string .= '			<td class="dataTableHeadingContent txta-c" style="width:40px;">&nbsp;</td>';
+		$banners_string .= '			<td class="dataTableHeadingContent">' . BS4_TABLE_HEADING_IMAGE . '</td>';
 		$banners_string .= '			<td class="dataTableHeadingContent">' . BS4_TABLE_HEADING_BANNERS . '</td>';
 		$banners_string .= '			<td class="dataTableHeadingContent txta-c">' . BS4_TABLE_HEADING_GROUPS . '</td>';
-		$banners_string .= '			<td class="dataTableHeadingContent txta-c">' . BS4_TABLE_HEADING_LANGUAGE . '</td>';
 		$banners_string .= '			<td class="dataTableHeadingContent txta-c">' . BS4_TABLE_HEADING_STATUS . '</td>';
 		$banners_string .= '		</tr>';
 
@@ -166,14 +170,14 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 
 			$banners_string .= '		<tr>';
 			$banners_string .= '			<td class="dataTableContent txta-c">' . xtc_draw_checkbox_field('bs4_banner_ids[]', $banners[$i]['banners_id'], $checked) . '</td>';
+			$banners_string .= '			<td class="dataTableContent"><img style="border:0;max-width:180px;max-height:50px;" src="' . DIR_WS_CATALOG_IMAGES . 'banner/'.(($banners[$i]['banners_image'] != '') ? $banners[$i]['banners_image'] : 'noimage.gif') . '" /></td>';
 			$banners_string .= '			<td class="dataTableContent">' . $banners[$i]['banners_title'] . '</td>';
 			$banners_string .= '			<td class="dataTableContent txta-c">' . $banners[$i]['banners_group'] . '</td>';
-			$banners_string .= '			<td class="dataTableContent txta-c">' . $lang_array_id[$banners[$i]['languages_id']] . '</td>';
 			$banners_string .= '			<td class="dataTableContent txta-c">';
 			if ($banners[$i]['status'] == '1') {
-				$banners_string .= xtc_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'bID=' . $banners[$i]['banners_id'] . '&action=setflag&flag=0&cID=' . $cID) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+				$banners_string .= xtc_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'bID=' . $banners[$i]['banners_group_id'] . '&action=setflag&flag=0&cID=' . $cID) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
 			} else {
-				$banners_string .= '<a href="' . xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'bID=' . $banners[$i]['banners_id'] . '&action=setflag&flag=1&cID=' . $cID) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . xtc_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+				$banners_string .= '<a href="' . xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'bID=' . $banners[$i]['banners_group_id'] . '&action=setflag&flag=1&cID=' . $cID) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . xtc_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
 			}
 			$banners_string .= '</td>';
 			$banners_string .= '		</tr>';

@@ -47,11 +47,11 @@ define('ENTRY_MESSAGE_BODY_ERROR', 'Please enter the message to us!');
  * --------------------------------------------------------------------------
  */
 //BOF - web0null_attribute_price_updater
-defined('TEXT_PRODUCTS_VPE') or define('TEXT_PRODUCTS_VPE', 'VPE');
-defined('TEXT_ATTRIBUTE_PRICE_UPDATER_A') or define('TEXT_ATTRIBUTE_PRICE_UPDATER_A', 'In this Version:');
-defined('TEXT_ATTRIBUTE_PRICE_UPDATER_B') or define('TEXT_ATTRIBUTE_PRICE_UPDATER_B', 'Price/Article');
-defined('TXT_ONLY') or define('TXT_ONLY', '<span class="small_price">Now only</span> ');
-defined('TXT_INSTEAD') or define('TXT_INSTEAD', '<span class="small_price">Our previous price</span> ');
+define('BS4_TEXT_PRODUCTS_VPE', 'VPE');
+define('BS4_TEXT_ATTRIBUTE_PRICE_UPDATER_A', 'In this Version:');
+define('BS4_TEXT_ATTRIBUTE_PRICE_UPDATER_B', 'Price/Article');
+define('BS4_TXT_ONLY', '<span class="small_price">Now only</span> ');
+define('BS4_TXT_INSTEAD', '<span class="small_price">Our previous price</span> ');
 //EOF - web0null_attribute_price_updater
 
 /* ----------------------------------------------------------------------------------------------------

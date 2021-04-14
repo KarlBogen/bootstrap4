@@ -1,6 +1,13 @@
 UNRELEASED
 
 
+1.2.1 [14.04.2021]
+
+- Sliderbilder wurden wegen Lazyload zu spät geladen
+- BS4 Banner Manager an Banner Gruppen angepasst
+- Fehler im Produktlisting behoben
+- mehrere kleine Änderungen
+
 1.2.0 [05.04.2021]
 
 - Updates für Shopversion 2.0.6.0

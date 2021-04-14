@@ -7,9 +7,25 @@
 	{/if}
 	<h1 class="card p-2 bg-h">{$LIST_TITLE}</h1>
 	{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')
-	     || (isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != '')}
+		|| (isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != '')
+		|| (isset($CATEGORIES_IMAGE_MOBILE) && $CATEGORIES_IMAGE_MOBILE != '')
+	}
 	<div class="cat_description p-2 mb-2">
-	  {if isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != ''}<img class="{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')}col-4 {/if}img-fluid float-left mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />{/if}
+		{if isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != ''}
+		<div{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')} class="col-4"{/if}>
+			{if isset($CATEGORIES_IMAGE_MOBILE) && $CATEGORIES_IMAGE_MOBILE != ''}
+				<picture>
+					<source media="(max-width:600px)" data-srcset="{$CATEGORIES_IMAGE_MOBILE}">
+					<source data-srcset="{$CATEGORIES_IMAGE}">
+					<img class="lazyload cat_image img-fluid float-left mb-2 mr-4" data-src="{$CATEGORIES_IMAGE}" title="{$CATEGORIES_NAME|onlytext}" alt="{$CATEGORIES_NAME|onlytext}" />
+					<noscript><img class="cat_image img-fluid float-left mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
+				</picture>
+			{else}
+				<img class="lazyload cat_image img-fluid float-left mb-2 mr-4" data-src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />
+				<noscript><img class="cat_image img-fluid float-left mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
+			{/if}
+		</div>
+		{/if}
 	  {if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')}{$CATEGORIES_DESCRIPTION}{/if}
 	</div>
 	{/if}
@@ -25,8 +41,13 @@
 <div class="manufacturer mb-2 clearfix">
 	<h4 class="card p-2 bg-h">{$MANUFACTURER_NAME}</h4>
 	<div class="manu_description mb-2">
-	  {if $MANUFACTURER_IMAGE}<img class="{if (isset($MANUFACTURER_DESCRIPTION) && $MANUFACTURER_DESCRIPTION != '')}col-4 {/if}img-fluid float-left mb-2 mr-4" src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER_NAME|onlytext}" />{/if}
-	  {if $MANUFACTURER_DESCRIPTION}{$MANUFACTURER_DESCRIPTION}{/if}
+		{if $MANUFACTURER_IMAGE}
+			<div{if (isset($MANUFACTURER_DESCRIPTION) && $MANUFACTURER_DESCRIPTION != '')} class="col-4"{/if}>
+				<img class="lazyload manu_image img-fluid float-left mb-2 mr-4" data-src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER_NAME|onlytext}" />
+				<noscript><img class="manu_image img-fluid float-left mb-2 mr-4" src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER_NAME|onlytext}" /></noscript>
+			</div>
+		{/if}
+		{if $MANUFACTURER_DESCRIPTION}{$MANUFACTURER_DESCRIPTION}{/if}
 	</div>
 </div>
 {/if}

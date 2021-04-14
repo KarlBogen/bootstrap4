@@ -340,7 +340,7 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 								if (count($bs4_custom2['custom2']) > 0){
 	                                for($i=0; $i < count($bs4_custom2['custom2']); $i++){
 										foreach($bs4_custom2['custom2'][$i] as $k => $v){
-											if ($i < 21 || ($i > 47 && $i < 54) || ($i > 55 && $i < 64)){
+											if ($i < 21 || ($i > 47 && $i < 54) || ($i > 56 && $i < 65)){
 								?>
 												<tr>
 									                <td class="dataTableConfig col-left"><?php echo defined('TEXT_BS4_TPL_MANAGER_THEME_FIELD_'.$i) ? constant('TEXT_BS4_TPL_MANAGER_THEME_FIELD_'.$i) : TEXT_BS4_TPL_MANAGER_THEME_COLOR; echo defined('COLOR_'.$i) ? constant('COLOR_'.$i) : ''; echo '<small>'.TEXT_BS4_TPL_MANAGER_THEME_VAR.$k.'</small>'; ?></td>
@@ -349,7 +349,7 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 												</tr>
 								<?php
 											}
-											if (($i > 20 && $i < 31) || $i == 34 || ($i > 43 && $i < 48) || $i == 54 || $i == 55 || $i == 64 || $i == 65){
+											if (($i > 20 && $i < 31) || $i == 34 || ($i > 43 && $i < 48) || $i == 54 || $i == 55 || $i == 56 || ($i > 64 && $i < 69)){
 								?>
 												<tr>
 									                <td class="dataTableConfig col-left"><?php echo defined('TEXT_BS4_TPL_MANAGER_THEME_FIELD_'.$i) ? constant('TEXT_BS4_TPL_MANAGER_THEME_FIELD_'.$i) : ''; echo '<small>'.TEXT_BS4_TPL_MANAGER_THEME_VAR.$k.'</small>'; ?></td>

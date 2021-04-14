@@ -22,7 +22,7 @@
 {if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
 
 <div class="row clearfix">
-	<div class="{if $TEXT_AGB_CHECKOUT || isset($EXPRESS)}col-md-6{else}col-md-12{/if} mb-3">
+	<div class="{if $TEXT_AGB_CHECKOUT || isset($EXPRESS) || $BS4_TEXT_PRIVACY_CHECKOUT != ''}col-md-6{else}col-md-12{/if} mb-3">
 		<div class="card h-100">
 			<div class="card-body">
 				{#text_information#|sprintf:$HEADQUARTER}
@@ -32,12 +32,16 @@
 			</div>
 		</div>
 	</div>
-	{if $TEXT_AGB_CHECKOUT || isset($EXPRESS)}
+	{if $TEXT_AGB_CHECKOUT || isset($EXPRESS) || $BS4_TEXT_PRIVACY_CHECKOUT != ''}
 	<div class="col-md-6 mb-3">
 		<div class="card h-100">
 			<div class="list-group list-group-flush">
 				<div class="list-group-item">
-					{$TEXT_AGB_CHECKOUT}
+					{if $BS4_TEXT_PRIVACY_CHECKOUT != ''}
+						<strong>{$BS4_TEXT_PRIVACY_CHECKOUT}</strong>
+					{else}
+						 {$TEXT_AGB_CHECKOUT}
+					{/if}
 				</div>
 				{if isset($EXPRESS)}
 				<div class="list-group-item">

@@ -537,23 +537,6 @@ span.cop_grey {
   -o-transition: opacity 1s ease;
   transition: opacity 1s ease;
 }
-.ratio-container {
-    position: relative;
-}
-.ratio-container:after {
-    content: '';
-    display: block;
-    height: 0;
-    width: 100%;
-    /* 16:9 = 56.25% = calc(9 / 16 * 100%) */
-    padding-bottom: 42.86%;
-}
-.ratio-container > * {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-}
 /* AGB-Fenster im Checkout */
 div.agbframe {
 	height: 150px;

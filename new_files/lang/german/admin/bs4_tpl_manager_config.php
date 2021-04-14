@@ -140,9 +140,10 @@ $lang_array = array(
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_SLIDER' => 'Slider',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW' => 'Bilderslider:',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_INFO' => 'Wo und wie breit soll der Slider angezeigt werden?<br /><br />
+	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_INFO' => 'Wo und wie breit soll der Slider auf der Startseite angezeigt werden?<br /><br />
 		<strong>Hinweis:</strong><br />
-		Dieser Slider zeigt Bilder, die im "Banner Manager" der Banner-Gruppe "SLIDER" zugeordnet werden!',
+		Dieser Slider zeigt Bilder, die im "Banner Manager" der Banner-Gruppe "SLIDER" zugeordnet werden!<br />
+		Beachten Sie, dass bei "gesamte Bildschirmbreite" und "Contentbreite" die Werte in "Konfiguration -> Bild Optionen" entsprechend angepasst werden m&uuml;ssen, oder das Bild, nach dem Speichern im Banner Manager, per FTP im Ordner "images/banner/" nochmals getauscht wird.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_NONE' => 'nicht anzeigen',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_SCREEN' => 'gesamte Bildschirmbreite',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_SHOP' => 'Contentbreite',

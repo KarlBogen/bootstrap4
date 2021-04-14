@@ -22,7 +22,7 @@ class bs4_tpl_manager {
 
 	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
-		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.0';
+		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.1';
 		$this->description = '';
 		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) $this->description .= '<a class="button btnbox but_green" style="text-align:center;" onclick="this.blur();" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=update') . '">Update</a><br /><br />';
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
@@ -154,6 +154,7 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'includes/extra/application_bottom/bs4_customers_remind.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/application_top/application_top_begin/bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/cart_actions/add_product_before_redirect/bs4_agi_reduce_cart.php';
+		$dirs_and_files[] = $shop_path.'includes/extra/checkout/checkout_requirements/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/database_tables/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/default/categories_content/bs4_remove_empty_categories.php';
 		$dirs_and_files[] = $shop_path.'includes/extra/default/categories_smarty/bs4_banners.php';
@@ -180,6 +181,7 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'lang/english/extra/admin/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_agi_reduce_cart.php';
+		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_template.php';
 		$dirs_and_files[] = $shop_path.'lang/english/modules/system/bs4_tpl_manager.php';
 
@@ -189,6 +191,7 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'lang/german/admin/bs4_tpl_manager_theme.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_agi_reduce_cart.php';
+		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_privacy.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_template.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/admin/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/german/modules/system/bs4_tpl_manager.php';
@@ -757,15 +760,16 @@ class bs4_tpl_manager {
 		$shop_path = DIR_FS_CATALOG;
 		$dirs_and_files = array();
 
-		$dirs_and_files[] = $shop_path.'includes/extra/checkout/checkout_requirements/bs4_privacy.php';
-		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_privacy.php';
-		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_privacy.php';
+		// Beispiel
+		// $dirs_and_files[] = $shop_path.'includes/extra/bs4_test.php';
 
 		$tpl_dirs_and_files = array();
 		$tpl_dirs_and_files[] = 'css/jquery.cookieconsent.css';
 		$tpl_dirs_and_files[] = 'css/jquery.cookieconsent-oil.css';
 		$tpl_dirs_and_files[] = 'javascript/jquery.cookieconsent.min.js';
 		$tpl_dirs_and_files[] = 'javascript/jquery.unveil.min.js';
+		$tpl_dirs_and_files[] = 'module/new_products_overview.html';
+		$tpl_dirs_and_files[] = 'module/specials.html';
 
 		foreach ($tpl_dirs_and_files as $tpl_dir_or_file) {
 			if($bs4_tpl != '') {

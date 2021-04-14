@@ -142,7 +142,8 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW' => 'Imageslider:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_INFO' => 'Where and how wide should the slider be displayed?<br /><br />
 		<strong>Note:</strong><br />
-		This slider displays images asigned with the banner group "SLIDER" in the "Banner Manager"!',
+		This slider displays images asigned with the banner group "SLIDER" in the "Banner Manager"!<br />
+		Note, for "entire screen width" and "content width" the values in "Configuration -> Image Options" must be adjusted, or change the image via FTP in the folder "images/banner/", after saving in the Banner Manager.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_NONE' => 'hide',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_SCREEN' => 'entire screen width',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_SHOW_SHOP' => 'content width',
