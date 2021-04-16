@@ -1,5 +1,7 @@
 UNRELEASED
 
+- Ansichtsproblem im BS4 Theme Manager behoben
+- Breadcrumbs - Leerzeichen eingefügt
 
 1.2.1 [14.04.2021]
 

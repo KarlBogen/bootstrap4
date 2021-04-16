@@ -4,7 +4,7 @@
       <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
         {if !$smarty.foreach.aussen.last}
           <a itemprop="item" href="{$breadcrumb.link}" class="headerNavigation">
-            <span itemprop="name">{$breadcrumb.title|onlytext}</span>
+            <span itemprop="name">{$breadcrumb.title|onlytext}&nbsp;</span>
           </a>
         {else}
           <meta itemprop="item" content="{$breadcrumb.link}" />
