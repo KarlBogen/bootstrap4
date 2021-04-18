@@ -1,5 +1,12 @@
 UNRELEASED
 
+
+
+
+1.2.2 [18.04.2021]
+
+- Fehlerhafte Abfragen der Funktion "strpos()" behoben
+- noch vorhandene Abfragen "strstr()" in "strpos()" geändert
 - Ansichtsproblem im BS4 Theme Manager behoben
 - Breadcrumbs - Leerzeichen eingefügt
 
