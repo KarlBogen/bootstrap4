@@ -79,7 +79,7 @@
 <?php } ?>
 	});
 	var curtext = "<?php echo str_replace(' ', '&nbsp;', TEXT_COLORBOX_CURRENT); ?>";
-<?php if (strstr($PHP_SELF, 'checkout')) { ?>
+<?php if (strpos($PHP_SELF, 'checkout') !== false) { ?>
 	$('#button_checkout_confirmation').on('click',function() {
 		$(this).hide();
 	});
@@ -161,7 +161,7 @@ if (SEARCH_AC_STATUS == 'true') {
 	});
 <?php
 }
-if (SEARCH_AC_STATUS == 'true' || (basename($PHP_SELF) != FILENAME_SHOPPING_CART && !strpos($PHP_SELF, 'checkout'))) { ?>
+if (SEARCH_AC_STATUS == 'true' || (basename($PHP_SELF) != FILENAME_SHOPPING_CART && strpos($PHP_SELF, 'checkout') === false)) { ?>
 	function ac_closing() {
 		setTimeout("$('#suggestions').slideUp();", 100);
 		ac_page = 1;
@@ -179,10 +179,12 @@ if (SEARCH_AC_STATUS == 'true' || (basename($PHP_SELF) != FILENAME_SHOPPING_CART
 		$('#alertable-content').html(message);
 		$('#alertable-title').html(title);
 	}
+console.log("base: <?php echo basename($PHP_SELF); ?>");
+console.log("self: <?php echo $PHP_SELF; ?>");
 <?php
 // Ende Alert
 // Beginn Aufklappen Warenkorb und Merkzettel
-if (!strstr($PHP_SELF, FILENAME_SHOPPING_CART) && !strstr($PHP_SELF, 'checkout')) {
+if (basename($PHP_SELF) != FILENAME_SHOPPING_CART && strpos($PHP_SELF, 'checkout') === false) {
 ?>
 	$(function() {
 		$('#toggle_cart').click(function() {
@@ -238,7 +240,7 @@ if (BS4_TOUCH_USE == 'true') { ?>
 }
 // Ende Touch
 // Beginn Erweiterte Validation im Registrierungsformular
-if (BS4_ADVANCED_JS_VALIDATION == 'true' && (strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT) || strstr($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT))) {
+if (BS4_ADVANCED_JS_VALIDATION == 'true' && (strpos($PHP_SELF, FILENAME_CREATE_ACCOUNT) !== false || strpos($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT) !== false)) {
 	require_once (DIR_FS_EXTERNAL.'password_policy/password_policy.php');
 ?>
 	$(function () {

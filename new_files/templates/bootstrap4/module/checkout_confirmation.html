@@ -66,7 +66,7 @@
 		<div class="col-md-6 mb-3">
 			<div class="card h-100">
 				<div class="card-body">
-    				<h5>{if isset($SHIPPING_CLASS) && strpos($SHIPPING_CLASS, 'selfpickup')}{#text_pickup_address#}{else}{#text_shipping_address#}&nbsp;<a class="small" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a>{/if}</h5>
+    				<h5>{if isset($SHIPPING_CLASS) && strpos($SHIPPING_CLASS, 'selfpickup') !== false}{#text_pickup_address#}{else}{#text_shipping_address#}&nbsp;<a class="small" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a>{/if}</h5>
     				{$DELIVERY_LABEL}
 				</div>
 			</div>
