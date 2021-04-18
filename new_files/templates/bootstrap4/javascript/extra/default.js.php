@@ -179,8 +179,6 @@ if (SEARCH_AC_STATUS == 'true' || (basename($PHP_SELF) != FILENAME_SHOPPING_CART
 		$('#alertable-content').html(message);
 		$('#alertable-title').html(title);
 	}
-console.log("base: <?php echo basename($PHP_SELF); ?>");
-console.log("self: <?php echo $PHP_SELF; ?>");
 <?php
 // Ende Alert
 // Beginn Aufklappen Warenkorb und Merkzettel
