@@ -15,13 +15,13 @@
 		<div{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')} class="col-4"{/if}>
 			{if isset($CATEGORIES_IMAGE_MOBILE) && $CATEGORIES_IMAGE_MOBILE != ''}
 				<picture>
-					<source media="(max-width:600px)" data-srcset="{$CATEGORIES_IMAGE_MOBILE}">
-					<source data-srcset="{$CATEGORIES_IMAGE}">
-					<img class="lazyload cat_image img-fluid float-left mb-2 mr-4" data-src="{$CATEGORIES_IMAGE}" title="{$CATEGORIES_NAME|onlytext}" alt="{$CATEGORIES_NAME|onlytext}" />
-					<noscript><img class="cat_image img-fluid float-left mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
+					<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$CATEGORIES_IMAGE_MOBILE}">
+					<source srcset="data:,1w" data-srcset="{$CATEGORIES_IMAGE}">
+					<img class="lazyload cat_image img-fluid float-left mb-2 mr-4" src="data:," data-src="{$CATEGORIES_IMAGE}" title="{$CATEGORIES_NAME|onlytext}" alt="{$CATEGORIES_NAME|onlytext}" />
 				</picture>
+				<noscript><img class="cat_image img-fluid float-left mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
 			{else}
-				<img class="lazyload cat_image img-fluid float-left mb-2 mr-4" data-src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />
+				<img class="lazyload cat_image img-fluid float-left mb-2 mr-4" src="data:," data-src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />
 				<noscript><img class="cat_image img-fluid float-left mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
 			{/if}
 		</div>
@@ -43,7 +43,7 @@
 	<div class="manu_description mb-2">
 		{if $MANUFACTURER_IMAGE}
 			<div{if (isset($MANUFACTURER_DESCRIPTION) && $MANUFACTURER_DESCRIPTION != '')} class="col-4"{/if}>
-				<img class="lazyload manu_image img-fluid float-left mb-2 mr-4" data-src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER_NAME|onlytext}" />
+				<img class="lazyload manu_image img-fluid float-left mb-2 mr-4" src="data:," data-src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER_NAME|onlytext}" />
 				<noscript><img class="manu_image img-fluid float-left mb-2 mr-4" src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER_NAME|onlytext}" /></noscript>
 			</div>
 		{/if}

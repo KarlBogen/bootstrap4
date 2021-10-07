@@ -6,7 +6,7 @@
 	<div class="card-body">
 		{if $IMAGE}
 		<div class="box_image mb-2">
-			<img class="lazyload img-fluid" data-src="{$IMAGE}" alt="{$NAME|onlytext}" />
+			<img class="lazyload img-fluid" src="data:," data-src="{$IMAGE}" alt="{$NAME|onlytext}" />
 			<noscript><img class="img-fluid" src="{$IMAGE}" alt="{$NAME|onlytext}" /></noscript>
 		</div>
 		{/if}

@@ -7,7 +7,7 @@
 	{$BOX_CONTENT}
 	{if "MODULE_COOKIE_CONSENT_STATUS"|defined && $smarty.const.MODULE_COOKIE_CONSENT_STATUS == 'true'}
 		<li class="nav-item level1">
-			<a class="nav-link" href="javascript:;" title="{$smarty.const.TEXT_COOKIE_CONSENT_LABEL_CPC_HEADING}" trigger-cookie-consent-panel=""><span class="fa fa-chevron-right"></span>&nbsp;&nbsp;{$smarty.const.TEXT_COOKIE_CONSENT_LABEL_CPC_HEADING}</a>
+			<a class="nav-link" href="javascript:;" title="{$smarty.const.TEXT_COOKIE_CONSENT_LABEL_CPC_HEADING}" data-trigger-cookie-consent-panel=""><span class="fa fa-chevron-right"></span>&nbsp;&nbsp;{$smarty.const.TEXT_COOKIE_CONSENT_LABEL_CPC_HEADING}</a>
 		</li>
 	{/if}
 	</ul>

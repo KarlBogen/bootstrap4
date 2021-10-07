@@ -14,7 +14,7 @@
 						<div class="pd_big_image col-12">
 							<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
 								<a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"original_images"}">
-								<img class="lazyload img-fluid img-thumbnail" itemprop="image" data-src="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />								</a>
+								<img class="lazyload img-fluid img-thumbnail" itemprop="image" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />								</a>
 								<noscript><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</div>
 						</div>
@@ -25,9 +25,9 @@
 						<div class="col-3 mb-3">
 							<a class="easyimages d-block text-center" href="{$PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="1" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}">
 								{if $smarty.const.PICTURESET_ACTIVE === true}
-									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									<img class="lazyload img-fluid" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 								{else}
-									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									<img class="lazyload img-fluid" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 								{/if}
 								<noscript><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</a>
@@ -38,9 +38,9 @@
 								<div class="col-3 mb-3">
 									<a class="easyimages d-block text-center" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="{$zaehl}" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}">
 										{if $smarty.const.PICTURESET_ACTIVE === true}
-											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 										{else}
-											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 										{/if}
 										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 									</a>
@@ -58,7 +58,7 @@
 					<div class="row mb-4">
 						<div class="pd_big_image col-12">
 							<a class="cbimages text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-target="#modal">
-								<img class="lazyload img-fluid img-thumbnail" itemprop="image" data-src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_":"popup_"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+								<img class="lazyload img-fluid img-thumbnail" itemprop="image" src="data:," data-src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_":"popup_"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 								<noscript><img class="img-fluid img-thumbnail" src="{if $smarty.const.BS4_PROD_DETAIL_FULLCONTENT == 'true'}{$PRODUCTS_IMAGE|replace:"info_":"popup_"}{else}{$PRODUCTS_IMAGE}{/if}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</a>
 						</div>
@@ -71,9 +71,9 @@
 									<div class="col-3 mb-3">
 										<a class="cbimages easyimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
 											{if $smarty.const.PICTURESET_ACTIVE === true}
-												<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 											{else}
-												<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 											{/if}
 											<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 										</a>
@@ -159,7 +159,7 @@
 						{if isset($PRODUCTS_DISCOUNT) && $PRODUCTS_DISCOUNT != ''}<div class="small"><strong>{#text_discount#}</strong> {$PRODUCTS_DISCOUNT}</div>{/if}
 						{if $PRODUCTS_EXPIRES}<div class="small text-danger">{#text_expires_date#} {$PRODUCTS_EXPIRES}</div>{/if}
 						{if $PRODUCTS_MANUFACTURERS_MODEL != ''}<div class="small"><strong>{#products_manufacturer_model#}</strong> {$PRODUCTS_MANUFACTURERS_MODEL}</div>{/if}
-						{if isset($MANUFACTURER) && $MANUFACTURER != ''}<div class="small"><strong>{#manufacturer#}</strong> <span itemprop="brand">{$MANUFACTURER}</span></div>{/if}
+						{if isset($MANUFACTURER) && $MANUFACTURER != ''}<div class="small" itemprop="brand" itemscope itemtype="https://schema.org/Brand"><strong>{#manufacturer#}</strong> <span itemprop="name">{$MANUFACTURER}</span></div>{/if}
 						{if isset($MANUFACTURER_LINK) && $MANUFACTURER_LINK != ''}<div class="small"><strong>{#manufacturer_more_of#}</strong> <a title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}">{$MANUFACTURER}</a></div>{/if}
 						{if $PRODUCTS_URL != ''}<div class="small">{$PRODUCTS_URL}</div>{/if}
 					</div>
@@ -237,7 +237,7 @@
 				{if $smarty.const.BS4_PROD_DETAIL_SHOW_MANUIMAGE == 'true' && isset($MANUFACTURER_IMAGE) && $MANUFACTURER_IMAGE != ''}
 					<div class="pd_manu_image">
 						<a title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}">
-							<img class="lazyload img-fluid" data-src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" />
+							<img class="lazyload img-fluid" src="data:," data-src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" />
 							<noscript><img class="img-fluid"src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" /></noscript>
 						</a>
 					</div>
@@ -257,9 +257,9 @@
 						<div class="col-3 d-flex justify-content-center align-items-center mb-2">
 							<a class="cbimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
 								{if $smarty.const.PICTURESET_ACTIVE === true}
-									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									<img class="lazyload img-fluid" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 								{else}
-									<img class="lazyload img-fluid" data-src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									<img class="lazyload img-fluid" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 								{/if}
 								<noscript><img class="img-fluid" src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 							</a>
@@ -270,9 +270,9 @@
 								<div class="col-3 d-flex justify-content-center align-items-center mb-2">
 									<a class="cbimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
 										{if $smarty.const.PICTURESET_ACTIVE === true}
-											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 										{else}
-											<img class="lazyload img-fluid" data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 										{/if}
 										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
 									</a>

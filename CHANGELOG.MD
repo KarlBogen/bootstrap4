@@ -1,7 +1,11 @@
 UNRELEASED
 
+1.2.3 [07.10.2021]
 
-
+- BS4 Theme Manager - Datei "_bootswatch.scss" wird jetzt mit in die Bereiche "eigenes Theme 1 + 2" übernommen
+- Lazyload - Lazysizes - W3c Validierungsfehler bearbeitet
+- Cookie Consent Link - W3c Validierungsfehler bearbeitet
+- Meldung von Google Search Console 'Ungültiger Objekttyp für Feld "brand"' behoben, siehe https://www.modified-shop.org/forum/index.php?topic=42066.msg385485#msg385485
 
 1.2.2 [18.04.2021]
 

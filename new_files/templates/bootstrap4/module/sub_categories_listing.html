@@ -13,9 +13,9 @@
 						<div class="w-100 mb-auto">
 						{if $categories_data.CATEGORIES_IMAGE != '' || (isset($categories_data.CATEGORIES_IMAGE_LIST) && $categories_data.CATEGORIES_IMAGE_LIST != '')}
 							{if isset($categories_data.CATEGORIES_IMAGE_LIST) && $categories_data.CATEGORIES_IMAGE_LIST != ''}
-								<img class="lazyload img-fluid d-block mx-auto" data-src="{$categories_data.CATEGORIES_IMAGE_LIST}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
+								<img class="lazyload img-fluid d-block mx-auto" src="data:," data-src="{$categories_data.CATEGORIES_IMAGE_LIST}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
 							{else}
-								<img class="lazyload img-fluid d-block mx-auto" data-src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
+								<img class="lazyload img-fluid d-block mx-auto" src="data:," data-src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" />
 							{/if}
 							<noscript><img class="img-fluid d-block mx-auto" src="{$categories_data.CATEGORIES_IMAGE}" alt="{$categories_data.CATEGORIES_NAME|onlytext}" /></noscript>
 						{/if}

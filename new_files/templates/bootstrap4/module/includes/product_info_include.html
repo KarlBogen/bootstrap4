@@ -12,14 +12,14 @@
 					{if isset($pictureset_box) && count($pictureset_box) > 0}
 						<picture>
 							{foreach name=inner item=picture_data from=$pictureset_box}
-								<source media="(max-width:{$picture_data.SIZE}px)" data-srcset="{$module_data.PRODUCTS_IMAGE|replace:"thumbnail_images":"`$picture_data.IMAGE`"}">
+								<source media="(max-width:{$picture_data.SIZE}px)" srcset="data:,1w" data-srcset="{$module_data.PRODUCTS_IMAGE|replace:"thumbnail_images":"`$picture_data.IMAGE`"}">
 							{/foreach}
-							<source data-srcset="{$module_data.PRODUCTS_IMAGE}">
-							<img class="lazyload img-fluid" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
-							<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
+							<source srcset="data:,1w" data-srcset="{$module_data.PRODUCTS_IMAGE}">
+							<img class="lazyload img-fluid" src="data:," data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
 						</picture>
+						<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
 					{else}
-						<img class="lazyload img-fluid" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
+						<img class="lazyload img-fluid" src="data:," data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
 						<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
 					{/if}
 				{/if}
@@ -77,14 +77,14 @@
 						{if isset($pictureset_row) && count($pictureset_row) > 0}
 							<picture>
 								{foreach name=inner item=picture_data from=$pictureset_row}
-									<source media="(max-width:{$picture_data.SIZE}px)" data-srcset="{$module_data.PRODUCTS_IMAGE|replace:"thumbnail_images":"`$picture_data.IMAGE`"}">
+									<source media="(max-width:{$picture_data.SIZE}px)" srcset="data:,1w" data-srcset="{$module_data.PRODUCTS_IMAGE|replace:"thumbnail_images":"`$picture_data.IMAGE`"}">
 								{/foreach}
-								<source data-srcset="{$module_data.PRODUCTS_IMAGE|replace:"thumbnail_images":"midi_images"}">
-								<img class="lazyload img-fluid" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
-								<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
+								<source srcset="data:,1w" data-srcset="{$module_data.PRODUCTS_IMAGE|replace:"thumbnail_images":"midi_images"}">
+								<img class="lazyload img-fluid" src="data:," data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
 							</picture>
+							<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
 						{else}
-							<img class="lazyload img-fluid" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
+							<img class="lazyload img-fluid" src="data:," data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}">
 							<noscript><img class="img-fluid" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></noscript>
 						{/if}
 					{/if}

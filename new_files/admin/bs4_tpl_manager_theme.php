@@ -39,12 +39,14 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 				$add1 =	$bs4->get_add($_POST['configuration']['BS4_THEMEMODEL_CUSTOM1']);
 			    $bs4->set_theme_settings('custom1', $data);
             	$bs4->set_add('custom1', $add1);
+				$bs4->copyBootswatch($_POST['configuration']['BS4_THEMEMODEL_CUSTOM1'], 'custom1');
 				break;
 			case 'load_thememodel2':
 				$data =	$bs4->get_theme($_POST['configuration']['BS4_THEMEMODEL_CUSTOM2'], 'custom2');
 				$add2 =	$bs4->get_add($_POST['configuration']['BS4_THEMEMODEL_CUSTOM2']);
 			    $bs4->set_theme_settings('custom2', $data);
             	$bs4->set_add('custom2', $add2);
+				$bs4->copyBootswatch($_POST['configuration']['BS4_THEMEMODEL_CUSTOM2'], 'custom2');
 				break;
 		}
 

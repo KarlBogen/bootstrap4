@@ -20,34 +20,26 @@
 					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
 							<picture>
-								<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
-								<source data-srcset="{$slider.IMAGE_SRC}">
-								<div class="ratio-container">
-									<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-								</div>
+								<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+								<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
+								<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							</picture>
 						</a>
 					{else}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
-							<div class="ratio-container">
-								<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-							</div>
+							<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 						</a>
 					{/if}
 				{elseif $slider.IMAGE_IMG != ''}
 					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
 						<picture>
-							<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
-							<source data-srcset="{$slider.IMAGE_SRC}">
-							<div class="ratio-container">
-								<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-							</div>
+							<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+							<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
+							<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 						</picture>
 					{else}
-						<div class="ratio-container">
-							<img class="lazyload lazypreload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-						</div>
+						<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 					{/if}
 				{/if}
@@ -101,26 +93,26 @@
 					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
 							<picture>
-								<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
-								<source data-srcset="{$slider.IMAGE_SRC}">
-								<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+								<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+								<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
+								<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							</picture>
 						</a>
 					{else}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
-							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 						</a>
 					{/if}
 				{elseif $slider.IMAGE_IMG != ''}
 					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
 						<picture>
-							<source media="(max-width:600px)" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
-							<source data-srcset="{$slider.IMAGE_SRC}">
-							<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
+							<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
+							<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 						</picture>
 					{else}
-						<img class="lazyload img-fluid" data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+						<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 					{/if}
 				{/if}

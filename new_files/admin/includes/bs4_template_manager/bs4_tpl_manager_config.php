@@ -174,7 +174,37 @@ class Bs4TplManager {
 		xtc_db_query("UPDATE ".TABLE_BS4_TPL_MANAGER_THEME." SET defaults = '".json_encode($value, true)."' WHERE theme_key = '".$theme_key."'");
     }
 
-	// load colors and variables - custom1 und custom2 separated
+	// execute the copy of _bootswatch.scss folder custom1 or custom2
+    public function copyBootswatch($theme_name, $folder_name = '') {
+		// copy _bootswatch.scss
+		if ($folder_name != ''){
+			$this->copyBootswatchFile($theme_name, $folder_name);
+		}
+		return;
+    }
+
+	// copy file
+    protected function copyBootswatchFile($theme_name, $folder_name)
+    {
+		global $messageStack;
+
+		$file = dirname(__FILE__).'/themes/'.$theme_name.'/_bootswatch.scss';
+		$copy = dirname(__FILE__).'/themes/'.$folder_name.'/_bootswatch.scss';
+        // check if the data is a file
+        if (file_exists($file) && is_file($file)) {
+			if (@copy($file, $copy)) {
+				$messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_COPIED, $file, $copy), 'success');
+			} else {
+	            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_FILE_COPIED, $file, $copy), 'error');
+				return false;
+			}
+        } else {
+            $messageStack->add(sprintf(BS4_TPL_MANAGER_THEME_TPL_CSS_FILE_NOT_EXISTS, $file), 'error');
+			return false;
+		}
+    }
+
+	// load colors and variables - custom1 and custom2 separated
     public function get_theme($theme_name, $return_name ='') {
 		$bs4_theme = array();
 		// load _variables.scss from the corresponding folder
