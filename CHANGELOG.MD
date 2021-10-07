@@ -1,5 +1,8 @@
 UNRELEASED
 
+- Versionsnummer in new_files/admin/includes/modules/system/bs4_tpl_manager.php aktualisiert
+
+
 1.2.3 [07.10.2021]
 
 - BS4 Theme Manager - Datei "_bootswatch.scss" wird jetzt mit in die Bereiche "eigenes Theme 1 + 2" übernommen
