@@ -135,10 +135,10 @@
      *
      * @param string $data
      */
-    public function add($data)
+    public function add($data, $bootstrap=false)
     {
         // load data
-        $value = $this->load($data);
+        $value = $this->load($data, $bootstrap);
         $key = ($data != $value) ? $data : count($this->data);
         
         // store data
@@ -151,7 +151,7 @@
      * @param  string $data path to a file
      * @return string
      */
-    protected function load($data)
+    protected function load($data, $bootstrap=false)
     {
         // check if the data is a file
         if (file_exists($data) && is_file($data)) {
@@ -160,11 +160,30 @@
                 if (substr($data, 0, 3) == "\xef\xbb\xbf") {
                     $data = substr($data, 3);
                 }
+				// Änderung: der relative Pfad zu zusätzlichen Schriftdateien in bootstrap.min.css muss geändert werden
+				// statt '../fonts/' muss es heißen 'fonts/'
+				if ($bootstrap !== false) {
+					$data = $this->_changeFontsPath($data);
+				}
             }
         }
 
         return $data;
     }
+
+	/**
+	 * Methode zum Ändern des relativen Fontpfades
+	 *
+	 * @access private
+	 * @param string $data der CSS-Datei 'bootstrap.min.css'.
+	 * @return string
+	 */
+	private function _changeFontsPath($data)
+	{
+		$data = str_replace('../fonts/', 'fonts/', $data);
+
+		return $data;
+	}
 
     /**
      * Save to file

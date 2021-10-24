@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Pfadfehler bei Einbindung zusätzlicher Schriften über die BS4 Theme-Einstellungen behoben
 - Versionsnummer in new_files/admin/includes/modules/system/bs4_tpl_manager.php aktualisiert
 
 

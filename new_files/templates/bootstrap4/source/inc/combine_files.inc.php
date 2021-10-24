@@ -27,7 +27,12 @@ function combine_files($f_array,$f_min,$compress_css = false,$f_time = 0)
       require_once(DIR_TMPL.'source/external/compactor/compactor.php');
       $compactor = new BS4_Compactor(array('strip_php_comments' => true, 'compress_css' => $compress_css));
       foreach ($f_array as $f_plain) {
-        $compactor->add(DIR_FS_CATALOG.$f_plain);
+
+		// Änderung: der relative Pfad zu zusätzlichen Schriftdateien in bootstrap.min.css muss geändert werden
+		// statt '../fonts/' muss es heißen 'fonts/'
+		$bootstrap = strpos($f_plain, 'bootstrap.min.css');
+
+        $compactor->add(DIR_FS_CATALOG.$f_plain, $bootstrap);
       }
       if ($compactor->save($f_min) === true) {
         $f_min_ts = is_writeable(DIR_FS_CATALOG.$f_min) ? filemtime(DIR_FS_CATALOG.$f_min) : false;
