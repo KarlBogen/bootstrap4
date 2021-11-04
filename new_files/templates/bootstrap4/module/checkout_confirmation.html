@@ -123,7 +123,7 @@
 				<div class="card-body">
     				<h5>{#text_payment_info#}</h5>
 					{foreach name=aussen item=data from=$PAYMENT_INFORMATION}
-						{if $data.title != ''}<div class="mr-auto pr-2 title small"><strong>{$data.title|stripslashes}</strong></div>{/if}
+						{if $data.title != ''}<div class="mr-auto pr-2 title small float-left"><strong>{$data.title|stripslashes}</strong></div>{/if}
 						<div class="field small">{if $data.field != ''}{$data.field|stripslashes}{else}&nbsp;{/if}</div>
 					{/foreach}
 				</div>
