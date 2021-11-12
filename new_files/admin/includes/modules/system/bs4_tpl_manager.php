@@ -300,6 +300,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_PRODUCT_LIST_BOX_STARTPAGE', 'true')";
 			$values_config[] = "('BS4_PROD_LIST_BOX', 'true')";
 			$values_config[] = "('BS4_PRODUCT_INFO_BOX', 'true')";
+			$values_config[] = "('BS4_PICTURESET_ACTIVE', 'true')";
 			$values_config[] = "('BS4_FLAG_NEW_SHOW', 'true')";
 			$values_config[] = "('BS4_FLAG_TOP_SHOW', 'true')";
 			$values_config[] = "('BS4_FLAG_SPECIAL_SHOW', 'true')";

@@ -240,8 +240,8 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST' => 'Startseite:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST_INFO' => 'Soll eine Kategorieliste (nur Hauptkategorien) auf der Startseite angezeigt werden?<br /><br />
 		<strong>Empfehlung:</strong><br />
-		 Kategoriebilder werden beim Hochladen <b>nicht</b> in verschiedene Gr&ouml;&szlig;en ge&auml;ndert, das kann zu schlechten Seitenladezeiten f&uuml;hren!<br />
-		  Daf&uuml;r gibt es ein Zusatzmodul das im Modified Forum zur Verf&uuml;gung steht - hier der Link: <a target="_blank" href="https://www.modified-shop.org/forum/index.php?topic=1303.0">https://www.modified-shop.org/forum/index.php?topic=1303.0</a>.',
+		 Seit Shopversion 2.0.6.0 besteht die M&ouml;glichkeit Kategoriebilder in verschiedenen Gr&ouml;&szlig;en (Bilder, Bilder Mobil, Bilder Listing) zu speichern.<br />
+		 In Konfiguration -> Bild Optionen sind die Ma&szlig;e einzustellen, f&uuml;r bereits vorhanden Bilder muss evtl. das Systemmodul "Bilder Prozessing" ausgeführt werden.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT' => 'Produktlisten:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT_INFO' => 'Sollen die Produktlisten "fullcontent", d.h. ohne die linke Spalte, angezeigt werden?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_DETAIL_FULLCONTENT' => 'Produktdetailseite:',
@@ -345,6 +345,12 @@ $lang_array = array(
 		 Diese Einstellung erm&ouml;glicht es, die Bewertungen in einem PopUp anzuzeigen und nach Anzahl der vergebenen Sterne zu filtern.',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_MIXED' => 'Verschiedenes',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_PICTURESET_ACTIVE' => 'Artikel-Thumbnails:',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_PICTURESET_ACTIVE_INFO' => 'Sollen Artikel-Thumbnails mit Mini- bzw. Midibildern ersetzt werden?<br /><br />
+		<strong>Hinweis:</strong><br />
+		 Wenn Sie diese Option auf "Ja" setzen, werden Artikel-Thumbnails, abh&auml;ngig von der jeweiligen Ansicht, durch Mini- bzw. Midibildern ersetzt.<br /><br />
+		 Seit Shopversion 2.0.6.0 besteht die M&ouml;glichkeit Artikelbilder in zus&auml;tzlichen Gr&ouml;&szlig;en (Mini, Midi) zu speichern.<br />
+		 In Konfiguration -> Bild Optionen sind die Ma&szlig;e einzustellen, f&uuml;r bereits vorhanden Bilder muss evtl. das Systemmodul "Bilder Prozessing" ausgeführt werden.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_FLAG_NEW' => 'Fahne/Farbband:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_FLAG_NEW_INFO' => 'Soll das Farbband "Neu" angezeigt werden?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_FLAG_TOP' => 'Fahne/Farbband:',

@@ -1,5 +1,8 @@
 UNRELEASED
 
+- neu - Option Artikel-Thumbnails durch Mini- bzw. Midibildern ersetzen (schaltbar in BS4-Konfiguration Tab "Verschiedenes")
+  dadurch können nach einem Update zu Shopversion 2.0.6.0 Artikelbilder wie bisher als Thumbnail angezeigt werden
+  siehe hierzu den Beitrag von Karsta im Forum https://www.modified-shop.org/forum/index.php?topic=41814.msg382471#msg382471
 - Darstellung der Zahlungsinformationen bei Lastschrift im Checkout korrigiert
 - Pfadfehler bei Einbindung zusätzlicher Schriften über die BS4 Theme-Einstellungen behoben
 - Versionsnummer in new_files/admin/includes/modules/system/bs4_tpl_manager.php aktualisiert

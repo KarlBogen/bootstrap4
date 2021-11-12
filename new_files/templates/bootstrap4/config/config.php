@@ -225,9 +225,16 @@
 		define('WHATSNEW_EXISTS', check_whatsnew());
 	}
 	*/
-  
+
+	//   Wird eingestellt in Erw. Konfiguration -> Bootstrap 4 Template Manager -> BS4 Konfiguration Tab "Verschiedenes" - Wert Artikel-Thumbnails
+	//	Seit Shopversion 2.0.6.0 besteht die Möglichkeit Artikelbilder in zusätzlichen Größen (Mini, Midi) zu speichern.
+	//	In Konfiguration -> Bild Optionen sind die Maße einzustellen, für bereits vorhanden Bilder muss evtl. das Systemmodul "Bilder Prozessing" ausgeführt werden.
+	$pictureset_active = false;
+	if (defined('DIR_WS_MINI_IMAGES')) {
+		$pictureset_active = (defined('BS4_PICTURESET_ACTIVE') && constant('BS4_PICTURESET_ACTIVE') == 'true') ? true : false;
+	}
 	// picture set listing box - neu in Shopversion 2.0.6.0
-	define('PICTURESET_ACTIVE', defined('DIR_WS_MINI_IMAGES'));
+	define('PICTURESET_ACTIVE', $pictureset_active);
 	define('PICTURESET_BOX', '360:thumbnail,480:midi,600:thumbnail,690:thumbnail,920:thumbnail,985:midi');
 	define('PICTURESET_ROW', '985:midi');
 

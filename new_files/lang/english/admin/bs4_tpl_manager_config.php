@@ -240,8 +240,8 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST' => 'Start page:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_SHOW_CATEGORYLIST_INFO' => 'Should a category list (only main categories) be displayed on the start page?<br /><br />
 		<strong>Recommendation:</strong><br />
-		 Category images are not changed to different sizes when uploaded, this can lead to poor page loading times!<br />
-		  There is an additional module for this which is available in the Modified Forum - here the link: <a target="_blank" href="https://www.modified-shop.org/forum/index.php?topic=1303.0">https://www.modified-shop.org/forum/index.php?topic=1303.0</a>.',
+		 Since shop version 2.0.6.0 it is possible to save category images in different sizes (images, mobile images, listing images).<br />
+		 The dimensions must be set in Configuration -> Image Options - maybe the system module "Imageprocessing - product images" have to be run.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT' => 'Product lists:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_LIST_FULLCONTENT_INFO' => 'Should the product listings be displayed "fullcontent", means without the left column?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PROD_DETAIL_FULLCONTENT' => 'Product info page:',
@@ -345,6 +345,12 @@ $lang_array = array(
 		 This setting make it possible to display the ratings in a popup, and filter them by the number of stars.',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_MIXED' => 'Miscellaneous',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_PICTURESET_ACTIVE' => 'Product Thumbnails:',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_PICTURESET_ACTIVE_INFO' => 'Should product thumbnails be replaced with mini or midi images?<br /><br />
+		<strong>Note:</strong><br />
+		 If you set this option to "Yes", product thumbnails will be replaced by mini or midi images.<br /><br />
+		 Since shop version 2.0.6.0 it is possible to save product images in additional sizes (mini, midi).<br />
+		 The dimensions must be set in Configuration -> Image Options - maybe the system module "Imageprocessing - product images" have to be run.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_FLAG_NEW' => 'Ribbons:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_FLAG_NEW_INFO' => 'Should the ribbon "New" be displayed?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_FLAG_TOP' => 'Ribbons:',
