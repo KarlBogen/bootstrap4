@@ -22,14 +22,14 @@ class bs4_tpl_manager {
 
 	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
-		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.3';
+		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.4';
 		$this->description = '';
 		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) $this->description .= '<a class="button btnbox but_green" style="text-align:center;" onclick="this.blur();" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=update') . '">Update</a><br /><br />';
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
 		$this->description .= '<a class="button btnbox but_red" style="text-align:center;" onclick="return confirmLink(\''. sprintf(MODULE_BS4_TPL_MANAGER_DELETE_CONFIRM, $bs4_tpl) .'\', \'\' ,this);" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=custom') . '">'.MODULE_BS4_TPL_MANAGER_DELETE_BUTTON.'</a><br />';
 		$this->description .= MODULE_BS4_TPL_MANAGER_TEXT_DESCRIPTION;
 		$this->sort_order = defined('MODULE_BS4_TPL_MANAGER_SORT_ORDER') ? MODULE_BS4_TPL_MANAGER_SORT_ORDER : 0;
-		$this->enabled = ((MODULE_BS4_TPL_MANAGER_STATUS == 'true') ? true : false);
+		$this->enabled = ((defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS == 'true') ? true : false);
 	}
 
 	public function process($file) {
