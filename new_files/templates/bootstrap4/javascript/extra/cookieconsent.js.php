@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: cookieconsent.js.php 13018 2020-12-07 19:32:43Z GTB $
+   $Id: cookieconsent.js.php 13883 2021-12-14 09:36:48Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -44,6 +44,7 @@ if (defined('MODULE_COOKIE_CONSENT_STATUS') && strtolower(MODULE_COOKIE_CONSENT_
       "label_button_yes": "<?php echo TEXT_COOKIE_CONSENT_LABEL_BUTTON_YES; ?>",
       "label_button_back": "<?php echo TEXT_COOKIE_CONSENT_LABEL_BUTTON_BACK; ?>",
       "label_button_yes_all": "<?php echo TEXT_COOKIE_CONSENT_LABEL_BUTTON_YES_ALL; ?>",
+      "label_button_only_essentials": "<?php echo TEXT_COOKIE_CONSENT_LABEL_BUTTON_ESSENTIALS_ONLY; ?>",
       "label_button_advanced_settings": "<?php echo TEXT_COOKIE_CONSENT_LABEL_BUTTON_ADVANCED_SETTINGS; ?>",
       "label_cpc_heading": "<?php echo TEXT_COOKIE_CONSENT_LABEL_CPC_HEADING; ?>",
       "label_cpc_activate_all": "<?php echo TEXT_COOKIE_CONSENT_LABEL_CPC_ACTIVATE_ALL; ?>",
@@ -86,7 +87,7 @@ function cc_popup_content(trgt) {
 			
 			let cookieString = 'MODOilTrack=' + JSON.stringify(data.purposeConsents) + ';';
 			cookieString += 'expires=' + cookieDate.toUTCString() + ';';
-			cookieString += 'path=/;SameSite=Lax;';
+			cookieString += 'path=' + DIR_WS_CATALOG + ';SameSite=Lax;';
 			if (typeof SetSecCookie !== 'undefined' && SetSecCookie == true) {
 			  cookieString += 'Secure;';
 			}

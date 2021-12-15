@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Update oil.min.js - zusätzlicher Button "NUR NOTWENDIGE"
 
 1.2.4 [16.11.2021]
 

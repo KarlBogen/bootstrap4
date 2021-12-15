@@ -74,4 +74,7 @@ define('BS4_AWIDSRATINGBREAKDOWN_LINK_5', '5 stars');
 define('BS4_AWIDSRATINGBREAKDOWN_HEADLINE', 'Rating: %s of 5 ');
 define('BS4_AWIDSRATINGBREAKDOWN_MY_LANG', 'show only my language');
 define('BS4_AWIDSRATINGBREAKDOWN_ALL_LANGS', 'show all languages');
+
+// Falls der Buttontext für OIL.js nicht definiert ist
+defined('TEXT_COOKIE_CONSENT_LABEL_BUTTON_ESSENTIALS_ONLY') or define('TEXT_COOKIE_CONSENT_LABEL_BUTTON_ESSENTIALS_ONLY','Only essential');
 ?>
