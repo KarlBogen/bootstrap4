@@ -22,7 +22,7 @@ class bs4_tpl_manager {
 
 	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
-		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.4';
+		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.5';
 		$this->description = '';
 		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) $this->description .= '<a class="button btnbox but_green" style="text-align:center;" onclick="this.blur();" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=update') . '">Update</a><br /><br />';
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
@@ -265,6 +265,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_SHOW_JS_DISABLED', 'true')";
 			$values_config[] = "('BS4_SHOP_LOGO', 'img/logo_head.png')";
 			$values_config[] = "('BS4_SEARCHFIELD_PERMANENT', 'false')";
+			$values_config[] = "('BS4_SHOW_ICON_WITH_NAMES', 'false')";
 			$values_config[] = "('BS4_MENUBAR_FIXEDTOP', 'false')";
 			$values_config[] = "('BS4_MENUBAR_FIXEDTOP_CLASSES', 'navbar-light bg-light border-bottom p-0')";
 			$values_config[] = "('BS4_LOGOBAR_FIXEDTOP', 'false')";

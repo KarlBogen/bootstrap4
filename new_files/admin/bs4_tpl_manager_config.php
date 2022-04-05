@@ -108,7 +108,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 			<!-- body_text //-->
 			<td class="boxCenter">
 				<?php // updateinfo
-					if ($bs4_conf['BS4_PICTURESET_ACTIVE'] == '') {
+					if ($bs4_conf['BS4_SHOW_ICON_WITH_NAMES'] == '') {
 						echo '<div class="messageStackWarning"><h3>' . TEXT_BS4_TPL_MANAGER_CONFIG_UPDATE_SYSTEMMODULE_WARNING .'<a class="button but_red" href="'. xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=bs4_tpl_manager') . '">Bootstrap 4 Template-Manager</a></h3></div><br />';
 					}
 				?>
@@ -181,6 +181,11 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SEARCHFIELD_PERMANENT_INFO; ?></td>
 							</tr>
 							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_ICON_WITH_NAMES; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_SHOW_ICON_WITH_NAMES'], 'BS4_SHOW_ICON_WITH_NAMES'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_ICON_WITH_NAMES_INFO; ?></td>
+							</tr>
+							<tr>
 								<td class="txta-r" colspan="3" style="border:none;">
 									<input type="submit" class="button" name="submit" value="<?php echo BUTTON_UPDATE; ?>">
 			                	</td>
@@ -190,7 +195,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 					<div class="admincol_right">
 						<div class="admin_contentbox">
 							<div class="img_box">
-								<?php echo xtc_image(DIR_WS_INCLUDES.'bs4_template_manager/assets/img/bs4_header_'.$lang_code.'.png', 'Information'); ?>
+								<?php echo xtc_image(DIR_WS_INCLUDES.'bs4_template_manager/assets/img/bs4_header_neu_'.$lang_code.'.png', 'Information'); ?>
 							</div>
 						</div>
 					</div>

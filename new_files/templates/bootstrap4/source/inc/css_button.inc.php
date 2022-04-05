@@ -2,7 +2,7 @@
 
 require_once(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/lang/buttons_'.$_SESSION['language'].'.php');
 
-function css_button($image, $alt, $parameters = '', $submit) {
+function css_button($image, $alt, $parameters = '', $submit = false) {
 
     $name           = substr(basename($image), 0);
     $html           = '';

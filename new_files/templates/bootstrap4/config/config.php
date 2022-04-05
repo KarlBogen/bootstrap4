@@ -25,6 +25,8 @@
 	defined('BS4_SHOP_LOGO') or define('BS4_SHOP_LOGO', 'img/logo_head.png'); // Dieses Logo wird im Template gezeigt z.B. shoproot/templates/bootstrap4/img/logo_head.png -> 'img/logo_head.png'
 	// Suchfeld
 	defined('BS4_SEARCHFIELD_PERMANENT') or define('BS4_SEARCHFIELD_PERMANENT', 'false'); // Soll das Suchfeld dauerhaft angezeigt werden? - anzeigen = true, ansonsten false
+	// Icon-Leiste
+	defined('BS4_SHOW_ICON_WITH_NAMES') or define('BS4_SHOW_ICON_WITH_NAMES', 'false'); // Soll auf breiten Bildschirmen der Name zum Icon angezeigt werden? - anzeigen = true, ansonsten false
 
 
 	// Menüleiste schmale Bildschirme

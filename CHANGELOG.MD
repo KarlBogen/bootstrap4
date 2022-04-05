@@ -1,5 +1,7 @@
 UNRELEASED
 
+1.2.5 [05.04.2022]
+- Beschriftung der Icon-/Menüleiste hinzugefügt - schaltbar im Template Manager
 - Update oil.min.js - zusätzlicher Button "NUR NOTWENDIGE"
 
 1.2.4 [16.11.2021]

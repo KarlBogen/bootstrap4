@@ -43,6 +43,8 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SEARCHFIELD_PERMANENT_INFO' => 'Should the search field be displayed permanently?<br /><br />
 		<strong>Note:</strong><br />
 		The input field is then displayed above the icon bar.',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_ICON_WITH_NAMES' => 'Icon bar:',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_ICON_WITH_NAMES_INFO' => 'Should the name of the icon be displayed on wide screens?',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_SUPERFISH' => 'Menus',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_MENUBAR_SMALLSCREEN' => 'Menu bar small screens',

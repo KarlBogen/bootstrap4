@@ -9,6 +9,7 @@
 
 if (isset($_REQUEST['speed'])) {
 
+	if (isset($_GET['cPath'])) unset($_GET['cPath']);
 	require_once ('includes/application_top.php');
 	require_once (DIR_FS_INC.'db_functions_'.DB_MYSQL_TYPE.'.inc.php');
 	require_once (DIR_FS_INC.'db_functions.inc.php');

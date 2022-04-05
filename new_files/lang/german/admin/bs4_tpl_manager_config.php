@@ -9,7 +9,7 @@
 -------------------------------------------------------------- */
 
 $lang_array = array(
-	'TEXT_BS4_TPL_MANAGER_CONFIG_UPDATE_SYSTEMMODULE_WARNING' => 'Neue Einstellungen sind hinzugekommen - vor den Nutzung muss ein Update des Systemmodules gemacht werden.<br />
+	'TEXT_BS4_TPL_MANAGER_CONFIG_UPDATE_SYSTEMMODULE_WARNING' => 'Neue Einstellungen sind hinzugekommen - vor der Nutzung muss ein Update des Systemmodules gemacht werden.<br />
 		Der Link bringt Sie zum Systemmodul &nbsp;&nbsp;&nbsp;',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_HEADING_TITLE' => 'Bootstrap 4 Template Konfiguration',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_INFO' => 'Hier gemachte Einstellungen haben direkte Auswirkung auf den Shop!',
@@ -43,6 +43,8 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SEARCHFIELD_PERMANENT_INFO' => 'Soll das Suchfeld dauerhaft angezeigt werden?<br /><br />
 		<strong>Hinweis:</strong><br />
 		Das Eingabefeld wird dann oberhalb der Icon-Leiste angezeigt.',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_ICON_WITH_NAMES' => 'Icon-Leiste:',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_BS4_SHOW_ICON_WITH_NAMES_INFO' => 'Soll auf breiten Bildschirmen der Name zum Icon angezeigt werden?',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_SUPERFISH' => 'Men&uuml;s',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_MENUBAR_SMALLSCREEN' => 'Men&uuml;leiste schmale Bildschirme',

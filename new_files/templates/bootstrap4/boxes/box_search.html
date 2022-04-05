@@ -1,8 +1,11 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="lang_`$language`.custom"}
 {if $smarty.const.BS4_SEARCHFIELD_PERMANENT != 'true'}
-<li class="nav-item search dropdown">
-	<a id="search-dd" href="#" class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" title="{#heading_search#}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search fa-lg fa-fw" aria-hidden="true"></span></a>
+<li class="text-center nav-item search dropdown">
+	<a id="search-dd" href="#" class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" title="{#heading_search#}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		<span class="fa fa-search fa-lg fa-fw" aria-hidden="true"></span>
+		{if $smarty.const.BS4_SHOW_ICON_WITH_NAMES != 'false'}<span class="d-none d-lg-block small">{#heading_search#}</span>{/if}
+	</a>
 	<div class="dropdown-menu dropdown-menu-right toggle_search" aria-labelledby="search-dd">
 		{$FORM_ACTION}
 			{if isset($CATEGORIES) && $smarty.const.BS4_SEARCHFIELD_ONE_ROW != 'true'}<div class="mb-1">{$CATEGORIES}</div>{/if}

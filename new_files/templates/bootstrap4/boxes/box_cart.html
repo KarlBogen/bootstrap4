@@ -1,10 +1,17 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="lang_`$language`.custom"}
-<li class="nav-item cart dropdown">
+<li class="text-center nav-item cart dropdown">
   {if $empty == 'false'}
-  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" href="{$LINK_CART}" title="{#heading_cart#}"><span class="fa fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></span><span class='badge badge-pill badge-corner badge-danger'>{$PRODUCTS}</span></a>
+  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" href="{$LINK_CART}" title="{#heading_cart#}">
+    <span class="fa fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></span>
+    <span class='badge badge-pill badge-corner badge-danger'>{$PRODUCTS}</span>
+    {if $smarty.const.BS4_SHOW_ICON_WITH_NAMES != 'false'}<span class="d-none d-lg-block small">{#heading_cart#}</span>{/if}
+  </a>
   {else}
-  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" href="{$LINK_CART}" title="{#heading_cart#}"><span class="fa fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></span></a>
+  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" href="{$LINK_CART}" title="{#heading_cart#}">
+    <span class="fa fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></span>
+    {if $smarty.const.BS4_SHOW_ICON_WITH_NAMES != 'false'}<span class="d-none d-lg-block small">{#heading_cart#}</span>{/if}
+  </a>
   {/if}
 
 <div class="dropdown-menu dropdown-menu-right toggle_cart">
