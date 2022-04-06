@@ -2,6 +2,7 @@ UNRELEASED
 
 1.2.5 [05.04.2022]
 - Beschriftung der Icon-/Menüleiste hinzugefügt - schaltbar im Template Manager
+- Fehler im BS4 Banner Manager behoben - es konnten nicht alle Banner einer Kategorie deaktiviert werden
 - Update oil.min.js - zusätzlicher Button "NUR NOTWENDIGE"
 
 1.2.4 [16.11.2021]

@@ -35,8 +35,10 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 						$bs4_banner_ids = implode(',', xtc_db_prepare_input($_POST['bs4_banner_ids']));
 						$sql_data_array = array('bs4_banner_ids' => $bs4_banner_ids);
 						xtc_db_perform(TABLE_CATEGORIES, $sql_data_array, 'update', "categories_id = '" . (int)$cat_id . "'");
-						$messageStack->add_session(BS4_BANNER_DATA_UPDATED, 'success');
+					} else {
+						xtc_db_perform(TABLE_CATEGORIES, array('bs4_banner_ids' => ''), 'update', "categories_id = '" . (int)$cat_id . "'");
 					}
+					$messageStack->add_session(BS4_BANNER_DATA_UPDATED, 'success');
 					xtc_redirect(xtc_href_link(FILENAME_BS4_BANNER_MANAGER, 'set=banners&cID=' . $cat_id));
 				}
 				if (isset($_POST['bs4_categories_update'])) {
