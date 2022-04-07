@@ -1,9 +1,13 @@
 UNRELEASED
 
-1.2.5 [05.04.2022]
-- Beschriftung der Icon-/Menüleiste hinzugefügt - schaltbar im Template Manager
-- Fehler im BS4 Banner Manager behoben - es konnten nicht alle Banner einer Kategorie deaktiviert werden
-- Update oil.min.js - zusätzlicher Button "NUR NOTWENDIGE"
+1.2.5 [07.04.2022]
+- Template: Update Bootstrap-Framework 4.6.0 zu 4.6.1
+- Template: PHP8-Fehlermeldung Superfishmenü behoben
+- Admin/Template: Beschriftung der Icon-/Menüleiste hinzugefügt - schaltbar im Template Manager
+- Admin: Update Bootstrap-Framework 4.6.0 zu 4.6.1
+- Admin: Update SCSS-Compiler
+- Admin: Fehler im BS4 Banner Manager behoben - es konnten nicht alle Banner einer Kategorie deaktiviert werden
+- Template: Update oil.min.js - zusätzlicher Button "NUR NOTWENDIGE"
 
 1.2.4 [16.11.2021]
 

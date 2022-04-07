@@ -61,9 +61,9 @@
 
 			$Current = false;
 			if(is_array($cPath_array) || is_array($CatConfig['Fullpath'])) {
-				if($dbQueryResult['categories_id'] == $current_category_id || $dbQueryResult['categories_id'] == end($CatConfig['Fullpath'])) {
+				if($dbQueryResult['categories_id'] == $current_category_id || (is_array($CatConfig['Fullpath']) && $dbQueryResult['categories_id'] == end($CatConfig['Fullpath']))) {
 					$Current = ' active Selected';
-				} elseif(in_array($dbQueryResult['categories_id'],$cPath_array) || in_array($dbQueryResult['categories_id'],$CatConfig['Fullpath'])) {
+				} elseif((is_array($cPath_array) && in_array($dbQueryResult['categories_id'],$cPath_array)) || (is_array($CatConfig['Fullpath']) && in_array($dbQueryResult['categories_id'],$CatConfig['Fullpath']))) {
 					$Current = ' active parent';
 				}
 			}

@@ -434,6 +434,7 @@ class Bs4TplManager {
 			array('id' => '$green', 'text' => '$green '.COLOR_18),
 			array('id' => '$teal', 'text' => '$teal '.COLOR_19),
 			array('id' => '$cyan', 'text' => '$cyan '.COLOR_20),
+			array('id' => 'null', 'text' => 'null ohne')
 		);
 		if ($plus != false) {
 			$color_vars[] = array('id' => 'inherit', 'text' => 'inherit '.INHERIT);
@@ -451,6 +452,7 @@ class Bs4TplManager {
 			array('id' => '$info', 'text' => '$info'),
 			array('id' => '$light', 'text' => '$light'),
 			array('id' => '$dark', 'text' => '$dark'),
+			array('id' => 'null', 'text' => 'null ohne')
 		);
 		$color_vars = $this->get_color_vars();
 		$color_classes = array_merge($color_classes, $color_vars);
