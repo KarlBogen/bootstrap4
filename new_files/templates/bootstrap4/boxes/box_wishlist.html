@@ -4,8 +4,7 @@
 <li class="text-center nav-item wishlist dropdown">
   {if $empty == 'false'}
   <a {if $deny_cart neq 'true'}id="toggle_wishlist"{/if} class="nav-link {$smarty.const.BS4_LOGOBAR_TEXT}" href="{$LINK_WISHLIST}" title="{#heading_wishlist#}">
-    <span class="fa fa-heart fa-lg fa-fw" aria-hidden="true"></span>
-    <span class='badge badge-pill badge-corner badge-danger'>{$PRODUCTS}</span>
+    <span class="fa fa-heart fa-lg fa-fw" aria-hidden="true"></span><span class='badge badge-pill badge-corner badge-danger'>{$PRODUCTS}</span>
     {if $smarty.const.BS4_SHOW_ICON_WITH_NAMES != 'false'}<span class="d-none d-lg-block small">{#heading_wishlist#}</span>{/if}
   </a>
   {else}
