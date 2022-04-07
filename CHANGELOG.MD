@@ -1,5 +1,7 @@
 UNRELEASED
 
+- Lazyload für Bilder im Top-Slider ergänzt
+
 1.2.5 [07.04.2022]
 - Template: Update Bootstrap-Framework 4.6.0 zu 4.6.1
 - Template: PHP8-Fehlermeldung Superfishmenü behoben
