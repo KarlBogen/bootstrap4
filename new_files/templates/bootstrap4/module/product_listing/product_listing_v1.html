@@ -12,7 +12,7 @@
 	}
 	<div class="cat_description p-2 mb-2">
 		{if isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != ''}
-		<div{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')} class="col-4"{/if}>
+		<div{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')} class="col-sm-4"{/if}>
 			{if isset($CATEGORIES_IMAGE_MOBILE) && $CATEGORIES_IMAGE_MOBILE != ''}
 				<picture>
 					<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$CATEGORIES_IMAGE_MOBILE}">

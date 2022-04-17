@@ -1,5 +1,7 @@
 UNRELEASED
 
+- Picture-Tags angepasst
+- Update jQuery-Plugin lazysizes - v5.3.1
 - Lazyload für Bilder im Top-Slider ergänzt
 
 1.2.5 [07.04.2022]

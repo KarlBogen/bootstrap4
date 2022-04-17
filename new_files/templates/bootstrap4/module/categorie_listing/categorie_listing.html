@@ -17,17 +17,19 @@
 	}
 	<div class="cat_description mb-2">
 		{if isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != ''}
+		<div{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')} class="col-sm-4"{/if}>
 			{if isset($CATEGORIES_IMAGE_MOBILE) && $CATEGORIES_IMAGE_MOBILE != ''}
 				<picture>
 					<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$CATEGORIES_IMAGE_MOBILE}">
 					<source srcset="data:,1w" data-srcset="{$CATEGORIES_IMAGE}">
-					<img class="lazyload {if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')}col-4 {/if}img-fluid float-left p-2 mb-2 mr-4" src="data:," data-src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />
+					<img class="lazyload img-fluid float-left p-2 mb-2 mr-4" src="data:," data-src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />
 				</picture>
-				<noscript><img class="{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')}col-4 {/if}img-fluid float-left p-2 mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
+				<noscript><img class="img-fluid float-left p-2 mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
 			{else}
-				<img class="lazyload {if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')}col-4 {/if}img-fluid float-left p-2 mb-2 mr-4" src="data:," data-src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />
-				<noscript><img class="{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')}col-4 {/if}img-fluid float-left p-2 mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
+				<img class="lazyload img-fluid float-left p-2 mb-2 mr-4" src="data:," data-src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />
+				<noscript><img class="img-fluid float-left p-2 mb-2 mr-4" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" /></noscript>
 			{/if}
+		</div>
 		{/if}
 		{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')}{$CATEGORIES_DESCRIPTION}{/if}
 	</div>

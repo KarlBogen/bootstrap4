@@ -3,7 +3,7 @@
 
 <div class="cat_show clearfix mb-4">
 	{if #BS4_catlist_title# != ''}<h2 class="card p-2 bg-h mb-2">{#BS4_catlist_title#}</h2>{/if}
-	<div class="row row-cols-2 row-cols-md-3{if $smarty.const.BS4_STARTPAGE_FULLCONTENT == 'true'} row-cols-lg-4{/if}">
+	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3{if $smarty.const.BS4_STARTPAGE_FULLCONTENT == 'true'} row-cols-lg-4{/if}">
 	{foreach name=aussen item=module_data from=$module_content}
 		<div class="cat col mb-2">
 			<a class="card h-100 text-center" href="{$module_data.CATEGORY_LINK}" title="{$module_data.CATEGORY_NAME}">

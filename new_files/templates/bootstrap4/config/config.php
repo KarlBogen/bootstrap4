@@ -237,8 +237,8 @@
 	}
 	// picture set listing box - neu in Shopversion 2.0.6.0
 	define('PICTURESET_ACTIVE', $pictureset_active);
-	define('PICTURESET_BOX', '360:thumbnail,480:midi,600:thumbnail,690:thumbnail,920:thumbnail,985:midi');
-	define('PICTURESET_ROW', '985:midi');
+// wird für bootstrap4 nicht benötigt	define('PICTURESET_BOX', '576:thumbnail,768:thumbnail,992:thumbnail,1200:thumbnail');
+	define('PICTURESET_ROW', '768:thumbnail');
 
 	// -----------------------------------------------------------------------------------
 	// 	Ab hier nichts ändern

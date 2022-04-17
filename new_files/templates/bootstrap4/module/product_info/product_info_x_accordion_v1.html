@@ -25,7 +25,7 @@
 						<div class="col-3 mb-3">
 							<a class="easyimages d-block text-center" href="{$PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="1" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_":"popup_"}">
 								{if $smarty.const.PICTURESET_ACTIVE === true}
-									<img class="lazyload img-fluid" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+									<img class="lazyload img-fluid" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"mini_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 								{else}
 									<img class="lazyload img-fluid" src="data:," data-src="{$PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 								{/if}
@@ -38,7 +38,7 @@
 								<div class="col-3 mb-3">
 									<a class="easyimages d-block text-center" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="{$zaehl}" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}">
 										{if $smarty.const.PICTURESET_ACTIVE === true}
-											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"mini_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 										{else}
 											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 										{/if}
@@ -71,7 +71,7 @@
 									<div class="col-3 mb-3">
 										<a class="cbimages easyimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
 											{if $smarty.const.PICTURESET_ACTIVE === true}
-												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"mini_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 											{else}
 												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 											{/if}
