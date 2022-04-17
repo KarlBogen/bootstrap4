@@ -1,8 +1,11 @@
 UNRELEASED
 
-- Picture-Tags angepasst
-- Update jQuery-Plugin lazysizes - v5.3.1
-- Lazyload für Bilder im Top-Slider ergänzt
+
+1.2.6 [17.04.2022]
+- Admin/Template: Modul CSS Produkt- & Attributlagerampel hinzugefügt - konfigurierbar im Template Manager
+- Template: Picture-Tags angepasst
+- Template: Update jQuery-Plugin lazysizes - v5.3.1
+- Template: Lazyload für Bilder im Top-Slider ergänzt
 
 1.2.5 [07.04.2022]
 - Template: Update Bootstrap-Framework 4.6.0 zu 4.6.1

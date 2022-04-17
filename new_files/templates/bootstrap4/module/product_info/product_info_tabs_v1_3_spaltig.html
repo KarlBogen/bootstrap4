@@ -94,6 +94,9 @@
 						{if $SHIPPING_NAME}<div class="small"><strong>{#text_shippingtime#}</strong> {if $SHIPPING_IMAGE}<img class="pd_shipping_image" src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if} {$SHIPPING_NAME_LINK}</div>{/if}
 						{if $PRODUCTS_MODEL != ''}<div class="small"><strong>{#model#}</strong> <span itemprop="sku">{$PRODUCTS_MODEL}</span></div>{/if}
 						{if $PRODUCTS_EAN != ''}<div class="small"><strong>{#ean#}</strong> <span itemprop="gtin{$PRODUCTS_EAN|strlen}">{$PRODUCTS_EAN}</span></div>{/if}
+						{if $smarty.const.BS4_TRAFFIC_LIGHTS == 'true' && $smarty.const.BS4_TRAFFIC_LIGHTS_PRODINFO != 'false'}
+							{if !isset($MODULE_product_options) && $MODULE_product_options == ''}<div class="small">{traffic_light stock=$PRODUCTS_QUANTITY modul='info'}</div>{/if}
+						{/if}
 						{if $PRODUCTS_RATING_COUNT > 1 || $BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 1}
 							<div class="pd_inforow small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
 								<strong>{#info_reviews#}</strong>&nbsp;

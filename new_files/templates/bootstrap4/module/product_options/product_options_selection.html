@@ -5,9 +5,14 @@
 		<div class="options_row_selection list-group-item p-2">
 			<div class="options_name">{$options_data.NAME}</div>
 			{foreach key=key_data name=key_data item=item_data from=$options_data.DATA}
-			<div class="options_selection form-check small">
+			<div class="options_selection form-check small clearfix mb-2">
 				<input class="form-check-input" data-attrdata="{$item_data.JSON_ATTRDATA}" aria-label="{$item_data.TEXT}" type="radio" name="id[{$options_data.ID}]" id="rdb_{$item_data.ID}" value="{$item_data.ID}"{if $item_data.CHECKED == '1'} checked="checked"{/if} />
-				<label class="form-check-label" for="rdb_{$item_data.ID}">{$item_data.TEXT}</label>{if $item_data.PRICE != '' }<span class="options_selection_price float-right">{$item_data.PREFIX}{$item_data.PRICE}</span>{/if}
+				<label class="form-check-label d-block" for="rdb_{$item_data.ID}">{$item_data.TEXT}
+					{if $item_data.PRICE != '' }<span class="options_selection_price float-right">{$item_data.PREFIX}{$item_data.PRICE}</span>{/if}
+					{if $smarty.const.BS4_TRAFFIC_LIGHTS == 'true' && $smarty.const.BS4_TRAFFIC_LIGHTS_PRODATTRIBUTES != 'false'}
+						<br /><span class="text-secondary float-right">{traffic_light stock=$item_data.STOCK modul='attributes'}</span>
+					{/if}
+				</label>
 			</div>
 			{/foreach}
 		</div>

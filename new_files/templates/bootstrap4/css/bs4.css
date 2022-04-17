@@ -158,11 +158,21 @@ ul#categorymenu li a {
     color: inherit;
 }
 .carousel .card, .listingbox .card, .listingrow.card, .over-hidden {
-    pointer-events: none;
-	overflow:hidden;
+	overflow: hidden;
 }
-.carousel .card a, .listingbox .card a, .listingrow.card a, .over-hidden a {
-    pointer-events: auto;
+.prod-link {
+	position: absolute !important;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.carousel .card > div, .listingbox .card > div, .listingrow.card > div, .over-hidden > div {
+    pointer-events: none;
+}
+.carousel .card > div a, .listingbox .card > div a, .listingrow.card > div a, .over-hidden > div a, .card .traffic {
+	position: relative;
+    pointer-events: all;
 }
 .carousel .card:hover, .listingbox .card:hover, .listingrow.card:hover, .subcat.card:hover, .cat .card:hover {
 	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35) !important;

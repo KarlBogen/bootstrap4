@@ -38,6 +38,7 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 	$bg_classes =		$bs4->get_bg_classes();
 	$navbar_classes =   $bs4->get_navbar_classes();
 	$text_classes =    	$bs4->get_text_classes();
+	$traffic_styles =   $bs4->get_traffic_styles();
 
 	// tabs
 	$tabs_array = array();
@@ -108,7 +109,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 			<!-- body_text //-->
 			<td class="boxCenter">
 				<?php // updateinfo
-					if ($bs4_conf['BS4_SHOW_ICON_WITH_NAMES'] == '') {
+					if ($bs4_conf['BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN'] == '') {
 						echo '<div class="messageStackWarning"><h3>' . TEXT_BS4_TPL_MANAGER_CONFIG_UPDATE_SYSTEMMODULE_WARNING .'<a class="button but_red" href="'. xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=bs4_tpl_manager') . '">Bootstrap 4 Template-Manager</a></h3></div><br />';
 					}
 				?>
@@ -813,6 +814,39 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_AWIDSRATINGBREAKDOWN_1; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_AWIDSRATINGBREAKDOWN_URL'], 'BS4_AWIDSRATINGBREAKDOWN_URL'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_AWIDSRATINGBREAKDOWN_URL_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig" colspan="3"><h3><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS; ?></h3></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_TRAFFIC_LIGHTS'], 'BS4_TRAFFIC_LIGHTS'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_draw_pull_down_menu('configuration[BS4_TRAFFIC_LIGHTS_PRODLISTING]', $traffic_styles, $bs4_conf['BS4_TRAFFIC_LIGHTS_PRODLISTING']); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODLIST_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_draw_pull_down_menu('configuration[BS4_TRAFFIC_LIGHTS_PRODINFO]', $traffic_styles, $bs4_conf['BS4_TRAFFIC_LIGHTS_PRODINFO']); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODINFO_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_draw_pull_down_menu('configuration[BS4_TRAFFIC_LIGHTS_PRODATTRIBUTES]', $traffic_styles, $bs4_conf['BS4_TRAFFIC_LIGHTS_PRODATTRIBUTES']); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODATTR_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_draw_input_field('configuration[BS4_MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL]', $bs4_conf['BS4_MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL']); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_STOCK_RED_YELL_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_draw_input_field('configuration[BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN]', $bs4_conf['BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN']); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_STOCK_GREEN_INFO; ?></td>
 							</tr>
 							<tr>
 				                <td class="txta-r" colspan="3" style="border:none;">

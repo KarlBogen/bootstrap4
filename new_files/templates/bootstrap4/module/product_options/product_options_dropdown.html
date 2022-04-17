@@ -7,6 +7,9 @@
 			<select class="form-control form-control-sm" name="id[{$options_data.ID}]" id="sel_{$options_data.ID}" aria-label="{$options_data.NAME}">
 				{foreach key=key_data item=item_data from=$options_data.DATA}
 					<option data-attrdata="{$item_data.JSON_ATTRDATA}" value="{$item_data.ID}"{if $item_data.CHECKED == '1'} selected="selected"{/if}>{$item_data.TEXT} {if $item_data.PRICE != ''}{$item_data.PREFIX} {$item_data.PRICE}{/if} </option>
+	            	{if $smarty.const.BS4_TRAFFIC_LIGHTS == 'true' && $smarty.const.BS4_TRAFFIC_LIGHTS_PRODATTRIBUTES != 'false'}
+	            		{traffic_light stock=$item_data.STOCK modul='attributes' select='ots'}
+	            	{/if}
 				{/foreach}
 			</select>
 		</div>

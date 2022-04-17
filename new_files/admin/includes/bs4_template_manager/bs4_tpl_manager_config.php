@@ -365,6 +365,19 @@ class Bs4TplManager {
 		return $text_classes;
     }
 
+    public function get_traffic_styles() {
+		$traffic_styles = array(
+			array('id' => 'false', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_NONE),
+			array('id' => 'l', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_L),
+			array('id' => 'ls', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LS),
+			array('id' => 'lt', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LT),
+			array('id' => 'lts', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LTS),
+			array('id' => 't', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_T),
+			array('id' => 'ts', 'text' => TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_TS),
+		);
+		return $traffic_styles;
+    }
+
 	public function get_templates() {
 		if ($dir = opendir(DIR_FS_CATALOG.'templates/')) {
 			$templates_array[] = array ('id' => '', 'text' => TEXT_BS4_TPL_MANAGER_THEME_CURRENT_TEMPLATE0);

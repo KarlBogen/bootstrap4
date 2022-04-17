@@ -4,7 +4,8 @@
 <div class="box_last_viewed card mb-4">
 	<div class="box_header card-header">{#heading_last_viewed#}</div>
 	<div class="position-relative over-hidden">
-	<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="{$box_content.PRODUCTS_LINK}">
+	<a class="prod-link" href="{$box_content.PRODUCTS_LINK}"></a>
+	<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $box_content.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $box_content.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
@@ -27,7 +28,7 @@
 				<span class="text-secondary">&nbsp;({$box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS})</span>
 			</div>
 		{/if}
-	</a>
+	</div>
 	<div class="card-footer text-right">
 		{foreach name=inner item=price_data from=$box_content.PRODUCTS_PRICE_ARRAY}
        	{include file="module/includes/price_box.html"}
@@ -40,8 +41,8 @@
 	</div>
    	<div class="card-footer">
 		<div class="card-title">{#text_watch_category#}</div>
-		{if $CATEGORY_NAME != ''}<a class="btn btn-sm mb-2" href="{$CATEGORY_LINK}">{$CATEGORY_NAME} &raquo;</a><br />{/if}
-		<a class="btn btn-sm" href="{$MY_PERSONAL_PAGE}" style="white-space: pre-wrap;">{#text_my_page#}  &raquo;</a>
+		{if $CATEGORY_NAME != ''}<a class="btn-sm mb-2" href="{$CATEGORY_LINK}">{$CATEGORY_NAME} &raquo;</a><br />{/if}
+		<a class="btn-sm" href="{$MY_PERSONAL_PAGE}" style="white-space: pre-wrap;">{#text_my_page#}  &raquo;</a>
 	</div>
 </div>
 {/if}

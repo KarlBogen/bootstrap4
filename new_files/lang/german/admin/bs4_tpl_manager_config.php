@@ -345,6 +345,27 @@ $lang_array = array(
 		 Damit ist es m&ouml;glich, dass Boxen in Produktlisten &auml;hnliche H&ouml;hen erhalten.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_AWIDSRATINGBREAKDOWN_URL_INFO' => 'Filter-PopUp aktivieren?<br />
 		 Diese Einstellung erm&ouml;glicht es, die Bewertungen in einem PopUp anzuzeigen und nach Anzahl der vergebenen Sterne zu filtern.',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS' => 'CSS Produkt- & Attributlagerampel',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_INFO' => 'Modul "CSS Produkt- & Attributlagerampel" aktivieren!<br />
+		<strong>Hinweis:</strong><br />
+		 Dieses Modul zeigt eine Produkt- und Attribut-Lagerampel, welche wahlweise eine grafische Lagerampel oder den Lagerbestand als Text abbildet.<br />
+		 Link zum Originalmodul: <a href="https://www.modified-shop.org/forum/index.php?topic=37371.0" target=”_blank”>https://www.modified-shop.org/forum/index.php?topic=37371.0</a><br />
+		 Texte können in der Datei "lang/german/extra/bs4_additional_modules.php" ge&auml;ndert werden (Englisch -> "lang/english/extra/bs4_additional_modules.php").',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_NONE' => 'nicht anzeigen',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_L' => 'nur Ampel',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LS' => 'Ampel und Bestand',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LT' => 'Ampel und Text ohne Bestand',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LTS' => 'Ampel, Text und Bestand',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_T' => 'nur Text',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_TS' => 'Text und Bestand',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODLIST_INFO' => '<strong>Lagerampel in Produktlisten:</strong><br />
+		 Wie soll die Lagerampel im Produktlisting angezeigt werden?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODINFO_INFO' => '<strong>Lagerampel auf der Produktdetailseite:</strong><br />
+		 Wie soll die Lagerampel auf der Produktdetailseite angezeigt werden?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODATTR_INFO' => '<strong>Lagerampel f&uuml;r Attribute auf der Produktdetailseite:</strong><br />
+		 Wie soll die Lagerampel f&uuml;r Attribute auf der Produktdetailseite angezeigt werden?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_STOCK_RED_YELL_INFO' => 'Geben Sie hier den Minimum-Wert f&uuml;r die gelbe Ampel ein. Dieser Wert und alle Werte darunter werden mit einer roten Ampel versehen. Standard: 0',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_STOCK_GREEN_INFO' => 'Geben Sie hier den Wert ein, ab dem eine gr&uuml;ne Ampel anzeigt werden soll. Alle Werte darunter bis zum Minimum-Wert werden mit einer gelben Ampel versehen.',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_MIXED' => 'Verschiedenes',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PICTURESET_ACTIVE' => 'Artikel-Thumbnails:',

@@ -335,6 +335,12 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_AWIDSRATINGBREAKDOWN_PRODLIST', 'true')";
 			$values_config[] = "('BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS', 'true')";
 			$values_config[] = "('BS4_AWIDSRATINGBREAKDOWN_URL', 'true')";
+			$values_config[] = "('BS4_TRAFFIC_LIGHTS', 'false')";
+			$values_config[] = "('BS4_TRAFFIC_LIGHTS_PRODLISTING', 'l')";
+			$values_config[] = "('BS4_TRAFFIC_LIGHTS_PRODINFO', 'l')";
+			$values_config[] = "('BS4_TRAFFIC_LIGHTS_PRODATTRIBUTES', 'l')";
+			$values_config[] = "('BS4_MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL', '0')";
+			$values_config[] = "('BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN', '10')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_CATEGORIES', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_ADD_QUICKIE', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_LOGIN', 'true')";

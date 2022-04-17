@@ -191,6 +191,17 @@
 	defined('BS4_AWIDSRATINGBREAKDOWN_PRODLIST') or define('BS4_AWIDSRATINGBREAKDOWN_PRODLIST', 'true'); // Modul auch in Produktlisten anzeigen? 'false' = deaktiviert / 'true' = aktiviert
 	defined('BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS') or define('BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS', 'true'); // Sterne auch ohne gespeicherte Bewertung anzeigen? 'false' = deaktiviert / 'true' = aktiviert
 	defined('BS4_AWIDSRATINGBREAKDOWN_URL') or define('BS4_AWIDSRATINGBREAKDOWN_URL', 'true'); // Filter-PopUp aktivieren? Diese Einstellung ermöglicht es, die Bewertungen in einem PopUp anzuzeigen und nach Anzahl der vergebenen Sterne zu filtern. - 'false' = deaktiviert / 'true' = aktiviert
+		/* Modul "CSS Produkt- & Attributlagerampel" aktivieren!
+		Hinweis:
+		Dieses Modul zeigt eine Produkt- und Attribut-Lagerampel, welche wahlweise eine grafische Lagerampel oder den Lagerbestand als Text abbildet.
+		Link zum Originalmodul: https://www.modified-shop.org/forum/index.php?topic=37371.0 */
+	defined('BS4_TRAFFIC_LIGHTS') or define('BS4_TRAFFIC_LIGHTS', 'false'); // 'false' = deaktiviert / 'true' = aktiviert
+	defined('BS4_TRAFFIC_LIGHTS_PRODLISTING') or define('BS4_TRAFFIC_LIGHTS_PRODLISTING', 'false'); // Anzeige im Listing 'false' = nicht anzeigen, 'l' = light, 'ls' = light and stock, 'lt' = light and text, 'lts' = light and text and stock, 't' = text, 'ts' = text and stock
+	defined('BS4_TRAFFIC_LIGHTS_PRODINFO') or define('BS4_TRAFFIC_LIGHTS_PRODINFO', 'false'); // Anzeige Produktdetailseite 'false' = nicht anzeigen, 'l' = light, 'ls' = light and stock, 'lt' = light and text, 'lts' = light and text and stock, 't' = text, 'ts' = text and stock
+	defined('BS4_TRAFFIC_LIGHTS_PRODATTRIBUTES') or define('BS4_TRAFFIC_LIGHTS_PRODATTRIBUTES', 'false'); // Anzeige Attribute 'false' = nicht anzeigen, 'l' = light, 'ls' = light and stock, 'lt' = light and text, 'lts' = light and text and stock, 't' = text, 'ts' = text and stock
+	defined('BS4_MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL') or define('BS4_MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL', 0); // Minimum-Wert für die gelbe Ampel ein. Dieser Wert und alle Werte darunter werden mit einer roten Ampel versehen.
+	defined('BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN') or define('BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN', 10); // Wert ab dem eine grüne Ampel anzeigt werden soll. Alle Werte darunter bis zum Minimum-Wert werden mit einer gelben Ampel versehen.
+
 
 	// Flag "Neu", "TOP" und "Sonderangebot"
 	defined('BS4_FLAG_NEW_SHOW') or define('BS4_FLAG_NEW_SHOW', 'true'); // true zeigt das Flag / false zeigt es nicht

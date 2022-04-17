@@ -345,6 +345,27 @@ $lang_array = array(
 		 This makes it possible for boxes in product lists to have equal heights.',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_AWIDSRATINGBREAKDOWN_URL_INFO' => 'Activate filter popup?<br />
 		 This setting make it possible to display the ratings in a popup, and filter them by the number of stars.',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS' => 'CSS product & attribute stock traffic light',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_INFO' => 'Activate the "CSS product & attribute stock traffic light" module!<br />
+		<strong>Note:</strong><br />
+		 This module shows a product and attribute stock traffic light, which either displays a graphic stock traffic light or the stock as text.<br />
+		 Link to the original module: <a href="https://www.modified-shop.org/forum/index.php?topic=37371.0" target=”_blank”>https://www.modified-shop.org/forum/index.php?topic=37371.0</a><br />
+		 Texts can be changed in the file "lang/english/extra/bs4_additional_modules.php" (German -> "lang/german/extra/bs4_additional_modules.php").',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_NONE' => 'do not show',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_L' => 'only traffic light',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LS' => 'traffic light and stock',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LT' => 'traffic light and text, no stock',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_LTS' => 'traffic light, text and stock',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_T' => 'only text',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_SHOW_TS' => 'text and stock',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODLIST_INFO' => '<strong>Traffic light in product lists:</strong><br />
+		 How should the traffic light be displayed in the product listing?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODINFO_INFO' => '<strong>Traffic light on the product detail page:</strong><br />
+		 How should the traffic light be displayed on the product detail page?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_PRODATTR_INFO' => '<strong>Traffic light for attributes on the product detail page:</strong><br />
+		 How should the traffic light be displayed for attributes on the product detail page?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_STOCK_RED_YELL_INFO' => 'Enter the minimum value for the yellow traffic light here. This value and all values below are provided with a red traffic light. Standard: 0',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_TRAFFIC_LIGHTS_STOCK_GREEN_INFO' => 'Enter the value from which a green traffic light should be displayed. All values below this up to the minimum value are provided with a yellow traffic light.',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_MIXED' => 'Miscellaneous',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_PICTURESET_ACTIVE' => 'Product Thumbnails:',

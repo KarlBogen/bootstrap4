@@ -77,4 +77,20 @@ define('BS4_AWIDSRATINGBREAKDOWN_ALL_LANGS', 'alle Sprachen anzeigen');
 
 // Falls der Buttontext für OIL.js nicht definiert ist
 defined('TEXT_COOKIE_CONSENT_LABEL_BUTTON_ESSENTIALS_ONLY') or define('TEXT_COOKIE_CONSENT_LABEL_BUTTON_ESSENTIALS_ONLY','Nur Notwendige');
+
+/* ------------------------------------------------------------------------------------------------------------------
+   CSS Produkt- & Attributlagerampel v1.0(2017-04-22)
+
+   Authors:
+   -------------------
+     awids (www.awids.de)
+     web28 (www.rpa-com.de)
+     noRiddle (www.revilonetz.de)
+
+   ----------------------------------------------------------------------------------------------------------------*/
+
+define('BS4_MODULE_TRAFFIC_LIGHTS_STOCK','Bestand');
+define('BS4_MODULE_TRAFFIC_LIGHTS_QTY_RED','nicht auf Lager');
+define('BS4_MODULE_TRAFFIC_LIGHTS_QTY_YELL','wenige auf Lager');
+define('BS4_MODULE_TRAFFIC_LIGHTS_QTY_GREEN','auf Lager');
 ?>

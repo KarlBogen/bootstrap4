@@ -19,7 +19,8 @@
 		<div class="carousel-inner mb-2">
 		{foreach name=aussen item=box_data from=$box_content}
 			<div class="cols card mb-1">
-				<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="{$box_data.PRODUCTS_LINK}">
+				<a class="prod-link" href="{$box_data.PRODUCTS_LINK}"></a>
+				<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
 		           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $box_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
 		           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $box_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
 		           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $box_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
@@ -34,7 +35,7 @@
 						{/if}
 					</div>
 					<div class="lb_title lead text-secondary mt-1 mb-0"{if $smarty.const.BS4_BSCAROUSEL_NAME_LINES != 0} data-lines="{$smarty.const.BS4_BSCAROUSEL_NAME_LINES}"{/if}>{$box_data.PRODUCTS_NAME}</div>
-				</a>
+				</div>
 				<div class="p-1 text-center">
 					{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && ((isset($box_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $box_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 || $smarty.const.BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS == 'true') && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
 						<div class="lb_ratings mb-2 small">
@@ -57,6 +58,9 @@
 				</div>
 				<div class="card-footer">
 					<div class="lb_shipping small">{if $box_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime_box#} {if $box_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-fluid" src="{$box_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$box_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$box_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+					{if $smarty.const.BS4_TRAFFIC_LIGHTS == 'true' && $smarty.const.BS4_TRAFFIC_LIGHTS_PRODLISTING != 'false'}
+						<div class="lb_stock mb-2 small">{traffic_light stock=$box_data.PRODUCTS_QUANTITY modul='listing'}</div>
+					{/if}
 					<div class="lb_price text-right mb-1">
 						{foreach name=inner item=price_data from=$box_data.PRODUCTS_PRICE_ARRAY}
 							{include file="module/includes/price_box.html"}

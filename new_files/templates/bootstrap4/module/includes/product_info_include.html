@@ -3,7 +3,8 @@
 {* BOXANSICHT *}
 <div class="listingbox col-sm-6 col-md-4{if $smarty.const.BS4_FULLCONTENT == 'true'} col-lg-3{/if} mb-2">
 	<div class="card h-100">
-		<a class="card-body pb-2 flex-fill d-flex flex-column text-center" href="{$module_data.PRODUCTS_LINK}">
+		<a class="prod-link" href="{$module_data.PRODUCTS_LINK}"></a>
+		<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
@@ -25,7 +26,7 @@
 				{/if}
 			</div>
 			<h2 class="lb_title lead text-secondary mt-1 mb-0">{$module_data.PRODUCTS_NAME}</h2>
-		</a>
+		</div>
 		<div class="p-1 text-center">
 			{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && ((isset($module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 || $smarty.const.BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS == 'true') && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
 				<div class="lb_ratings mb-2 small">
@@ -48,6 +49,9 @@
 		</div>
 		<div class="card-footer">
 			<div class="lb_shipping small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-fluid" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+			{if $smarty.const.BS4_TRAFFIC_LIGHTS == 'true' && $smarty.const.BS4_TRAFFIC_LIGHTS_PRODLISTING != 'false'}
+				<div class="lb_stock small mb-1">{traffic_light stock=$module_data.PRODUCTS_QUANTITY modul='listing'}</div>
+			{/if}
 			<div class="lb_price text-right mb-1">
 				{foreach name=inner item=price_data from=$module_data.PRODUCTS_PRICE_ARRAY}
 					{include file="module/includes/price_box.html"}
@@ -67,11 +71,12 @@
 {* ROWANSICHT *}
 <div class="col-12">
 	<div class="listingrow card mb-2">
-		<div class="row">
+		<div class="row mx-0">
            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
-            <a class="card-body col-md-3 text-center pl-4" href="{$module_data.PRODUCTS_LINK}">
+			<a class="prod-link" href="{$module_data.PRODUCTS_LINK}"></a>
+            <div class="card-body col-md-3 text-center">
 				<div class="lr_image">
 					{if $module_data.PRODUCTS_IMAGE != ''}
 						{if isset($pictureset_row) && count($pictureset_row) > 0}
@@ -89,7 +94,7 @@
 						{/if}
 					{/if}
 				</div>
-			</a>
+			</div>
 			<div class="card-body lr_content col-xs-8 col-md-6 d-flex flex-column">
 				<h2 class="lr_title lead text-secondary mb-1"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h2>
 					{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && ((isset($module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $module_data.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 || $smarty.const.BS4_AWIDSRATINGBREAKDOWN_SHOW_NULL_REVIEWS == 'true') && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
@@ -109,11 +114,14 @@
 						{/if}
 						</div>
 					{/if}
-				{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="lr_desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+				{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="lr_desc mb-2">{$module_data.PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
 				<div class="lr_shipping mb-2 small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-fluid" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+				{if $smarty.const.BS4_TRAFFIC_LIGHTS == 'true' && $smarty.const.BS4_TRAFFIC_LIGHTS_PRODLISTING != 'false'}
+					<div class="lr_stock mb-2 small">{traffic_light stock=$module_data.PRODUCTS_QUANTITY modul='listing'}</div>
+				{/if}
 				<div class="lr_buttons text-center mb-2 mt-auto">{if $module_data.PRODUCTS_BUTTON_BUY_NOW || ($module_data.PRODUCTS_FSK18 != '0' && $smarty.const.SHOW_BUTTON_BUY_NOW != 'false')}{$module_data.PRODUCTS_BUTTON_BUY_NOW|replace:'<a':'<a aria-label="buy now"'}&nbsp;&nbsp;{/if}{if $module_data.PRODUCTS_LINK_WISHLIST_NOW}<a href="{$module_data.PRODUCTS_LINK_WISHLIST_NOW}" aria-label="{$smarty.const.TEXT_TO_WISHLIST}">{$dummy|bs4button:'button_wishlist_now'}</a>&nbsp;&nbsp;{/if}{$module_data.PRODUCTS_BUTTON_DETAILS}</div>
 			</div>
-			<div class="card-footer lr_price_box col-xs-4 col-md-3 border-top-0 pr-4">
+			<div class="card-footer lr_price_box col-xs-4 col-md-3 border-top-0">
 				<div class="lr_price text-right mb-2">
 					{foreach name=inner item=price_data from=$module_data.PRODUCTS_PRICE_ARRAY}
 						{include file="module/includes/price_listing.html"}
