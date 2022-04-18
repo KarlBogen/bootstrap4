@@ -9,7 +9,7 @@
 		awids (www.awids.de)
 		web28 (www.rpa-com.de)
 		noRiddle (www.revilonetz.de)
-		angepasst an bootstrap4 von Karl
+		angepasst an 'bootstrap4' von Karl
 
 	Calls:
 	-------------------
