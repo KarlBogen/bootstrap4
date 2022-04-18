@@ -147,6 +147,7 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/bs4_template_manager';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/extra/application_top/application_top_begin/bs4_tpl_manager_config.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/extra/filenames/bs4_tpl_manager.php';
+		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/extra/footer/bs4_cookie_consent_warning.php';
 		$dirs_and_files[] = $shop_path.DIR_ADMIN.'includes/extra/menu/bs4_tpl_manager.php';
 
 		$dirs_and_files[] = $shop_path.'includes/extra/ajax/bs4_awids_rating.php';
@@ -225,6 +226,7 @@ class bs4_tpl_manager {
 		global $messageStack;
 		if($this->remove_tables(4)){
 			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_DEINSTALL_FINISHED, 'success');
+			return true;
 		} else {
 			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_DEINSTALL_ERR, 'error');
 		}
