@@ -48,11 +48,17 @@ $fullcontent = array(FILENAME_CHECKOUT_SHIPPING,
                      FILENAME_REVIEWS,
                      FILENAME_WISHLIST,
                      FILENAME_CHECKOUT_PAYMENT_IFRAME,
-                     FILENAME_CHEAPLY_SEE,
-                     FILENAME_PRODUCT_INQUIRY,
-                     FILENAME_CUSTOMERS_REMIND,
                      );
 
+	if (defined('FILENAME_CHEAPLY_SEE')) {
+		$fullcontent[] = FILENAME_CHEAPLY_SEE;
+	}
+	if (defined('FILENAME_PRODUCT_INQUIRY')) {
+		$fullcontent[] = FILENAME_PRODUCT_INQUIRY;
+	}
+	if (defined('FILENAME_CUSTOMERS_REMIND')) {
+		$fullcontent[] = FILENAME_CUSTOMERS_REMIND;
+	}
 	// Produktdetail / -infoansicht als "Fullcontent" anzeigen - einzustellen in der config.php
 	if (BS4_PROD_DETAIL_FULLCONTENT == 'true') {
 		$fullcontent[] = FILENAME_PRODUCT_INFO;

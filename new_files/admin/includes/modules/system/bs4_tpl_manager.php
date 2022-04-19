@@ -22,7 +22,7 @@ class bs4_tpl_manager {
 
 	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
-		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.6';
+		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.7';
 		$this->description = '';
 		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) $this->description .= '<a class="button btnbox but_green" style="text-align:center;" onclick="this.blur();" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=update') . '">Update</a><br /><br />';
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
@@ -183,7 +183,6 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_agi_reduce_cart.php';
 		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_privacy.php';
-		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_template.php';
 		$dirs_and_files[] = $shop_path.'lang/english/modules/system/bs4_tpl_manager.php';
 
 		$dirs_and_files[] = $shop_path.'lang/german/admin/bs4_banner_manager.php';
@@ -193,7 +192,6 @@ class bs4_tpl_manager {
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_additional_modules.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_agi_reduce_cart.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_privacy.php';
-		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_template.php';
 		$dirs_and_files[] = $shop_path.'lang/german/extra/admin/bs4_tpl_manager.php';
 		$dirs_and_files[] = $shop_path.'lang/german/modules/system/bs4_tpl_manager.php';
 
@@ -769,6 +767,8 @@ class bs4_tpl_manager {
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
 		$shop_path = DIR_FS_CATALOG;
 		$dirs_and_files = array();
+		$dirs_and_files[] = $shop_path.'lang/english/extra/bs4_template.php';
+		$dirs_and_files[] = $shop_path.'lang/german/extra/bs4_template.php';
 
 		// Beispiel
 		// $dirs_and_files[] = $shop_path.'includes/extra/bs4_test.php';

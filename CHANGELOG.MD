@@ -1,5 +1,11 @@
 UNRELEASED
 
+1.2.7 [19.04.2022]
+- Template ist nur mit Templatedateien lauffähig (eingeschränkter Funktionsumfang)
+- boxes.php geändert
+- Datei lang/english/extra/bs4_template.php ins Template verschoben
+- Datei lang/german/extra/bs4_template.php ins Template verschoben
+- genannte Sprachdateien werden in bootstrap4/config.php aufgerufen
 
 1.2.6 [17.04.2022]
 - Admin/Template: Modul CSS Produkt- & Attributlagerampel hinzugefügt - konfigurierbar im Template Manager

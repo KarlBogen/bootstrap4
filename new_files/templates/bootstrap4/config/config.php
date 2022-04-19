@@ -14,6 +14,9 @@
 	*  template specific defines
 	*/
 
+	// laden der templatespezifischen Sprachdatei (dadurch entfallen die Dateien lang/jeweilige_sprache/extra/bs4_template.php
+	require_once(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/lang/template_'.$_SESSION['language'].'.php');
+
 	// Topleiste
 	defined('BS4_SHOW_TOP1') or define('BS4_SHOW_TOP1', 'true'); // Soll Top1 angezeigt werden? anzeigen = true, ansonsten false
 	defined('BS4_SHOW_TOP2') or define('BS4_SHOW_TOP2', 'true'); // Hinweis: In der Topleiste können vier Spalteneinträge angezeigt werden. Damit diese Spalten auch mehrsprachig genutzt werden können, sind die Texte in eine Sprachdatei ausgelagert. Die Texte können in der Datei "templates/bootstrap4/lang/lang_german.custom" geändert werden (Englisch -> "lang_english.custom").
