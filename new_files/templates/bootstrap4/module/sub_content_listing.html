@@ -1,3 +1,4 @@
+{if isset($parent_content)}
 <div class="mb-2">
 	<div class="nav nav-pills flex-column">
 		<a class="nav-link" href="{$parent_content.CONTENT_LINK}"><strong>{$parent_content.CONTENT_TITLE}</strong></a>
@@ -6,3 +7,4 @@
 	{/foreach}
 	</div>
 </div>
+{/if}

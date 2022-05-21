@@ -25,7 +25,7 @@
 	<p>{#heading_text#}&nbsp;{$GV_FAQ_LINK}</p>
 	<br />
 	{$FORM_ACTION}
-		{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+		{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 		<div class="form-group">
 			<label>{#entry_name#}</label>
 			{$INPUT_TO_NAME|replace:'input':'input class="form-control form-control-sm"'}

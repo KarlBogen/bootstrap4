@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: currencies.php 13588 2021-06-15 16:10:06Z GTB $
+   $Id: shipping_country.php 13890 2021-12-15 15:29:54Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -19,25 +19,24 @@
 // include smarty
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
 
+$selected = isset($_SESSION['customer_country_id']) ? $_SESSION['customer_country_id'] : STORE_COUNTRY;
+if (isset($_SESSION['country'])) {
+  $selected = $_SESSION['country'];
+}
+
 // set cache id
-$cache_id = md5('lID:'.$_SESSION['language'].'|curr:'.$_SESSION['currency'].'|site:'.basename($PHP_SELF).'|params:'.xtc_get_all_get_params(array('currency', 'language')));
+$cache_id = md5('lID:'.$_SESSION['language'].'|sel:'.$selected.'|site:'.basename($PHP_SELF).'|params:'.xtc_get_all_get_params(array('currency', 'language')));
 
-if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_currencies.html', $cache_id) || !$cache) {
-
-  $currencies_array = array();
-  if (isset($xtPrice) && is_object($xtPrice)) {
-    reset($xtPrice->currencies);
-    foreach ($xtPrice->currencies as $key => $value) {
-      $currencies_array[] = array('id' => $key, 'text' => $value['title']);
-    }
-  }
+if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_shipping_country.html', $cache_id) || !$cache) {  
+  require_once (DIR_FS_INC.'xtc_get_country_list.inc.php');
+  $countries_array = xtc_get_countriesList();
 
   // dont show box if there's only 1 currency
-  if (count($currencies_array) > 1 ) {
-    $box_content = xtc_draw_form('currencies', xtc_href_link(basename($PHP_SELF), '', $request_type, false), 'get', 'class="box-currencies"')
-                   . xtc_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'class="form-control form-control-sm" onchange="this.form.submit();"')
+  if (count($countries_array) > 1 ) {
+    $box_content = xtc_draw_form('countries', xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array('action')).'action=shipping_country', $request_type, false), 'post', 'class="box-shipping_country"')
+                   . xtc_get_country_list(array('name' => 'country'), (int)$selected, 'class="form-control form-control-sm" onchange="this.form.submit()"')
                    . xtc_hide_session_id();
-
+    
     parse_str(xtc_get_all_get_params(array('currency', 'language')), $params_array);
     if (is_array($params_array) && count($params_array) > 0) {
       foreach ($params_array as $k => $v) {
@@ -50,7 +49,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_currencies.html', $cach
         }
       }
     }
-
+        
     $box_content .= '</form>';
 
     $box_smarty->assign('BOX_CONTENT', $box_content);
@@ -58,10 +57,10 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_currencies.html', $cach
 }
 
 if (!$cache) {
-  $box_currencies = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_currencies.html');
+  $box_shipping_country = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_shipping_country.html');
 } else {
-  $box_currencies = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_currencies.html', $cache_id);
+  $box_shipping_country = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_shipping_country.html', $cache_id);
 }
 
-$smarty->assign('box_CURRENCIES', $box_currencies);
+$smarty->assign('box_SHIPPING_COUNTRY', $box_shipping_country);
 ?>

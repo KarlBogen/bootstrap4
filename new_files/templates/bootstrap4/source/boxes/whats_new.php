@@ -1,6 +1,6 @@
 <?php
   /* -----------------------------------------------------------------------------------------
-   $Id: whats_new.php 12294 2019-10-23 09:15:59Z GTB $
+   $Id: whats_new.php 13588 2021-06-15 16:10:06Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -58,8 +58,8 @@ if (xtc_db_num_rows($whats_new_query) > 0) {
   $whats_new = xtc_db_fetch_array($whats_new_query);
   
   // set cache id
-  $cache_id = md5($_SESSION['currency'].$_SESSION['language'].$whats_new['products_id']);
-  
+  $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|curr:'.$_SESSION['currency'].'|pID:'.$whats_new['products_id']);
+
   if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_whatsnew.html', $cache_id) || !$cache) {
     $box_smarty->assign('box_content', $product->buildDataArray($whats_new));
     $box_smarty->assign('LINK_NEW_PRODUCTS', xtc_href_link(FILENAME_PRODUCTS_NEW));

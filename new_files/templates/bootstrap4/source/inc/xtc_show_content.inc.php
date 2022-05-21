@@ -1,6 +1,6 @@
 <?php
   /* -----------------------------------------------------------------------------------------
-   $Id: xtc_show_content.inc.php 12822 2020-07-09 06:24:46Z GTB $
+   $Id: xtc_show_content.inc.php 13758 2021-10-07 14:28:41Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -55,7 +55,7 @@
     $content_string .= $ul; //UL LI Versschachtelung
     $content_string .= $tab; //Tabulator Codedarstellung
     $content_string .= '<li class="nav-item level'.$level.$content_active.$content_active_parent.'">';
-    $content_string .= '<a class="nav-link" href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.$content_array[$counter]['coID']).'" title="'. $content_array[$counter]['name'] . '">';
+    $content_string .= '<a class="nav-link" href="'.xtc_href_link(FILENAME_CONTENT, xtc_content_link($content_array[$counter]['coID'], $content_array[$counter]['name'])).'" title="'. $content_array[$counter]['name'] . '">';
     $content_string .= '<span class="fa fa-chevron-right"></span>&nbsp;&nbsp;'.$content_array[$counter]['name'];
     $content_string .= '</a></li>';
     $content_string .= "\n"; //Zeilenschaltung Codedarstellung  

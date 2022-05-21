@@ -3,8 +3,9 @@
 {config_load file="lang_`$language`.section" section="reviews"}
 {if isset($MODULE_TS_PRODUCT_STICKER)}
 	{$MODULE_TS_PRODUCT_STICKER}
-{else}
+{elseif isset($module_content)}
 	<h4>{#heading_reviews#}</h4>
+	{if isset($REVIEWS_NOTE)}<div class="text-right mb-2">{$REVIEWS_NOTE|replace:'class="':'class="btn btn-outline-primary btn-sm '}</div>{/if}
 	{if $reviews_count > 0}
 	<div class="list-group">
 		{foreach name=aussen item=module_data from=$module_content}

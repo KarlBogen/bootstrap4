@@ -25,7 +25,7 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
 
 	// Modified Button
 	// Addressbuch
-    'button_add_address.gif'        => array('Text' => $alt,								'icon' => 'fa fa-edit',            	'iconposition' => 'left',		'Class' => 'btn btn-secondary btn-sm'),
+    'button_add_address.gif'        => array('Text' => $alt,								'icon' => 'fa fa-plus-square',		'iconposition' => 'left',		'Class' => 'btn btn-secondary btn-sm'),
 	// Box Add a quickie
     'button_add_quick.gif'          => array('Text' => '',									'icon' => 'fa fa-shopping-cart',   	'iconposition' => 'left',		'Class' => 'btn btn-secondary btn-sm px-4'),
 	// Box Admin
@@ -101,6 +101,8 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
     'small_view.gif'                => array('Text' => $alt,								'icon' => 'fa fa-eye-open',        	'iconposition' => 'right',		'Class' => 'btn btn-secondary btn-sm'),
 	// Merkzettel
     'wishlist_del.gif'              => array('Text' => '',									'icon' => 'fa fa-trash',      		'iconposition' => 'left',		'Class' => 'btn btn-danger btn-sm'),
+	// Checkout (Adresse aktualisieren)
+    'small_continue.gif'              => array('Text' => $alt,								'icon' => 'fa fa-check-square',      'iconposition' => 'left',		'Class' => 'btn btn-secondary btn-sm'),
 
 	// BS4 Button
 	// Nutzerkonto

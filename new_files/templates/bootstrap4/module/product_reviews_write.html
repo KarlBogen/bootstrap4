@@ -3,7 +3,7 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="reviews"}
 <h1 class="card p-2 bg-h">{#heading_reviews_write#}</h1>
-{if $error}<div class="alert alert-danger">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 {if !isset($no_product)}
 {$FORM_ACTION}
 	<div class="card card-body">

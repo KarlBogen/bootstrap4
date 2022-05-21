@@ -42,5 +42,5 @@ defined('ERROR_UNKNOWN_STATUS_FLAG') or define('ERROR_UNKNOWN_STATUS_FLAG', 'Err
 define('BS4_BANNER_DATA_UPDATED', 'Data saved!');
 define('BS4_NO_DATA', 'No data available!');
 define('BS4_CLASSES_NOTE', 'The colors shown here are Bootstrap standard colors, colors in the shop can be different!');
-
+defined('TEXT_IMAGE_NONEXISTENT') or define('TEXT_IMAGE_NONEXISTENT', 'Image does not exist');
 ?>

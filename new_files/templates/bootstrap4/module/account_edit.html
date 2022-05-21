@@ -3,7 +3,7 @@
 {config_load file="lang_`$language`.section" section="account_edit"}
 <h1 class="card p-2 bg-h">{#heading_account#}</h1>
 {$FORM_ACTION}
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-warning">{$error_message}</div>{/if}
 <div class="row clearfix mb-2">
 	<div class="col-md-6 mb-2">
   		<div class="card">

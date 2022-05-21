@@ -23,6 +23,9 @@
     <div class="card-footer text-center">
 		<div class="box_text small mb">{$REVIEWS|onlytext}</div>
     	<div class="box_reviews_image">{$REVIEWS_IMAGE}</div>
+		{if isset($REVIEWS_NOTE)}
+			<div class="box_reviews_note small mt-2">{$REVIEWS_NOTE}</div>
+		{/if}
 	</div>
 	{else}
 	<div class="card-body">

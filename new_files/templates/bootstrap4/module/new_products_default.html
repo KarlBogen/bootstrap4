@@ -3,6 +3,7 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="new_products"}
 {assign "dummy" ""}
+{if isset($module_content)}
 <div id="bs4_TopCarousel" class="new-products-default bs4-carousel">
 {if $smarty.const.BS4_TOP_PROD_IN_SLIDER != 'true'}
 	<div class="h1 card p-2 bg-h">{if #BS4_heading_text_top# != ''}{#BS4_heading_text_top#}{else}{#heading_text#}{/if}</div>
@@ -87,3 +88,4 @@
 	<br class="clearfix" />
 {/if}
 </div>
+{/if}

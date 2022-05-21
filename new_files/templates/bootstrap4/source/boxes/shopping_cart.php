@@ -1,6 +1,6 @@
 <?php
   /* -----------------------------------------------------------------------------------------
-   $Id: shopping_cart.php 12428 2019-11-30 08:37:22Z GTB $
+   $Id: shopping_cart.php 14010 2022-02-01 09:49:36Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -16,7 +16,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-  $box_smarty = new smarty;
+  $box_smarty = new Smarty;
 
   $box_smarty->assign('tpl_path', DIR_WS_BASE.'templates/'.CURRENT_TEMPLATE.'/');
 
@@ -25,10 +25,6 @@
   $discount = $qty = 0;
   $total = 0.0;
 
-  // include needed files
-  require_once (DIR_FS_INC.'xtc_recalculate_price.inc.php');
-
-
   if ($_SESSION['cart']->count_contents() > 0) {
 
     $total = $_SESSION['cart']->show_total();
@@ -36,8 +32,7 @@
     // build array with cart content and count quantity  
     if (strpos($PHP_SELF, FILENAME_LOGOFF) === false) {
       $products = $_SESSION['cart']->get_products();
-      $sizeof_products = sizeof($products);
-      for ($i = 0, $n = $sizeof_products; $i < $n; $i++) {
+      for ($i = 0, $n = count($products); $i < $n; $i++) {
         $del_button = '<a href="' . xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array('action', 'box', 'prd_id')).'action=remove_product&box=cart&prd_id=' . $products[$i]['id'], 'NONSSL') . '" title="' . IMAGE_BUTTON_DELETE . '">' . xtc_image_button('cart_del.gif', IMAGE_BUTTON_DELETE) . '</a>';
         $del_link = '<a href="' . xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array('action', 'box', 'prd_id')).'action=remove_product&box=cart&prd_id=' . $products[$i]['id'], 'NONSSL') . '">' . IMAGE_BUTTON_DELETE . '</a>';
       

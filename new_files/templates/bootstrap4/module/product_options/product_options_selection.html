@@ -1,4 +1,7 @@
 {if $options != ''}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="product_info"}
 <div id="optionen{$smarty.get.products_id|intval}">
 	<div class="productoptions list-group list-group-flush mb-2">
 		{foreach name=outer item=options_data from=$options}

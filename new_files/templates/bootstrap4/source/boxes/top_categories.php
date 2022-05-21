@@ -22,7 +22,7 @@
 // ------------------------------------------------------------------------------------------
 */
 
-	$box_smarty = new smarty;
+	$box_smarty = new Smarty;
 
 // ------------------------------------------------------------------------------------------
 // Cache-ID setzen
@@ -36,13 +36,14 @@
 		$box_smarty->caching = 1;
 		$box_smarty->cache_lifetime = CACHE_LIFETIME;
 		$box_smarty->cache_modified_check = CACHE_CHECK;
-		$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$cPath;
+		$cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|cP:'.$cPath.(((defined('SPECIALS_CATEGORIES') && SPECIALS_CATEGORIES === true) || (defined('WHATSNEW_CATEGORIES') && WHATSNEW_CATEGORIES === true)) ? '|self:'.basename($PHP_SELF) : ''));
+
 	}
 // ------------------------------------------------------------------------------------------
 
 
 // ------------------------------------------------------------------------------------------
-//	Das alles braucht nur dann ausgeführt zu werden, wenn noch keine gecachtes 
+//	Das alles braucht nur dann ausgef?hrt zu werden, wenn noch keine gecachtes 
 //	HTML-File vorliegt
 // ------------------------------------------------------------------------------------------
 	if(!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/top_categories.html',$cache_id) || !$cache) {

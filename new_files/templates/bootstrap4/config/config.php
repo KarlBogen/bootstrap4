@@ -1,6 +1,6 @@
 <?php
 	/* -----------------------------------------------------------------------------------------
-	$Id$
+	$Id: config.php 14256 2022-04-01 14:43:10Z Tomcraft $
 
 	modified eCommerce Shopsoftware
 	http://www.modified-shop.org
@@ -112,6 +112,7 @@
 	defined('BS4_STARTPAGE_BOX_MANUFACTURERS') or define('BS4_STARTPAGE_BOX_MANUFACTURERS', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_STARTPAGE_BOX_MANUFACTURERS_INFO') or define('BS4_STARTPAGE_BOX_MANUFACTURERS_INFO', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_STARTPAGE_BOX_CURRENCIES') or define('BS4_STARTPAGE_BOX_CURRENCIES', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
+	defined('BS4_STARTPAGE_BOX_SHIPPING_COUNTRY') or define('BS4_STARTPAGE_BOX_SHIPPING_COUNTRY', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_STARTPAGE_BOX_INFOBOX') or define('BS4_STARTPAGE_BOX_INFOBOX', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_STARTPAGE_BOX_TRUSTEDSHOPS') or define('BS4_STARTPAGE_BOX_TRUSTEDSHOPS', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	// Boxen auf anderen Seiten (nicht Startseite)
@@ -126,6 +127,7 @@
 	defined('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS') or define('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS_INFO') or define('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS_INFO', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_NOT_STARTPAGE_BOX_CURRENCIES') or define('BS4_NOT_STARTPAGE_BOX_CURRENCIES', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
+	defined('BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY') or define('BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_NOT_STARTPAGE_BOX_INFOBOX') or define('BS4_NOT_STARTPAGE_BOX_INFOBOX', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS') or define('BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_HIDE_ALL_BOXES') or define('BS4_HIDE_ALL_BOXES', 'false'); // ausblenden = 'true', anzeigen = 'false'
@@ -257,9 +259,6 @@
 	// -----------------------------------------------------------------------------------
 	// 	Ab hier nichts ändern
 	// -----------------------------------------------------------------------------------
-	// set base
-	define('DIR_WS_BASE', xtc_href_link('', '', $request_type, false, false));
-
 	// paths
 	define('DIR_FS_BOXES', DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/');
 	define('DIR_FS_BOXES_INC', DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/inc/');
@@ -277,9 +276,15 @@
 	define('TPL_POPUP_PRINT_ORDER_SIZE', '');
 
 	// template output
-	define('TEMPLATE_ENGINE', 'smarty_3'); // 'smarty_3' oder 'smarty_2' -> Nicht ändern! (Nur "smarty_3" unterstützt die custom Sprachdateien (lang_english.custom & lang_german.custom) aus dem Ordner "../lang/" des Templates!)
+	define('TEMPLATE_ENGINE', 'smarty_4'); // 'smarty_4' oder 'smarty_3' oder 'smarty_2' -> Nicht ändern! (Nur "smarty_4" oder "smarty_3" unterstützt die custom Sprachdateien (lang_english.custom & lang_german.custom) aus dem Ordner "../lang/" des Templates!)
 	define('TEMPLATE_HTML_ENGINE', 'html5'); // 'html5' oder 'xhtml' -> Nicht ändern!
 	define('TEMPLATE_RESPONSIVE', 'true'); // 'true' oder 'false' -> Nicht ändern!
 	defined('COMPRESS_JAVASCRIPT') or define('COMPRESS_JAVASCRIPT', 'false'); // 'true' kombiniert & komprimiert die zusätzliche JS-Dateien / 'false' bindet alle JS-Dateien einzeln ein
 
-?>
+	// set base
+  defined('DIR_WS_BASE') OR define('DIR_WS_BASE', xtc_href_link('', '', $request_type, false, false));
+
+  // css buttons
+  if (is_file(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/css_button.inc.php')) {
+    require_once(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/css_button.inc.php');
+  }

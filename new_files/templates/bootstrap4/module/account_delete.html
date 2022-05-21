@@ -1,7 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="account_delete"}
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="account_delete"}
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-warning">{$error_message}</div>{/if}
 {if $BUTTON_CONTINUE}
 <h1 class="card p-2 bg-h">{#heading_account_deleted#}</h1>
 <div class="card mb-4">

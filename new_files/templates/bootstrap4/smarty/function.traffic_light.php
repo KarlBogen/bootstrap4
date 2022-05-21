@@ -50,17 +50,17 @@ function smarty_function_traffic_light($params, &$smarty) {
 	}
 
 	if ($stock <= BS4_MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL) {
-		$stock_txt = BS4_MODULE_TRAFFIC_LIGHTS_QTY_RED. (strpos($style, 's') !== false ? ' ('. $stock . ')' : '');
+		$stock_txt = BS4_MODULE_TRAFFIC_LIGHTS_QTY_RED. (strpos($style, 's') !== false ? '&nbsp;('. $stock . ')' : '');
 		$lights = array('', '', ' badge-danger');
 		$txtclass = 'danger';
 	}
 	elseif ($stock > BS4_MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL && $stock < BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN) {
-		$stock_txt = BS4_MODULE_TRAFFIC_LIGHTS_QTY_YELL . (strpos($style, 's') !== false ? ' ('. $stock . ')' : '');
+		$stock_txt = BS4_MODULE_TRAFFIC_LIGHTS_QTY_YELL . (strpos($style, 's') !== false ? '&nbsp;('. $stock . ')' : '');
 		$lights = array('', ' badge-warning', '');
 		$txtclass = 'warning';
 	}
 	elseif ($stock >= BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN) {
-		$stock_txt = BS4_MODULE_TRAFFIC_LIGHTS_QTY_GREEN. (strpos($style, 's') !== false ? ' ('. $stock . ')' : '');
+		$stock_txt = BS4_MODULE_TRAFFIC_LIGHTS_QTY_GREEN. (strpos($style, 's') !== false ? '&nbsp;('. $stock . ')' : '');
 		$lights = array(' badge-success', '', '');
 		$txtclass = 'success';
 	}
@@ -77,10 +77,10 @@ function smarty_function_traffic_light($params, &$smarty) {
 	}
 
 	$html = '<span class="traffic" data-toggle="tooltip" title="'.$stock_txt.'" aria-label="'.$stock_txt.'">'."\n";;
-	$html .= $show_stocktext ? ($modul === 'info' ? '<strong>'.BS4_MODULE_TRAFFIC_LIGHTS_STOCK.': </strong>' : BS4_MODULE_TRAFFIC_LIGHTS_STOCK.': ') : '';
+	$html .= $show_stocktext ? ($modul === 'info' ? '<strong>'.BS4_MODULE_TRAFFIC_LIGHTS_STOCK.':&nbsp;</strong>' : BS4_MODULE_TRAFFIC_LIGHTS_STOCK.': ') : '';
 	if ($style != 't' && $style != 'ts') {
 		foreach ($lights as $light) {
-			$html .= '<span class="border border-dark badge'.$light.'">&nbsp;&nbsp;</span>'."\n";
+			$html .= '<span class="border border-dark badge'.$light.'">&nbsp;&nbsp;</span>&nbsp;'."\n";
 		}
 	}
 	if ($style == 'ls') {

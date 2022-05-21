@@ -4,7 +4,7 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="contact_us"}
 <h1 class="card p-2 bg-h">{$CONTACT_HEADING}</h1>
-{if $error_message != ''}<div class="alert alert-warning">{$error_message}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 
 {if $success != '1'}
 <div class="row clearfix mb-4">

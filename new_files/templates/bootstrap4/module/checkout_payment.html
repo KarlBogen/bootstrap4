@@ -9,7 +9,7 @@
 		<div class="col-4 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-sm-block my-2">{#title_confirmation#}</span></div>
 		<div class="col-4 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-sm-block my-2">{#title_success#}</span></div>
 	{else}
-		<div class="col-3"><a class="text-success" href="{$BUTTON_BACK_LINK}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></a></div>
+		<div class="col-3"><a class="text-success d-inline-block" href="{$BUTTON_BACK_LINK}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></a></div>
 		<div class="col-3 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-md-block my-2">{#title_payment#}</span></div>
 		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-md-block my-2">{#title_confirmation#}</span></div>
 		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">4</strong></span><span class="d-none d-md-block my-2">{#title_success#}</span></div>
@@ -18,7 +18,7 @@
 </div>
 
 <h1 class="card p-2 bg-h">{#heading_payment#}</h1>
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 
 {$FORM_ACTION}
 <div class="row clearfix">

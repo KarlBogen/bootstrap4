@@ -10,7 +10,7 @@
 	{else}
 	  <h3 class="card p-2 bg-h">{$CATEGORIES_NAME}</h3>
 	{/if}
-
+	{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 	{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')
 		|| (isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != '')
 		|| (isset($CATEGORIES_IMAGE_MOBILE) && $CATEGORIES_IMAGE_MOBILE != '')
@@ -36,36 +36,6 @@
 	{/if}
 </div>
 
-{if $module_content != '' && $TR_COLS > 0}
-<div class="catlist-subcats mb-2">
-	<h4 class="card p-2 bg-h">{#heading_more_categories#}</h4>
-	<div class="row">
-		{foreach name=aussen item=module_data from=$module_content key=spalten}
-	        {if !isset($module_data.CATEGORIES_PRODUCTS) || (isset($module_data.CATEGORIES_PRODUCTS) && $module_data.CATEGORIES_PRODUCTS > 0)}
-			<div class="col-sm-6 col-md-4 col-lg-3 text-center mb-2">
-				<a class="subcat card h-100" href="{$module_data.CATEGORIES_LINK}">
-					<div class="card-body flex-fill d-flex flex-column text-center">
-						<div class="w-100 mb-auto">
-						{if $module_data.CATEGORIES_IMAGE != '' || (isset($module_data.CATEGORIES_IMAGE_LIST) && $module_data.CATEGORIES_IMAGE_LIST != '')}
-							{if isset($module_data.CATEGORIES_IMAGE_LIST) && $module_data.CATEGORIES_IMAGE_LIST != ''}
-								<img class="lazyload img-fluid d-block mx-auto" src="data:," data-src="{$module_data.CATEGORIES_IMAGE_LIST}" alt="{$module_data.CATEGORIES_NAME|onlytext}" />
-								<noscript><img class="img-fluid d-block mx-auto" src="{$module_data.CATEGORIES_IMAGE_LIST}" alt="{$module_data.CATEGORIES_NAME|onlytext}" /></noscript>
-							{else}
-								<img class="lazyload img-fluid d-block mx-auto" src="data:," data-src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME|onlytext}" />
-								<noscript><img class="img-fluid d-block mx-auto" src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME|onlytext}" /></noscript>
-							{/if}
-						{/if}
-						</div>
-						<div class="mt-2">
-							<span class="subcat_title lead text-secondary">{$module_data.CATEGORIES_NAME}</span>
-							{* <p class="subcat_desc small">{$module_data.CATEGORIES_DESCRIPTION|onlytext|truncate:55:"...":true}</p> *}
-						</div>
-					</div>
-				</a>
-			</div>
-			{/if}
-		{/foreach}
-	</div>
-</div>
-{/if}
+{if isset($CATEGORIES_LISTING)}{$CATEGORIES_LISTING}{/if}
+
 {if isset($MODULE_new_products)}{$MODULE_new_products}{/if}

@@ -9,8 +9,8 @@
 <h1 class="card p-2 bg-h mb-2">{#title#}</h1>
 {/if}
 
-{if $coupon_message != ''}<div class="alert alert-warning">{$coupon_message}</div>{/if}
-{if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+{if $coupon_message}<div class="alert alert-danger">{$coupon_message}</div>{/if}
+{if $success_message}<div class="alert alert-info">{$success_message}</div>{/if}
 {if $D_FLAG != 'checkout'}
 <div class="card mb-4">
 	<div class="card-body">

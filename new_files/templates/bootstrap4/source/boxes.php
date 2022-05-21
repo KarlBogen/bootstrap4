@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: boxes.php 12960 2020-11-24 17:32:52Z GTB $
+   $Id: boxes.php 13969 2022-01-21 11:36:09Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -12,11 +12,6 @@
    
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-
-// css buttons
-if (file_exists(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/css_button.inc.php')) {
-  require_once ('templates/'.CURRENT_TEMPLATE.'/source/inc/css_button.inc.php');
-}
 
 // define full content sites
 $fullcontent = array(FILENAME_CHECKOUT_SHIPPING,
@@ -96,8 +91,8 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
   require_once(DIR_FS_BOXES . 'infobox.php');
   require_once(DIR_FS_BOXES . 'loginbox.php');
   if (defined('MODULE_TS_TRUSTEDSHOPS_ID')
-      && (MODULE_TS_WIDGET == '1'
-          || (MODULE_TS_REVIEW_STICKER != '' && MODULE_TS_REVIEW_STICKER_STATUS == '1'))
+      && MODULE_TS_REVIEW_STICKER != ''
+      && MODULE_TS_REVIEW_STICKER_STATUS == '1'
       )
   {
     require_once(DIR_FS_BOXES . 'trustedshops.php');
@@ -119,6 +114,7 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
 // -----------------------------------------------------------------------------------------
   if (substr(basename($PHP_SELF), 0, 8) != 'checkout') {
     require_once(DIR_FS_BOXES . 'currencies.php');
+    require_once(DIR_FS_BOXES . 'shipping_country.php');
   }
 // -----------------------------------------------------------------------------------------
 //	product details
@@ -193,4 +189,3 @@ if (in_array(basename($PHP_SELF), $bestsellers) && !isset($_GET['cPath']) && !is
 // -----------------------------------------------------------------------------------------
 
 $smarty->assign('tpl_path', DIR_WS_BASE.'templates/'.CURRENT_TEMPLATE.'/');
-?>

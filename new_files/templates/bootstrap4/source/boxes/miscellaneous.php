@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id:$   
+   $Id: miscellaneous.php 13952 2022-01-18 13:36:55Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -20,7 +20,7 @@
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
 
 // set cache id
-$cache_id = md5($_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].(isset($coPath) ? $coPath : '0'));
+$cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'coP:'.$coPath);
 
 
 if (!$cache) {

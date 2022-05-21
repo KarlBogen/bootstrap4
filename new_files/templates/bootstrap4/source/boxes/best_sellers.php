@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: best_sellers.php 12294 2019-10-23 09:15:59Z GTB $
+   $Id: best_sellers.php 13588 2021-06-15 16:10:06Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -23,7 +23,7 @@
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
 
 // set cache id
-$cache_id = md5($_SESSION['currency'].$_SESSION['language'].$current_category_id);
+$cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|curr:'.$_SESSION['currency'].'|cID:'.$current_category_id);
 
 if (MIN_DISPLAY_BESTSELLERS > 0 && (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id) || !$cache)) {
 	
@@ -74,6 +74,7 @@ if (MIN_DISPLAY_BESTSELLERS > 0 && (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/b
                                      AND c.categories_status = 1
                                      AND (c.categories_id = '" . (int)$current_category_id . "' 
                                           OR c.parent_id = '" . (int)$current_category_id . "')
+                                         ".CATEGORIES_CONDITIONS_C."
                             WHERE p.products_status = 1
                               AND p.products_ordered > 0
                                   ".PRODUCTS_CONDITIONS_P."
@@ -97,6 +98,12 @@ if (MIN_DISPLAY_BESTSELLERS > 0 && (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/b
                                   ON p.products_id = pd.products_id
                                      AND pd.language_id = '".(int)$_SESSION['languages_id']."'
                                      AND trim(pd.products_name) != ''
+                             JOIN ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
+                                  ON p.products_id = p2c.products_id
+                             JOIN ".TABLE_CATEGORIES." c
+                                  ON c.categories_id = p2c.categories_id
+                                     AND c.categories_status = 1
+                                         ".CATEGORIES_CONDITIONS_C."
                             WHERE p.products_status = 1
                               AND p.products_ordered > 0
                                   ".$where."

@@ -172,7 +172,7 @@
 			$create_html_body .= HEADER_ARTICLE.": ".$products->data['products_name']."<br>";
 			$create_html_body .= HEADER_MODEL.": ".$products->data['products_model']."<br><br>";
 			$create_html_body .= BS4_SUBJECT.$create_subject."<br><br>";
-			$create_html_body .= strip_tags($_POST['message_body'])."<br><br>";
+			$create_html_body .= nl2br(strip_tags($_POST['message_body']))."<br><br>";
 
 			$create_text_body = STORE_NAME."\n\n";
 			$create_text_body .= CHEAPLY_SEE_HEADING_FORMULAR.":\n--------------------\n";

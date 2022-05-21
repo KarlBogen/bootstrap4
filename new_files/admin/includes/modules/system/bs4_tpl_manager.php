@@ -22,7 +22,7 @@ class bs4_tpl_manager {
 
 	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
-		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.7';
+		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.8';
 		$this->description = '';
 		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) $this->description .= '<a class="button btnbox but_green" style="text-align:center;" onclick="this.blur();" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=update') . '">Update</a><br /><br />';
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
@@ -352,6 +352,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_STARTPAGE_BOX_MANUFACTURERS', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_MANUFACTURERS_INFO', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_CURRENCIES', 'true')";
+			$values_config[] = "('BS4_STARTPAGE_BOX_SHIPPING_COUNTRY', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_INFOBOX', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_HISTORY', 'true')";
 			$values_config[] = "('BS4_STARTPAGE_BOX_TRUSTEDSHOPS', 'true')";
@@ -366,6 +367,7 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_MANUFACTURERS_INFO', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_CURRENCIES', 'true')";
+			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_INFOBOX', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_HISTORY', 'true')";
 			$values_config[] = "('BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS', 'true')";
@@ -780,6 +782,7 @@ class bs4_tpl_manager {
 		$tpl_dirs_and_files[] = 'javascript/jquery.unveil.min.js';
 		$tpl_dirs_and_files[] = 'module/new_products_overview.html';
 		$tpl_dirs_and_files[] = 'module/specials.html';
+		$tpl_dirs_and_files[] = 'module/password_messages.html';
 
 		foreach ($tpl_dirs_and_files as $tpl_dir_or_file) {
 			if($bs4_tpl != '') {

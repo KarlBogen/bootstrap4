@@ -8,7 +8,7 @@
 		<h4 class="m-0">{#heading_download#}</h4>
 	</div>
 	{if $FORM_ACTION}
-    	{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+    	{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
     	{$FORM_ACTION}
 		<div class="card-body">
     		<p>{#text_confirm_download#}</p>

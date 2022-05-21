@@ -1,6 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="graduated_price"} 
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="graduated_price"}
+{if isset($module_content)}
 <div class="card bg-custom text-right p-2 mb-2">
   <div class="gp_headline"><strong>{#heading_text#}</strong></div>
   {foreach name=aussen item=module_data from=$module_content}
@@ -22,3 +23,4 @@
     <meta itemprop="maxPrice" content="{$maxPrice}">
   </div>
 </div>
+{/if}

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: last_viewed.php 12294 2019-10-23 09:15:59Z GTB $
+   $Id: last_viewed.php 13606 2021-07-01 10:44:58Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -23,21 +23,25 @@ if (isset($_SESSION['tracking']['products_history']) && count($_SESSION['trackin
   $random_last_viewed = xtc_rand(0, (count($_SESSION['tracking']['products_history']) - 1));
 
   // set cache id
-  $cache_id = md5($_SESSION['currency'].$_SESSION['language'].$_SESSION['customers_status']['customers_status'].$_SESSION['tracking']['products_history'][$random_last_viewed]);
+  $cache_id = md5('|curr:'.$_SESSION['currency'].'lID:'.$_SESSION['language'].'|csCS:'.$_SESSION['customers_status']['customers_status'].'|pID:'.$_SESSION['tracking']['products_history'][$random_last_viewed]);
 
   if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html', $cache_id) || !$cache) {
 
     $random_query = "SELECT ".$product->default_select.",
                             p2c.categories_id,
                             cd.categories_name
-                       FROM " . TABLE_PRODUCTS . " p
-                       JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd
+                       FROM ".TABLE_PRODUCTS." p
+                       JOIN ".TABLE_PRODUCTS_DESCRIPTION." pd
                             ON p.products_id = pd.products_id
                                AND pd.language_id = '".(int)$_SESSION['languages_id']."'
                                AND trim(pd.products_name) != ''
-                       JOIN " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c
+                       JOIN ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
                             ON p.products_id = p2c.products_id
-                       JOIN " . TABLE_CATEGORIES_DESCRIPTION . " cd
+                       JOIN ".TABLE_CATEGORIES." c
+                            ON c.categories_id = p2c.categories_id
+                               AND c.categories_status = 1
+                                   ".CATEGORIES_CONDITIONS_C."
+                       JOIN ".TABLE_CATEGORIES_DESCRIPTION." cd
                             ON cd.categories_id = p2c.categories_id
                                AND cd.language_id = '".(int)$_SESSION['languages_id']."'
                       WHERE p.products_status = '1'
@@ -54,13 +58,13 @@ if (isset($_SESSION['tracking']['products_history']) && count($_SESSION['trackin
       $box_smarty->assign('CATEGORY_NAME', $random_product['categories_name']);
     }
   }
-}
 
-if (!$cache) {
-  $box_last_viewed = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html');
-} else {
-  $box_last_viewed = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html', $cache_id);
-}
+  if (!$cache) {
+    $box_last_viewed = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html');
+  } else {
+    $box_last_viewed = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html', $cache_id);
+  }
 
-$smarty->assign('box_LAST_VIEWED', $box_last_viewed);
+  $smarty->assign('box_LAST_VIEWED', $box_last_viewed);
+}
 ?>

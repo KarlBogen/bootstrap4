@@ -9,7 +9,7 @@
 		<div class="col-4 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-sm-block my-2">{#title_confirmation#}</span></div>
 		<div class="col-4 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-sm-block my-2">{#title_success#}</span></div>
 	{else}
-		<div class="col-3"><a class="text-success" href="{$BUTTON_BACK_LINK}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></a></div>
+		<div class="col-3"><a class="text-success d-inline-block" href="{$BUTTON_BACK_LINK}"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">1</strong></span><span class="d-none d-md-block my-2">{#title_shipping#}</span></a></div>
 		<div class="col-3 text-primary"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">2</strong></span><span class="d-none d-md-block my-2">{#title_payment#}</span></div>
 		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">3</strong></span><span class="d-none d-md-block my-2">{#title_confirmation#}</span></div>
 		<div class="col-3 text-muted"><span class="fa-stack fa-2x"><span class="far fa-circle fa-stack-2x"></span><strong class="fa-stack-1x">4</strong></span><span class="d-none d-md-block my-2">{#title_success#}</span></div>
@@ -18,38 +18,44 @@
 </div>
 
 <h1 class="card p-2 bg-h">{#heading_address#}</h1>
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 
-{$FORM_ACTION}
-<div class="row clearfix">
-	<div class="col-lg-6 mb-3">
-		<div class="card h-100">
-			<div class="card-header">
-				<h4 class="m-0">{#text_current_address_short#}</h4>
-			</div>
-			<div class="card-body">
-				<div>{$ADDRESS_LABEL}</div>
-			</div>
-			{if $BLOCK_ADDRESS}
-				<div class="card-footer border-bottom">
-					<h4 class="m-0">{#title_old_addresses#}</h4>
-				</div>
-				<div class="card-body h-100">
-					<p>{#text_old_addresses#}</p>
-					{$BLOCK_ADDRESS|replace:'<label':'<label class="ml-2 mt-2 btn btn-secondary"'}
-				</div>
-			{/if}
+{if !isset($NEW_ADDRESS)}
+	<div class="card mb-2">
+		<div class="card-header">
+			<h4>{#title_old_addresses#}</h4>
+			<p class="m-0">{#text_old_addresses#}</p>
 		</div>
 	</div>
-	<div class="col-lg-6 mb-3">
+	<div class="row row-cols-1 row-cols-md-2">
+		{foreach item=module_data from=$BLOCK_ADDRESS_ARRAY}
+		<div class="col mb-2">
+			<div class="card h-100{if $module_data.SELECTED == 1} border-success{/if}">
+				<div class="card-body">
+					{$module_data.FORM_ACTION}
+					<strong>{$module_data.FIRSTNAME} {$module_data.LASTNAME}, {$module_data.CITY}</strong>
+					<span class="address d-block">{$module_data.ADDRESS_LABEL|replace:"<br />":", "}</span>
+					<div class="address_actions mt-2">
+						{if isset($module_data.BUTTON_EDIT)}<span class="mr-2">{$module_data.BUTTON_EDIT}</span>{/if}{if isset($module_data.BUTTON_CONTINUE)}<span class="cssButtonPos5">{$module_data.BUTTON_CONTINUE}</span>{/if}
+					</div>
+					{$module_data.FORM_END}
+				</div>
+			</div>
+		</div>
+		{/foreach}
+	</div>
+	<div class="clearfix mb-4">
+		<div class="float-left">{$BUTTON_BACK}</div>
+		<div class="float-right">{$BUTTON_NEW}</div>
+	</div>
+{else}
+	{$FORM_ACTION}
 		{if $MODULE_new_address}
 			{$MODULE_new_address}
 		{/if}
-	</div>
-</div>
-
-<div class="clearfix mb-4">
-	<div class="float-left">{$BUTTON_BACK}</div>
-	<div class="float-right">{$BUTTON_CONTINUE}</div>
-</div>
-{$FORM_END}
+		<div class="clearfix mb-4">
+			<div class="float-left">{$BUTTON_BACK}</div>
+			<div class="float-right">{$BUTTON_CONTINUE}</div>
+		</div>
+	{$FORM_END}
+{/if}

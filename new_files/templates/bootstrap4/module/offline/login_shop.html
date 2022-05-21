@@ -145,6 +145,19 @@ table td {
   background: -moz-linear-gradient(top,  #242424,  #494949);
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#494949');
 }
+.errormessage {
+  border:solid #fbe5e2 1px;
+  padding:10px;
+  font-size:12px !important;
+  line-height:16px;
+  font-weight:400;
+  color:#e74c3c;
+  background-color:#fbe5e2 ;
+  margin-bottom:10px;
+}
+.errormessage p {
+  margin: 4px 0px;
+}
 -->
 {/literal}
 </style>
@@ -156,8 +169,8 @@ table td {
 
     <h1>Shop Login</h1>
 
-{if $info_message != ''}<div class="alert alert-warning">{$info_message}</div>{/if}
-{if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+    {if $error_message}<div class="errormessage">{$error_message}</div>{/if}
+    {if $success_message}<div class="infomessage">{$success_message}</div>{/if}
 
     <div class="twoColums">
         <div class="highlightbox cf">

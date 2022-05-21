@@ -1,6 +1,6 @@
 <?php
 /*-----------------------------------------------------------
-   $Id: general_bottom.js.php 12425 2019-11-29 16:43:02Z GTB $
+   $Id: general_bottom.js.php 13771 2021-10-15 13:35:43Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -14,6 +14,7 @@
 */
 // this javascriptfile get includes at the BOTTOM of every template page in shop
 // you can add your template specific js scripts here
+defined('DIR_TMPL_JS') OR define('DIR_TMPL_JS', DIR_TMPL.'javascript/');
 
 // Template Sprachdatei laden
 $smarty->config_load('lang_'.$_SESSION['language'].'.custom');

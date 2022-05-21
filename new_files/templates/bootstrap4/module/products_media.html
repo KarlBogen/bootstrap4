@@ -1,6 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="products_media"}
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="products_media"}
+{if isset($module_content)}
 <h4>{#file#}</h4>
 {foreach name=aussen item=module_data from=$module_content}
 <div class="card card-body">
@@ -12,3 +13,4 @@
 </div>
 </div>
 {/foreach}
+{/if}

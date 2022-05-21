@@ -135,7 +135,7 @@
 			$create_html_body .= HEADER_MODEL.": ".$products->data['products_model']."<br>";
 			$create_html_body .= "Link: ".$products_link."<br><br>";
 			$create_html_body .= BS4_SUBJECT.$create_subject."<br><br>";
-			$create_html_body .= strip_tags($_POST['message_body'])."<br><br>";
+			$create_html_body .= nl2br(strip_tags($_POST['message_body']))."<br><br>";
 
 			$create_text_body = STORE_NAME."\n\n";
 			$create_text_body .= TEXT_PRODUCT_INQUIRY.":\n--------------------\n";

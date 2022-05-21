@@ -42,5 +42,5 @@ defined('ERROR_UNKNOWN_STATUS_FLAG') or define('ERROR_UNKNOWN_STATUS_FLAG', 'Feh
 define('BS4_BANNER_DATA_UPDATED', 'Daten gespeichert!');
 define('BS4_NO_DATA', 'Keine Daten vorhanden!');
 define('BS4_CLASSES_NOTE', 'Bei den hier gezeigten Farben handelt es sich um Bootstrap Standardfarben, Farben im Shop k&ouml;nnen abweichen!');
-
+defined('TEXT_IMAGE_NONEXISTENT') or define('TEXT_IMAGE_NONEXISTENT', 'Bild existiert nicht');
 ?>

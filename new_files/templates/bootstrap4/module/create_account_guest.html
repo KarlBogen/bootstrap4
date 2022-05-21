@@ -3,7 +3,7 @@
 {config_load file="lang_`$language`.section" section="create_account_guest"}
 <h1 class="card p-2 bg-h">{#heading_create_guest_account#}</h1>
 {$FORM_ACTION}
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 <div class="row clearfix">
 	<div class="col-md-6">
   		<div class="card mb-2">

@@ -3,87 +3,92 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="address_book_process"}
 {config_load file="lang_`$language`.section" section="checkout_new_address"}
-<div class="card h-100">
+<div class="card h-100 mb-2">
 	<div class="card-header">
-		<h4 class="m-0">{#title_new_address#} <span class="small">({#text_must#})</span></h4>
+		<h4>{if isset($smarty.get.action) && $smarty.get.action == 'edit'}{#title_edit_address#}{else}{#title_new_address#}{/if} <span class="pflicht small">({#text_must#})</span></h4>
+		{if !isset($smarty.get.action) || $smarty.get.action == 'new'}<p class="m-0">{#text_new_address#}</p>{/if}
 	</div>
 	<div class="card-body">
-		<p>{#text_new_address#}</p>
-		{if $gender == '1'}
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_gender#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_GENDER|replace:'<select':'<select class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+		<div class="row">
+			<div class="col-md-6">
+				{if $gender == '1'}
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_gender#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_GENDER|replace:'<select':'<select class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				{/if}
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_firstname#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_FIRSTNAME|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_lastname#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_LASTNAME|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				{if $company == '1'}
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_company#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_COMPANY|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				{/if}
+			</div>
+			<div class="col-md-6">
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_street#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_STREET|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				{if $suburb == '1'}
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_suburb#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_SUBURB|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				{/if}
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_code#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_CODE|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_city#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_CITY|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_country#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$SELECT_COUNTRY|replace:'<select':'<select class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				{if $state == '1'}
+				<div class="form-group row"{if $display_state} {$display_state}{/if}>
+					<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_state#}</label>
+					<div class="col-md-8 col-lg-12 col-xl-8 stern">
+						{$INPUT_STATE|replace:'Requirement':'Requirement position-absolute'}
+					</div>
+				</div>
+				{/if}
+				{if $new == '1'}
+				<div class="form-group form-check">
+					{$CHECKBOX_PRIMARY|replace:'<input':'<input class="form-check-input"'}
+					<label class="form-check-label">{#text_standard#}</label>
+				</div>
+				{/if}
 			</div>
 		</div>
-		{/if}
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_firstname#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_FIRSTNAME|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_lastname#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_LASTNAME|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		{if $company == '1'}
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_company#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_COMPANY|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		{/if}
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_street#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_STREET|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		{if $suburb == '1'}
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_suburb#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_SUBURB|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		{/if}
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_code#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_CODE|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_city#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_CITY|replace:'<input':'<input class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_country#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$SELECT_COUNTRY|replace:'<select':'<select class="form-control form-control-sm"'|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		{if $state == '1'}
-		<div class="form-group row"{if $display_state} {$display_state}{/if}>
-			<label class="col-md-4 col-lg-12 col-xl-4 col-form-label">{#text_state#}</label>
-			<div class="col-md-8 col-lg-12 col-xl-8 stern">
-				{$INPUT_STATE|replace:'Requirement':'Requirement position-absolute'}
-			</div>
-		</div>
-		{/if}
 	</div>
-	{if $new == '1'}
-	<div class="card-footer">
-		<div class="form-check">
-			{$CHECKBOX_PRIMARY|replace:'<input':'<input class="form-check-input"'}
-			<label class="form-check-label">{#text_standard#}</label>
-		</div>
-	</div>
-	{/if}
+	{if isset($PARAMS)}{$PARAMS}{/if}
 </div>

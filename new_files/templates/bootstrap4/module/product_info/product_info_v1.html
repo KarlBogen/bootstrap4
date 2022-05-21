@@ -2,10 +2,10 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="product_info"}
 {assign "dummy" ""}
-{if $error_message != ''}<div class="alert alert-danger">{$error_message}</div>{/if}
-<div itemscope itemtype="http://schema.org/Product">
+<div id="product_info" itemscope itemtype="http://schema.org/Product">
 	{$FORM_ACTION}
 		<h1 class="card p-2 bg-h" itemprop="name">{if $PRODUCTS_HEADING_TITLE != ''}{$PRODUCTS_HEADING_TITLE}{else}{$PRODUCTS_NAME}{/if}{if isset($PRODUCTS_PRINT_LAYER)}<span class="print-button position-absolute">{$PRODUCTS_PRINT_LAYER|regex_replace:"/\">(.*?)</":"\">{$dummy|bs4button:'print_product_small'}<"}</span>{/if}</h1>
+		{if $error_message != ''}<div class="alert alert-danger">{$error_message}</div>{/if}
 		<div id="product_details" class="row clearfix">
 			<div class="pd_imagebox col-md-6 mb-4">
 			{if $smarty.const.BS4_USE_EASYZOOM == 'true'}
@@ -118,7 +118,7 @@
 						{if $PRODUCTS_MODEL != ''}<div class="small"><strong>{#model#}</strong> <span itemprop="sku">{$PRODUCTS_MODEL}</span></div>{/if}
 						{if $PRODUCTS_EAN != ''}<div class="small"><strong>{#ean#}</strong> <span itemprop="gtin{$PRODUCTS_EAN|strlen}">{$PRODUCTS_EAN}</span></div>{/if}
 						{if $smarty.const.BS4_TRAFFIC_LIGHTS == 'true' && $smarty.const.BS4_TRAFFIC_LIGHTS_PRODINFO != 'false'}
-							{if !isset($MODULE_product_options) && $MODULE_product_options == ''}<div class="small">{traffic_light stock=$PRODUCTS_QUANTITY modul='info'}</div>{/if}
+							{if $MODULE_product_options == ''}<div class="small">{traffic_light stock=$PRODUCTS_QUANTITY modul='info'}</div>{/if}
 						{/if}
 						{if $PRODUCTS_RATING_COUNT > 1 || $BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 1}
 							<div class="pd_inforow small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
@@ -253,7 +253,7 @@
 	<div class="card mb-4">
 		<ul class="list-group list-group-flush">
 			{if $PRODUCTS_DESCRIPTION != ''}<li class="list-group-item"><h4 class="detailbox">{#products_desc#}</h4><div itemprop="description">{$PRODUCTS_DESCRIPTION}</div></li>{/if}
-			{if isset($MODULE_product_tags) && $MODULE_product_tags != ''}<li class="list-group-item">{$MODULE_product_tags}</li>{/if}
+			{if isset($MODULE_product_tags) && trim($MODULE_product_tags) != ''}<li class="list-group-item">{$MODULE_product_tags}</li>{/if}
 			{if isset($more_images) && count($more_images) > 0}
 				<li class="list-group-item">
 					<div class="pd_more_images row d-flex flex-wrap mb-2">
@@ -286,11 +286,11 @@
 					</div>
 				</li>
 			{/if}
-			{if isset($MODULE_products_media) && $MODULE_products_media != ''}<li class="list-group-item">{$MODULE_products_media}</li>{/if}
-			{if isset($MODULE_products_reviews) && $MODULE_products_reviews != ''}<li class="list-group-item">{$MODULE_products_reviews}</li>{/if}
-			{if isset($MODULE_cross_selling) && $MODULE_cross_selling != '' || (isset($MODULE_reverse_cross_selling) && $MODULE_reverse_cross_selling != '')}<li class="list-group-item">{if isset($MODULE_cross_selling) && $MODULE_cross_selling != ''}{$MODULE_cross_selling}{/if}{if isset($MODULE_reverse_cross_selling) && $MODULE_reverse_cross_selling != ''}{$MODULE_reverse_cross_selling}{/if}</li>{/if}
-			{if isset($MODULE_also_purchased) && $MODULE_also_purchased != ''}<li class="list-group-item">{$MODULE_also_purchased}</li>{/if}
-			{if isset($MODULE_products_category) && $MODULE_products_category != ''}<li class="list-group-item">{$MODULE_products_category}</li>{/if}
+			{if isset($MODULE_products_media) && trim($MODULE_products_media) != ''}<li class="list-group-item">{$MODULE_products_media}</li>{/if}
+			{if isset($MODULE_products_reviews) && trim($MODULE_products_reviews) != ''}<li class="list-group-item">{$MODULE_products_reviews}</li>{/if}
+			{if isset($MODULE_cross_selling) && trim($MODULE_cross_selling) != '' || (isset($MODULE_reverse_cross_selling) && trim($MODULE_reverse_cross_selling) != '')}<li class="list-group-item">{if isset($MODULE_cross_selling) && $MODULE_cross_selling != ''}{$MODULE_cross_selling}{/if}{if isset($MODULE_reverse_cross_selling) && $MODULE_reverse_cross_selling != ''}{$MODULE_reverse_cross_selling}{/if}</li>{/if}
+			{if isset($MODULE_also_purchased) && trim($MODULE_also_purchased) != ''}<li class="list-group-item">{$MODULE_also_purchased}</li>{/if}
+			{if isset($MODULE_products_category) && trim($MODULE_products_category) != ''}<li class="list-group-item">{$MODULE_products_category}</li>{/if}
 		</ul>
 	</div>
 	{if $PRODUCTS_ADDED != ''}<p class="text-secondary text-center">{$PRODUCTS_ADDED}</p>{/if}

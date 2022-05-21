@@ -109,7 +109,7 @@ require_once (DIR_WS_INCLUDES.'head.php');
 			<!-- body_text //-->
 			<td class="boxCenter">
 				<?php // updateinfo
-					if ($bs4_conf['BS4_MODULE_TRAFFIC_LIGHTS_STOCK_GREEN'] == '') {
+					if ($bs4_conf['BS4_STARTPAGE_BOX_SHIPPING_COUNTRY'] == '') {
 						echo '<div class="messageStackWarning"><h3>' . TEXT_BS4_TPL_MANAGER_CONFIG_UPDATE_SYSTEMMODULE_WARNING .'<a class="button but_red" href="'. xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=bs4_tpl_manager') . '">Bootstrap 4 Template-Manager</a></h3></div><br />';
 					}
 				?>
@@ -473,6 +473,11 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_CURRENCIES_INFO; ?></td>
 							</tr>
 							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_SHIPPING_COUNTRY; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_STARTPAGE_BOX_SHIPPING_COUNTRY'], 'BS4_STARTPAGE_BOX_SHIPPING_COUNTRY'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_SHIPPING_COUNTRY_INFO; ?></td>
+							</tr>
+							<tr>
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_INFOBOX; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_STARTPAGE_BOX_INFOBOX'], 'BS4_STARTPAGE_BOX_INFOBOX'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_INFOBOX_INFO; ?></td>
@@ -544,6 +549,11 @@ require_once (DIR_WS_INCLUDES.'head.php');
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CURRENCIES; ?></td>
 				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_NOT_STARTPAGE_BOX_CURRENCIES'], 'BS4_NOT_STARTPAGE_BOX_CURRENCIES'); ?></td>
 				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CURRENCIES_INFO; ?></td>
+							</tr>
+							<tr>
+				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY; ?></td>
+				                <td class="dataTableConfig col-middle"><?php echo xtc_cfg_select_option($yes_no_array, $bs4_conf['BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY'], 'BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY'); ?></td>
+				                <td class="dataTableConfig col-right"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY_INFO; ?></td>
 							</tr>
 							<tr>
 				                <td class="dataTableConfig col-left"><?php echo TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_INFOBOX; ?></td>

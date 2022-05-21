@@ -1,5 +1,10 @@
 UNRELEASED
 
+
+
+1.2.8 [21.05.2022]
+- Update zu Shopversion 2.0.7.0
+
 1.2.7 [19.04.2022]
 - Template ist nur mit Templatedateien lauffähig (eingeschränkter Funktionsumfang)
 - boxes.php geändert

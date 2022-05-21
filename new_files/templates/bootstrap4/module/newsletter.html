@@ -4,7 +4,7 @@
 {config_load file="lang_`$language`.section" section="create_account"}
 {config_load file="lang_`$language`.section" section="newsletter"}
 <h1 class="card p-2 bg-h">{#heading_title#}</h1>
-{if $info_message != ''}<div class="alert {if $message_class == 'error'}alert-warning{else}alert-info{/if}">{$info_message}</div>{/if}
+{if $error_message}<div class="alert {if $message_class == 'error'}alert-danger{else}alert-info{/if}">{$error_message}</div>{/if}
 {if !isset($activated)}
 	{$FORM_ACTION}
 	<div class="row clearfix mb-4">
@@ -65,7 +65,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h4>{#heading_text#}</h4>
-					{#text_zusatz#}
+					<p>{if isset($NEWSLETTER_INFOS)}{$NEWSLETTER_INFOS}{else}{#text_zusatz#}{/if}</p>
 				</div>
 			</div>
 		</div>
@@ -77,7 +77,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h4>{#heading_text#}</h4>
-					{#text_zusatz#}
+					<p>{if isset($NEWSLETTER_INFOS)}{$NEWSLETTER_INFOS}{else}{#text_zusatz#}{/if}</p>
 				</div>
 			</div>
 		</div>

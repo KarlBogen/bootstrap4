@@ -2,8 +2,9 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="reviews"}
 <h1 class="card p-2 bg-h">{#heading_reviews#}</h1>
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
-{if $success_message != ''}<div class="alert alert-success">{$success_message}</div>{/if}
+{if isset($REVIEWS_NOTE)}<div class="text-right mb-2">{$REVIEWS_NOTE|replace:'class="':'class="btn btn-outline-primary btn-sm '}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
+{if $success_message}<div class="alert alert-success">{$success_message}</div>{/if}
 <div class="row clearfix mb-4">
 {foreach name=aussen item=module_data from=$module_content}
 	<div class="col-md-6 mb-2">

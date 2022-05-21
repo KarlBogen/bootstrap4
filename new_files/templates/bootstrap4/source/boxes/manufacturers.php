@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: manufacturers.php 12279 2019-10-15 14:48:38Z GTB $
+   $Id: manufacturers.php 13637 2021-07-26 08:28:32Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -20,19 +20,29 @@
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
 
 // set cache id
-$cache_id = md5($_SESSION['language'] . (isset($_GET['manufacturers_id']) ? (int)$_GET['manufacturers_id'] : '0'));
+$cache_id = md5('lID:'.$_SESSION['language'].'|mID:'.(isset($_GET['manufacturers_id']) ? (int)$_GET['manufacturers_id'] : '0'));
 
 if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id) || !$cache) {
   $box_content = '';
   
-  $manufacturers_query = "SELECT DISTINCT m.manufacturers_id,
-                                          m.manufacturers_name 
-                                     FROM ".TABLE_MANUFACTURERS." as m
-                                     JOIN ".TABLE_PRODUCTS." as p 
-                                          ON m.manufacturers_id = p.manufacturers_id
-                                    WHERE p.products_status = '1'
-                                          ".PRODUCTS_CONDITIONS_P."
-                                 ORDER BY m.manufacturers_name";
+  $manufacturers_query = "SELECT m.*
+                            FROM ".TABLE_MANUFACTURERS." as m
+                            JOIN ".TABLE_PRODUCTS." as p
+                                 ON m.manufacturers_id = p.manufacturers_id
+                                    AND p.products_status = '1'
+                                        ".PRODUCTS_CONDITIONS_P."
+                            JOIN ".TABLE_PRODUCTS_DESCRIPTION." pd
+                                 ON p.products_id = pd.products_id
+                                    AND pd.language_id = '".(int)$_SESSION['languages_id']."'
+                                    AND trim(pd.products_name) != ''
+                            JOIN ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
+                                 ON p2c.products_id = pd.products_id
+                            JOIN ".TABLE_CATEGORIES." c
+                                 ON c.categories_id = p2c.categories_id
+                                    AND c.categories_status = 1
+                                        ".CATEGORIES_CONDITIONS_C."
+                        GROUP BY m.manufacturers_id
+                        ORDER BY m.manufacturers_name ASC";
   $manufacturers_query = xtDBquery($manufacturers_query);
   $manufacturers_count = xtc_db_num_rows($manufacturers_query, true);
   if ($manufacturers_count > 0) {

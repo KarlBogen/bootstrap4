@@ -7,8 +7,8 @@
   <span class="small float-right">{#text_date#} {$ORDER_DATE}</span>
 </h2>
 
-{if $info_message != ''}<div class="alert alert-warning">{$info_message}</div>{/if}
-{if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
+{if $success_message}<div class="alert alert-info">{$success_message}</div>{/if}
 
 <div class="row clearfix mb-2">
 	<div class="col-md-6 mb-2">
@@ -69,13 +69,23 @@
     		{/if}
 		</div>
 	</div>
-	{if $PAYMENT_INFORMATION != '' || $ORDER_COMMENTS != ''}
+	{if (is_array($PAYMENT_INFO) && count($PAYMENT_INFO) > 0) || $ORDER_COMMENTS != ''}
 	<div class="col-md-6 mb-2">
   		<div class="card">
-			{if $PAYMENT_INFORMATION != ''}
+			{if is_array($PAYMENT_INFO) && count($PAYMENT_INFO) > 0}
 				<div class="card-body">
       				<h4>{#text_payment_info#}</h4>
-      				{$PAYMENT_INFORMATION}
+					{foreach name=aussen item=data from=$PAYMENT_INFO}
+						<p>{$data.title|stripslashes}</p>
+						 <table class="paymentinfotable {$data.class}">
+							{foreach name=aussen item=info from=$data.fields}
+								<tr>
+									{if $info.title != ''}<td>{$info.title|stripslashes}</td>{/if}
+									{if $info.field != ''}<td>{$info.field|stripslashes}</td>{/if}
+								</tr>
+							{/foreach}
+						</table>
+					{/foreach}
 				</div>
     		{/if}
     		{if $ORDER_COMMENTS != ''}
@@ -144,14 +154,6 @@
       			{/foreach}
 			</div>
 		</div>
-	</div>
-</div>
-{/if}
-
-{if $PAYPAL_LINK}
-<div class="card">
-	<div class="card-body">
-		<div>{$PAYPAL_LINK}</div>
 	</div>
 </div>
 {/if}

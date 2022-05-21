@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: specials.php 12294 2019-10-23 09:15:59Z GTB $   
+   $Id: specials.php 13566 2021-05-20 12:16:27Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -32,7 +32,13 @@ $specials_query = xtc_db_query("SELECT ".$product->default_select.",
                                        ON pd.products_id = p.products_id
                                           AND trim(pd.products_name) != ''
                                           AND pd.language_id = '".(int)$_SESSION['languages_id']."'
-                                  JOIN ".TABLE_SPECIALS." s 
+                                  JOIN ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
+                                       ON p.products_id = p2c.products_id
+                                  JOIN ".TABLE_CATEGORIES." c
+                                       ON c.categories_id = p2c.categories_id
+                                          AND c.categories_status = 1
+                                              ".CATEGORIES_CONDITIONS_C."
+                                  JOIN ".TABLE_SPECIALS." s
                                        ON p.products_id = s.products_id
                                           ".SPECIALS_CONDITIONS_S."
                                  WHERE p.products_status = '1'
@@ -44,7 +50,7 @@ if (xtc_db_num_rows($specials_query) > 0) {
   $specials = xtc_db_fetch_array($specials_query);
 
   // set cache id
-  $cache_id = md5($_SESSION['currency'].$_SESSION['language'].$specials['products_id']);
+  $cache_id = md5('lID:'.$_SESSION['language'].'|curr:'.$_SESSION['currency'].'|pID:'.$specials['products_id']);
 
   if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_specials.html', $cache_id) || !$cache) {
     $box_smarty->assign('box_content', $product->buildDataArray($specials));

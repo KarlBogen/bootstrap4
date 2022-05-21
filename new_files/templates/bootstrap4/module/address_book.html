@@ -2,38 +2,27 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="address_book"}
 <h1 class="card p-2 bg-h">{#heading_address#}</h1>
-{$FORM_ACTION}
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 {if $success_message}<div class="alert alert-success">{$success_message}</div>{/if}
 <div class="row clearfix">
+	<div class="col-12">
+		<div class="card card-body mb-2">
+			<h4>{#title_addresses#}</h4>
+			{#text_standard#}
+			{$ADDRESS_COUNT}
+		</div>
+	</div>
+	{foreach name=aussen item=addresses from=$addresses_data}
 	<div class="col-md-6 mb-2">
   		<div class="card">
 			<div class="card-body">
-				<h4>{#title_standard#}</h4>
-				{#text_standard#}
-			</div>
-			<div class="card-footer">
-				{$ADDRESS_DEFAULT}
+    			<div class="mb-2"><span class="mr-2">{$addresses.BUTTON_EDIT}</span>{$addresses.BUTTON_DELETE}</div>
+      			<strong>{$addresses.NAME} {if $addresses.PRIMARY == '1'} ({#title_standard#}) {/if}</strong><br />
+      			{$addresses.ADDRESS}
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6 mb-2">
-  		<div class="card">
-			<div class="card-body">
-				<h4>{#title_addresses#}</h4>
-                {$ADDRESS_COUNT}
-			</div>
-			<div class="list-group list-group-flush">
-				{foreach name=aussen item=addresses from=$addresses_data}
-				<div class="list-group-item">
-    				<div class="mb-2"><span class="mr-2">{$addresses.BUTTON_EDIT}</span>{$addresses.BUTTON_DELETE}</div>
-      				<strong>{$addresses.NAME} {if $addresses.PRIMARY == '1'} ({#title_standard#}) {/if}</strong><br />
-      				{$addresses.ADDRESS}
-				</div>
-    			{/foreach}
-			</div>
-		</div>
-	</div>
+    {/foreach}
 </div>
 
 <div class="clearfix mb-4">
