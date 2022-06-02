@@ -15,7 +15,7 @@
 
 if (file_exists(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/categories_list.html')) {
 
-$module_smarty = new smarty;
+$module_smarty = new Smarty;
 $module_content = array ();
 
 $module_smarty->assign('language', $_SESSION['language']);
@@ -28,7 +28,7 @@ if (!CacheCheck()) {
 	$module_smarty->caching = 1;
 	$module_smarty->cache_lifetime = CACHE_LIFETIME;
 	$module_smarty->cache_modified_check = CACHE_CHECK;
-	$cache_id = md5($_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$cPath);
+	$cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|cP:'.$cPath);
 }
 
 if(!$module_smarty->is_cached(CURRENT_TEMPLATE.'/module/categories_list.html', $cache_id) || !$cache) {

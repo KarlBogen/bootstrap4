@@ -1,6 +1,7 @@
 UNRELEASED
 
-
+- Fehler behoben - obwohl ausgeschaltet wurden Mini-Bilder bei Listen in der Row-Ansicht angezeigt
+- Cache-ID's aktualisiert
 
 1.2.8 [21.05.2022]
 - Update zu Shopversion 2.0.7.0
