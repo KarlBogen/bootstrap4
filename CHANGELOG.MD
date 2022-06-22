@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Zusatzmodul "Kundenerinnerung" modifiziert
 - Fehler behoben - obwohl ausgeschaltet wurden Mini-Bilder bei Listen in der Row-Ansicht angezeigt
 - Cache-ID's aktualisiert
 

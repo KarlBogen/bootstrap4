@@ -44,66 +44,69 @@ if (defined('BS4_CUSTOMERS_REMIND') && BS4_CUSTOMERS_REMIND == 'true') {
     // include header
     require (DIR_WS_INCLUDES.'header.php');
 
-	$products_id = (int)$_GET['products_id'];
-	$products_name = xtc_get_products_name($products_id);
-	$smarty->assign('PRODUCTS_NAME', htmlentities($products_name));
-
 	$privacy = isset($_POST['privacy']) && $_POST['privacy'] == 'privacy' ? true : false;
 	$error = false;
-	if (isset($_POST['action']) && $_POST['action'] == 'add_remind' && isset($_SESSION['customer_id'])) {
-		// Postcheck
-		if(strlen($_POST['customers_input_firstname']) < ENTRY_FIRST_NAME_MIN_LENGTH) {
-			$error = true;
-			$messageStack->add('customers_remind', ENTRY_FIRST_NAME_ERROR);
-		}
-		if(strlen($_POST['customers_input_lastname']) < ENTRY_LAST_NAME_MIN_LENGTH) {
-			$error = true;
-			$messageStack->add('customers_remind', ENTRY_LAST_NAME_ERROR);
-		}
-		if(strlen($_POST['customers_input_email']) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
-			$error = true;
-			$messageStack->add('customers_remind', ENTRY_EMAIL_ADDRESS_ERROR);
-		}
-		elseif(xtc_validate_email($_POST['customers_input_email']) == false) {
-			$error = true;
-			$messageStack->add('customers_remind', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
-		}
-        $_POST['customers_input_st'] = intval($_POST['customers_input_st']);
-		if($_POST['customers_input_st'] < 1) {
-			$_POST['customers_input_st'] = 1;
-    	}
-		if (DISPLAY_PRIVACY_CHECK == 'true' && empty($privacy)) {
-			$error = true;
-			$messageStack->add('customers_remind', ENTRY_PRIVACY_ERROR);
-		}
-		// Fehlermeldung anzeigen
-		if($messageStack->size('customers_remind') > 0) {
-			$smarty->assign('error', $messageStack->output('customers_remind'));
-		}
-	}
-	if (isset($_POST['action']) && $_POST['action'] == 'add_remind' && isset($_SESSION['customer_id']) && $error === false) {
-		$reg_query = xtc_db_query("SELECT count(*) as anz from ".TABLE_BS4_CUSTOMERS_REMIND." WHERE customers_id ='". $_SESSION['customer_id'] . "' AND products_id ='".(int)$_POST['products_id']."'");
-		$registred = xtc_db_fetch_array($reg_query);
-		$customers_remind_query = xtc_db_query("select customers_firstname, customers_lastname, customers_email_address, customers_gender from ".TABLE_CUSTOMERS." where customers_id = '".$_SESSION['customer_id']."'");
-		$customers_remind = xtc_db_fetch_array($customers_remind_query);
-		$sql_data_array = array (
-			'customers_id' => $_SESSION['customer_id'],
-			'products_id' => $product->data['products_id'],
-			'products_ean' => $product->data['products_ean'],
-			'products_name' => $product->data['products_name'],
-			'products_model' => $product->data['products_model'],
-			'products_image' => $product->data['products_image'],
-			'customers_gender' => $customers_remind['customers_gender'],
-			'customers_firstname' => xtc_db_prepare_input($_POST['customers_input_firstname']),
-			'customers_lastname' => xtc_db_prepare_input($_POST['customers_input_lastname']),
-			'customers_email_address' => xtc_db_prepare_input($_POST['customers_input_email']),
-			'customers_language' => xtc_db_prepare_input($_POST['language_input']),
-			'customers_st' => xtc_db_prepare_input($_POST['customers_input_st']),
-			'mail_head1' => xtc_db_prepare_input($_POST['mail_input_head1']),
-			'remind_date_added' => 'now()'
-		);
 
-		if($registred['anz'] < 1) {
+	if (isset($_SESSION['customer_id'])) {
+
+		$customer_id = (int)$_SESSION['customer_id'];
+		$products_id = (int)$_GET['products_id'];
+		$products_name = xtc_get_products_name($products_id);
+		$smarty->assign('PRODUCTS_NAME', htmlentities($products_name));
+
+		if (isset($_POST['action']) && $_POST['action'] == 'add_remind') {
+			// Postcheck
+			if(strlen($_POST['customers_input_firstname']) < ENTRY_FIRST_NAME_MIN_LENGTH) {
+				$error = true;
+				$messageStack->add('customers_remind', ENTRY_FIRST_NAME_ERROR);
+			}
+			if(strlen($_POST['customers_input_lastname']) < ENTRY_LAST_NAME_MIN_LENGTH) {
+				$error = true;
+				$messageStack->add('customers_remind', ENTRY_LAST_NAME_ERROR);
+			}
+			if(strlen($_POST['customers_input_email']) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
+				$error = true;
+				$messageStack->add('customers_remind', ENTRY_EMAIL_ADDRESS_ERROR);
+			}
+			elseif(xtc_validate_email($_POST['customers_input_email']) == false) {
+				$error = true;
+				$messageStack->add('customers_remind', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
+			}
+	        $_POST['customers_input_st'] = intval($_POST['customers_input_st']);
+			if($_POST['customers_input_st'] < 1) {
+				$_POST['customers_input_st'] = 1;
+	    	}
+			if (DISPLAY_PRIVACY_CHECK == 'true' && empty($privacy)) {
+				$error = true;
+				$messageStack->add('customers_remind', ENTRY_PRIVACY_ERROR);
+			}
+			// Fehlermeldung anzeigen
+			if($messageStack->size('customers_remind') > 0) {
+				$smarty->assign('error', $messageStack->output('customers_remind'));
+			}
+		}
+
+		$reg_query = xtc_db_query("SELECT * FROM ".TABLE_BS4_CUSTOMERS_REMIND." WHERE customers_id =". $customer_id . " AND products_id =".$products_id);
+		$registred = xtc_db_fetch_array($reg_query);
+
+		if (isset($_POST['action']) && $_POST['action'] == 'add_remind' && $error === false) {
+			$sql_data_array = array (
+				'customers_id' => $_SESSION['customer_id'],
+				'products_id' => $product->data['products_id'],
+				'products_ean' => $product->data['products_ean'],
+				'products_name' => $product->data['products_name'],
+				'products_model' => $product->data['products_model'],
+				'products_image' => $product->data['products_image'],
+				'customers_gender' => $_SESSION['customer_gender'],
+				'customers_firstname' => xtc_db_prepare_input($_POST['customers_input_firstname']),
+				'customers_lastname' => xtc_db_prepare_input($_POST['customers_input_lastname']),
+				'customers_email_address' => xtc_db_prepare_input($_POST['customers_input_email']),
+				'customers_language' => xtc_db_prepare_input($_POST['language_input']),
+				'customers_st' => xtc_db_prepare_input($_POST['customers_input_st']),
+				'mail_head1' => xtc_db_prepare_input($_POST['mail_input_head1']),
+				'remind_date_added' => 'now()'
+			);
+
 			xtc_db_perform(TABLE_BS4_CUSTOMERS_REMIND, $sql_data_array);
 			$smarty->assign('SUCCESS_MESSAGE', '2');
 
@@ -139,34 +142,25 @@ if (defined('BS4_CUSTOMERS_REMIND') && BS4_CUSTOMERS_REMIND == 'true') {
 			                   $create_html_body, // htmlnachricht
 			                   $create_text_body // textnachricht
 			                   );
-
 			}
-		}
+		} else {
 
-	}
-	elseif (isset($_SESSION['customer_id'])) {
+			if (!empty($registred)) {
+				$smarty->assign('SUCCESS_MESSAGE', '1');
+			} else {
+				$idStr = '<input type="hidden" name="products_id" value="'.$products_id.'"/><input type="hidden" name="action" value="add_remind"/>';
 
-		$reg_query = xtc_db_query("SELECT * from ".TABLE_BS4_CUSTOMERS_REMIND." WHERE customers_id ='". $_SESSION['customer_id'] . "' AND products_id ='".$products_id."'");
-		$registred = xtc_db_fetch_array($reg_query);
+				$smarty->assign('FORM_ACTION_REMIND', xtc_draw_form('customers_remind', xtc_href_link(FILENAME_CUSTOMERS_REMIND, xtc_get_all_get_params(array('action')), 'SSL')).$idStr);
 
-		$customers_remind_query = xtc_db_query("select customers_email_address from ".TABLE_CUSTOMERS." where customers_id = '".$_SESSION['customer_id']."'");
-		$customers_remind = xtc_db_fetch_array($customers_remind_query);
-		$idStr = '<input type="hidden" name="products_id" value="'.$products_id.'"/><input type="hidden" name="action" value="add_remind"/>';
+				$smarty->assign('CUSTOMERS_FIRSTNAME_INPUT', xtc_draw_input_field('customers_input_firstname', isset($_POST['customers_input_firstname']) ? xtc_db_prepare_input($_POST['customers_input_firstname']) :$_SESSION["customer_first_name"], 'class="form-control"'));
+				$smarty->assign('CUSTOMERS_LASTNAME_INPUT', xtc_draw_input_field('customers_input_lastname', isset($_POST['customers_input_lastname']) ? xtc_db_prepare_input($_POST['customers_input_lastname']) :$_SESSION["customer_last_name"], 'class="form-control"'));
+				$smarty->assign('CUSTOMERS_MAIL_INPUT', xtc_draw_input_field('customers_input_email', isset($_POST['customers_input_email']) ? xtc_db_prepare_input($_POST['customers_input_email']) :$_SESSION['customer_email_address'], 'class="form-control"'));
+				$smarty->assign('CUSTOMERS_INPUT_ST', xtc_draw_input_field('customers_input_st', isset($_POST['customers_input_st']) ? xtc_db_prepare_input($_POST['customers_input_st']) : 1, 'class="form-control"'));
 
-		$smarty->assign('FORM_ACTION_REMIND', xtc_draw_form('customers_remind', xtc_href_link(FILENAME_CUSTOMERS_REMIND, xtc_get_all_get_params(array('action')), 'SSL')).$idStr);
-
-		$smarty->assign('CUSTOMERS_FIRSTNAME_INPUT', xtc_draw_input_field('customers_input_firstname', $_SESSION["customer_first_name"], 'class="form-control"'));
-		$smarty->assign('CUSTOMERS_LASTNAME_INPUT', xtc_draw_input_field('customers_input_lastname', $_SESSION["customer_last_name"], 'class="form-control"'));
-		$smarty->assign('CUSTOMERS_MAIL_INPUT', xtc_draw_input_field('customers_input_email', $customers_remind['customers_email_address'], 'class="form-control"'));
-		$smarty->assign('CUSTOMERS_INPUT_ST', xtc_draw_input_field('customers_input_st', $anzahl = isset($customers_remind['customers_st']) ? $customers_remind['customers_st'] : 1, 'class="form-control"'));
-
-		$smarty->assign('FORM_END_REMIND', '</form>');
-		if(!isset($_GET['success']) == 'true') {
-			$smarty->assign('SUCCESS_MESSAGE', '0');
-			$smarty->assign('BUTTON_SUBMIT_REMIND', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
-		}
-		if (!empty($registred)) {
-			$smarty->assign('SUCCESS_MESSAGE', '1');
+				$smarty->assign('FORM_END_REMIND', '</form>');
+				$smarty->assign('SUCCESS_MESSAGE', '0');
+				$smarty->assign('BUTTON_SUBMIT_REMIND', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+			}
 		}
 	}
 
