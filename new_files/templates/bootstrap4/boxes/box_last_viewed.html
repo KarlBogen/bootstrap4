@@ -1,48 +1,48 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="lang_`$language`.custom"}
 {if isset($box_content)}
-<div class="box_last_viewed card mb-4">
-	<div class="box_header card-header">{#heading_last_viewed#}</div>
-	<div class="position-relative over-hidden">
-	<a class="prod-link" href="{$box_content.PRODUCTS_LINK}"></a>
-	<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
-           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
-           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $box_content.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
-           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $box_content.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
-       		{if $box_content.PRODUCTS_IMAGE != ''}
-				<div class="box_image text-center mb-2">
-					{if $smarty.const.PICTURESET_ACTIVE === true}
-						<img class="lazyload img-fluid" src="data:," data-src="{$box_content.PRODUCTS_IMAGE|replace:"thumbnail_":"midi_"}" alt="{$box_content.PRODUCTS_NAME|onlytext}" title="{$box_content.PRODUCTS_NAME|onlytext}" />
-					{else}
-						<img class="lazyload img-fluid" src="data:," data-src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME|onlytext}" title="{$box_content.PRODUCTS_NAME|onlytext}" />
-					{/if}
-					<noscript><img class="img-fluid" src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME|onlytext}" title="{$box_content.PRODUCTS_NAME|onlytext}" /></noscript>
-			   </div>
+	{config_load file="$language/lang_$language.conf" section="boxes"}
+	{config_load file="lang_`$language`.custom"}
+	<div class="box_last_viewed card mb-4">
+		<div class="box_header card-header">{#heading_last_viewed#}</div>
+		<div class="position-relative over-hidden">
+		<a class="prod-link" href="{$box_content.PRODUCTS_LINK}"></a>
+		<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
+	           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
+	           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $box_content.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
+	           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $box_content.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+	       		{if $box_content.PRODUCTS_IMAGE != ''}
+					<div class="box_image text-center mb-2">
+						{if $smarty.const.PICTURESET_ACTIVE === true}
+							<img class="lazyload img-fluid" src="data:," data-src="{$box_content.PRODUCTS_IMAGE|replace:"thumbnail_":"midi_"}" alt="{$box_content.PRODUCTS_NAME|onlytext}" title="{$box_content.PRODUCTS_NAME|onlytext}" />
+						{else}
+							<img class="lazyload img-fluid" src="data:," data-src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME|onlytext}" title="{$box_content.PRODUCTS_NAME|onlytext}" />
+						{/if}
+						<noscript><img class="img-fluid" src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME|onlytext}" title="{$box_content.PRODUCTS_NAME|onlytext}" /></noscript>
+				   </div>
+				{/if}
+			<div class="box_title lead text-secondary mb-1">{$box_content.PRODUCTS_NAME}</div>
+			{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && (isset($box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
+				<div class="mb-2 small">
+					<span class="ratings mb-1">
+						<span class="fas empty-stars"></span><span class="fas full-stars" style="width:{$box_content.BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}%"></span>
+					</span>
+					<span class="text-secondary">&nbsp;({$box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS})</span>
+				</div>
 			{/if}
-		<div class="box_title lead text-secondary mb-1">{$box_content.PRODUCTS_NAME}</div>
-		{if $smarty.const.BS4_AWIDSRATINGBREAKDOWN == 'true' && (isset($box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS) && $box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS > 0 && $smarty.const.BS4_AWIDSRATINGBREAKDOWN_PRODLIST == 'true')}
-			<div class="mb-2 small">
-				<span class="ratings mb-1">
-					<span class="fas empty-stars"></span><span class="fas full-stars" style="width:{$box_content.BS4_AWIDS_PRODUCTS_AVERAGE_PERCENT}%"></span>
-				</span>
-				<span class="text-secondary">&nbsp;({$box_content.BS4_AWIDS_PRODUCTS_SUM_REVIEWS})</span>
-			</div>
-		{/if}
+		</div>
+		<div class="card-footer text-right">
+			{foreach name=inner item=price_data from=$box_content.PRODUCTS_PRICE_ARRAY}
+	       	{include file="module/includes/price_box.html"}
+			{/foreach}
+			{if $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+			{if $box_content.PRODUCTS_VPE}<div class="box_vpe small text-secondary">{$box_content.PRODUCTS_VPE}</div>{/if}
+			<div class="box_tax small text-secondary">{$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK}<br /></div>
+			{/if}
+		</div>
+		</div>
+	   	<div class="card-footer">
+			<div class="card-title">{#text_watch_category#}</div>
+			{if $CATEGORY_NAME != ''}<a class="btn-sm mb-2" href="{$CATEGORY_LINK}">{$CATEGORY_NAME} &raquo;</a><br />{/if}
+			<a class="btn-sm" href="{$MY_PERSONAL_PAGE}" style="white-space: pre-wrap;">{#text_my_page#}  &raquo;</a>
+		</div>
 	</div>
-	<div class="card-footer text-right">
-		{foreach name=inner item=price_data from=$box_content.PRODUCTS_PRICE_ARRAY}
-       	{include file="module/includes/price_box.html"}
-		{/foreach}
-		{if $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
-		{if $box_content.PRODUCTS_VPE}<div class="box_vpe small text-secondary">{$box_content.PRODUCTS_VPE}</div>{/if}
-		<div class="box_tax small text-secondary">{$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK}<br /></div>
-		{/if}
-	</div>
-	</div>
-   	<div class="card-footer">
-		<div class="card-title">{#text_watch_category#}</div>
-		{if $CATEGORY_NAME != ''}<a class="btn-sm mb-2" href="{$CATEGORY_LINK}">{$CATEGORY_NAME} &raquo;</a><br />{/if}
-		<a class="btn-sm" href="{$MY_PERSONAL_PAGE}" style="white-space: pre-wrap;">{#text_my_page#}  &raquo;</a>
-	</div>
-</div>
 {/if}

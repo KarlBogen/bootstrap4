@@ -1,5 +1,9 @@
 UNRELEASED
 
+
+
+1.2.9 [01.07.2022]
+- Update zu Shopversion 2.0.7.1
 - Zusatzmodul "Kundenerinnerung" modifiziert
 - Fehler behoben - obwohl ausgeschaltet wurden Mini-Bilder bei Listen in der Row-Ansicht angezeigt
 - Cache-ID's aktualisiert

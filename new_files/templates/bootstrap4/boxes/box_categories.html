@@ -1,24 +1,24 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="lang_`$language`.custom"}
 {if isset($BOX_CONTENT) && $BOX_CONTENT != ''}
-<div class="box_category card mb-4">
-    <div class="box_category_header card-header">{#heading_categories#}</div>
-    {$BOX_CONTENT}
-    {if $smarty.const.BS4_SPECIALS_CATEGORIES == 'true'}
-        {if $smarty.const.SPECIALS_EXISTS == 'true'}
-        <li class="nav-item level1{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS) !== false} active{/if}"><a class="nav-link{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS) !== false} active{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'} up{/if}" href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}">{#heading_specials#}</a></li>
-        {/if}
-    {/if}
-    {if $smarty.const.BS4_WHATSNEW_CATEGORIES == 'true'}
-        {*if $smarty.const.WHATSNEW_EXISTS == 'true'*}
-        <li class="nav-item level1{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW) !== false} active{/if}"><a class="nav-link{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW) !== false} active{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'} up{/if}" href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}">{#heading_whatsnew#}</a></li>
-        {*/if*}
-    {/if}
-	{if isset($BOX_LINKS)}
-		{foreach name=aussen item=box_data from=$BOX_LINKS}
-			<li class="nav-item level1 added_link"><a class="nav-link" href="{$box_data.HREF}">{if strpos($box_data.NAME, 'BS4_') !== false}{#$box_data.NAME#}{else}{$box_data.NAME}{/if}</a></li>
-	   {/foreach}
-	{/if}
-    </ul>
-</div>
+	{config_load file="$language/lang_$language.conf" section="boxes"}
+	{config_load file="lang_`$language`.custom"}
+	<div class="box_category card mb-4">
+	    <div class="box_category_header card-header">{#heading_categories#}</div>
+	    {$BOX_CONTENT}
+	    {if $smarty.const.BS4_SPECIALS_CATEGORIES == 'true'}
+	        {if $smarty.const.SPECIALS_EXISTS == 'true'}
+	        <li class="nav-item level1{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS) !== false} active{/if}"><a class="nav-link{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS) !== false} active{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'} up{/if}" href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}">{#heading_specials#}</a></li>
+	        {/if}
+	    {/if}
+	    {if $smarty.const.BS4_WHATSNEW_CATEGORIES == 'true'}
+	        {*if $smarty.const.WHATSNEW_EXISTS == 'true'*}
+	        <li class="nav-item level1{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW) !== false} active{/if}"><a class="nav-link{if strpos($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW) !== false} active{/if}{if $smarty.const.BS4_WHATSNEW_SPECIALS_UPPERCASE == 'true'} up{/if}" href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}">{#heading_whatsnew#}</a></li>
+	        {*/if*}
+	    {/if}
+		{if isset($BOX_LINKS)}
+			{foreach name=aussen item=box_data from=$BOX_LINKS}
+				<li class="nav-item level1 added_link"><a class="nav-link" href="{$box_data.HREF}">{if strpos($box_data.NAME, 'BS4_') !== false}{#$box_data.NAME#}{else}{$box_data.NAME}{/if}</a></li>
+		   {/foreach}
+		{/if}
+	    </ul>
+	</div>
 {/if}

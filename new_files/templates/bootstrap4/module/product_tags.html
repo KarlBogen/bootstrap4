@@ -1,33 +1,33 @@
-{config_load file="$language/lang_$language.conf" section="reviews"}
-{config_load file="lang_`$language`.custom"}
-{config_load file="lang_`$language`.section" section="product_tags"}
 {if isset($module_content)}
-<h4>{#heading_products_tags#}</h4>
-{foreach name=aussen item=module_data from=$module_content}
-<div class="row clearfix">
-	<div class="col-sm-4 mb-2">
-	{if $module_data.OPTIONS_CONTENT_LINK != ''}
-		<span>{if $module_data.OPTIONS_DESCRIPTION != ''}<abbr title="{$module_data.OPTIONS_DESCRIPTION}">{/if}{$module_data.OPTIONS_NAME}{if $module_data.OPTIONS_DESCRIPTION != ''}</abbr>{/if}</span>:
-		{if $module_data.OPTIONS_DESCRIPTION != ''}<a class="iframe" title="{$module_data.OPTIONS_NAME|onlytext}" href="{$module_data.OPTIONS_CONTENT_LINK}"><span class="fa fa-info-circle fa-2x"></span></a>{/if}
-	{else}
-		<span{if $module_data.OPTIONS_DESCRIPTION != ''} data-toggle="tooltip" title="{$module_data.OPTIONS_DESCRIPTION}"{/if}>{$module_data.OPTIONS_NAME}</span>:
-	{/if}
-	</div>
-	<div class="col-sm-8 mb-2">
-	{foreach name=inner item=item_data from=$module_data.DATA}
-		{if $item_data.VALUES_IMAGE != ''}
-			{if $item_data.VALUES_CONTENT_LINK != ''}
-				<a class="iframe" href="{$item_data.VALUES_CONTENT_LINK}" title="{$item_data.VALUES_NAME|onlytext}"><img class="img-fluid d-inline-block mr-2" src="{$item_data.VALUES_IMAGE}" alt="{$item_data.VALUES_NAME|onlytext}"{if $item_data.VALUES_DESCRIPTION != ''} data-toggle="tooltip" title="{$item_data.VALUES_DESCRIPTION}"{/if} style="height:60px;"/></a>
-			{else}
-				<img class="img-fluid d-inline-block mr-2" src="{$item_data.VALUES_IMAGE}" alt="{$item_data.VALUES_NAME|onlytext}"{if $item_data.VALUES_DESCRIPTION != ''} data-toggle="tooltip" title="{$item_data.VALUES_DESCRIPTION}"{/if} style="height:60px;"/>
-			{/if}
+	{config_load file="$language/lang_$language.conf" section="reviews"}
+	{config_load file="lang_`$language`.custom"}
+	{config_load file="lang_`$language`.section" section="product_tags"}
+	<h4>{#heading_products_tags#}</h4>
+	{foreach name=aussen item=module_data from=$module_content}
+	<div class="row clearfix">
+		<div class="col-sm-4 mb-2">
+		{if $module_data.OPTIONS_CONTENT_LINK != ''}
+			<span>{if $module_data.OPTIONS_DESCRIPTION != ''}<abbr title="{$module_data.OPTIONS_DESCRIPTION}">{/if}{$module_data.OPTIONS_NAME}{if $module_data.OPTIONS_DESCRIPTION != ''}</abbr>{/if}</span>:
+			{if $module_data.OPTIONS_DESCRIPTION != ''}<a class="iframe" title="{$module_data.OPTIONS_NAME|onlytext}" href="{$module_data.OPTIONS_CONTENT_LINK}"><span class="fa fa-info-circle fa-2x"></span></a>{/if}
 		{else}
-			<span>{if $item_data.VALUES_DESCRIPTION != ''}<abbr title="{$item_data.VALUES_DESCRIPTION}">{/if}{$item_data.VALUES_NAME}{if $module_data.OPTIONS_DESCRIPTION != ''}</abbr>{/if}</span>
-			{if $item_data.VALUES_CONTENT_LINK != ''}<a class="iframe" title="{$item_data.VALUES_NAME|onlytext}" href="{$item_data.VALUES_CONTENT_LINK}"><span class="fa fa-info-circle fa-2x"></span></a>{/if}
-        	{if !$smarty.foreach.inner.last}<span class="mr-2">, </span>{/if}
+			<span{if $module_data.OPTIONS_DESCRIPTION != ''} data-toggle="tooltip" title="{$module_data.OPTIONS_DESCRIPTION}"{/if}>{$module_data.OPTIONS_NAME}</span>:
 		{/if}
-	{/foreach}
+		</div>
+		<div class="col-sm-8 mb-2">
+		{foreach name=inner item=item_data from=$module_data.DATA}
+			{if $item_data.VALUES_IMAGE != ''}
+				{if $item_data.VALUES_CONTENT_LINK != ''}
+					<a class="iframe" href="{$item_data.VALUES_CONTENT_LINK}" title="{$item_data.VALUES_NAME|onlytext}"><img class="img-fluid d-inline-block mr-2" src="{$item_data.VALUES_IMAGE}" alt="{$item_data.VALUES_NAME|onlytext}"{if $item_data.VALUES_DESCRIPTION != ''} data-toggle="tooltip" title="{$item_data.VALUES_DESCRIPTION}"{/if} style="height:60px;"/></a>
+				{else}
+					<img class="img-fluid d-inline-block mr-2" src="{$item_data.VALUES_IMAGE}" alt="{$item_data.VALUES_NAME|onlytext}"{if $item_data.VALUES_DESCRIPTION != ''} data-toggle="tooltip" title="{$item_data.VALUES_DESCRIPTION}"{/if} style="height:60px;"/>
+				{/if}
+			{else}
+				<span>{if $item_data.VALUES_DESCRIPTION != ''}<abbr title="{$item_data.VALUES_DESCRIPTION}">{/if}{$item_data.VALUES_NAME}{if $module_data.OPTIONS_DESCRIPTION != ''}</abbr>{/if}</span>
+				{if $item_data.VALUES_CONTENT_LINK != ''}<a class="iframe" title="{$item_data.VALUES_NAME|onlytext}" href="{$item_data.VALUES_CONTENT_LINK}"><span class="fa fa-info-circle fa-2x"></span></a>{/if}
+	        	{if !$smarty.foreach.inner.last}<span class="mr-2">, </span>{/if}
+			{/if}
+		{/foreach}
+		</div>
 	</div>
-</div>
-{/foreach}
+	{/foreach}
 {/if}

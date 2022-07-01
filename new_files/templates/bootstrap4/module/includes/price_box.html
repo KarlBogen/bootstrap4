@@ -1,7 +1,7 @@
             {if $price_data.PRODUCTS_PRICE_FLAG == 'Special' || $price_data.PRODUCTS_PRICE_FLAG == 'SpecialDiscount'}
               {* START Produkt Sonderpreis Kurzform mit Ausgabe #Sonderpreis# *}
               <span class="special_price lead text-danger clearfix">
-                <span class="small_price">{#special_price#}</span> {$price_data.PRODUCTS_PRICE_SPECIAL_PRICE}
+                <span class="small_price">{#special_price#}{$price_data.PRODUCTS_PRICE_FROM}</span> {$price_data.PRODUCTS_PRICE_SPECIAL_PRICE}
 				{if $smarty.const.BS4_FLAG_PERCENT_SHOW == 'true'}<br /><span class="special_percent bg-danger shadow text-white">{$price_data.PRODUCTS_PRICE_SAVE_PERCENT}%</span>{/if}
               </span>
               {* ENDE Produkt Sonderpreis Kurzform mit Ausgabe #Sonderpreis# *}

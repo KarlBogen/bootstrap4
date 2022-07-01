@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: admin.php 13363 2021-02-03 08:40:04Z GTB $
+   $Id: admin.php 14555 2022-06-21 09:52:15Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -50,7 +50,7 @@ if ($admin_access['newsfeed'] == '1') {
 if ($admin_access['check_update'] == '1' && file_exists(DIR_FS_INC.'check_version_update.inc.php')) {
   require_once(DIR_FS_INC.'check_version_update.inc.php');
   $update_array = check_version_update();
-  $box_smarty->assign('UPDATE_COUNT', $update_array['update']);
+  $box_smarty->assign('UPDATE_COUNT', ($update_array['total'] > 0 ? $update_array['total'] : ''));
   $box_smarty->assign('UPDATE', xtc_href_link_admin((defined('DIR_ADMIN') ? DIR_ADMIN : 'admin/').'check_update.php', '', 'NONSSL'));
 }
 

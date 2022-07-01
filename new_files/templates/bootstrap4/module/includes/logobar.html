@@ -8,7 +8,7 @@
 				{if $smarty.const.BS4_SHOW_ICON_WITH_NAMES != 'false'}<span class="d-none d-lg-block small">{#link_index#}</span>{/if}
 			</a>
 		</li>
-		{if isset($box_LANGUAGES) && trim($box_LANGUAGES) != ''}{$box_LANGUAGES}{/if}
+		{if isset($box_LANGUAGES) && $box_LANGUAGES != ''}{$box_LANGUAGES}{/if}
 		<li class="nav-item account dropdown">
 			<a id="account-dd" href="#" class="text-center nav-link {$smarty.const.BS4_LOGOBAR_TEXT}"  title="{#link_account#}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 				<span class="fa fa-user fa-lg fa-fw" aria-hidden="true"></span>
@@ -51,7 +51,7 @@
 						{if $smarty.const.BS4_SHOW_ICON_WITH_NAMES != 'false'}<span class="d-none d-lg-block small">{#link_index#}</span>{/if}
 					</a>
 				</li>
-				{if isset($box_LANGUAGES) && trim($box_LANGUAGES) != ''}{$box_LANGUAGES}{/if}
+				{if isset($box_LANGUAGES) && $box_LANGUAGES != ''}{$box_LANGUAGES}{/if}
 				<li class="nav-item account dropdown">
 					<a id="account-dd" href="#" class="text-center nav-link {$smarty.const.BS4_LOGOBAR_TEXT}"  title="{#link_account#}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						<span class="fa fa-user fa-lg fa-fw" aria-hidden="true"></span>

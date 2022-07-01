@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: shipping_country.php 13890 2021-12-15 15:29:54Z GTB $
+   $Id: shipping_country.php 14588 2022-06-27 06:50:12Z Tomcraft $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org

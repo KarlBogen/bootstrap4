@@ -1,16 +1,16 @@
-{config_load file="$language/lang_$language.conf" section="upcoming_products"} 
-{config_load file="lang_`$language`.custom"}
-{config_load file="lang_`$language`.section" section="upcoming_products"}
 {if isset($module_content)}
-<div class="upcoming_list">
-	<h1 class="card p-2 bg-h">{#heading_upcoming#}</h1>
-	<div class="list-group clearfix mb-4">
-		{foreach name=aussen item=module_data from=$module_content}
-		<a class="list-group-item list-group-item-action" href="{$module_data.PRODUCTS_LINK}">
-			<span>{$module_data.PRODUCTS_DATE}:</span><br />
-			<span><strong>{$module_data.PRODUCTS_NAME}</strong></span>
-		</a>
-		{/foreach}
+	{config_load file="$language/lang_$language.conf" section="upcoming_products"}
+	{config_load file="lang_`$language`.custom"}
+	{config_load file="lang_`$language`.section" section="upcoming_products"}
+	<div class="upcoming_list">
+		<h1 class="card p-2 bg-h">{#heading_upcoming#}</h1>
+		<div class="list-group clearfix mb-4">
+			{foreach name=aussen item=module_data from=$module_content}
+			<a class="list-group-item list-group-item-action" href="{$module_data.PRODUCTS_LINK}">
+				<span>{$module_data.PRODUCTS_DATE}:</span><br />
+				<span><strong>{$module_data.PRODUCTS_NAME}</strong></span>
+			</a>
+			{/foreach}
+		</div>
 	</div>
-</div>
 {/if}
