@@ -56,8 +56,8 @@ $lang_array = array(
 		Fixing the menu bar on small screens removes the normal bootstrap CSS classes and replaces them with the input.<br />
 		This makes it possible to give the menu bar a different look.<br />
 		Default: "navbar-light bg-light border-bottom p-0"',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_MENUBAR_FIXEDTOP' => 'Logo bar fixed top:',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_MENUBAR_FIXEDTOP_INFO' => 'Should the logo bar be moved to the fixed menu bar?',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_LOGOBAR_FIXEDTOP' => 'Logo bar fixed top:',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_LOGOBAR_FIXEDTOP_INFO' => 'Should the logo bar be moved to the fixed menu bar?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_RESPONSIVEMENU' => 'Responsive-Menu',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_RESPONSIVE' => 'Show menu:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_RESPONSIVE_INFO' => 'Should the responsive menu be displayed?',

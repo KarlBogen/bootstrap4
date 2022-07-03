@@ -82,7 +82,7 @@
 							}
 						},
 						calculateAll: function () {
-							$.each($('div[id^="optionen"] input[type=radio]:checked, div[id^="optionen"] input[type=checkbox], div[id^="optionen"] option'), function () {
+							$.each($('div[id^="optionen"] input[type=radio]:checked, div[id^="optionen"] input[type=checkbox], div[id^="optionen"] option:not([disabled])'), function () {
 								attributePriceUpdater.calculate($(this));
 							});
 						}

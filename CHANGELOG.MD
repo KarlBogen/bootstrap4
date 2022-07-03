@@ -1,6 +1,8 @@
 UNRELEASED
 
 
+- JavaScript-Fehler bei gleichzeitiger Nutzung Attribute-Preis-Updater und Lagerampel behoben
+- Konstantenfehler in lang/english/admin/bs4_tpl_manager_config.php behoben
 
 1.2.9 [01.07.2022]
 - Update zu Shopversion 2.0.7.1
