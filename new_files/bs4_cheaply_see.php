@@ -60,6 +60,10 @@
 
 	// load products data
 	$products = new product((int)$_GET['pID']);
+	if (!is_object($products) || $products->isProduct() === false) {
+		// product not found in database
+		xtc_redirect(xtc_href_link(FILENAME_DEFAULT, '', 'SSL'));
+	}
 	$products_price = $xtPrice->xtcGetPrice($products->data['products_id'], $format = true, 1, $products->data['products_tax_class_id'], $products->data['products_price'], 1);
 
 	// TEMPLATE VARIABLES

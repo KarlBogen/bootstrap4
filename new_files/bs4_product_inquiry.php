@@ -56,6 +56,10 @@
 
 	// load products data
 	$products = new product((int)$_GET['pID']);
+	if (!is_object($products) || $products->isProduct() === false) {
+		// product not found in database
+		xtc_redirect(xtc_href_link(FILENAME_DEFAULT, '', 'SSL'));
+	}
 
 	// TEMPLATE VARIABLES
 	$smarty->assign('TITLE',$shop_content_data['content_heading']);
