@@ -5,4 +5,22 @@
 	<div class="mt-4">
 		{$shop_offline_msg}
 	</div>
+	<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title text-center">&nbsp;</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{#BS4_close#}"><span aria-hidden="true">&times;</span><span class="sr-only">{#BS4_close#}</span></button>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<a id="show-previous-image" class="left carousel-control-prev" role="button"><span class="fa fa-chevron-left fa-3x" aria-hidden="true"></span></a>
+					<a id="show-next-image"  class="right carousel-control-next" role="button"><span class="fa fa-chevron-right fa-3x" aria-hidden="true"></span></a>
+					<span class="counter small mr-auto" style="padding:6px 12px;"></span>
+					{#BS4_close#|bs4button:'modal_close':'data-dismiss="modal"':'true'|replace:'submit':'button'}
+				</div>
+        	</div>
+	    </div>
+	</div>
 </div>

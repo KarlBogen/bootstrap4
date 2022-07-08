@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Modalbox in offline.html ergänzt
 - Warnmeldung bei falscher Produkt-ID in bs4_cheaply_see.php und bs4_product_inquiry.php behoben
 - JavaScript-Fehler bei gleichzeitiger Nutzung Attribute-Preis-Updater und Lagerampel behoben
 - Konstantenfehler in lang/english/admin/bs4_tpl_manager_config.php behoben
