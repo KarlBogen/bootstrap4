@@ -1,3 +1,7 @@
+#cart_quantity span.paypal_button {
+	height: 60px;
+	display: block;
+}
 .controls .carousel-control-next, .controls .carousel-control-prev {
 	height: 40px;
 	width: 40px;

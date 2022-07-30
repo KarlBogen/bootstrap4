@@ -132,9 +132,11 @@ $(document).ready(function(){
 				$(this).children('.collapse').addClass('show');
 			}
 		});
+		/* Öffnet ersten Accordion-Tab
 		if ($('.collapse.show').length < 1){
 			$('#accordion .collapse:first').collapse('show');
 		}
+		*/
 		function toggleIcon(e) {
 			$(e.target)
 			.prev('.acc-header')

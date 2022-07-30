@@ -1,8 +1,14 @@
 UNRELEASED
 
+
+
+1.2.10 [30.07.2022]
+- Caching der Suchbox entfernt
+- sobald Boxes in der BS4 Konfiguration abgeschaltet sind, werden die zugehörigen Datendateien nicht mehr ausgeführt
 - Modalbox in offline.html ergänzt
 - Warnmeldung bei falscher Produkt-ID in bs4_cheaply_see.php und bs4_product_inquiry.php behoben
 - JavaScript-Fehler bei gleichzeitiger Nutzung Attribute-Preis-Updater und Lagerampel behoben
+- Fehler bei automatischer Auswahl der Versandart behoben
 - Konstantenfehler in lang/english/admin/bs4_tpl_manager_config.php behoben
 
 1.2.9 [01.07.2022]

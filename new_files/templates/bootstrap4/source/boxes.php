@@ -82,49 +82,93 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
 //	full content
 // -----------------------------------------------------------------------------------------
   if (!in_array(basename($PHP_SELF), $fullcontent)) {
-    require_once(DIR_FS_BOXES . 'manufacturers.php');
-    require_once(DIR_FS_BOXES . 'last_viewed.php');
+		if (BS4_STARTPAGE_BOX_MANUFACTURERS != 'false' || BS4_NOT_STARTPAGE_BOX_MANUFACTURERS != 'false'){
+	    require_once(DIR_FS_BOXES . 'manufacturers.php');
+		}
+		if (BS4_STARTPAGE_BOX_LAST_VIEWED != 'false' || BS4_NOT_STARTPAGE_BOX_LAST_VIEWED != 'false'){
+	    require_once(DIR_FS_BOXES . 'last_viewed.php');
+		}
   }
 // -----------------------------------------------------------------------------------------
 //	always visible
 // -----------------------------------------------------------------------------------------
-  require_once(DIR_FS_BOXES . 'infobox.php');
-  require_once(DIR_FS_BOXES . 'loginbox.php');
+	if (BS4_STARTPAGE_BOX_INFOBOX != 'false' || BS4_NOT_STARTPAGE_BOX_INFOBOX != 'false'){
+	  require_once(DIR_FS_BOXES . 'infobox.php');
+	}
+	if (BS4_STARTPAGE_BOX_LOGIN != 'false' || BS4_NOT_STARTPAGE_BOX_LOGIN != 'false'){
+  	require_once(DIR_FS_BOXES . 'loginbox.php');
+	}
+	if (BS4_STARTPAGE_BOX_CUSTOM != 'false' || BS4_NOT_STARTPAGE_BOX_CUSTOM != 'false'){
+  	require_once(DIR_FS_BOXES . 'custom.php');
+	}
   if (defined('MODULE_TS_TRUSTEDSHOPS_ID')
       && MODULE_TS_REVIEW_STICKER != ''
       && MODULE_TS_REVIEW_STICKER_STATUS == '1'
       )
   {
-    require_once(DIR_FS_BOXES . 'trustedshops.php');
+		if (BS4_STARTPAGE_BOX_TRUSTEDSHOPS != 'false' || BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS != 'false'){
+	    require_once(DIR_FS_BOXES . 'trustedshops.php');
+		}
   }
 // -----------------------------------------------------------------------------------------
 //	only logged id users
 // -----------------------------------------------------------------------------------------
   if (isset($_SESSION['customer_id'])) {
-    require_once(DIR_FS_BOXES . 'order_history.php');
+		if (BS4_STARTPAGE_BOX_HISTORY != 'false' || BS4_NOT_STARTPAGE_BOX_HISTORY != 'false'){
+	    require_once(DIR_FS_BOXES . 'order_history.php');
+		}
   }
 // -----------------------------------------------------------------------------------------
 //	only if reviews allowed
 // -----------------------------------------------------------------------------------------
   if ($_SESSION['customers_status']['customers_status_read_reviews'] == '1') {
-    require_once(DIR_FS_BOXES . 'reviews.php');
+		if (BS4_STARTPAGE_BOX_REVIEWS != 'false' || BS4_NOT_STARTPAGE_BOX_REVIEWS != 'false'){
+    	require_once(DIR_FS_BOXES . 'reviews.php');
+		}
   }
 // -----------------------------------------------------------------------------------------
 //	hide during checkout
 // -----------------------------------------------------------------------------------------
   if (substr(basename($PHP_SELF), 0, 8) != 'checkout') {
-    require_once(DIR_FS_BOXES . 'currencies.php');
-    require_once(DIR_FS_BOXES . 'shipping_country.php');
+		if (BS4_STARTPAGE_BOX_CURRENCIES != 'false' || BS4_NOT_STARTPAGE_BOX_CURRENCIES != 'false'){
+	    require_once(DIR_FS_BOXES . 'currencies.php');
+		}
+		if (BS4_STARTPAGE_BOX_SHIPPING_COUNTRY != 'false' || BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY != 'false'){
+	    require_once(DIR_FS_BOXES . 'shipping_country.php');
+		}
   }
 // -----------------------------------------------------------------------------------------
 //	product details
 // -----------------------------------------------------------------------------------------
   if ($product->isProduct() === true) {
-    require_once(DIR_FS_BOXES . 'manufacturer_info.php');
+		if (BS4_STARTPAGE_BOX_MANUFACTURERS_INFO != 'false' || BS4_NOT_STARTPAGE_BOX_MANUFACTURERS_INFO != 'false'){
+    	require_once(DIR_FS_BOXES . 'manufacturer_info.php');
+		}
   } else {
     if ($_SESSION['customers_status']['customers_status_specials'] == '1' && BS4_SPECIALS_CATEGORIES == 'false') {
-      require_once(DIR_FS_BOXES . 'specials.php');
+			if (BS4_STARTPAGE_BOX_SPECIALS != 'false' || BS4_NOT_STARTPAGE_BOX_SPECIALS != 'false'){
+	      require_once(DIR_FS_BOXES . 'specials.php');
+			}
     }
+  }
+// -----------------------------------------------------------------------------------------
+//	only if show price
+// -----------------------------------------------------------------------------------------
+  if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
+    if (BS4_STARTPAGE_BOX_ADD_QUICKIE != 'false' || BS4_NOT_STARTPAGE_BOX_ADD_QUICKIE != 'false'){
+			require_once(DIR_FS_BOXES . 'add_a_quickie.php');
+		}
+    if (defined('MODULE_WISHLIST_SYSTEM_STATUS') && MODULE_WISHLIST_SYSTEM_STATUS == 'true') {
+      require_once(DIR_FS_BOXES . 'wishlist.php');
+    }
+  }
+// -----------------------------------------------------------------------------------------
+//	hide in search
+// -----------------------------------------------------------------------------------------
+  if (substr(basename($PHP_SELF), 0,8) != 'advanced' && BS4_WHATSNEW_CATEGORIES == 'false') {
+		if (BS4_STARTPAGE_BOX_WHATSNEW != 'false' || BS4_NOT_STARTPAGE_BOX_WHATSNEW != 'false'){
+	    require_once(DIR_FS_BOXES . 'whats_new.php');
+		}
   }
 }
 // -----------------------------------------------------------------------------------------
@@ -138,7 +182,6 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
   require_once(DIR_FS_BOXES . 'content.php');
   require_once(DIR_FS_BOXES . 'information.php');
   require_once(DIR_FS_BOXES . 'miscellaneous.php');
-  require_once(DIR_FS_BOXES . 'custom.php');
   require_once(DIR_FS_BOXES . 'languages.php');
   if (!defined('MODULE_NEWSLETTER_STATUS') || MODULE_NEWSLETTER_STATUS == 'true') {
     require_once(DIR_FS_BOXES . 'newsletter.php');
@@ -147,17 +190,7 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
 //	only if show price
 // -----------------------------------------------------------------------------------------
   if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
-    require_once(DIR_FS_BOXES . 'add_a_quickie.php');
     require_once(DIR_FS_BOXES . 'shopping_cart.php');
-    if (defined('MODULE_WISHLIST_SYSTEM_STATUS') && MODULE_WISHLIST_SYSTEM_STATUS == 'true') {
-      require_once(DIR_FS_BOXES . 'wishlist.php');
-    }
-  }
-// -----------------------------------------------------------------------------------------
-//	hide in search
-// -----------------------------------------------------------------------------------------
-  if (substr(basename($PHP_SELF), 0,8) != 'advanced' && BS4_WHATSNEW_CATEGORIES == 'false') {
-    require_once(DIR_FS_BOXES . 'whats_new.php'); 
   }
 // -----------------------------------------------------------------------------------------
 //	admins only
