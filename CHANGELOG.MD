@@ -1,6 +1,7 @@
 UNRELEASED
 
 - javascript/extra/cookieconsent.js.php angepasst an OIL.js Consent Management v1.34
+- Fehler in includes/extra/define_add_select/bs4_define_add_select.php behoben
 
 1.2.10 [30.07.2022]
 - Caching der Suchbox entfernt
