@@ -440,6 +440,22 @@ if(BS4_SUPERFISHMENU_SHOW == 'true') {
 				}.bind(this), 200);
 			});
 	}
+	// refresh the page only if you're crossing into a context
+	var context;
+	var small = window.matchMedia("(max-width:991.98px)");
+	var large = window.matchMedia("(min-width:992px)");
+	if($('.canvasmenu').is(':hidden')) {
+		context = 'large';
+	} else {
+		context = 'small';
+	}
+	$(window).resize(function() {
+		if((small.matches) && (context != 'small')) {
+			location.reload();
+		} else if ((large.matches) && (context != 'large')) {
+			location.reload();
+		}
+	});
 <?php
 }
 // Ende Menü per Ajax nachladen

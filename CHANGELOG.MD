@@ -1,5 +1,8 @@
 UNRELEASED
 
+
+1.2.11 [19.09.2022]
+- Fehler Responsivmenü bei ausgeschaltetem Superfishmenü behoben
 - javascript/extra/cookieconsent.js.php angepasst an OIL.js Consent Management v1.34
 - Fehler in includes/extra/define_add_select/bs4_define_add_select.php behoben
 

@@ -124,7 +124,7 @@ function prepareMenu(maxlevel,superfish,responsive){
 	    bigMenu(maxlevel);
 	}
 
-	if($('.canvasmenu').is(':visible') && responsive == true) {
+	if(($('.canvasmenu').is(':visible') || superfish == false) && responsive == true) {
 		/* entfernt Home-Link und ID "main" */
 		$('#res-pushy li.home').css('display','none');
 		$('#res-pushy ul#main').removeClass('nav navbar-nav').removeAttr('id');
