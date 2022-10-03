@@ -1,5 +1,7 @@
 UNRELEASED
 
+- Warnmeldung bei fehlendem Array-Schlüssel in includes/modules/product/bs4_checkifnewproduct.php behoben (danke Gulliver72)
+
 
 1.2.11 [19.09.2022]
 - Fehler Responsivmenü bei ausgeschaltetem Superfishmenü behoben

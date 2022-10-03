@@ -63,7 +63,7 @@ class bs4_checkifnewproduct {  //Important same name as filename
 	function buildDataArray($productData, $array, $image='thumbnail', $precision = 0) {
 
 		$product_isnew = '';
-		if ($array['products_date_added'] != '0000-00-00 00:00:00' && MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
+		if (isset($array['products_date_added']) && $array['products_date_added'] != '0000-00-00 00:00:00' && MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
 			$date_new_products = date("Y-m-d", mktime(1, 1, 1, date("m"), date("d") - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date("Y")));
 
 			if ($date_new_products." 00:00:00"> $array['products_date_added']) {
