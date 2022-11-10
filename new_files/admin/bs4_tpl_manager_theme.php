@@ -121,11 +121,6 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 	<?php } ?>
 	<script type="text/javascript" src="includes/lang_tabs_menu/lang_tabs_menu.js"></script>
 
-	<?php
-		if (USE_ADMIN_LANG_TABS == 'false') {
-			echo ($csstab_nojs);
-		}
-	?>
 	<noscript>
 		<?php echo ($csstab_nojs);?>
 	</noscript>
@@ -160,7 +155,6 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 						echo xtc_draw_form('config', basename($PHP_SELF), xtc_get_all_get_params(array('action')), 'post', 'id="tpl_manager"');
 						echo '<input id="activ_tab" type="hidden" value="0" name="activ_tab">';
 						echo '<input id="action" type="hidden" value="update" name="action">';
-						if (USE_ADMIN_LANG_TABS != 'false') {
 						?>
 							<script type="text/javascript">
 								$.get("includes/lang_tabs_menu/lang_tabs_menu.css", function(css) {
@@ -170,7 +164,6 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 								document.write('<?php echo ($langtabs);?>');
 							</script>
 						<?php
-						}
 						for ($z = 0, $n = count($tabs_array); $z < $n; $z++) {
 							echo ('<div id="tab_lang_' . $z . '">');
 							switch($tabs_array[$z]['id']) {

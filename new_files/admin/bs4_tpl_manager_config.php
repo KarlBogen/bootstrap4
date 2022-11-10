@@ -80,11 +80,6 @@ require_once (DIR_WS_INCLUDES.'head.php');
     <link type="text/css" href="includes/bs4_template_manager/assets/css/bs4_tpl_manager.css" rel="stylesheet">
 	<script type="text/javascript" src="includes/lang_tabs_menu/lang_tabs_menu.js"></script>
 
-	<?php
-		if (USE_ADMIN_LANG_TABS == 'false') {
-			echo ($csstab_nojs);
-		}
-	?>
 	<noscript>
 		<?php echo ($csstab_nojs);?>
 	</noscript>
@@ -123,7 +118,6 @@ require_once (DIR_WS_INCLUDES.'head.php');
 					echo xtc_draw_form('config', basename($PHP_SELF), xtc_get_all_get_params(array('action')));
 					echo '<input id="activ_tab" type="hidden" value="0" name="activ_tab">';
 					echo xtc_draw_hidden_field('action', 'update');
-					if (USE_ADMIN_LANG_TABS != 'false') {
 					?>
 						<script type="text/javascript">
 							$.get("includes/lang_tabs_menu/lang_tabs_menu.css", function(css) {
@@ -133,7 +127,6 @@ require_once (DIR_WS_INCLUDES.'head.php');
 							document.write('<?php echo ($langtabs);?>');
 						</script>
 					<?php
-					}
 					for ($i = 0, $n = count($tabs_array); $i < $n; $i++) {
 						echo ('<div id="tab_lang_' . $i . '">');
 						switch($tabs_array[$i]['id']) {

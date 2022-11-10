@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Tabs im Bootstrap 4 Template Manager waren nur sichtbar wenn "Sprachtabs bei Kategorien/Artikel" aktiviert waren
 - Warnmeldung bei fehlendem Array-Schlüssel in includes/modules/product/bs4_checkifnewproduct.php behoben (danke Gulliver72)
 
 
