@@ -44,7 +44,7 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 											FROM " . TABLE_BANNERS . "
 											WHERE banners_image != ''
 											AND languages_id = '" . (int)$_SESSION['languages_id'] . "'
-											AND banners_id IN (".$category['bs4_banner_ids'].")");
+											AND banners_group_id IN (".$category['bs4_banner_ids'].")");
 		if (xtc_db_num_rows($bs4_banner_query) > 0) {
 			$bs4_banner_content = array();
 			while ($bs4_banner = xtc_db_fetch_array($bs4_banner_query)) {

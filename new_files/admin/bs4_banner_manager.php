@@ -166,12 +166,12 @@ if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS ==
 
 		for ($i=0;$n=sizeof($banners),$i<$n;$i++) {
 			$checked = '';
-			if(in_array($banners[$i]['banners_id'], $haystack)) {
+			if(in_array($banners[$i]['banners_group_id'], $haystack)) {
 				$checked = ' checked';
 			}
 
 			$banners_string .= '		<tr>';
-			$banners_string .= '			<td class="dataTableContent txta-c">' . xtc_draw_checkbox_field('bs4_banner_ids[]', $banners[$i]['banners_id'], $checked) . '</td>';
+			$banners_string .= '			<td class="dataTableContent txta-c">' . xtc_draw_checkbox_field('bs4_banner_ids[]', $banners[$i]['banners_group_id'], $checked) . '</td>';
 			$banners_string .= '			<td class="dataTableContent"><img style="border:0;max-width:180px;max-height:50px;" src="' . DIR_WS_CATALOG_IMAGES . 'banner/'.(($banners[$i]['banners_image'] != '') ? $banners[$i]['banners_image'] : 'noimage.gif') . '" /></td>';
 			$banners_string .= '			<td class="dataTableContent">' . $banners[$i]['banners_title'] . '</td>';
 			$banners_string .= '			<td class="dataTableContent txta-c">' . $banners[$i]['banners_group'] . '</td>';
