@@ -1,5 +1,6 @@
 UNRELEASED
 
+- CSS-Klasse Box Custom geändert
 
 
 1.2.12 [05.12.2022]
