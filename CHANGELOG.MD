@@ -1,5 +1,7 @@
 UNRELEASED
 
+- Performance-Verbesserung - Einbindung JavaScript-Dateien
+- Warnung (ab PHP 8.1) in bs4_checkifnewproduct.php behoben
 - CSS-Klasse Box Custom geändert
 
 

@@ -22,8 +22,11 @@ $smarty->config_load('lang_'.$_SESSION['language'].'.custom');
 $script_array = array(
 	DIR_TMPL_JS.'jquery.min.js',
 	DIR_TMPL_JS.'bootstrap.bundle.min.js',
-	DIR_TMPL_JS.'pushy.min.js',
 	DIR_TMPL_JS.'bscarousel.min.js',
+);
+
+$script_array_defer = array(
+	DIR_TMPL_JS.'pushy.min.js',
 	DIR_TMPL_JS.'jquery.lazysizes.min.js',
 	DIR_TMPL_JS.'jquery.alertable.min.js',
 );
@@ -35,12 +38,12 @@ if (BS4_BSCAROUSEL_NAME_LINES != 0 || BS4_TOPCAROUSEL_NAME_LINES != 0) {
 
 // EasyZoom
 if (BS4_USE_EASYZOOM == 'true') {
-	$script_array[] = DIR_TMPL_JS .'easyzoom.min.js';
+	$script_array_defer[] = DIR_TMPL_JS .'easyzoom.min.js';
 }
 
 // Touch use für Superfishmenü
 if (BS4_TOUCH_USE == 'true') {
-	$script_array[] = DIR_TMPL_JS .'touchuse.min.js';
+	$script_array_defer[] = DIR_TMPL_JS .'touchuse.min.js';
 }
 
 // nur Superfishmenü
@@ -66,6 +69,10 @@ if (COMPRESS_JAVASCRIPT == 'true') {
 foreach ($script_array as $script) {
 	$script .= strpos($script,$script_min) === false ? '?v=' . filemtime(DIR_FS_CATALOG.$script) : '';
 	echo '<script src="'.DIR_WS_BASE.$script.'" type="text/javascript"></script>'.PHP_EOL;
+}
+foreach ($script_array_defer as $script) {
+	$script .= strpos($script,$script_min) === false ? '?v=' . filemtime(DIR_FS_CATALOG.$script) : '';
+	echo '<script src="'.DIR_WS_BASE.$script.'" type="text/javascript" defer></script>'.PHP_EOL;
 }
 
 ob_start();
