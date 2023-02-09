@@ -135,7 +135,7 @@ class bs4_checkifnewproduct {  //Important same name as filename
                                           AND reviews_status = '1'");
     $avg_reviews = xtc_db_fetch_array($avg_reviews_query);
 
-    return round($avg_reviews['avg_rating'], $precision);
+    return round($avg_reviews['avg_rating'] ?? 0, $precision);
   }
 
 }
