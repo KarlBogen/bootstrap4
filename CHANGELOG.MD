@@ -1,5 +1,9 @@
 UNRELEASED
 
+
+
+1.2.13 [07.03.2023]
+- Verbesserung der Barrierefreiheit
 - Performance-Verbesserung - Einbindung JavaScript-Dateien
 - Warnung (ab PHP 8.1) in bs4_checkifnewproduct.php behoben
 - CSS-Klasse Box Custom geändert

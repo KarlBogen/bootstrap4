@@ -179,7 +179,7 @@
 				{if $ADD_CART_BUTTON != ''}
 				<div class="card bg-custom p-2 mb-2">
 					<div class="row">
-						<div class="col-3 mb-2">{$ADD_QTY|replace:'input':'input class="form-control form-control-sm"'}</div>
+						<div class="col-3 mb-2">{$ADD_QTY|replace:'type="text"':'type="text" aria-label="{HEADER_QTY}" class="form-control form-control-sm"'|replace:'{HEADER_QTY}':{$smarty.const.HEADER_QTY}}</div>
 						<div class="col-9">
 							{$ADD_CART_BUTTON|replace:'btn ':'mb-2 btn '}
 							{* Ausblenden der Links, wenn Modul Kundenerinnerung aktiviert und Lagerbestand kleiner 0 ist *}

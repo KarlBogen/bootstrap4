@@ -5,7 +5,7 @@
 		{foreach name=aussen item=module_data from=$module_content}
 		<div class="listingbox col-sm-6 col-md-4{if $smarty.const.BS4_FULLCONTENT == 'true'} col-lg-3{/if} mb-2">
 			<div class="card h-100">
-				<a class="prod-link" href="{$module_data.PRODUCTS_LINK}"></a>
+				<a class="prod-link" href="{$module_data.PRODUCTS_LINK}" aria-label="{$smarty.const.TEXT_INFO_DETAILS}"></a>
 				<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
 	            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
 	            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
@@ -78,7 +78,7 @@
            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
-			<a class="prod-link" href="{$module_data.PRODUCTS_LINK}"></a>
+			<a class="prod-link" href="{$module_data.PRODUCTS_LINK}" aria-label="{$smarty.const.TEXT_INFO_DETAILS}"></a>
             <div class="card-body col-md-3 text-center">
 				<div class="lr_image">
 					{if $module_data.PRODUCTS_IMAGE != ''}

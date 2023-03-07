@@ -76,7 +76,7 @@ function smarty_function_traffic_light($params, &$smarty) {
 		return $html;
 	}
 
-	$html = '<span class="traffic" data-toggle="tooltip" title="'.$stock_txt.'" aria-label="'.$stock_txt.'">'."\n";;
+	$html = '<span class="traffic" data-toggle="tooltip" title="'.$stock_txt.'" aria-label="'.$stock_txt.'">'."\n";
 	$html .= $show_stocktext ? ($modul === 'info' ? '<strong>'.BS4_MODULE_TRAFFIC_LIGHTS_STOCK.':&nbsp;</strong>' : BS4_MODULE_TRAFFIC_LIGHTS_STOCK.': ') : '';
 	if ($style != 't' && $style != 'ts') {
 		foreach ($lights as $light) {

@@ -4,7 +4,7 @@
 	<div class="box_last_viewed card mb-4">
 		<div class="box_header card-header">{#heading_last_viewed#}</div>
 		<div class="position-relative over-hidden">
-		<a class="prod-link" href="{$box_content.PRODUCTS_LINK}"></a>
+		<a class="prod-link" href="{$box_content.PRODUCTS_LINK}" aria-label="{$smarty.const.TEXT_INFO_DETAILS}"></a>
 		<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
 	           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
 	           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $box_content.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
