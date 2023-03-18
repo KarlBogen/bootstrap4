@@ -244,7 +244,7 @@ if (BS4_ADVANCED_JS_VALIDATION == 'true' && (strpos($PHP_SELF, FILENAME_CREATE_A
 	$(function () {
 		var key, hasWarnings;
 		var classWarnings = "text-danger";
-		var strWarnings = $("#create_account .alert-warning").html();
+		var strWarnings = $("#create_account .alert-danger").html();
 		var warnings = {
 <?php
 	if (defined('ENTRY_GENDER_ERROR')) echo '			"' . html_entity_decode(ENTRY_GENDER_ERROR) . '" : "gender",' . PHP_EOL;
@@ -286,7 +286,7 @@ if (BS4_ADVANCED_JS_VALIDATION == 'true' && (strpos($PHP_SELF, FILENAME_CREATE_A
             if (typeof strWarnings != "undefined" && strWarnings.indexOf(key) != -1) {
                 $("#create_account [name='" + warnings[key] + "']").parent().append('<div class="create-account-warning-text" style="width: 95%; float: left;">' + key + '</div>').addClass(classWarnings);
                 if (hasWarnings != 1) {
-                    $("#create_account .alert-warning").css("display", "none");
+                    $("#create_account .alert-danger").css("display", "none");
                     $("#create_account [name='password'], #create_account [name='confirmation'], #create_account [name='vvcode']").parent().addClass(classWarnings);
                 }
                 hasWarnings = 1;

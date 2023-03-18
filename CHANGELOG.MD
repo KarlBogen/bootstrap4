@@ -1,6 +1,6 @@
 UNRELEASED
 
-
+- Fehler in der erweiterte Validation Registrierungsformular behoben
 
 1.2.13 [07.03.2023]
 - Verbesserung der Barrierefreiheit
