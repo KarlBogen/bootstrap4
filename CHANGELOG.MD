@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Kategorie-Listing h1- statt h3-tags für die Kategorie-Überschrift
 - Fehler in der erweiterten Validation Registrierungsformular behoben und entsprechende Dateien angepasst
 
 1.2.13 [07.03.2023]

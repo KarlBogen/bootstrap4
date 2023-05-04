@@ -6,9 +6,9 @@
 		{include file="`$smarty.const.CURRENT_TEMPLATE`/module/includes/slider.html"}
 	{/if}
 	{if isset($CATEGORIES_HEADING_TITLE) && $CATEGORIES_HEADING_TITLE != ''}
-	  <h3 class="card p-2 bg-h">{$CATEGORIES_HEADING_TITLE}</h3>
+	  <h1 class="card p-2 bg-h">{$CATEGORIES_HEADING_TITLE}</h1>
 	{else}
-	  <h3 class="card p-2 bg-h">{$CATEGORIES_NAME}</h3>
+	  <h1 class="card p-2 bg-h">{$CATEGORIES_NAME}</h1>
 	{/if}
 	{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 	{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')
