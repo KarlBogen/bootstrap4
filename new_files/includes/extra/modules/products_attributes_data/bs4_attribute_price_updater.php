@@ -24,7 +24,7 @@ if (defined('BS4_ATTR_PRICE_UPDATER') && BS4_ATTR_PRICE_UPDATER == 'true') {
       [
         'pid'          => (int)$product->data['products_id'],
         'gprice'       => $products_price,
-        'oprice'       => $xtPrice->xtcFormat($xtPrice->xtcAddTax($xtPrice->getPprice((int)$product->data['products_id']), $xtPrice->TAX[$product->data['products_tax_class_id']]), false),
+        'oprice'       => $xtPrice->xtcFormat($xtPrice->xtcAddTax($xtPrice->getPprice((int)$product->data['products_id']), $product->data['products_tax_class_id'] != 0 ? $xtPrice->TAX[$product->data['products_tax_class_id']] : 0), false),
         'cleft'        => $xtPrice->currencies[$_SESSION['currency']]['symbol_left'],
         'cright'       => $xtPrice->currencies[$_SESSION['currency']]['symbol_right'],
         'prefix'       => $products_options['price_prefix'],
