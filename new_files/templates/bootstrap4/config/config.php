@@ -114,6 +114,7 @@
 	defined('BS4_STARTPAGE_BOX_CURRENCIES') or define('BS4_STARTPAGE_BOX_CURRENCIES', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_STARTPAGE_BOX_SHIPPING_COUNTRY') or define('BS4_STARTPAGE_BOX_SHIPPING_COUNTRY', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_STARTPAGE_BOX_INFOBOX') or define('BS4_STARTPAGE_BOX_INFOBOX', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
+	defined('BS4_STARTPAGE_BOX_HISTORY') or define('BS4_STARTPAGE_BOX_HISTORY', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_STARTPAGE_BOX_TRUSTEDSHOPS') or define('BS4_STARTPAGE_BOX_TRUSTEDSHOPS', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	// Boxen auf anderen Seiten (nicht Startseite)
 	defined('BS4_NOT_STARTPAGE_BOX_CATEGORIES') or define('BS4_NOT_STARTPAGE_BOX_CATEGORIES', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
@@ -129,6 +130,7 @@
 	defined('BS4_NOT_STARTPAGE_BOX_CURRENCIES') or define('BS4_NOT_STARTPAGE_BOX_CURRENCIES', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY') or define('BS4_NOT_STARTPAGE_BOX_SHIPPING_COUNTRY', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_NOT_STARTPAGE_BOX_INFOBOX') or define('BS4_NOT_STARTPAGE_BOX_INFOBOX', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
+	defined('BS4_NOT_STARTPAGE_BOX_HISTORY') or define('BS4_NOT_STARTPAGE_BOX_HISTORY', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS') or define('BS4_NOT_STARTPAGE_BOX_TRUSTEDSHOPS', 'true'); // anzeigen = 'true', nicht anzeigen = 'false'
 	defined('BS4_HIDE_ALL_BOXES') or define('BS4_HIDE_ALL_BOXES', 'false'); // ausblenden = 'true', anzeigen = 'false'
 

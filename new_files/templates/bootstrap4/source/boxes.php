@@ -65,6 +65,7 @@ $fullcontent = array(FILENAME_CHECKOUT_SHIPPING,
 		$fullcontent[] = FILENAME_PRODUCTS_NEW;
 		if (basename($PHP_SELF) == FILENAME_DEFAULT && isset($_GET['cPath'])) {
 			$smarty->assign('fullcontent', true);
+			defined('BS4_FULLCONTENT') or define('BS4_FULLCONTENT', 'true');
 		}
 	}
 

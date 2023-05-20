@@ -1,5 +1,9 @@
 UNRELEASED
 
+
+
+1.2.14 [20.05.2023]
+- Fehler Fullcontent in Produktlisten behoben
 - PHP-Warnung, wenn Produkt Steuer-ID "0" hat in Attribute-Price-Updater behoben
 - Kategorie-Listing h1- statt h3-tags für die Kategorie-Überschrift
 - Fehler in der erweiterten Validation Registrierungsformular behoben und entsprechende Dateien angepasst

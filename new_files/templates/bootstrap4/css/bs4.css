@@ -140,7 +140,7 @@ ul#categorymenu li a {
 		margin-left: 15px;
 		margin-right: 15px;
 	}
-	.listingbox {
+	.listingbox, .carousel .cols, .cat_show .cat {
 		margin: 0 auto;
 		max-width: 255px;
 	}
