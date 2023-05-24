@@ -166,7 +166,7 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_BS_NAME_LINES_INFO' => 'Number of lines that the article name should occupy (0 = auto).',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_BOXES' => 'Boxes',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOXES' => 'Boxes on the start page',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOXES' => 'Boxes on the start page<br /><span style="font-size:10px">Note: Please set fullcontent in the "Views" tab!</span>',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_CATEGORIES' => 'Box Categoriesmenu:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_CATEGORIES_INFO' => 'Should the box category menu be displayed on the start page in the left column?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_ADD_QUICKIE' => 'Box Quick purchase:',
@@ -201,7 +201,7 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_HISTORY_INFO' => 'Should the box Ordering information be displayed on the start page in the left column??',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_TRUSTEDSHOPS' => 'Box Trusted Shops:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_TRUSTEDSHOPS_INFO' => 'Should the box Trusted Shops be displayed on the start page in the left column?',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOXES' => 'Boxes not on the start page',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOXES' => 'Boxes not on the start page<br /><span style="font-size:10px">Note: Please set fullcontent in the "Views" tab!</span>',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CATEGORIES' => 'Box Categoriesmenu:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CATEGORIES_INFO' => 'Should the box category menu be displayed on other pages (not start page) in the left column?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_ADD_QUICKIE' => 'Box Quick purchase:',

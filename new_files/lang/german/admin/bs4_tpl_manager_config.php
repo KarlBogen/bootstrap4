@@ -166,7 +166,7 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_CAROUSEL_BS_NAME_LINES_INFO' => 'Anzahl der Zeilen, die der Artikelname belegen soll (0 = auto).',
 
 	'TEXT_BS4_TPL_MANAGER_CONFIG_TAB_BOXES' => 'Boxen',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOXES' => 'Boxen auf der Startseite',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOXES' => 'Boxen auf der Startseite<br /><span style="font-size:10px">Hinweis: Fullcontent bitte im Reiter "Ansicht" einstellen!</span>',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_CATEGORIES' => 'Box Kategoriemen&uuml;:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_CATEGORIES_INFO' => 'Soll in der linken Spalte die Box Kategoriemen&uuml; auf der Startseite angezeigt werden?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_ADD_QUICKIE' => 'Box Schnellkauf:',
@@ -201,7 +201,7 @@ $lang_array = array(
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_HISTORY_INFO' => 'Soll in der linken Spalte die Box Bestell&uuml;bersicht auf der Startseite angezeigt werden?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_TRUSTEDSHOPS' => 'Box Trusted Shops:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_STARTPAGE_BOX_TRUSTEDSHOPS_INFO' => 'Soll in der linken Spalte die Box Trusted Shops auf der Startseite angezeigt werden?',
-	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOXES' => 'Boxen auf anderen Seiten (nicht auf der Startseite)',
+	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOXES' => 'Boxen auf anderen Seiten (nicht auf der Startseite)<br /><span style="font-size:10px">Hinweis: Fullcontent bitte im Reiter "Ansicht" einstellen!</span>',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CATEGORIES' => 'Box Kategoriemen&uuml;:',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_CATEGORIES_INFO' => 'Soll in der linken Spalte die Box Kategoriemen&uuml; auf anderen Seiten (nicht Startseite) angezeigt werden?',
 	'TEXT_BS4_TPL_MANAGER_CONFIG_NOT_STARTPAGE_BOX_ADD_QUICKIE' => 'Box Schnellkauf:',
