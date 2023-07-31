@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Update Bootstrap-Framework von 4.6.1 zu 4.6.2
 
 
 1.2.14 [20.05.2023]

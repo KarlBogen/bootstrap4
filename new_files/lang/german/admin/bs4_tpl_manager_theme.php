@@ -215,7 +215,7 @@ $lang_array = array(
 		<strong>Hinweis:</strong> Manche Button werden an mehreren Stellen im Shop benutzt!',
 
 	// Default Bootstrap 4 font-family
-	'BS4_DEFAULT_FONT_FAMILY' => '$font-family-sans-serif: "%s", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;',
+	'BS4_DEFAULT_FONT_FAMILY' => '$font-family-sans-serif: "%s", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;',
 
 	// Meldungen
 	'BS4_TPL_MANAGER_THEME_ERROR' => 'Der Bootstrap 4 Template-Manager kann nicht wie gew&uuml;nscht genutzt werden!<br />
