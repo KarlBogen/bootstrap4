@@ -24,11 +24,13 @@
 								<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
 								<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							</picture>
+              <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{else}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
 							<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+              <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{/if}
 				{elseif $slider.IMAGE_IMG != ''}
@@ -43,7 +45,7 @@
 						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 					{/if}
 				{/if}
-				<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
+				{*<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>*} {*put this inside a-tag, 07-2023, noRiddle*}
 			</div>
 			{/foreach}
 		</div>
@@ -97,11 +99,13 @@
 								<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
 								<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							</picture>
+              <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{else}
 						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
 							<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
 							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+              <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{/if}
 				{elseif $slider.IMAGE_IMG != ''}
@@ -116,7 +120,7 @@
 						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
 					{/if}
 				{/if}
-				<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
+				{*<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>*} {*put this inside a-tag, 07-2023, noRiddle*}
 			</div>
 			{/foreach}
 		</div>
