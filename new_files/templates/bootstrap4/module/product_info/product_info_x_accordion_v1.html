@@ -313,7 +313,7 @@
 						{foreach  key=i item=more_images_data from=$more_images}
 							{if $more_images_data.PRODUCTS_IMAGE != ''}
 								<div class="col-3 d-flex justify-content-center align-items-center mb-2">
-									<a class="cbimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+									<a class="cbimages easyimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
 										{if $smarty.const.PICTURESET_ACTIVE === true}
 											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
 										{else}
