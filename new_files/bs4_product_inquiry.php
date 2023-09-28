@@ -49,7 +49,7 @@
 		content_heading,
 		content_text
 		FROM ".TABLE_CONTENT_MANAGER."
-		WHERE content_group = 998
+		WHERE content_group = ".BS4_PRODUCT_INQUIRY_CONTENT_GROUP."
 		AND languages_id = '".(int)$_SESSION['languages_id']."'");
 			
 	$shop_content_data = xtc_db_fetch_array($shop_content_query);

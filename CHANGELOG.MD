@@ -1,5 +1,9 @@
 UNRELEASED
 
+
+
+1.2.15 [28.09.2023]
+- Content für Module "Billiger gesehen" und "Frage zum Artikel" - "content_group" wird jetzt dynamisch gesetzt
 - Bei mehreren Produkt-Bildern konnte man im Popup (Modal) nicht blättern
 - Slider, "carousel-caption" angepasst - siehe https://www.modified-shop.org/forum/index.php?topic=40190.msg399105#msg399105
 - Update Bootstrap-Framework von 4.6.1 zu 4.6.2

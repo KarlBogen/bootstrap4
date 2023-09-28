@@ -22,7 +22,7 @@ class bs4_tpl_manager {
 
 	public function __construct() {
 		$this->code = 'bs4_tpl_manager';
-		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.14';
+		$this->title = MODULE_BS4_TPL_MANAGER_TEXT_TITLE . ' - Version: 1.2.15';
 		$this->description = '';
 		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) $this->description .= '<a class="button btnbox but_green" style="text-align:center;" onclick="this.blur();" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=update') . '">Update</a><br /><br />';
         $bs4_tpl = defined('BS4_CURRENT_TEMPLATE') && BS4_CURRENT_TEMPLATE != '' ? BS4_CURRENT_TEMPLATE : 'bootstrap4';
@@ -325,7 +325,9 @@ class bs4_tpl_manager {
 			$values_config[] = "('BS4_CUSTOMERS_REMIND', 'false')";
 			$values_config[] = "('BS4_CUSTOMERS_REMIND_SENDMAIL', 'false')";
 			$values_config[] = "('BS4_CHEAPLY_SEE', 'false')";
+			$values_config[] = "('BS4_CHEAPLY_SEE_CONTENT_GROUP', '')";
 			$values_config[] = "('BS4_PRODUCT_INQUIRY', 'false')";
+			$values_config[] = "('BS4_PRODUCT_INQUIRY_CONTENT_GROUP', '')";
 			$values_config[] = "('BS4_ATTR_PRICE_UPDATER', 'false')";
 			$values_config[] = "('BS4_ATTR_PRICE_UPDATER_UPDATE_PRICE', 'true')";
 			$values_config[] = "('BS4_AGI_REDUCE_CART', 'false')";
@@ -649,27 +651,48 @@ class bs4_tpl_manager {
 		} else {
 			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ERR.TABLE_BS4_CUSTOMERS_REMIND, 'error');
 		}
+
+		if (!$this->install_additional_modules_content())
+		{
+			$install = false;
+		}
+
+		return $install;
+	}
+
+	protected function install_additional_modules_content($x = 2) {
+		global $messageStack;
+		$install = true;
+
 		// Content for modules product inquiry
-		if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`) VALUES
-		(0, 0, '', 1, 'Question to article', 'Question to article', 'Do you have a question about this product? Please fill out the form, we will try to answer your question as soon as possible.<br />\r\n<br />\r\nThis Text can you edit under <b>Content-Manager</b>!', 0, 0, '', 0, 998, 1)"))
-		{
-			$install = false;
+		if ($x <= 2) {
+			if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`)
+				SELECT 0, 0, '', 1, 'Question to article', 'Question to article', 'Do you have a question about this product? Please fill out the form, we will try to answer your question as soon as possible.<br />\r\n<br />\r\nThis Text can you edit under <b>Content-Manager</b>!', 0, 0, '', 0, MAX(content_group)+1, 1 FROM " . TABLE_CONTENT_MANAGER))
+			{
+				$install = false;
+			} else {
+				xtc_db_query("UPDATE " . TABLE_BS4_TPL_MANAGER_CONFIG . " SET config_value = (SELECT MAX(content_group) FROM content_manager) WHERE config_key = 'BS4_PRODUCT_INQUIRY_CONTENT_GROUP'");
+			}
+			if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`)
+				SELECT 0, 0, '', 2, 'Frage zum Artikel', 'Frage zum Artikel', 'Sie haben eine Frage zu diesem Artikel? Bitte füllen Sie das Formular aus, wir versuchen Ihre Frage baldmöglichst zu beantworten.<br />\r\n<br />\r\nDiesen Text können sie bequem mit dem <b>Content-Manager</b> bearbeiten!', 0, 0, '', 0, MAX(content_group), 1 FROM " . TABLE_CONTENT_MANAGER))
+			{
+				$install = false;
+			}
 		}
-		if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`) VALUES
-		(0, 0, '', 2, 'Frage zum Artikel', 'Frage zum Artikel', 'Sie haben eine Frage zu diesem Artikel? Bitte füllen Sie das Formular aus, wir versuchen Ihre Frage baldmöglichst zu beantworten.<br />\r\n<br />\r\nDiesen Text können sie bequem mit dem <b>Content-Manager</b> bearbeiten!', 0, 0, '', 0, 998, 1)"))
-		{
-			$install = false;
-		}
-		// Content for modules cheaply see
-		if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`) VALUES
-		(0, 0, '', 1, 'More cheaply seen', 'More cheaply seen', 'Did you see the article at much a favourable price? Please you fill out the form, we try the price to undercut.<br />\r\n<br />\r\nThis Text can you edit under <b>Content-Manager</b>!', 0, 0, '', 0, 999, 1)"))
-		{
-			$install = false;
-		}
-		if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`) VALUES
-		(0, 0, '', 2, 'Billiger gesehen', 'Billiger gesehen', 'Haben Sie den Artikel zu einem viel günstigeren Preis gesehen? Bitte füllen Sie das Formular aus, wir versuchen den Preis zu unterbieten.<br />\r\n<br />\r\nDiesen Text können sie bequem mit dem <b>Content-Manager</b> bearbeiten!', 0, 0, '', 0, 999, 1)"))
-		{
-			$install = false;
+		if ($x >= 2) {
+			// Content for modules cheaply see
+			if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`)
+				SELECT 0, 0, '', 1, 'More cheaply seen', 'More cheaply seen', 'Did you see the article at much a favourable price? Please you fill out the form, we try the price to undercut.<br />\r\n<br />\r\nThis Text can you edit under <b>Content-Manager</b>!', 0, 0, '', 0, MAX(content_group)+1, 1 FROM " . TABLE_CONTENT_MANAGER))
+			{
+				$install = false;
+			} else {
+				xtc_db_query("UPDATE " . TABLE_BS4_TPL_MANAGER_CONFIG . " SET config_value = (SELECT MAX(content_group) FROM content_manager) WHERE config_key = 'BS4_CHEAPLY_SEE_CONTENT_GROUP'");
+			}
+			if (!xtc_db_query("INSERT INTO " . TABLE_CONTENT_MANAGER . " (`categories_id`, `parent_id`, `group_ids`, `languages_id`, `content_title`, `content_heading`, `content_text`, `sort_order`, `file_flag`, `content_file`, `content_status`, `content_group`, `content_delete`)
+				SELECT 0, 0, '', 2, 'Billiger gesehen', 'Billiger gesehen', 'Haben Sie den Artikel zu einem viel günstigeren Preis gesehen? Bitte füllen Sie das Formular aus, wir versuchen den Preis zu unterbieten.<br />\r\n<br />\r\nDiesen Text können sie bequem mit dem <b>Content-Manager</b> bearbeiten!', 0, 0, '', 0, MAX(content_group), 1 FROM " . TABLE_CONTENT_MANAGER))
+			{
+				$install = false;
+			}
 		}
 
 		if($install == true){
@@ -712,9 +735,9 @@ class bs4_tpl_manager {
 				// Zusatzmodule entfernen
 				xtc_db_query("DROP TABLE " . TABLE_BS4_CUSTOMERS_REMIND);
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_REMOVED.TABLE_BS4_CUSTOMERS_REMIND, 'success');
-				xtc_db_query("DELETE FROM " . TABLE_CONTENT_MANAGER . " WHERE content_group = 998");
+				xtc_db_query("DELETE FROM " . TABLE_CONTENT_MANAGER . " WHERE content_group = ". BS4_CHEAPLY_SEE_CONTENT_GROUP);
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ENTRY_REMOVED.TABLE_CONTENT_MANAGER, 'success');
-				xtc_db_query("DELETE FROM " . TABLE_CONTENT_MANAGER . " WHERE content_group = 999");
+				xtc_db_query("DELETE FROM " . TABLE_CONTENT_MANAGER . " WHERE content_group = ". BS4_PRODUCT_INQUIRY_CONTENT_GROUP);
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ENTRY_REMOVED.TABLE_CONTENT_MANAGER, 'success');
 				// später hinzugefügte Datenbankeinträge löschen
 				$this->remove_updates_and_news();
@@ -744,7 +767,27 @@ class bs4_tpl_manager {
 		if(!$bs4_bs4_banner_settings_exists) {
 			xtc_db_query("ALTER TABLE ".TABLE_CATEGORIES." ADD `bs4_banner_settings` VARCHAR(255) NOT NULL");
 		}
-	    return true;
+		// Variable content_group dynamisch setzen
+		if (!defined('BS4_PRODUCT_INQUIRY_CONTENT_GROUP') || empty(BS4_PRODUCT_INQUIRY_CONTENT_GROUP)) {
+			$content_group_query = xtc_db_query("SELECT content_group FROM ".TABLE_CONTENT_MANAGER." WHERE content_title = 'Question to article' OR content_title = 'Frage zum Artikel'");
+			$content_group = xtc_db_fetch_array($content_group_query);
+			if (!empty($content_group['content_group'])) {
+				xtc_db_query("UPDATE " . TABLE_BS4_TPL_MANAGER_CONFIG . " SET config_value = '".$content_group['content_group']."' WHERE config_key = 'BS4_PRODUCT_INQUIRY_CONTENT_GROUP'");
+			} else {
+				$this->install_additional_modules_content(1);
+			}
+		}
+		if (!defined('BS4_CHEAPLY_SEE_CONTENT_GROUP') || empty(BS4_CHEAPLY_SEE_CONTENT_GROUP)) {
+			$content_group_query = xtc_db_query("SELECT content_group FROM ".TABLE_CONTENT_MANAGER." WHERE content_title = 'More cheaply seen' OR content_title = 'Billiger gesehen'");
+			$content_group = xtc_db_fetch_array($content_group_query);
+			if (!empty($content_group['content_group'])) {
+				xtc_db_query("UPDATE " . TABLE_BS4_TPL_MANAGER_CONFIG . " SET config_value = '".$content_group['content_group']."' WHERE config_key = 'BS4_CHEAPLY_SEE_CONTENT_GROUP'");
+			} else {
+				$this->install_additional_modules_content(3);
+			}
+		}
+
+    return true;
 	}
 
 	protected function remove_updates_and_news()

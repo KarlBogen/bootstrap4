@@ -53,7 +53,7 @@
 		content_heading,
 		content_text
 		FROM ".TABLE_CONTENT_MANAGER."
-		WHERE content_group = 999
+		WHERE content_group = ".BS4_CHEAPLY_SEE_CONTENT_GROUP."
 		AND languages_id = '".(int)$_SESSION['languages_id']."'");
 			
 	$shop_content_data = xtc_db_fetch_array($shop_content_query);
@@ -78,7 +78,7 @@
 	$smarty->assign('HEADING_FORMULAR', CHEAPLY_SEE_HEADING_FORMULAR);
 	
 	if($_SESSION['customers_status']['customers_status_show_price'] != 0) {
-		$tax_rate = $xtPrice->TAX[$products->data['products_tax_class_id']];
+    $tax_rate = isset($xtPrice->TAX[$products->data['products_tax_class_id']]) ? $xtPrice->TAX[$products->data['products_tax_class_id']] : 0;
 		if($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
 			$smarty->assign('PRODUCTS_TAX_INFO', sprintf(TAX_INFO_INCL, $tax_rate.' %'));
 		} 
