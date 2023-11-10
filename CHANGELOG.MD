@@ -1,6 +1,6 @@
 UNRELEASED
 
-
+- Font-Fehler in Theme "Litera" behoben
 
 1.2.15 [28.09.2023]
 - Content für Module "Billiger gesehen" und "Frage zum Artikel" - "content_group" wird jetzt dynamisch gesetzt
