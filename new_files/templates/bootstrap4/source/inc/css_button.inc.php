@@ -132,7 +132,7 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
 	// Mehrfachnutzung Box Bestsellers, alle Produktlisten, Neue Artikel, Warenkorb -> Produkte
     'button_wishlist_now'	    	=> array('Text' => '',									'icon' => 'fa fa-heart',			'iconposition' => 'left',		'Class' => 'btn btn-wish btn-outline-info btn-sm'),
 	// Mehrfachnutzung Bewertungen, Produktdetailseiten
-    'button_write_review'			=> array('Text' => PRODUCTS_REVIEW_LINK,				'icon' => 'fa fa-edit',            	'iconposition' => 'left',		'Class' => 'btn btn-info btn-xs btn-block'),
+    'button_write_review'			=> array('Text' => PRODUCTS_REVIEW_LINK_TITLE,				'icon' => 'fa fa-edit',            	'iconposition' => 'left',		'Class' => 'btn btn-info btn-xs btn-block'),
 	// Warenkorb Gutscheine
     'create_account'				=> array('Text' => $alt,								'icon' => '',				     	'iconposition' => 'right',		'Class' => 'btn btn-secondary btn-sm btn-block'),
 	// alle Produktdetailseiten
@@ -150,7 +150,7 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
 	// Box Bestellhistorie
     'order_history'					=> array('Text' => $alt,								'icon' => '',			        	'iconposition' => 'left',		'Class' => 'btn btn-secondary btn-sm w-100" style="white-space:normal;'),
 	// alle Produktdetailseiten
-    'print_product'					=> array('Text' => PRINTVIEW_INFO,						'icon' => 'fa fa-print',           	'iconposition' => 'left',		'Class' => 'btn btn-info btn-xs btn-block'),
+    'print_product'					=> array('Text' => PRINTVIEW_INFO_TITLE,						'icon' => 'fa fa-print',           	'iconposition' => 'left',		'Class' => 'btn btn-info btn-xs btn-block'),
     'print_product_small'			=> array('Text' => '',									'icon' => 'fa fa-print',           	'iconposition' => 'left',		'Class' => 'btn btn-outline-info btn-sm'),
 	// Responsivmenü
     'responsive_back'				=> array('Text' => '',									'icon' => 'fa fa-chevron-left',		'iconposition' => 'left',		'Class' => 'btn btn-light'),

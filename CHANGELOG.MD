@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Konstanten in css_button.inc.php korrigiert
 - Font-Fehler in Theme "Litera" behoben
 
 1.2.15 [28.09.2023]
