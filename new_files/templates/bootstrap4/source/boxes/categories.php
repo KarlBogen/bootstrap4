@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: categories.php 13588 2021-06-15 16:10:06Z GTB $
+   $Id: categories.php 14628 2022-07-06 10:12:08Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -85,7 +85,6 @@ if ((!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cac
     if ($cPath) {
       $new_path = '';
       $id = explode('_', $cPath);
-      reset($id);
       foreach ($id as $key => $value) {
         unset ($prev_id);
         unset ($first_id);

@@ -5,7 +5,8 @@
 <div id="product_info" itemscope itemtype="http://schema.org/Product">
 	{$FORM_ACTION}
 		<h1 class="card p-2 bg-h" itemprop="name">{if $PRODUCTS_HEADING_TITLE != ''}{$PRODUCTS_HEADING_TITLE}{else}{$PRODUCTS_NAME}{/if}{if isset($PRODUCTS_PRINT_LAYER)}<span class="print-button position-absolute">{$PRODUCTS_PRINT_LAYER|regex_replace:"/\">(.*?)</":"\">{$dummy|bs4button:'print_product_small'}<"}</span>{/if}</h1>
-		{if $error_message != ''}<div class="alert alert-danger">{$error_message}</div>{/if}
+		{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
+	  {if $success_message}<div class="alert alert-success">{$success_message}</div>{/if}
 		<div id="product_details" class="row clearfix">
 			<div class="pd_imagebox col-md-6 col-lg-5 mb-4">
 			{if $smarty.const.BS4_USE_EASYZOOM == 'true'}
@@ -36,13 +37,13 @@
 						{foreach  key=i item=more_images_data from=$more_images}
 							{if $more_images_data.PRODUCTS_IMAGE != ''}
 								<div class="col-3 mb-3">
-									<a class="easyimages d-block text-center" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="{$zaehl}" title="{$PRODUCTS_NAME|onlytext}" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}">
+									<a class="easyimages d-block text-center" href="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"original_"}" data-standard="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}" data-image-id="{$zaehl}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" data-title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"popup_"}">
 										{if $smarty.const.PICTURESET_ACTIVE === true}
-											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"mini_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"mini_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" />
 										{else}
-											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" />
 										{/if}
-										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
+										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" /></noscript>
 									</a>
 								</div>
                            		{assign var=zaehl value=$zaehl+1}
@@ -69,13 +70,13 @@
 							{foreach  key=i item=more_images_data from=$more_images}
 								{if $more_images_data.PRODUCTS_IMAGE != ''}
 									<div class="col-3 mb-3">
-										<a class="cbimages easyimages d-block text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+										<a class="cbimages easyimages d-block text-center" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
 											{if $smarty.const.PICTURESET_ACTIVE === true}
-												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"mini_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"mini_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" />
 											{else}
-												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+												<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" />
 											{/if}
-											<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
+											<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" /></noscript>
 										</a>
 									</div>
                             		{assign var=zaehl value=$zaehl+1}
@@ -284,13 +285,13 @@
 						{foreach  key=i item=more_images_data from=$more_images}
 							{if $more_images_data.PRODUCTS_IMAGE != ''}
 								<div class="col-3 d-flex justify-content-center align-items-center mb-2">
-									<a class="cbimages easyimages" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
+									<a class="cbimages easyimages" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" href="#" data-image-id="{$zaehl}" data-toggle="modal" data-title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" data-image="{$more_images_data.PRODUCTS_IMAGE|replace:"info_images":"popup_images"}" data-target="#modal">
 										{if $smarty.const.PICTURESET_ACTIVE === true}
-											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"midi_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" />
 										{else}
-											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+											<img class="lazyload img-fluid" src="data:," data-src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" />
 										{/if}
-										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></noscript>
+										<noscript><img class="img-fluid" src="{$more_images_data.PRODUCTS_IMAGE|replace:"info_":"thumbnail_"}" alt="{if $more_images_data.IMAGE_ALT != ''}{$more_images_data.IMAGE_ALT|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" title="{if $more_images_data.IMAGE_TITLE != ''}{$more_images_data.IMAGE_TITLE|onlytext}{else}{$PRODUCTS_NAME|onlytext}{/if}" /></noscript>
 									</a>
 								</div>
                            		{assign var=zaehl value=$zaehl+1}

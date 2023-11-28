@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: specials.php 13566 2021-05-20 12:16:27Z GTB $
+   $Id: specials.php 15560 2023-11-13 13:13:33Z GTB $   
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -16,7 +16,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-defined('SPECIALS_CONDITIONS_S') or define('SPECIALS_CONDITIONS_S', 'AND s.status = \'1\'');
+defined('SPECIALS_CONDITIONS_S') or define('SPECIALS_CONDITIONS_S', 'AND s.status = \'1\' AND (now() >= s.start_date OR s.start_date IS NULL)');
 
 // include smarty
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
@@ -38,7 +38,7 @@ $specials_query = xtc_db_query("SELECT ".$product->default_select.",
                                        ON c.categories_id = p2c.categories_id
                                           AND c.categories_status = 1
                                               ".CATEGORIES_CONDITIONS_C."
-                                  JOIN ".TABLE_SPECIALS." s
+                                  JOIN ".TABLE_SPECIALS." s 
                                        ON p.products_id = s.products_id
                                           ".SPECIALS_CONDITIONS_S."
                                  WHERE p.products_status = '1'
@@ -50,10 +50,12 @@ if (xtc_db_num_rows($specials_query) > 0) {
   $specials = xtc_db_fetch_array($specials_query);
 
   // set cache id
-  $cache_id = md5('lID:'.$_SESSION['language'].'|curr:'.$_SESSION['currency'].'|pID:'.$specials['products_id']);
+  $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|curr:'.$_SESSION['currency'].'|pID:'.$specials['products_id'].'|country:'.((isset($_SESSION['country'])) ? $_SESSION['country'] : ((isset($_SESSION['customer_country_id'])) ? $_SESSION['customer_country_id'] : STORE_COUNTRY)));
 
   if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_specials.html', $cache_id) || !$cache) {
-    $box_smarty->assign('box_content', $product->buildDataArray($specials));
+    $box_content = $product->buildDataArray($specials);
+    $box_content['EXPIRES_DATE'] = $box_content['PRODUCTS_EXPIRES'] = ($specials['expires_date'] != '0000-00-00 00:00:00') ? xtc_date_short($specials['expires_date']) : '0';    
+    $box_smarty->assign('box_content', $box_content);
     $box_smarty->assign('SPECIALS_LINK', xtc_href_link(FILENAME_SPECIALS));
   }
 }
@@ -65,4 +67,3 @@ if (!$cache) {
 }
 
 $smarty->assign('box_SPECIALS', $box_specials);
-?>

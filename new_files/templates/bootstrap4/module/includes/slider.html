@@ -18,18 +18,18 @@
 			<div class="carousel-item{if $smarty.foreach.aussen.first} active{/if}">
 				{if $slider.LINK != ''}
 					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
-						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+						<a title="{$slider.IMAGE_TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
 							<picture>
 								<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 								<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
-								<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+								<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
 							</picture>
               <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{else}
-						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
-							<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+						<a title="{$slider.IMAGE_TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+							<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
+							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}"></noscript>
               <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{/if}
@@ -38,11 +38,11 @@
 						<picture>
 							<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 							<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
-							<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
 						</picture>
 					{else}
-						<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+						<img class="lazyload lazypreload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
+						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}"></noscript>
 					{/if}
 				{/if}
 				{*<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>*} {*put this inside a-tag, 07-2023, noRiddle*}
@@ -93,18 +93,18 @@
 			<div class="carousel-item active">
 				{if $slider.LINK != ''}
 					{if isset($slider.IMAGE_SRC_MOBILE) && $slider.IMAGE_SRC_MOBILE != ''}
-						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+						<a title="{$slider.IMAGE_TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
 							<picture>
 								<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 								<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
-								<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+								<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
 							</picture>
               <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{else}
-						<a title="{$slider.TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
-							<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+						<a title="{$slider.IMAGE_TITLE}" href="{$slider.LINK}" {$slider.TARGET}>
+							<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
+							<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}"></noscript>
               <div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
 						</a>
 					{/if}
@@ -113,11 +113,11 @@
 						<picture>
 							<source media="(max-width:600px)" srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC_MOBILE}">
 							<source srcset="data:,1w" data-srcset="{$slider.IMAGE_SRC}">
-							<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
+							<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
 						</picture>
 					{else}
-						<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}">
-						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.TITLE|onlytext}" title="{$slider.TITLE|onlytext}"></noscript>
+						<img class="lazyload img-fluid" src="data:," data-src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}">
+						<noscript><img class="img-fluid" src="{$slider.IMAGE_SRC}" alt="{$slider.IMAGE_TITLE|onlytext}" title="{$slider.IMAGE_TITLE|onlytext}"></noscript>
 					{/if}
 				{/if}
 				{*<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>*} {*put this inside a-tag, 07-2023, noRiddle*}

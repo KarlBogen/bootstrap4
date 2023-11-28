@@ -27,7 +27,8 @@
 				{if $birthdate == '1'}
 					<div class="form-group stern clearfix">
 						<label>{#text_birthdate#}</label>
-						{$INPUT_DOB|replace:'<input':'<input class="form-control form-control-sm" aria-label="birthday"'}
+						{$INPUT_DOB|replace:'<input':'<input class="form-control form-control-sm" aria-label="birthday" aria-describedby="dateHelp"'}
+						<small id="dateHelp" class="form-text text-muted">{$TEXT_DOB_NOTE}</small>
 					</div>
 				{/if}
 				<div class="form-group stern clearfix">
@@ -51,7 +52,8 @@
 				{if $vat == '1'}
 					<div class="form-group stern clearfix">
 						<label>{#text_ustid#}</label>
-						{$INPUT_VAT|replace:"Nur":" Nur"|replace:'<input':'<input class="form-control form-control-sm" aria-label="ust id"'}
+						{$INPUT_VAT|replace:"Nur":" Nur"|replace:'<input':'<input class="form-control form-control-sm" aria-label="ust id" aria-describedby="vatHelp"'}
+						<small id="vatHelp" class="form-text text-muted">{$TEXT_VAT_NOTE}</small>
 					</div>
 				{/if}
 			</div>
@@ -122,13 +124,13 @@
 			<div class="card-body">
 				{if $INPUT_VVCODE || $VVIMG}
 					{if $VVIMG}
-						<div class="form-group stern clearfix">
+						<div class="vvcode_img form-group stern clearfix">
 							<label>{#text_sec_code#}</label><br />
 							{$VVIMG}
 						</div>
 					{/if}
 					{if $INPUT_VVCODE}
-						<div class="form-group stern clearfix">
+						<div class="vvcode_sec form-group stern clearfix">
 							<label>{#text_sec_code#}</label>
 							{$INPUT_VVCODE|replace:'<input':'<input class="form-control form-control-sm" aria-label="code"'}
 						</div>

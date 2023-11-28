@@ -79,12 +79,8 @@ if(!$module_smarty->is_cached(CURRENT_TEMPLATE.'/module/categories_list.html', $
 	$module_smarty->assign('module_content', $module_content);
 
 }
-// set cache ID
-if (!$cache) {
-	$module_categories = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/categories_list.html');
-} else {
-	$module_categories = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/categories_list.html', $cache_id);
-}
+
+$module_categories = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/categories_list.html', $cache_id);
 
 }
 ?>

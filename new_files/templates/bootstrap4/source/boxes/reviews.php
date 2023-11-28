@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: reviews.php 14481 2022-05-24 13:02:44Z GTB $
+   $Id: reviews.php 15560 2023-11-13 13:13:33Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -31,8 +31,8 @@ $cache_id = '';
 if ($product->isProduct() === true && $_SESSION['customers_status']['customers_status_write_reviews'] == '1') {
   
   // set cache id
-  $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|pID:'.$product->data['products_id']);
-
+  $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|pID:'.$product->data['products_id'].'|country:'.((isset($_SESSION['country'])) ? $_SESSION['country'] : ((isset($_SESSION['customer_country_id'])) ? $_SESSION['customer_country_id'] : STORE_COUNTRY)));
+  
   if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_reviews.html', $cache_id) || !$cache) {
     // display 'write a review' box
     $box_smarty->assign('REVIEWS_WRITE_REVIEW',BOX_REVIEWS_WRITE_REVIEW);
@@ -70,7 +70,7 @@ if ($product->isProduct() === true && $_SESSION['customers_status']['customers_s
                                   ".CATEGORIES_CONDITIONS_C."
                      WHERE p.products_status = '1'
                            ".PRODUCTS_CONDITIONS_P."
-                       AND r.reviews_status = '1'
+                           ".$reviews_status."
                   ORDER BY MD5(CONCAT(p.products_id, CURRENT_TIMESTAMP)) 
                      LIMIT 1";
   $reviews_query = xtc_db_query($reviews_query);
@@ -79,10 +79,10 @@ if ($product->isProduct() === true && $_SESSION['customers_status']['customers_s
     $reviews = xtc_db_fetch_array($reviews_query);
     
     // set cache id
-    $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|pID:'.($product->isProduct() === true ? $product->data['products_id'] : 0).'|rID:'.$reviews['reviews_id']);
-
-    if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_reviews.html', $cache_id) || !$cache) {
+    $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|pID:'.($product->isProduct() === true ? $product->data['products_id'] : 0).'|rID:'.$reviews['reviews_id'].'|country:'.((isset($_SESSION['country'])) ? $_SESSION['country'] : ((isset($_SESSION['customer_country_id'])) ? $_SESSION['customer_country_id'] : STORE_COUNTRY)));
     
+    if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_reviews.html', $cache_id) || !$cache) {
+
       // include needed functions
       require_once(DIR_FS_INC . 'xtc_break_string.inc.php');
 
@@ -110,7 +110,9 @@ if ($product->isProduct() === true && $_SESSION['customers_status']['customers_s
 
       if (defined('REVIEWS_PURCHASED_INFOS') && REVIEWS_PURCHASED_INFOS != '') {
         $shop_content_data = $main->getContentData(REVIEWS_PURCHASED_INFOS);
-        $box_smarty->assign('REVIEWS_NOTE', $main->getContentLink(REVIEWS_PURCHASED_INFOS, $shop_content_data['content_title'], $request_type, false));
+        if (count($shop_content_data) > 0) {
+          $box_smarty->assign('REVIEWS_NOTE', $main->getContentLink(REVIEWS_PURCHASED_INFOS, $shop_content_data['content_title'], $request_type, false));
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: last_viewed.php 13606 2021-07-01 10:44:58Z GTB $
+   $Id: last_viewed.php 15560 2023-11-13 13:13:33Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -23,7 +23,7 @@ if (isset($_SESSION['tracking']['products_history']) && count($_SESSION['trackin
   $random_last_viewed = xtc_rand(0, (count($_SESSION['tracking']['products_history']) - 1));
 
   // set cache id
-  $cache_id = md5('|curr:'.$_SESSION['currency'].'lID:'.$_SESSION['language'].'|csCS:'.$_SESSION['customers_status']['customers_status'].'|pID:'.$_SESSION['tracking']['products_history'][$random_last_viewed]);
+  $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|curr:'.$_SESSION['currency'].'|history:'.$_SESSION['tracking']['products_history'][$random_last_viewed].'|country:'.((isset($_SESSION['country'])) ? $_SESSION['country'] : ((isset($_SESSION['customer_country_id'])) ? $_SESSION['customer_country_id'] : STORE_COUNTRY)));
 
   if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html', $cache_id) || !$cache) {
 
@@ -67,4 +67,3 @@ if (isset($_SESSION['tracking']['products_history']) && count($_SESSION['trackin
 
   $smarty->assign('box_LAST_VIEWED', $box_last_viewed);
 }
-?>

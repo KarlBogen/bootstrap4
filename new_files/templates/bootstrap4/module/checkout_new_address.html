@@ -87,6 +87,17 @@
 					<label class="form-check-label">{#text_standard#}</label>
 				</div>
 				{/if}
+		    {if isset($CHECKBOX_EDIT_ADDRESS)}
+				<div class="form-group form-check">
+			    {$CHECKBOX_EDIT_ADDRESS|replace:'<input':'<input class="form-check-input"'}
+      		<label class="form-check-label" for="edit_address_book_id">{#text_edit_address_note#}</label>
+    		</div>
+    		{/if}
+		    {if isset($MAX_ADDRESS_NOTE)}
+    		<div class="errormessage alert alert-danger">
+      		{$MAX_ADDRESS_NOTE}
+    		</div>
+    		{/if}
 			</div>
 		</div>
 	</div>

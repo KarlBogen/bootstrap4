@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: best_sellers.php 13588 2021-06-15 16:10:06Z GTB $
+   $Id: best_sellers.php 15435 2023-08-21 09:59:20Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -23,7 +23,7 @@
 include(DIR_FS_BOXES_INC . 'smarty_default.php');
 
 // set cache id
-$cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|curr:'.$_SESSION['currency'].'|cID:'.$current_category_id);
+$cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|curr:'.$_SESSION['currency'].'|cID:'.$current_category_id.'|country:'.((isset($_SESSION['country'])) ? $_SESSION['country'] : ((isset($_SESSION['customer_country_id'])) ? $_SESSION['customer_country_id'] : STORE_COUNTRY)));
 
 if (MIN_DISPLAY_BESTSELLERS > 0 && (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id) || !$cache)) {
 	
@@ -74,7 +74,7 @@ if (MIN_DISPLAY_BESTSELLERS > 0 && (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/b
                                      AND c.categories_status = 1
                                      AND (c.categories_id = '" . (int)$current_category_id . "' 
                                           OR c.parent_id = '" . (int)$current_category_id . "')
-                                         ".CATEGORIES_CONDITIONS_C."
+                                         ".CATEGORIES_CONDITIONS_C." 
                             WHERE p.products_status = 1
                               AND p.products_ordered > 0
                                   ".PRODUCTS_CONDITIONS_P."
@@ -137,4 +137,3 @@ if (!$cache) {
 }
 
 $smarty->assign('box_BESTSELLERS', $box_best_sellers);
-?>

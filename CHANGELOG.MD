@@ -1,5 +1,9 @@
 UNRELEASED
 
+
+
+1.2.16 [28.11.2023]
+- Update zu Shopversion 3.0.0
 - Konstanten in css_button.inc.php korrigiert
 - Font-Fehler in Theme "Litera" behoben
 

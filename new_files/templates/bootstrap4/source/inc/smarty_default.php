@@ -1,16 +1,16 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: smarty_default.php 13676 2021-08-11 13:21:52Z GTB $
+   $Id: smarty_default.php 15236 2023-06-14 06:51:22Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
 
    Copyright (c) 2009 - 2013 [www.modified-shop.org]
    -----------------------------------------------------------------------------------------
-   Released under the GNU General Public License
+   Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-$box_smarty = new Smarty;
+$box_smarty = new Smarty();
 $box_smarty->assign('language', $_SESSION['language']);
 $box_smarty->assign('tpl_path', DIR_WS_BASE.'templates/'.CURRENT_TEMPLATE.'/');
 

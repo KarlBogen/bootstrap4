@@ -70,6 +70,8 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
     'button_quick_find.gif'         => array('Text' => $alt,								'icon' => '',          				'iconposition' => 'left',		'Class' => 'btn btn-outline-primary search_button'),
 	// Warenkorb-Guthabenkonto
     'button_redeem.gif'             => array('Text' => $alt,								'icon' => 'fa fa-asterisk',        	'iconposition' => 'left',		'Class' => 'btn btn-secondary btn-sm btn-block'),
+	// Ergebnisse anzeigen
+    'button_results.gif'             => array('Text' => $alt,								'icon' => 'fa fa-arrow-right',        	'iconposition' => 'right',		'Class' => 'btn btn-outline-secondary btn-sm btn-block'),
 	// Checkout Bestätigungsseite (Aktualisieren)
     'button_save.gif'               => array('Text' => $alt,								'icon' => 'fa fa-sync',              'iconposition' => 'left',		'Class' => 'btn btn-outline-dark btn-sm'),
 	// Erweiterte Suche
@@ -115,9 +117,6 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
     'account_password'				=> array('Text' => $alt,								'icon' => 'fa fa-lock',	        	'iconposition' => 'left',		'Class' => 'btn btn-sm btn-warning btn-block'),
 	// Mehrfachnutzung Box Warenkorb, Box Merkzettel
     'box_cart'						=> array('Text' => $alt.'&nbsp;&raquo;',				'icon' => '',				       	'iconposition' => 'left',		'Class' => 'btn btn-outline-primary btn-sm'),
-	// Suche -> Autovervollständigung
-    'button_autocomp_next'			=> array('Text' => '&raquo;',							'icon' => '',				       	'iconposition' => 'left',		'Class' => 'btn btn-primary'),
-    'button_autocomp_prev'			=> array('Text' => '&laquo;',							'icon' => '',				       	'iconposition' => 'left',		'Class' => 'btn btn-primary'),
 	// Mehrfachnutzung Slider Topartikel, Slider Bestseller
     'button_carousel1'				=> array('Text' => '',									'icon' => 'fa fa-chevron-left',		'iconposition' => 'left',		'Class' => 'btn btn-outline-primary mx-1'),
     'button_carousel2'				=> array('Text' => '',									'icon' => 'fa fa-chevron-right',	'iconposition' => 'left',		'Class' => 'btn btn-outline-primary mx-1'),

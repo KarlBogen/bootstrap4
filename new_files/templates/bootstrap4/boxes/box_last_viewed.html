@@ -8,7 +8,7 @@
 		<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
 	           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $box_content.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
 	           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $box_content.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
-	           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $box_content.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+	           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && isset($box_content.PRODUCTS_FLAG_NEW) && ($box_content.PRODUCTS_FLAG_NEW == 1)}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
 	       		{if $box_content.PRODUCTS_IMAGE != ''}
 					<div class="box_image text-center mb-2">
 						{if $smarty.const.PICTURESET_ACTIVE === true}

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: admin.php 14555 2022-06-21 09:52:15Z GTB $
+   $Id: admin.php 15448 2023-08-24 08:32:51Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -50,7 +50,7 @@ if ($admin_access['newsfeed'] == '1') {
 if ($admin_access['check_update'] == '1' && file_exists(DIR_FS_INC.'check_version_update.inc.php')) {
   require_once(DIR_FS_INC.'check_version_update.inc.php');
   $update_array = check_version_update();
-  $box_smarty->assign('UPDATE_COUNT', ($update_array['total'] > 0 ? $update_array['total'] : ''));
+  $box_smarty->assign('UPDATE_COUNT', ((isset($update_array['total']) && $update_array['total'] > 0) ? $update_array['total'] : ''));
   $box_smarty->assign('UPDATE', xtc_href_link_admin((defined('DIR_ADMIN') ? DIR_ADMIN : 'admin/').'check_update.php', '', 'NONSSL'));
 }
 
@@ -62,7 +62,6 @@ if ($admin_access['languages'] == '1' || $admin_access['categories'] == '1') {
     $lng = new language;
   }
   if (count($lng->catalog_languages) > 1) {
-    reset($lng->catalog_languages);
     foreach ($lng->catalog_languages as $key => $value) {
       $lng_link_txt = file_exists('lang/' .  $value['directory'] .'/' . $value['image']) ? xtc_image('lang/' .  $value['directory'] .'/' . $value['image'], $value['name']) : $value['name'];
       $languages_string .= '&nbsp;<a href="' . xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array('language', 'currency')) . 'language=' . $key, $request_type) . '">' . $lng_link_txt . '</a> ';
@@ -113,7 +112,7 @@ if ($admin_access['categories'] == '1') {
   // product
   if ($product->isProduct() === true) {
     $box_smarty->assign('EDIT_PRODUCT', xtc_href_link_admin((defined('DIR_ADMIN') ? DIR_ADMIN : 'admin/').'categories.php', 'cPath='.$cPath.'&pID='.$product->data['products_id'].'&action=new_product'));
-    $box_smarty->assign('EDIT_XSELL', xtc_href_link_admin((defined('DIR_ADMIN') ? DIR_ADMIN : 'admin/').'categories.php', 'cpath='.$cPath.'&current_product_id='.$product->data['products_id'].'&action=edit_crossselling'));
+    $box_smarty->assign('EDIT_XSELL', xtc_href_link_admin((defined('DIR_ADMIN') ? DIR_ADMIN : 'admin/').'categories.php', 'cpath='.$cPath.'&current_product_id='.$product->data['products_id'].'&action=edit_crossselling&last_action=list'));
   }
   // attributes
   if ($admin_access['products_attributes'] == '1') {

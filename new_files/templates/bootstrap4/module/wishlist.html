@@ -21,7 +21,7 @@
 				<div class="card-body pb-2 flex-fill d-flex flex-column text-center">
 	            	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
 	            	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
-	            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+	            	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && isset($module_data.PRODUCTS_FLAG_NEW) && ($module_data.PRODUCTS_FLAG_NEW == 1)}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
 					<div class="lb_image w-100 mb-auto">
 						{if $module_data.PRODUCTS_IMAGE != ''}
 							<img class="lazyload img-fluid" src="data:," data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" />
@@ -56,7 +56,7 @@
 			<div class="row mx-0">
 	           	{if $smarty.const.BS4_FLAG_SPECIAL_SHOW == 'true' && $module_data.PRODUCTS_PRICE_SAVE_PERCENT != ''}<div class="ribbon bg-danger text-white shadow-sm">{#BS4_special#}</div>
 	           	{elseif $smarty.const.BS4_FLAG_TOP_SHOW == 'true' && $module_data.PRODUCTS_STARTPAGE == '1'}<div class="ribbon bg-primary text-white shadow-sm">{#BS4_top#}</div>
-	           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && $module_data.PRODUCTS_OLDNEW == '1'}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
+	           	{elseif $smarty.const.BS4_FLAG_NEW_SHOW == 'true' && isset($module_data.PRODUCTS_FLAG_NEW) && ($module_data.PRODUCTS_FLAG_NEW == 1)}<div class="ribbon bg-success text-white shadow-sm">{#BS4_new#}</div>{/if}
                 <a class="prod-link" href="{$module_data.PRODUCTS_LINK}" aria-label="{$smarty.const.TEXT_INFO_DETAILS}"></a>
 	            <div class="card-body col-md-3 text-center">
 					<div class="lr_image">

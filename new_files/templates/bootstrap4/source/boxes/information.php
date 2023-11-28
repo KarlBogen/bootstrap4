@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: information.php 13952 2022-01-18 13:36:55Z GTB $
+   $Id: information.php 14628 2022-07-06 10:12:08Z GTB $   
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -73,7 +73,6 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_information.html', $cac
     if ($coPath) {
       $new_path = '';
       $coid = explode('_', $coPath);
-      reset($coid);
       foreach ($coid as $key => $value) {
         unset ($prev_cid);
         unset ($first_cid);

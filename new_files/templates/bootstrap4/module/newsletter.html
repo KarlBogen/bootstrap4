@@ -13,13 +13,13 @@
 				<div class="card-body">
 					<h4>{#heading_personal#}</h4>
 					{if $VVIMG}
-					<div class="form-group stern clearfix">
+					<div class="vvcode_img form-group stern clearfix">
 						<label>{#text_sec_code#}</label><br />
 						{$VVIMG}
 					</div>
 					{/if}
 					{if $INPUT_CODE}
-					<div class="form-group stern clearfix">
+					<div class="vvcode_sec form-group stern clearfix">
 						<label>{#text_sec_code#}</label>
 						{$INPUT_CODE|replace:'<input':'<input class="form-control form-control-sm" aria-label="code"'}<span class="inputRequirement"> *</span>
 					</div>

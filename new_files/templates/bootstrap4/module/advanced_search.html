@@ -14,7 +14,7 @@
 								<label>{#title_keywords#}</label>
 								{$INPUT_KEYWORDS|replace:'<input':'<input aria-label="keywords" class="form-control form-control-sm"'}
 							</div>
-							<p class="mini"><a href="{$HELP_LINK}" title="{$smarty.const.TEXT_LINK_TITLE_INFORMATION}" class="{if $smarty.const.TPL_POPUP_CONTENT_LINK_CLASS}{$smarty.const.TPL_POPUP_CONTENT_LINK_CLASS}{else}{$smarty.const.POPUP_CONTENT_LINK_CLASS}{/if}">{#text_help#}</a></p>
+							<p class="mini"><a href="{$HELP_LINK}" title="{$popup_params.link_title}" class="{$popup_params.link_class}">{#text_help#}</a></p>
 							<div class="form-group clearfix">
 								<label>{#text_categories#}</label>
 								{$SELECT_CATEGORIES|replace:'<select':'<select aria-label="categories" class="form-control form-control-sm"'}

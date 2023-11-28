@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: manufacturers.php 13637 2021-07-26 08:28:32Z GTB $
+   $Id: manufacturers.php 14645 2022-07-13 06:00:44Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -27,7 +27,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $c
   
   $manufacturers_query = "SELECT m.*
                             FROM ".TABLE_MANUFACTURERS." as m
-                            JOIN ".TABLE_PRODUCTS." as p
+                            JOIN ".TABLE_PRODUCTS." as p 
                                  ON m.manufacturers_id = p.manufacturers_id
                                     AND p.products_status = '1'
                                         ".PRODUCTS_CONDITIONS_P."
@@ -35,34 +35,37 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $c
                                  ON p.products_id = pd.products_id
                                     AND pd.language_id = '".(int)$_SESSION['languages_id']."'
                                     AND trim(pd.products_name) != ''
-                            JOIN ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
+                            JOIN ".TABLE_PRODUCTS_TO_CATEGORIES." p2c 
                                  ON p2c.products_id = pd.products_id
                             JOIN ".TABLE_CATEGORIES." c
                                  ON c.categories_id = p2c.categories_id
                                     AND c.categories_status = 1
                                         ".CATEGORIES_CONDITIONS_C."
-                        GROUP BY m.manufacturers_id
-                        ORDER BY m.manufacturers_name ASC";
+                           WHERE m.manufacturers_status = 1
+                        GROUP BY m.manufacturers_id 
+                        ORDER BY m.sort_order, m.manufacturers_name ASC";
   $manufacturers_query = xtDBquery($manufacturers_query);
   $manufacturers_count = xtc_db_num_rows($manufacturers_query, true);
   if ($manufacturers_count > 0) {
+
     if ($manufacturers_count <= MAX_DISPLAY_MANUFACTURERS_IN_A_LIST) {
+
       // Display a list
       while ($manufacturers = xtc_db_fetch_array($manufacturers_query, true)) {
         $manufacturers_name = ((strlen($manufacturers['manufacturers_name']) > MAX_DISPLAY_MANUFACTURER_NAME_LEN) ? substr($manufacturers['manufacturers_name'], 0, MAX_DISPLAY_MANUFACTURER_NAME_LEN).'..' : $manufacturers['manufacturers_name']);
         if (isset ($_GET['manufacturers_id']) && ($_GET['manufacturers_id'] == $manufacturers['manufacturers_id'])) {
           $manufacturers_name = '<strong>'.$manufacturers_name.'</strong>';
         }
-        $box_content .= '<a href="'.xtc_href_link(FILENAME_DEFAULT, xtc_manufacturer_link($manufacturers['manufacturers_id'],$manufacturers['manufacturers_name'])).'">'.$manufacturers_name.'</a><br />';
+        $box_content .= '<a class="btn btn-link" href="'.xtc_href_link(FILENAME_DEFAULT, xtc_manufacturer_link($manufacturers['manufacturers_id'],$manufacturers['manufacturers_name'])).'">'.$manufacturers_name.'</a>';
       }
+
     } else {
       // Display a drop-down
       $js = 'location = form.manufacturers_id.options[form.manufacturers_id.selectedIndex].value;';
       $manufacturers_array = array ();
-      if (MAX_MANUFACTURERS_LIST < 2) {
         $manufacturers_array[] = array ('id' => '', 'text' => PULL_DOWN_DEFAULT);
         $js = 'if (form.manufacturers_id.selectedIndex != 0) location = form.manufacturers_id.options[form.manufacturers_id.selectedIndex].value;';
-      }
+
       while ($manufacturers = xtc_db_fetch_array($manufacturers_query, true)) {
         $manufacturers_name = ((strlen($manufacturers['manufacturers_name']) > MAX_DISPLAY_MANUFACTURER_NAME_LEN) ? substr($manufacturers['manufacturers_name'], 0, MAX_DISPLAY_MANUFACTURER_NAME_LEN).'..' : $manufacturers['manufacturers_name']);
         $manufacturers_array[] = array ('id' => xtc_href_link(FILENAME_DEFAULT,xtc_manufacturer_link($manufacturers['manufacturers_id'],$manufacturers['manufacturers_name'])), 'text' => $manufacturers_name);

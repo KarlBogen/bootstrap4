@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: boxes.php 13969 2022-01-21 11:36:09Z GTB $
+   $Id: boxes.php 15547 2023-11-08 11:46:27Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -82,7 +82,7 @@ if (BS4_HIDE_ALL_BOXES != 'true'){
 // -----------------------------------------------------------------------------------------
 //	full content
 // -----------------------------------------------------------------------------------------
-  if (!in_array(basename($PHP_SELF), $fullcontent)) {
+  if (!in_array(basename($PHP_SELF), $fullcontent) || (isset($display_mode) && $display_mode == 'error')) {
 		if (BS4_STARTPAGE_BOX_MANUFACTURERS != 'false' || BS4_NOT_STARTPAGE_BOX_MANUFACTURERS != 'false'){
 	    require_once(DIR_FS_BOXES . 'manufacturers.php');
 		}
@@ -211,15 +211,31 @@ $smarty->assign('home', ((basename($PHP_SELF) == FILENAME_DEFAULT && !isset($_GE
 // -----------------------------------------------------------------------------------------
 $smarty->assign('bestseller', false);
 $bestsellers = array(FILENAME_DEFAULT,
-                     FILENAME_LOGOFF,
-                     FILENAME_CHECKOUT_SUCCESS,
-                     FILENAME_SHOPPING_CART,
+                     FILENAME_LOGOFF, 
+                     FILENAME_CHECKOUT_SUCCESS, 
+                     FILENAME_SHOPPING_CART, 
                      FILENAME_NEWSLETTER
                      );
-if (in_array(basename($PHP_SELF), $bestsellers) && !isset($_GET['cPath']) && !isset($_GET['manufacturers_id'])) {
+if ((isset($display_mode) && $display_mode == 'error') || (in_array(basename($PHP_SELF), $bestsellers) && !isset($_GET['cPath']) && !isset($_GET['manufacturers_id']))) {
   require_once(DIR_FS_BOXES . 'best_sellers.php');
   $smarty->assign('bestseller', true);
 }
 // -----------------------------------------------------------------------------------------
 
 $smarty->assign('tpl_path', DIR_WS_BASE.'templates/'.CURRENT_TEMPLATE.'/');
+
+/* wird in bootstrap4 nicht genutzt
+$content_data_query = xtDBquery("SELECT *
+                                   FROM ".TABLE_CONTENT_MANAGER."
+                                  WHERE content_group IN (4,7)
+                                    AND content_active = '1'
+                                    AND trim(content_title) != ''
+                                    AND languages_id = '".(int)$_SESSION['languages_id']."'
+                                        ".CONTENT_CONDITIONS);
+if (xtc_db_num_rows($content_data_query, true) > 0) {
+  while ($content_data = xtc_db_fetch_array($content_data_query, true)) {
+    if ($content_data['content_group'] == '7') $smarty->assign('contact', xtc_href_link(FILENAME_CONTENT, 'coID=7', 'SSL'));
+    if ($content_data['content_group'] == '4') $smarty->assign('imprint', xtc_href_link(FILENAME_CONTENT, 'coID=4', 'SSL'));
+  }
+}
+*/

@@ -33,7 +33,8 @@
 				{if $birthdate == '1'}
 					<div class="form-group stern clearfix">
 						<label>{#text_birthdate#}</label>
-						{$INPUT_DOB|replace:'<input':'<input class="form-control form-control-sm"'}
+						{$INPUT_DOB|replace:'<input':'<input class="form-control form-control-sm" aria-describedby="dateHelp"'}
+						<small id="dateHelp" class="form-text text-muted">{$TEXT_DOB_NOTE}</small>
 					</div>
 				{/if}
 			</div>
@@ -63,7 +64,8 @@
 				{if $vat == '1'}
 					<div class="form-group stern clearfix">
 						<label>{#text_ustid#}</label>
-						{$INPUT_VAT|replace:"Nur":" Nur"|replace:'<input':'<input class="form-control form-control-sm"'}
+						{$INPUT_VAT|replace:'<input':'<input class="form-control form-control-sm" aria-describedby="vatHelp"'}
+						<small id="vatHelp" class="form-text text-muted">{$TEXT_VAT_NOTE}</small>
 					</div>
 				{/if}
 			</div>

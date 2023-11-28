@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: currencies.php 13588 2021-06-15 16:10:06Z GTB $
+   $Id: currencies.php 14628 2022-07-06 10:12:08Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -26,7 +26,6 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_currencies.html', $cach
 
   $currencies_array = array();
   if (isset($xtPrice) && is_object($xtPrice)) {
-    reset($xtPrice->currencies);
     foreach ($xtPrice->currencies as $key => $value) {
       $currencies_array[] = array('id' => $key, 'text' => $value['title']);
     }

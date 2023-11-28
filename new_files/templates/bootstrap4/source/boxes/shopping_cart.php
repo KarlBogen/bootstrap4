@@ -1,6 +1,6 @@
 <?php
   /* -----------------------------------------------------------------------------------------
-   $Id: shopping_cart.php 14010 2022-02-01 09:49:36Z GTB $
+   $Id: shopping_cart.php 15432 2023-08-21 09:23:33Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -16,7 +16,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-  $box_smarty = new Smarty;
+  $box_smarty = new Smarty();
 
   $box_smarty->assign('tpl_path', DIR_WS_BASE.'templates/'.CURRENT_TEMPLATE.'/');
 
@@ -38,7 +38,7 @@
       
         $qty += $products[$i]['quantity'];
         $products_in_cart[] = array ('QTY' => $products[$i]['quantity'],
-                                     'LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$products[$i]['id']),
+                                     'LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params_include(array('language')).'products_id='.$products[$i]['id']),
                                      'NAME' => $products[$i]['name'],
                                      'BUTTON_DELETE' => $del_button,
                                      'LINK_DELETE' => $del_link);
@@ -102,9 +102,8 @@
       $box_smarty->assign('COUPON_AMOUNT2', $xtPrice->xtcFormat($coupon['coupon_amount'], true, 0, true));
     }
     if (isset($_SESSION['cc_id'])) {
-      $clink_parameters = defined('TPL_POPUP_CONTENT_LINK_PARAMETERS') ? TPL_POPUP_CONTENT_LINK_PARAMETERS : POPUP_CONTENT_LINK_PARAMETERS;
-      $clink_class = defined('TPL_POPUP_CONTENT_LINK_CLASS') ? TPL_POPUP_CONTENT_LINK_CLASS : POPUP_CONTENT_LINK_CLASS;
-      $box_smarty->assign('COUPON_HELP_LINK', '<a target="_blank" class="'.$clink_class.'" title="'.TEXT_LINK_TITLE_INFORMATION.'" href="'.xtc_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']. $clink_parameters, $request_type).'">Information</a>');
+      $popup_params = $main->getPopupParams();      
+      $box_smarty->assign('COUPON_HELP_LINK', '<a target="_blank" class="'.$popup_params['link_class'].'" title="'.$popup_params['link_title'].'" href="'.xtc_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']. $popup_params['link_parameters'], $request_type).'">Information</a>');
     }
   }
 
@@ -114,4 +113,3 @@
   $box_smarty->assign('language', $_SESSION['language']);
   $box_shopping_cart = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_cart.html');
   $smarty->assign('box_CART', $box_shopping_cart);
-?>
