@@ -23,6 +23,7 @@ $module_smarty->assign('language', $_SESSION['language']);
 if (!CacheCheck()) {
 	$cache=false;
 	$module_smarty->caching = 0;
+  $cache_id = null;
 } else {
 	$cache=true;
 	$module_smarty->caching = 1;

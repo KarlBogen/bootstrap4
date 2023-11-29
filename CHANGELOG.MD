@@ -1,6 +1,7 @@
 UNRELEASED
 
-
+- Check-Funktionen gem. Bug-Tracker Ticket #2422 verändert
+- css_button.inc.php verändert
 
 1.2.16 [28.11.2023]
 - Update zu Shopversion 3.0.0

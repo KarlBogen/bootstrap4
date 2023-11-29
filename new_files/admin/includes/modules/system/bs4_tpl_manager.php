@@ -45,13 +45,17 @@ class bs4_tpl_manager {
 	}
 
 	public function check() {
-		if (!isset($this->_check)) {
-			$check_query = xtc_db_query("SELECT configuration_value
-											FROM " . TABLE_CONFIGURATION . "
-											WHERE configuration_key = 'MODULE_BS4_TPL_MANAGER_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
-		}
-		return $this->_check;
+    if (!isset($this->_check)) {
+      if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) {
+        $this->_check = true;
+      } else {
+        $check_query = xtc_db_query("SELECT configuration_value
+                                      FROM " . TABLE_CONFIGURATION . "
+                                      WHERE configuration_key = 'MODULE_BS4_TPL_MANAGER_STATUS'");
+        $this->_check = xtc_db_num_rows($check_query);
+      }
+    }
+    return $this->_check;
 	}
     
 	public function install() {
@@ -639,7 +643,7 @@ class bs4_tpl_manager {
 			`products_model` varchar(64) NOT NULL DEFAULT '',
 			`products_image` varchar(64) DEFAULT NULL,
 			`mail_head1` varchar(128) NOT NULL,
-			`remind_date_added` datetime DEFAULT '0000-00-00 00:00:00',
+			`remind_date_added` datetime DEFAULT NULL,
 			PRIMARY KEY (`remind_id`)
 		)");
 
