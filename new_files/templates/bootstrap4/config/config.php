@@ -136,6 +136,7 @@
 
 	// Produktlisten Fullcontent (sollen die Produktansichten fullcontent sein)
 	defined('BS4_STARTPAGE_FULLCONTENT') or define('BS4_STARTPAGE_FULLCONTENT', 'false'); // 'true' zeigt die Listen in voller Breite (linke Spalte wird ausgeblendet) / 'false' linke Spalte bleibt sichtbar
+	defined('BS4_STARTPAGE_SHOW_CATEGORYLIST') or define('BS4_STARTPAGE_SHOW_CATEGORYLIST', 'false'); // 'true' zeigt eine Kategorieliste 1. Ebene / 'false' nicht sichtbar
 	// Produktlisten Fullcontent (sollen die Produktansichten fullcontent sein)
 	defined('BS4_PROD_LIST_FULLCONTENT') or define('BS4_PROD_LIST_FULLCONTENT', 'false'); // 'true' zeigt die Listen in voller Breite (linke Spalte wird ausgeblendet) / 'false' linke Spalte bleibt sichtbar
 	// Produktdetailansicht Boxen anzeigen oder volle Breite
@@ -168,11 +169,13 @@
 		Link zum Originalmodul: https://www.modified-shop.org/forum/index.php?topic=12813.0 */
 	defined('BS4_CUSTOMERS_REMIND_SENDMAIL') or define('BS4_CUSTOMERS_REMIND_SENDMAIL', 'false'); // 'true' = E-Mail an den Shopbetreiber (Kontakt - E-Mail-Adresse) senden, wenn sich ein Kunde in die Erinnerungsliste einträgt?
 	defined('BS4_CHEAPLY_SEE') or define('BS4_CHEAPLY_SEE', 'false'); // 'false' = deaktiviert / 'true' = aktiviert
+	defined('BS4_CHEAPLY_SEE_CONTENT_GROUP') or define('BS4_CHEAPLY_SEE_CONTENT_GROUP', '16'); // '' = es wird kein Content angezeigt / Group ID aus Content Manager eintragen
 		/* Modul "Billiger gesehen" aktivieren und den Link in der Produktdetailansicht anzeigen!
 		Hinweis:
 		Der im oberen Bereich angezeigte Text kann im Content Manager geändert werden!
 		Link zum Originalmodul: http://www.xtc-load.de/2009/02/billiger-gesehen-by-southbridgede */
 	defined('BS4_PRODUCT_INQUIRY') or define('BS4_PRODUCT_INQUIRY', 'false'); // 'false' = deaktiviert / 'true' = aktiviert
+	defined('BS4_PRODUCT_INQUIRY_CONTENT_GROUP') or define('BS4_PRODUCT_INQUIRY_CONTENT_GROUP', '15'); // '' = es wird kein Content angezeigt / Group ID aus Content Manager eintragen
 		/* Modul "Frage zum Artikel" aktivieren und den Link in der Produktdetailansicht anzeigen!
 		Hinweis:
 		Der im oberen Bereich angezeigte Text kann im Content Manager geändert werden!

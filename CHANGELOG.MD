@@ -1,5 +1,6 @@
 UNRELEASED
 
+- config.php vervollständigt
 - Check-Funktionen gem. Bug-Tracker Ticket #2422 verändert
 - css_button.inc.php verändert
 
