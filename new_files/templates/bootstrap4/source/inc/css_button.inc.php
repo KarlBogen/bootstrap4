@@ -4,7 +4,7 @@ require_once(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/lang/buttons_'.$_SES
 
 function css_button($image, $alt, $parameters = '', $submit = false) {
 
-    $name           = substr(basename($image), 0, strrpos(basename($image), '.'));
+    $name           = substr(basename($image), 0);
     $html           = '';
     $title          = $alt;
     $leer			= '';
@@ -21,171 +21,171 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
 
 	switch ($name) {
  
-    case 'epaypal_'.$_SESSION['language_code']:
+    case 'epaypal_'.$_SESSION['language_code'].'.gif':
     // PayPal
 			$buttons = array('Text' => constant('BUTTON_EPAYPAL_'.strtoupper($_SESSION['language_code']).'_TEXT'), 'icon' => '', 'iconposition' => 'right', 'Class' => 'btn btn-paypal btn-sm  btn-block mb-2');
       break;
 	// Modified Button
-    case 'button_add_address':
+    case 'button_add_address.gif':
 	// Addressbuch
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-plus-square', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_add_quick':
+    case 'button_add_quick.gif':
 	// Box Add a quickie
 			$buttons = array('Text' => '', 'icon' => 'fa fa-shopping-cart', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm px-4');
       break;
-    case 'button_admin':
+    case 'button_admin.gif':
 	// Box Admin
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-wrench', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_back':
+    case 'button_back.gif':
 	// Mehrfachnutzung Account, Checkout, Bewertungen, Contentseiten
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-arrow-left', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_buy_now':
+    case 'button_buy_now.gif':
 	// Mehrfachnutzung Produktseiten
 			$buttons = array('Text' => '', 'icon' => 'fa fa-shopping-cart', 'iconposition' => 'left', 'Class' => 'btn btn-cart btn-outline-secondary btn-sm');
       break;
-    case 'button_change_address':
+    case 'button_change_address.gif':
 	// Mehrfachnutzung Checkout Rechnungsadresse, Lieferadresse
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-edit', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_checkout':
+    case 'button_checkout.gif':
 	// Warenkorb
 			$buttons = array('Text' => $alt, 'icon' => 'far fa-credit-card', 'iconposition' => 'right', 'Class' => 'btn btn-checkout btn-success btn-block');
       break;
-    case 'button_checkout_express':
+    case 'button_checkout_express.gif':
 	// Mehrfachnutzung Nutzerkonto-Bestellhistorie, Produktdetailseiten, Warenkorb
 			$buttons = array('Text' => TEXT_CHECKOUT_EXPRESS_INFO_LINK, 'icon' => 'fa fa-cart-plus', 'iconposition' => 'left', 'Class' => 'btn btn-express btn-outline-secondary btn-sm btn-block');
       break;
-    case 'button_confirm':
+    case 'button_confirm.gif':
 	// Mehrfachnutzung Downloads-Login, Payone, PayPal
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-check', 'iconposition' => 'right', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_confirm_order':
+    case 'button_confirm_order.gif':
 	// Checkout -> Kaufen-Button
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-check', 'iconposition' => 'right', 'Class' => 'btn btn-danger');
       break;
-    case 'button_continue':
+    case 'button_continue.gif':
 	// Mehrfachnutzung Account, Checkout, Downloads, Gutschein, Login, Logout, Bewertungen, Warenkorb, Merkzettel
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-arrow-right', 'iconposition' => 'right', 'Class' => 'btn btn-success btn-sm');
       break;
-    case 'button_continue_shopping':
+    case 'button_continue_shopping.gif':
 	// Warenkorb
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-arrow-left', 'iconposition' => 'left', 'Class' => 'btn btn-shop btn-secondary btn-block');
       break;
-    case 'button_delete':
+    case 'button_delete.gif':
 	// Addressbuch
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-times', 'iconposition' => 'left', 'Class' => 'btn btn-danger btn-sm');
       break;
-    case 'button_download':
+    case 'button_download.gif':
 	// Produktseiten Downloads
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-download', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_in_cart':
+    case 'button_in_cart.gif':
 	// Mehrfachnutzung Nutzerkonto-Bestellhistorie, Produktseiten, Produktdetailseiten, Bewertungen
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-shopping-cart', 'iconposition' => 'left', 'Class' => 'btn btn-cart btn-secondary btn-sm btn-block');
       break;
-    case 'button_in_wishlist':
+    case 'button_in_wishlist.gif':
 	// Mehrfachnutzung Produktseiten, Produktdetailseiten
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-heart', 'iconposition' => 'left', 'Class' => 'btn btn-wish btn-outline-info btn-sm btn-block');
       break;
-    case 'button_login':
+    case 'button_login.gif':
 	// Login
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-user', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_login_newsletter':
+    case 'button_login_newsletter.gif':
 	// Newsletteranmeldung
 			$buttons = array('Text' => '', 'icon' => 'fa fa-share-square fa-lg', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_login_small':
+    case 'button_login_small.gif':
 	// Box Login
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-user', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm float-right');
       break;
-    case 'button_print':
+    case 'button_print.gif':
 	// Nutzerkonto-Bestellhistorie
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-print', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_product_more':
+    case 'button_product_more.gif':
 	// Mehrfachnutzung Produktseiten, Bewertungen
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-eye', 'iconposition' => 'left', 'Class' => 'btn btn-info btn-sm');
       break;
-    case 'button_quick_find':
+    case 'button_quick_find.gif':
 	// Box Suche
 			$buttons = array('Text' => $alt, 'icon' => '', 'iconposition' => 'left', 'Class' => 'btn btn-outline-primary search_button');
       break;
-    case 'button_redeem':
+    case 'button_redeem.gif':
 	// Warenkorb-Guthabenkonto
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-asterisk', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm btn-block');
       break;
-    case 'button_results':
+    case 'button_results.gif':
 	// Ergebnisse anzeigen
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-arrow-right', 'iconposition' => 'right', 'Class' => 'btn btn-outline-secondary btn-sm btn-block');
       break;
-    case 'button_save':
+    case 'button_save.gif':
 	// Checkout Bestätigungsseite (Aktualisieren)
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-sync', 'iconposition' => 'left', 'Class' => 'btn btn-outline-dark btn-sm');
       break;
-    case 'button_search':
+    case 'button_search.gif':
 	// Erweiterte Suche
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-search', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_send':
+    case 'button_send.gif':
 	// Mehrfachnutzung Warenkorb -> Gutschein senden, Kontakt, Newsletteranmeldung
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-check', 'iconposition' => 'left', 'Class' => 'btn btn-success btn-sm');
       break;
-    case 'button_update':
+    case 'button_update.gif':
 	// Adressbuck
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-sync', 'iconposition' => 'right', 'Class' => 'btn btn-success btn-sm');
       break;
-    case 'button_update_cart':
+    case 'button_update_cart.gif':
 	// Warenkorb -> aktualisieren
 			$buttons = array('Text' => '', 'icon' => 'fa fa-sync', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_view':
+    case 'button_view.gif':
 	// Produktdetailseiten -> Downloads
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-eye-open', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'button_write_review':
+    case 'button_write_review.gif':
 	// Bewertung
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-edit', 'iconposition' => 'left', 'Class' => 'btn btn-info btn-sm');
       break;
-    case 'cart_del':
+    case 'cart_del.gif':
 	// Mehrfachnutzung Merkzettel, Warenkorb, Box Warenkorb
 			$buttons = array('Text' => '', 'icon' => 'fa fa-trash', 'iconposition' => 'left', 'Class' => 'btn btn-danger btn-sm');
       break;
-    case 'icon_cart':
+    case 'icon_cart.gif':
 	// Box Bestellhistorie
 			$buttons = array('Text' => '', 'icon' => 'fa fa-shopping-cart', 'iconposition' => 'left', 'Class' => 'btn btn-success btn-sm h-100');
       break;
-    case 'print':
+    case 'print.gif':
 	// Mehrfachnutzung Nutzerkonto-Bestellhistorie, Checkout 'fertig', Produktinfoseiten
 			$buttons = array('Text' => TEXT_PRINT, 'icon' => 'fa fa-print', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'small_cart':
+    case 'small_cart.gif':
 	// Mehrfachnutzung Nutzerkonto, Nutzerkonto-Bestellhistorie
 			$buttons = array('Text' => '', 'icon' => 'fa fa-shopping-cart', 'iconposition' => 'left', 'Class' => 'btn btn-incart btn-secondary btn-sm');
       break;
-    case 'small_delete':
+    case 'small_delete.gif':
 	// Mehrfachnutzung Adressbuch, Payone
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-times', 'iconposition' => 'right', 'Class' => 'btn btn-danger btn-sm');
       break;
-    case 'small_edit':
+    case 'small_edit.gif':
 	// Adressbuch
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-edit', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'small_express':
+    case 'small_express.gif':
 	// Mehrfachnutzung Nutzerkonto, Nutzerkonto-Bestellhistorie
 			$buttons = array('Text' => '', 'icon' => 'fa fa-cart-plus', 'iconposition' => 'left', 'Class' => 'btn btn-express btn-outline-secondary btn-sm');
       break;
-    case 'small_view':
+    case 'small_view.gif':
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-eye-open', 'iconposition' => 'right', 'Class' => 'btn btn-secondary btn-sm');
       break;
-    case 'wishlist_del':
+    case 'wishlist_del.gif':
 	// Merkzettel
 			$buttons = array('Text' => '', 'icon' => 'fa fa-trash', 'iconposition' => 'left', 'Class' => 'btn btn-danger btn-sm');
       break;
-    case 'small_continue':
+    case 'small_continue.gif':
 	// Checkout (Adresse aktualisieren)
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-check-square', 'iconposition' => 'left', 'Class' => 'btn btn-secondary btn-sm');
       break;
@@ -297,14 +297,14 @@ function css_button($image, $alt, $parameters = '', $submit = false) {
 			$buttons = array('Text' => '', 'icon' => 'fa fa-home', 'iconposition' => 'left', 'Class' => 'btn btn-light');
       break;
 
-    case 'button_in_requestlist':
+    case 'button_in_requestlist.gif':
 	// Erweiterung Anfrageliste
 			$buttons = array('Text' => $alt, 'icon' => 'fa fa-question-circle', 'iconposition' => 'left', 'Class' => 'btn btn-request btn-secondary btn-sm btn-block');
       break;
-    case 'button_requestlist':
+    case 'button_requestlist.gif':
 			$buttons = array('Text' => '', 'icon' => 'fa fa-question-circle', 'iconposition' => 'left', 'Class' => 'btn btn-outline-info btn-sm');
       break;
-    case 'requestlist_del':
+    case 'requestlist_del.gif':
 			$buttons = array('Text' => '', 'icon' => 'fa fa-trash', 'iconposition' => 'left', 'Class' => 'btn btn-danger btn-sm');
       break;
 
