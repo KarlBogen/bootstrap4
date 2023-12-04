@@ -37,7 +37,7 @@ if (defined('BS4_CUSTOMERS_REMIND') && BS4_CUSTOMERS_REMIND == 'true') {
 	require_once (DIR_FS_INC.'xtc_get_products_name.inc.php');
 	require_once (DIR_FS_INC . 'xtc_validate_email.inc.php');
 
-	$smarty = new Smarty;
+	$smarty = new Smarty();
 
 	// include boxes
 	require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');

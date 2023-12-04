@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Änderung new Smarty; zu new Smarty();
 - Registrierung Smarty-Plugins hinzugefügt
 - config.php vervollständigt
 - Check-Funktionen gem. Bug-Tracker Ticket #2422 verändert

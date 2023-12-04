@@ -39,7 +39,7 @@
 	require_once(DIR_FS_INC . 'xtc_get_vpe_name.inc.php');
 	require_once(DIR_FS_INC . 'get_customers_gender.inc.php');
 
-	$smarty = new Smarty;
+	$smarty = new Smarty();
 
 	// include boxes
 	require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');

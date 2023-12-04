@@ -19,7 +19,7 @@ require_once (DIR_FS_INC.'xtc_date_short.inc.php');
 $pID = $_GET['products_id'];
 $stars = (int)$_GET['stars'];
 
-$popup_smarty = new Smarty;
+$popup_smarty = new Smarty();
 
     $reviews_query = xtc_db_query("SELECT r.reviews_rating,
                                           r.reviews_id,

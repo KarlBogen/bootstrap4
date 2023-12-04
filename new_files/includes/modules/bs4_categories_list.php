@@ -15,7 +15,7 @@
 
 if (file_exists(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/categories_list.html')) {
 
-$module_smarty = new Smarty;
+$module_smarty = new Smarty();
 $module_content = array ();
 
 $module_smarty->assign('language', $_SESSION['language']);
