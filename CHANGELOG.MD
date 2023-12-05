@@ -1,5 +1,9 @@
 UNRELEASED
 
+
+
+1.2.17 [05.12.2023]
+- Fehler in bs4_define_add_select.php behoben
 - Änderung new Smarty; zu new Smarty();
 - Registrierung Smarty-Plugins hinzugefügt
 - config.php vervollständigt
