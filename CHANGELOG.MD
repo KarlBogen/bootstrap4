@@ -1,5 +1,7 @@
 UNRELEASED
 
+- Fehler in templates/bootstrap4/source/boxes/order_history.php behoben
+
 
 
 1.2.17 [05.12.2023]
