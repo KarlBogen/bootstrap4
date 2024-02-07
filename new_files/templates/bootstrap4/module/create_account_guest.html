@@ -12,31 +12,31 @@
                  <p class="small">({#text_must#})</p>
 				{if $gender == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_gender#}</label>
+						<label>{#text_gender#}</label>&nbsp;
 						{$INPUT_GENDER|replace:'<select':'<select class="form-control form-control-sm" aria-label="gender"'}
 					</div>
 				{/if}
 				<div class="form-group stern clearfix">
-					<label>{#text_firstname#}</label>
+					<label>{#text_firstname#}</label>&nbsp;
 					{$INPUT_FIRSTNAME|replace:'<input':'<input class="form-control form-control-sm" aria-label="firstname"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_lastname#}</label>
+					<label>{#text_lastname#}</label>&nbsp;
 					{$INPUT_LASTNAME|replace:'<input':'<input class="form-control form-control-sm" aria-label="lastname"'}
 				</div>
 				{if $birthdate == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_birthdate#}</label>
+						<label>{#text_birthdate#}</label>&nbsp;
 						{$INPUT_DOB|replace:'<input':'<input class="form-control form-control-sm" aria-label="birthday" aria-describedby="dateHelp"'}
-						<small id="dateHelp" class="form-text text-muted">{$TEXT_DOB_NOTE}</small>
+						<br><small id="dateHelp" class="form-text text-muted d-inline-block">{$TEXT_DOB_NOTE}</small>
 					</div>
 				{/if}
 				<div class="form-group stern clearfix">
-					<label>{#text_email#}</label>
+					<label>{#text_email#}</label>&nbsp;
 					{$INPUT_EMAIL|replace:'<input':'<input class="form-control form-control-sm" aria-label="email"'|replace:"type=\"text\"":"type=\"email\""}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_confirm_email#}</label>
+					<label>{#text_confirm_email#}</label>&nbsp;
 					{$INPUT_CONFIRM_EMAIL|replace:'<input':'<input class="form-control form-control-sm" aria-label="confirm email"'|replace:"type=\"text\"":"type=\"email\""}
 				</div>
 			</div>
@@ -46,14 +46,14 @@
 			<div class="card-body">
 				<h4>{#title_company#}</h4>
 				<div class="form-group stern clearfix">
-					<label>{#text_company#}</label>
+					<label>{#text_company#}</label>&nbsp;
 					{$INPUT_COMPANY|replace:'<input':'<input class="form-control form-control-sm" aria-label="company"'}
 				</div>
 				{if $vat == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_ustid#}</label>
+						<label>{#text_ustid#}</label>&nbsp;
 						{$INPUT_VAT|replace:"Nur":" Nur"|replace:'<input':'<input class="form-control form-control-sm" aria-label="ust id" aria-describedby="vatHelp"'}
-						<small id="vatHelp" class="form-text text-muted">{$TEXT_VAT_NOTE}</small>
+						<br><small id="vatHelp" class="form-text text-muted d-inline-block">{$TEXT_VAT_NOTE}</small>
 					</div>
 				{/if}
 			</div>
@@ -66,7 +66,7 @@
 				<div class="checkbox clearfix">
 					<label for="newsletter">
 						{$CHECKBOX_NEWSLETTER}
-						{#text_newsletter#}
+						&nbsp;{#text_newsletter#}
 					</label>
 				</div>
 			</div>
@@ -78,30 +78,30 @@
 			<div class="card-body">
 				<h4>{#title_address#}</h4>
 				<div class="form-group stern clearfix">
-					<label>{#text_street#}</label>
+					<label>{#text_street#}</label>&nbsp;
 					{$INPUT_STREET|replace:'<input':'<input class="form-control form-control-sm" aria-label="street"'}
 				</div>
 				{if $suburb == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_suburb#}</label>
+						<label>{#text_suburb#}</label>&nbsp;
 						{$INPUT_SUBURB|replace:"Nur":" Nur"|replace:'<input':'<input class="form-control form-control-sm" aria-label="suburb"'}
 					</div>
 				{/if}
 				<div class="form-group stern clearfix">
-					<label>{#text_code#}</label>
+					<label>{#text_code#}</label>&nbsp;
 					{$INPUT_CODE|replace:'<input':'<input class="form-control form-control-sm" aria-label="postcode"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_city#}</label>
+					<label>{#text_city#}</label>&nbsp;
 					{$INPUT_CITY|replace:'<input':'<input class="form-control form-control-sm" aria-label="city"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_country#}</label>
+					<label>{#text_country#}</label>&nbsp;
 						{$SELECT_COUNTRY|replace:'<select':'<select class="form-control form-control-sm" aria-label="country"'}
 				</div>
 				{if $state == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_state#}</label>
+						<label>{#text_state#}</label>&nbsp;
 						{$INPUT_STATE}
 					</div>
 				{/if}
@@ -111,11 +111,11 @@
 			<div class="card-body">
 				<h4>{#title_contact#}</h4>
 				<div class="form-group stern clearfix">
-					<label>{#text_tel#}</label>
+					<label>{#text_tel#}</label>&nbsp;
 					{$INPUT_TEL|replace:'<input':'<input class="form-control form-control-sm" aria-label="phone"'|replace:"type=\"text\"":"type=\"tel\""}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_fax#}</label>
+					<label>{#text_fax#}</label>&nbsp;
 					{$INPUT_FAX|replace:'<input':'<input class="form-control form-control-sm" aria-label="fax"'|replace:"type=\"text\"":"type=\"tel\""}
 				</div>
 			</div>

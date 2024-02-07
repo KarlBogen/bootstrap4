@@ -12,29 +12,29 @@
                 <p class="small">({#text_must#})</p>
 				{if $csID}
 					<div class="form-group stern clearfix">
-						<label>{#csID#}</label>
+						<label>{#csID#}</label>&nbsp;
 						{$csID|replace:'<input':'<input class="form-control form-control-sm"'}
 					</div>
 				{/if}
 				{if $gender == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_gender#}</label>
+						<label>{#text_gender#}</label>&nbsp;
 						{$INPUT_GENDER|replace:'<select':'<select class="form-control form-control-sm"'}
 					</div>
 				{/if}
 				<div class="form-group stern clearfix">
-					<label>{#text_firstname#}</label>
+					<label>{#text_firstname#}</label>&nbsp;
 					{$INPUT_FIRSTNAME|replace:'<input':'<input class="form-control form-control-sm"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_lastname#}</label>
+					<label>{#text_lastname#}</label>&nbsp;
 					{$INPUT_LASTNAME|replace:'<input':'<input class="form-control form-control-sm"'}
 				</div>
 				{if $birthdate == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_birthdate#}</label>
+						<label>{#text_birthdate#}</label>&nbsp;
 						{$INPUT_DOB|replace:'<input':'<input class="form-control form-control-sm" aria-describedby="dateHelp"'}
-						<small id="dateHelp" class="form-text text-muted">{$TEXT_DOB_NOTE}</small>
+						<br><small id="dateHelp" class="form-text text-muted d-inline-block">{$TEXT_DOB_NOTE}</small>
 					</div>
 				{/if}
 			</div>
@@ -46,26 +46,26 @@
 				<h4>{#title_contact#}</h4>
             	<p class="small">({#text_must#})</p>
 				<div class="form-group stern clearfix">
-					<label>{#text_email#}</label>
+					<label>{#text_email#}</label>&nbsp;
 					{$INPUT_EMAIL|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"email\""}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_confirm_email#}</label>
+					<label>{#text_confirm_email#}</label>&nbsp;
 					{$INPUT_CONFIRM_EMAIL|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"email\""}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_tel#}</label>
+					<label>{#text_tel#}</label>&nbsp;
 					{$INPUT_TEL|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"tel\""}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_fax#}</label>
+					<label>{#text_fax#}</label>&nbsp;
 					{$INPUT_FAX|replace:'<input':'<input class="form-control form-control-sm"'|replace:"type=\"text\"":"type=\"tel\""}
 				</div>
 				{if $vat == '1'}
 					<div class="form-group stern clearfix">
-						<label>{#text_ustid#}</label>
+						<label>{#text_ustid#}</label>&nbsp;
 						{$INPUT_VAT|replace:'<input':'<input class="form-control form-control-sm" aria-describedby="vatHelp"'}
-						<small id="vatHelp" class="form-text text-muted">{$TEXT_VAT_NOTE}</small>
+						<br><small id="vatHelp" class="form-text text-muted d-inline-block">{$TEXT_VAT_NOTE}</small>
 					</div>
 				{/if}
 			</div>

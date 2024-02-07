@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Abstände Sternchen und Checkbox im Registrierungsformular und Nutzerkonto korrigiert
 - Fehler in templates/bootstrap4/source/boxes/order_history.php behoben
 
 
