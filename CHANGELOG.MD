@@ -1,9 +1,10 @@
 UNRELEASED
 
+
+- Abfrage Konstanten für Menüpunkte im Adminbereich geändert
+- Abstände Sternchen und Checkbox Kontakt, Newsletter, Kundenkonto korrigiert
 - Abstände Sternchen und Checkbox im Registrierungsformular und Nutzerkonto korrigiert
 - Fehler in templates/bootstrap4/source/boxes/order_history.php behoben
-
-
 
 1.2.17 [05.12.2023]
 - Fehler in bs4_define_add_select.php behoben

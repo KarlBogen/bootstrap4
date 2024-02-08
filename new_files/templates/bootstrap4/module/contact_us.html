@@ -15,36 +15,36 @@
 				<h4>{#text_data#}</h4>
 				<p class="small">({#text_hint#})</p>
 				<div class="form-group stern clearfix">
-					<label>{#text_name#}</label>
+					<label>{#text_name#}</label>&nbsp;
 					{$INPUT_NAME|replace:'<input':'<input class="form-control form-control-sm" aria-label="name"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_email#}</label>
+					<label>{#text_email#}</label>&nbsp;
 					{$INPUT_EMAIL|replace:'<input':'<input class="form-control form-control-sm" aria-label="email"'|replace:"type=\"text\"":"type=\"email\""}<span class="inputRequirement">*</span>
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_phone#}</label>
+					<label>{#text_phone#}</label>&nbsp;
 					{$INPUT_PHONE|replace:'<input':'<input class="form-control form-control-sm" aria-label="phone"'|replace:"type=\"text\"":"type=\"tel\""}
 				</div>
 {*
 				<div class="form-group stern clearfix">
-					<label>{#text_fax#}</label>
+					<label>{#text_fax#}</label>&nbsp;
 					{$INPUT_FAX|replace:'<input':'<input class="form-control form-control-sm" aria-label="fax"'|replace:"type=\"text\"":"type=\"tel\""}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_street#}</label>
+					<label>{#text_street#}</label>&nbsp;
 					{$INPUT_STREET|replace:'<input':'<input class="form-control form-control-sm" aria-label="street"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_postcode#}</label>
+					<label>{#text_postcode#}</label>&nbsp;
 					{$INPUT_POSTCODE|replace:'<input':'<input class="form-control form-control-sm" aria-label="postcode"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_city#}</label>
+					<label>{#text_city#}</label>&nbsp;
 					{$INPUT_CITY|replace:'<input':'<input class="form-control form-control-sm" aria-label="city"'}
 				</div>
 				<div class="form-group stern clearfix">
-					<label>{#text_company#}</label>
+					<label>{#text_company#}</label>&nbsp;
 					{$INPUT_COMPANY|replace:'<input':'<input class="form-control form-control-sm" aria-label="company"'}
 				</div>
 *}
@@ -61,14 +61,14 @@
 					</div>
 				{/if}
 				<div class="form-group stern clearfix">
-					<label>{#text_message#}</label>
+					<label>{#text_message#}</label>&nbsp;
 					{$INPUT_TEXT|replace:'<textarea':'<textarea class="form-control form-control-sm" aria-label="message"'}<span class="inputRequirement">*</span>
 				</div>
 				{if "SIGN_CONDITIONS_ON_CHECKOUT"|defined}
 					<div class="checkbox clearfix">
 						<label for="privacy">
 							{if $PRIVACY_CHECKBOX}{$PRIVACY_CHECKBOX}{/if}
-							{#text_privacy_accept#|sprintf:$smarty.const.STORE_OWNER_EMAIL_ADDRESS} {$PRIVACY_LINK}
+							&nbsp;{#text_privacy_accept#|sprintf:$smarty.const.STORE_OWNER_EMAIL_ADDRESS} {$PRIVACY_LINK}
 						</label>
 					</div>
 				{else}
@@ -76,7 +76,7 @@
 						<div class="checkbox clearfix">
 							<label for="privacy">
 								{$PRIVACY_CHECKBOX}
-								{#text_privacy_accept#|sprintf:$smarty.const.STORE_OWNER_EMAIL_ADDRESS} {$PRIVACY_LINK}
+								&nbsp;{#text_privacy_accept#|sprintf:$smarty.const.STORE_OWNER_EMAIL_ADDRESS} {$PRIVACY_LINK}
 							</label>
 						</div>
 					{/if}
