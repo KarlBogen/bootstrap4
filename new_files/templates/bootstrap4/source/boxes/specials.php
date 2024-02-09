@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: specials.php 15560 2023-11-13 13:13:33Z GTB $   
+   $Id: specials.php 15626 2023-12-04 10:59:29Z GTB $   
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -43,11 +43,17 @@ $specials_query = xtc_db_query("SELECT ".$product->default_select.",
                                           ".SPECIALS_CONDITIONS_S."
                                  WHERE p.products_status = '1'
                                        ".PRODUCTS_CONDITIONS_P."                                             
-                              ORDER BY MD5(CONCAT(p.products_id, CURRENT_TIMESTAMP)) 
-                                 LIMIT 1");
+                              GROUP BY p.products_id
+                              ORDER BY s.expires_date ASC, p.products_id
+                                 LIMIT ".MAX_RANDOM_SELECT_SPECIALS);
 
 if (xtc_db_num_rows($specials_query) > 0) {
-  $specials = xtc_db_fetch_array($specials_query);
+  $content_array = array();
+  while ($specials = xtc_db_fetch_array($specials_query)) {
+    $content_array[] = $specials;
+  }
+  shuffle($content_array);
+  $specials = $content_array[0];
 
   // set cache id
   $cache_id = md5('lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'].'|curr:'.$_SESSION['currency'].'|pID:'.$specials['products_id'].'|country:'.((isset($_SESSION['country'])) ? $_SESSION['country'] : ((isset($_SESSION['customer_country_id'])) ? $_SESSION['customer_country_id'] : STORE_COUNTRY)));
