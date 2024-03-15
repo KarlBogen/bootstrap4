@@ -133,7 +133,7 @@ class bs4_tpl_manager {
 
 		$result = true;
 		// Systemmodule deinstallieren
-		if (defined('MODULE_BS4_TPL_MANAGER_STATUS') && MODULE_BS4_TPL_MANAGER_STATUS == 'true') {
+		if (defined('MODULE_BS4_TPL_MANAGER_STATUS')) {
 			$messageStack->add_session(MODULE_BS4_TPL_MANAGER_START_DELETE_TABLES, 'success');
 			if(!$this->remove()){
 				$result = false;
@@ -733,18 +733,17 @@ class bs4_tpl_manager {
 				xtc_db_query("DROP TABLE " . TABLE_BS4_TPL_MANAGER_THEME);
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_REMOVED.TABLE_BS4_TPL_MANAGER_THEME, 'success');
 			case $x > 0:
-				xtc_db_query("DROP TABLE " . TABLE_BS4_TPL_MANAGER_CONFIG);
-				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_REMOVED.TABLE_BS4_TPL_MANAGER_CONFIG, 'success');
-
 				// Zusatzmodule entfernen
-				xtc_db_query("DROP TABLE " . TABLE_BS4_CUSTOMERS_REMIND);
-				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_REMOVED.TABLE_BS4_CUSTOMERS_REMIND, 'success');
 				xtc_db_query("DELETE FROM " . TABLE_CONTENT_MANAGER . " WHERE content_group = ". BS4_CHEAPLY_SEE_CONTENT_GROUP);
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ENTRY_REMOVED.TABLE_CONTENT_MANAGER, 'success');
 				xtc_db_query("DELETE FROM " . TABLE_CONTENT_MANAGER . " WHERE content_group = ". BS4_PRODUCT_INQUIRY_CONTENT_GROUP);
 				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_ENTRY_REMOVED.TABLE_CONTENT_MANAGER, 'success');
 				// später hinzugefügte Datenbankeinträge löschen
 				$this->remove_updates_and_news();
+				xtc_db_query("DROP TABLE " . TABLE_BS4_TPL_MANAGER_CONFIG);
+				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_REMOVED.TABLE_BS4_TPL_MANAGER_CONFIG, 'success');
+				xtc_db_query("DROP TABLE " . TABLE_BS4_CUSTOMERS_REMIND);
+				$messageStack->add_session(MODULE_BS4_TPL_MANAGER_INSTALL_TABLE_REMOVED.TABLE_BS4_CUSTOMERS_REMIND, 'success');
 		}
 		return true;
 	}

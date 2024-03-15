@@ -1,6 +1,6 @@
 UNRELEASED
 
-
+- Mailadressen des Absenders in "Frage zum Artikel" und "Billiger gesehen" geändert - Fehlermeldung bei IONOS
 - Abfrage Konstanten für Menüpunkte im Adminbereich geändert
 - Abstände Sternchen und Checkbox Kontakt, Newsletter, Kundenkonto korrigiert
 - Abstände Sternchen und Checkbox im Registrierungsformular und Nutzerkonto korrigiert

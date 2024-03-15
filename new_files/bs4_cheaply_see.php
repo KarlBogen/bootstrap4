@@ -191,8 +191,8 @@
 			$create_text_body .= "\n--------------------\n".strip_tags($_POST['message_body'])."\n\n";
 
 			// EMAIL GENERIEREN
-			xtc_php_mail($_POST['email'], //von emailadresse
-		                   $create_name, //von emailname
+			xtc_php_mail(CONTACT_US_EMAIL_ADDRESS, //von emailadresse
+		                   CONTACT_US_NAME, //von emailname
 		                   CONTACT_US_EMAIL_ADDRESS,  //an emailadresse
 		                   CONTACT_US_NAME, //an emailname
 		                   CONTACT_US_FORWARDING_STRING, //bcc
