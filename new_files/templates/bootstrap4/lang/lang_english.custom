@@ -70,6 +70,14 @@ overview = 'Overview'
 next = 'next &raquo;'
 last = 'last &raquo;'
 
+# Footer #
+footer_price_hinweis_1 = 'All prices'
+footer_price_hinweis_incl = 'incl.'
+footer_price_hinweis_excl = 'excl.'
+footer_price_hinweis_2 = 'VAT. plus'
+footer_price_hinweis_3 = 'shipping and handling'
+footer_price_hinweis_4 = 'The crossed out prices correspond to the price at'
+
 heading_miscellaneous = 'Payment methods'
 text_miscellaneous = 'The box can be changed under bootstrap4/boxes/box_miscellaneous.html. The language variables are in the file bootstrap4/lang/english/lang_english.custom.'
 

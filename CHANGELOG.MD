@@ -1,5 +1,9 @@
 UNRELEASED
 
+
+
+1.2.18 [03.04.2024]
+- Kleinunternehmerregelung Footertext - https://trac.modified-shop.org/changeset/15782/
 - Mailadressen des Absenders in "Frage zum Artikel" und "Billiger gesehen" geändert - Fehlermeldung bei IONOS
 - Abfrage Konstanten für Menüpunkte im Adminbereich geändert
 - Abstände Sternchen und Checkbox Kontakt, Newsletter, Kundenkonto korrigiert

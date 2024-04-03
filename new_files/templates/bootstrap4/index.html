@@ -133,7 +133,7 @@
 	{* ENDE Maincontainer 2 *}
 	{* BEGINN FOOTER *}
 	<div id="layout_footer" class="container-fluid bg-{$smarty.const.BS4_FOOTER_BG} py-4">
-  		<div class="container mb-2">
+  		<div class="container mb-4">
 			<div id="layout_footer_inner" class="row">
 				{if $smarty.const.MODULE_NEWSLETTER_STATUS == 'true'}{$col = 3}{else}{$col = 4}{/if}
 				{if isset($box_CONTENT)}<div class="col-lg-{$col} col-md-6 mb-2">{$box_CONTENT} </div>{/if}
@@ -141,7 +141,10 @@
 				{if isset($box_MISCELLANEOUS)}<div class="col-lg-{$col} col-md-6 mb-2">{$box_MISCELLANEOUS} </div>{/if}
 				{if isset($box_NEWSLETTER)}<div class="col-lg-{$col} col-md-6 mb-2">{$box_NEWSLETTER}</div>{/if}
 			</div>
-		<div class="mod_copyright text-secondary text-center small">{$smarty.const.TITLE} &copy; {$smarty.now|date_format:"Y"} | Template &copy; {$smarty.now|date_format:"Y"} by Karl</div>
+			<div class="mod_copyright text-secondary text-center small">
+				{if $smarty.const.MODULE_SMALL_BUSINESS != 'true'}{#footer_price_hinweis_1#} {if $smarty.session.customers_status.customers_status_show_price_tax == 1}{#footer_price_hinweis_incl#}{else}{#footer_price_hinweis_excl#}{/if} {#footer_price_hinweis_2#} <a class="iframe" title="Information" href="{'popup_content.php'|xtc_href_link:'coID=1'}" target="_blank" rel="nofollow">{#footer_price_hinweis_3#}</a>. {/if}{#footer_price_hinweis_4#} {$smarty.const.TITLE}.<br />
+				{$smarty.const.TITLE} &copy; {$smarty.now|date_format:"Y"} | Template &copy; {$smarty.now|date_format:"Y"} by Karl
+			</div>
 		</div>
 	</div>
 	{* ENDE FOOTER *}

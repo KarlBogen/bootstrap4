@@ -72,6 +72,14 @@ overview = '&Uuml;bersicht'
 next = 'n&auml;chster &raquo;'
 last = 'Letzter &raquo;'
 
+# Footer #
+footer_price_hinweis_1 = 'Alle Preise'
+footer_price_hinweis_incl = 'inkl.'
+footer_price_hinweis_excl = 'exkl.'
+footer_price_hinweis_2 = 'gesetzl. MwSt. zzgl.'
+footer_price_hinweis_3 = 'Versandkosten'
+footer_price_hinweis_4 = 'Die durchgestrichenen Preise entsprechen dem bisherigen Preis bei'
+
 heading_miscellaneous = 'Zahlungsmethoden'
 text_miscellaneous = 'Die Box kann unter bootstrap4/boxes/box_miscellaneous.html ver&auml;ndert werden. Die Sprachvariablen befinden sich in der Datei bootstrap4/lang/german/lang_german.custom.'
 
