@@ -1,5 +1,7 @@
 UNRELEASED
 
+- javascript/extra/cookieconsent.js.php angepasst an OIL.js Consent Management v1.43
+
 
 
 1.2.18 [03.04.2024]

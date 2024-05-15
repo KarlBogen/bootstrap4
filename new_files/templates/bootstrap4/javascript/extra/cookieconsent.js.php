@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: cookieconsent.js.php 14628 2022-07-06 10:12:08Z GTB $
+   $Id: cookieconsent.js.php 15749 2024-02-26 12:01:11Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -93,6 +93,14 @@ function cc_popup_content(trgt) {
 			
 			document.cookie = cookieString;
 		};
+		if (event && event.data && (eventDataContains('oil_soi_optin_done'))) {
+		  if (typeof pushgTagEventAction === "function" && gTagCounter > 0) {
+		    pushgTagEventAction();
+		  }
+		  if (typeof pushTagmanagerEventAction === "function" && gTagmanagerCounter > 0) {
+		    pushTagmanagerEventAction();
+		  }
+		}
     if (event && event.data && (eventDataContains('oil_optin_done') || eventDataContains('oil_has_optedin'))) {
 			__cmp('getVendorConsents', [], oilGtagCookie);
 		}
