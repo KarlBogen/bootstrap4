@@ -1,3 +1,12 @@
+**Bitte beachten!**
+**Bootstrap4 wird nur bis Shopversion 3.0.0 unterstützt!**
+<br /><br />
+
+**Ich empfehle allen auf <a href="https://github.com/KarlBogen/bootstrap5" target="_blank" title="KarlBogen/sliderbeispiele_bs4">TEMPLATE: Bootstrap5 für Shop 3.x - freies responsive Template</a> zu wechseln.**
+**Bootstrap5 mit Bootstrap5a punkten bei Lighthouse mit Barrierefreiheit und Geschwindigkeit, außerdem sind beide Templates tastaturbedienbar.**
+
+<br /><br />
+
 # Bootstrap4 für Modified Shop 2.x - freies responsive Template
 
 Das Template basiert auf dem Bootstrap-Framework 4 und wird getestet mit der, zum Zeitpunkt des Erscheinens eines neuen Releases, aktuellen Shopversion.
